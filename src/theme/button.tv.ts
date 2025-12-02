@@ -2,7 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const button = tv({
   base: [
-    "flex items-center justify-center border cursor-pointer tracking-wide",
+    "flex items-center justify-center border cursor-pointer tracking-wide relative overflow-hidden",
     "transition-all cursor-pointer shadow-sm duration-300 ease-in-out",
   ],
 
