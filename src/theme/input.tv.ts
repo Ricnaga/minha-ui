@@ -2,37 +2,50 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const input = tv({
   slots: {
-    container: "",
-    startIconWrapper: "",
-    endIconWrapper: "",
-    field: "peer",
-    title: "",
+    container: "relative h-11 w-full min-w-50",
+    startIconWrapper: "absolute left-3 flex items-center pointer-events-none",
+    endIconWrapper: "absolute right-3 flex items-center pointer-events-none",
+    field: "peer w-full bg-transparent focus:outline-none transition-all",
+    title: [
+      "absolute left-3 -top-2.5 text-xs",
+      "transition-all",
+      "peer-placeholder-shown:top-2.5",
+      "peer-placeholder-shown:text-sm",
+      "peer-focus:-top-2.5 peer-focus:text-xs",
+    ],
   },
   variants: {
     variant: {
       underline: {
-        container: "relative h-11 w-full min-w-50",
-        startIconWrapper:
-          "absolute left-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none",
-        endIconWrapper:
-          "absolute right-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none",
+        startIconWrapper: "top-1/2 -translate-y-1/2",
+        endIconWrapper: "top-1/2 -translate-y-1/2",
         field: [
-          "h-full w-full border-b border-blue-gray-200 bg-transparent",
-          "pt-4 pb-1.5 px-3 text-sm text-blue-gray-700",
-          "focus:border-pink-500 focus:outline-none",
-          "transition-all",
+          "h-full border-b border-blue-200",
+          "pt-4 pb-1.5 px-3 text-sm text-blue-700",
+          "focus:border-pink-500 ",
         ],
         title: [
-          "absolute left-3 -top-2.5 text-[11px] text-blue-gray-400",
-          "transition-all",
-          "peer-placeholder-shown:text-sm",
-          "peer-placeholder-shown:top-2.5",
-          "peer-placeholder-shown:text-blue-gray-500",
-          "peer-focus:-top-2.5 peer-focus:text-[11px]",
+          "text-blue-400",
+          "peer-placeholder-shown:text-blue-500",
           "peer-focus:text-pink-500",
         ],
       },
-      outline: {},
+      outline: {
+        container: "flex items-center",
+        field: [
+          "rounded-md border border-blue-300",
+          "px-3 py-3",
+          "text-blue-700 text-sm",
+          "focus:border-2 focus:border-pink-500 ",
+        ],
+        title: [
+          "text-blue-500",
+          "bg-white px-1",
+          "peer-placeholder-shown:text-blue-500",
+          "peer-focus:text-pink-500",
+          "peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:text-xs",
+        ],
+      },
     },
     startIcon: {
       true: {
