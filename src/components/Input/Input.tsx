@@ -1,44 +1,30 @@
-import React, { Activity, type ReactNode } from "react";
-import { input, type InputVariantsProps } from "../../theme";
-const { container, startIconWrapper, endIconWrapper, field, title } = input();
+import { Activity } from "react";
+import type { InputProps } from "./input.types";
+import { useInput } from "./useInput";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
-  variant?: InputVariantsProps["variant"];
-}
-
-export const Input: React.FC<InputProps> = ({
-  label,
-  startIcon,
-  endIcon,
-  className,
-  variant = "outline",
-  ...props
-}) => {
+export function Input(props: InputProps) {
+  const {
+    containerProps,
+    endIconProps,
+    hasEndIcon,
+    hasStartIcon,
+    inputProps,
+    labelProps,
+    startIconProps,
+  } = useInput(props);
   return (
-    <div className={container({ className, variant })}>
-      <Activity mode={startIcon ? "visible" : "hidden"}>
-        <div className={startIconWrapper({ variant })}>{startIcon}</div>
+    <div {...containerProps}>
+      <Activity mode={hasStartIcon}>
+        <div {...startIconProps} />
       </Activity>
 
-      <input
-        type="text"
-        placeholder=" "
-        className={field({
-          variant,
-          endIcon: !!endIcon,
-          startIcon: !!startIcon,
-        })}
-        {...props}
-      />
+      <input {...inputProps} />
 
-      <Activity mode={endIcon ? "visible" : "hidden"}>
-        <div className={endIconWrapper({ variant })}>{endIcon}</div>
+      <Activity mode={hasEndIcon}>
+        <div {...endIconProps} />
       </Activity>
 
-      <label className={title({ variant })}>{label}</label>
+      <label {...labelProps} />
     </div>
   );
-};
+}

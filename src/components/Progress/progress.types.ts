@@ -1,5 +1,5 @@
-import type { ComponentProps } from "react";
+import type { HTMLAttributes } from "react";
 
-export type UseProgressProps = ComponentProps<"div">;
+export type UseProgressProps = HTMLAttributes<HTMLDivElement>;
 
 export type ProgressProps = UseProgressProps;
