@@ -1,3 +1,5 @@
 export * from "./Button";
-export * from "./Spinner";
+export * from "./Checkbox";
+export * from "./Input";
 export * from "./Progress";
+export * from "./Spinner";
