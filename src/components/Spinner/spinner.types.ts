@@ -1,5 +1,5 @@
-import type { ComponentProps } from "react";
+import type { SVGProps } from "react";
 
-export type UseSpinnerProps = ComponentProps<"svg">;
+export type UseSpinnerProps = SVGProps<SVGSVGElement>
 
 export type SpinnerProps = UseSpinnerProps;
