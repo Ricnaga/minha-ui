@@ -1,5 +1,6 @@
 export * from "./button.tv";
+export * from "./checkbox.tv";
+export * from "./divider.tv";
 export * from "./input.tv";
 export * from "./progress.tv";
 export * from "./spinner.tv";
-export * from "./checkbox.tv";
