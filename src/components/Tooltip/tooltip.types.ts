@@ -7,4 +7,4 @@ export interface UseTooltipProps
   description: ReactNode;
 }
 
-export type TooltipProps = Omit<UseTooltipProps, "description">;
+export type TooltipProps = UseTooltipProps;

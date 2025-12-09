@@ -20,7 +20,7 @@ export function useTooltip(props: UseTooltipProps) {
     onMouseLeave: () => setAsVisible(false),
   };
 
-  const tooltipProps: TooltipProps = {
+  const tooltipProps: Omit<TooltipProps, "description"> = {
     ...rest,
     children: description,
     className: tooltip({
