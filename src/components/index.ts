@@ -5,6 +5,7 @@ export * from "./Button";
 export * from "./Checkbox";
 export * from "./Chip";
 export * from "./Divider";
+export * from "./IconButton";
 export * from "./Input";
 export * from "./Progress";
 export * from "./Skeleton";

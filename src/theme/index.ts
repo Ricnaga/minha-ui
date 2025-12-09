@@ -3,9 +3,9 @@ export * from "./button.tv";
 export * from "./checkbox.tv";
 export * from "./chip.tv";
 export * from "./divider.tv";
+export * from "./icon-button.tv";
 export * from "./input.tv";
 export * from "./progress.tv";
 export * from "./skeleton.tv";
 export * from "./spinner.tv";
 export * from "./tooltip.tv";
-
