@@ -1,3 +1,4 @@
+export * from "./badge.tv";
 export * from "./button.tv";
 export * from "./checkbox.tv";
 export * from "./chip.tv";
@@ -6,4 +7,3 @@ export * from "./input.tv";
 export * from "./progress.tv";
 export * from "./skeleton.tv";
 export * from "./spinner.tv";
-
