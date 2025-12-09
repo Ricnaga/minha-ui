@@ -3,4 +3,5 @@ export * from "./checkbox.tv";
 export * from "./divider.tv";
 export * from "./input.tv";
 export * from "./progress.tv";
+export * from "./skeleton.tv";
 export * from "./spinner.tv";
