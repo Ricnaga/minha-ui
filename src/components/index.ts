@@ -7,6 +7,7 @@ export * from "./Chip";
 export * from "./Divider";
 export * from "./IconButton";
 export * from "./Input";
+export * from "./Pagination";
 export * from "./Progress";
 export * from "./Skeleton";
 export * from "./Spinner";
