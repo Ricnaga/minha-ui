@@ -9,6 +9,7 @@ export * from "./IconButton";
 export * from "./Input";
 export * from "./Pagination";
 export * from "./Progress";
+export * from "./Select";
 export * from "./Skeleton";
 export * from "./Spinner";
 export * from "./ToastContainer";
