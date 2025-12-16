@@ -12,6 +12,6 @@ export * from "./Progress";
 export * from "./Select";
 export * from "./Skeleton";
 export * from "./Spinner";
+export * from "./Tabs";
 export * from "./ToastContainer";
 export * from "./Tooltip";
-
