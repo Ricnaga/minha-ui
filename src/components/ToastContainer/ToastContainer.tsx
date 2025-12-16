@@ -1,8 +1,8 @@
-import { type PropsWithChildren } from "react";
+import type { RequiredChildren } from "../../types";
 import { Toast } from "./Toast";
 import { ToastContext, useToastProvider } from "./useToast";
 
-export function ToastContainer({ children }: PropsWithChildren) {
+export function ToastContainer({ children }: RequiredChildren) {
   const { show, toasts } = useToastProvider();
 
   return (
