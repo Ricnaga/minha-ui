@@ -50,21 +50,3 @@ export const accordion = tv({
 });
 
 export type AccordionVariants = VariantProps<typeof accordion>;
-
-// <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-//     <input type="checkbox" id="accordion1" class="peer hidden">
-//     <label for="accordion1" class="flex items-center justify-between p-4 bg-blue-600 text-white cursor-pointer hover:bg-blue-700 transition-colors">
-//         <span class="text-lg font-semibold">Professional Profile</span>
-//         <svg class="w-6 h-6 transition-transform peer-checked:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-//             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-//         </svg>
-//     </label>
-//     <div class="max-h-0 overflow-hidden transition-all duration-300 peer-checked:max-h-screen">
-//         <div class="p-4">
-//             <a href="https://abhirajk.vercel.app/" target="_blank" class="block">
-//                 <img src="https://res.cloudinary.com/djv4xa6wu/image/upload/v1735722165/AbhirajK/Abhirajk.webp" alt="Abhiraj K Professional" class="w-full h-64 object-cover rounded-lg mb-4">
-//             </a>
-//             <p class="text-gray-700 leading-relaxed">Full-stack developer with expertise in modern web technologies and a passion for creating innovative solutions.</p>
-//         </div>
-//     </div>
-// </div>
