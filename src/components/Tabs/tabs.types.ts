@@ -6,7 +6,6 @@ export type UseTabsContextProps = TabsVariant &
     value: string;
     onTabChange: (tabValue: string) => void;
   }>;
+export type TabsProps = UseTabsContextProps;
 
 export type TabsContextProps = Omit<UseTabsContextProps, "children">;
-
-export type TabsProps = UseTabsContextProps;
