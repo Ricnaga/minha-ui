@@ -5,7 +5,7 @@ export function Accordion(props: AccordionProps) {
   const { children, ...rest } = useAccordionProvider(props);
   return (
     <AccordionContext.Provider value={rest}>
-      <div role="presentation">{children}</div>
+      {children}
     </AccordionContext.Provider>
   );
 }

@@ -33,10 +33,12 @@ export const Default: Story = {
         <p>Valor atual: {JSON.stringify(value)}</p>
 
         <Accordion {...args} value={value} onValueChange={setValue}>
-          <AccordionItem value="item-1">
-            <AccordionHeader>Item 1</AccordionHeader>
-            <AccordionContent>Conteúdo 1</AccordionContent>
-          </AccordionItem>
+          <div className="my-4">
+            <AccordionItem value="item-1">
+              <AccordionHeader>Item 1</AccordionHeader>
+              <AccordionContent>Conteúdo 1</AccordionContent>
+            </AccordionItem>
+          </div>
 
           <AccordionItem value="item-2">
             <AccordionHeader>Item 2</AccordionHeader>

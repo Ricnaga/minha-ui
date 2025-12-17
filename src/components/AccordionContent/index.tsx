@@ -1,7 +1,10 @@
 // AccordionContent.tsx
 
+import { accordion } from "../../theme";
 import { useAccordion } from "../Accordion/useAccordion";
 import { useAccordionItem } from "../AccordionItem/useAccordionItem";
+
+const { accordionContent } = accordion();
 
 export const AccordionContent = ({
   children,
@@ -13,5 +16,5 @@ export const AccordionContent = ({
 
   if (!value?.includes(itemValue)) return null;
 
-  return <div>{children}</div>;
+  return <div className={accordionContent()}>{children}</div>;
 };
