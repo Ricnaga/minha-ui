@@ -7,6 +7,7 @@ export * from "./AccordionItem";
 export * from "./Badge";
 export * from "./Button";
 export * from "./Card";
+export * from "./CardBody";
 export * from "./CardHeader";
 export * from "./CardSubtitle";
 export * from "./CardTitle";
@@ -27,3 +28,4 @@ export * from "./TabsPanels";
 export * from "./TabsTrigger";
 export * from "./ToastContainer";
 export * from "./Tooltip";
+
