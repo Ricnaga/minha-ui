@@ -1,1 +1,2 @@
-const CardSubtitle = ({ subtitle }) => <h4>{subtitle}</h4>;
+export * from "./card-subtitle.types";
+export * from "./CardSubtitle";

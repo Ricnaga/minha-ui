@@ -1,1 +1,2 @@
-const CardTitle = ({ title }) => <h3>{title}</h3>;
+export * from "./card-title.types";
+export * from "./CardTitle";
