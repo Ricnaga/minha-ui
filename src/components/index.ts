@@ -8,6 +8,8 @@ export * from "./Badge";
 export * from "./Button";
 export * from "./Card";
 export * from "./CardHeader";
+export * from "./CardSubtitle";
+export * from "./CardTitle";
 export * from "./Checkbox";
 export * from "./Chip";
 export * from "./Divider";

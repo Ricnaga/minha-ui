@@ -2,6 +2,7 @@ export * from "./accordion.tv";
 export * from "./badge.tv";
 export * from "./button.tv";
 export * from "./card-header.tv";
+export * from "./card-subtitle.tv";
 export * from "./card-title.tv";
 export * from "./card.tv";
 export * from "./checkbox.tv";
