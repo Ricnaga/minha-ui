@@ -1,4 +1,5 @@
 export * from "./accordion.tv";
+export * from "./backdrop.tv";
 export * from "./badge.tv";
 export * from "./button.tv";
 export * from "./card-actions.tv";
