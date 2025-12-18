@@ -4,6 +4,7 @@ export * from "./button.tv";
 export * from "./card-body.tv";
 export * from "./card-description.tv";
 export * from "./card-header.tv";
+export * from "./card-image.tv";
 export * from "./card-subtitle.tv";
 export * from "./card-title.tv";
 export * from "./card.tv";

@@ -10,6 +10,7 @@ export * from "./Card";
 export * from "./CardBody";
 export * from "./CardDescription";
 export * from "./CardHeader";
+export * from "./CardImage";
 export * from "./CardSubtitle";
 export * from "./CardTitle";
 export * from "./Checkbox";
@@ -29,3 +30,4 @@ export * from "./TabsPanels";
 export * from "./TabsTrigger";
 export * from "./ToastContainer";
 export * from "./Tooltip";
+
