@@ -1,6 +1,8 @@
 export * from "./accordion.tv";
 export * from "./badge.tv";
 export * from "./button.tv";
+export * from "./card-header.tv";
+export * from "./card-title.tv";
 export * from "./card.tv";
 export * from "./checkbox.tv";
 export * from "./chip.tv";
@@ -15,4 +17,3 @@ export * from "./spinner.tv";
 export * from "./tabs.tv";
 export * from "./toast.tv";
 export * from "./tooltip.tv";
-
