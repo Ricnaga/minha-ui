@@ -7,6 +7,7 @@ export * from "./AccordionItem";
 export * from "./Badge";
 export * from "./Button";
 export * from "./Card";
+export * from "./CardHeader";
 export * from "./Checkbox";
 export * from "./Chip";
 export * from "./Divider";
@@ -24,4 +25,3 @@ export * from "./TabsPanels";
 export * from "./TabsTrigger";
 export * from "./ToastContainer";
 export * from "./Tooltip";
-
