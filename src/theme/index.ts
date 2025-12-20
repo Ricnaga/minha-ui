@@ -17,6 +17,7 @@ export * from "./divider.tv";
 export * from "./icon-button.tv";
 export * from "./input.tv";
 export * from "./pagination.tv";
+export * from "./popover-content.tv";
 export * from "./progress.tv";
 export * from "./select.tv";
 export * from "./skeleton.tv";
@@ -24,3 +25,4 @@ export * from "./spinner.tv";
 export * from "./tabs.tv";
 export * from "./toast.tv";
 export * from "./tooltip.tv";
+
