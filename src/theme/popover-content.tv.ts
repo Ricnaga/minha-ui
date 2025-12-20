@@ -3,194 +3,97 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const popoverContent = tv({
   base: [
     "absolute z-50 p-2",
-    "bg-white",
-    "outline-none",
-    "will-change-[transform,opacity] ",
-    "transform-gpu",
+    "bg-white text-gray-900",
+    "border border-gray-200",
+    "will-change-[transform,opacity]",
+    "transition-[opacity,transform]",
+    "duration-500",
     "data-[state=closed]:opacity-0",
     "data-[state=closed]:pointer-events-none",
+    "transform-gpu",
   ],
-
   variants: {
-    rounded: {
-      none: "rounded-none",
+    side: {
+      top: "bottom-full left-1/2 -translate-x-1/2 mb-2 origin-bottom",
+      bottom: "top-full left-1/2 -translate-x-1/2 mt-2 origin-top",
+      left: "right-full top-1/2 -translate-y-1/2 mr-2 origin-right",
+      right: "left-full top-1/2 -translate-y-1/2 ml-2 origin-left",
+    },
+
+    shadow: {
+      sm: "shadow-sm",
+      md: "shadow-md",
+      lg: "shadow-lg",
+      xl: "shadow-xl",
+    },
+
+    radius: {
       sm: "rounded-sm",
       md: "rounded-md",
       lg: "rounded-lg",
       xl: "rounded-xl",
     },
 
-    shadow: {
-      none: "shadow-none",
-      sm: "shadow-sm",
-      md: "shadow-md",
-      lg: "shadow-lg",
-    },
-
     animation: {
-      none: "",
-      fade: "",
-      slide: "",
-      slideFade: "",
-    },
+      fade: ["data-[state=open]:fade-in-0", "data-[state=closed]:fade-out-0"],
 
-    side: {
-      top: "",
-      bottom: "",
-      left: "",
-      right: "",
+      slide: [
+        "data-[side=top]:data-[state=open]:slide-in-from-bottom-2",
+        "data-[side=bottom]:data-[state=open]:slide-in-from-top-2",
+        "data-[side=left]:data-[state=open]:slide-in-from-right-2",
+        "data-[side=right]:data-[state=open]:slide-in-from-left-2",
+
+        "data-[side=top]:data-[state=closed]:slide-out-to-bottom-2",
+        "data-[side=bottom]:data-[state=closed]:slide-out-to-top-2",
+        "data-[side=left]:data-[state=closed]:slide-out-to-right-2",
+        "data-[side=right]:data-[state=closed]:slide-out-to-left-2",
+      ],
+
+      slideFade: [
+        "data-[state=open]:fade-in-0",
+        "data-[state=closed]:fade-out-0",
+
+        "data-[side=top]:data-[state=open]:slide-in-from-bottom-2",
+        "data-[side=bottom]:data-[state=open]:slide-in-from-top-2",
+        "data-[side=left]:data-[state=open]:slide-in-from-right-2",
+        "data-[side=right]:data-[state=open]:slide-in-from-left-2",
+
+        "data-[side=top]:data-[state=closed]:slide-out-to-bottom-2",
+        "data-[side=bottom]:data-[state=closed]:slide-out-to-top-2",
+        "data-[side=left]:data-[state=closed]:slide-out-to-right-2",
+        "data-[side=right]:data-[state=closed]:slide-out-to-left-2",
+      ],
     },
   },
 
   compoundVariants: [
-    // FADE
     {
-      animation: "fade",
-      class: `
-        data-[state=open]:fade-in
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:fade-out
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
-    },
-
-    // SLIDE puro - bottom
-    {
-      animation: "slide",
-      side: "bottom",
-      class: `
-        data-[state=open]:slide-in-from-top
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-top
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
-    },
-
-    // SLIDE puro - top
-    {
-      animation: "slide",
       side: "top",
-      class: `
-        data-[state=open]:slide-in-from-bottom
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-bottom
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
+      animation: ["slide", "slideFade"],
+      class: "data-[state=closed]:translate-y-2",
     },
-
-    // SLIDE puro - left
     {
-      animation: "slide",
-      side: "left",
-      class: `
-        data-[state=open]:slide-in-from-right
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-right
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
-    },
-
-    // SLIDE puro - right
-    {
-      animation: "slide",
-      side: "right",
-      class: `
-        data-[state=open]:slide-in-from-left
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-left
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
-    },
-
-    // SLIDE + FADE - bottom
-    {
-      animation: "slideFade",
       side: "bottom",
-      class: `
-        data-[state=open]:slide-in-from-top
-        data-[state=open]:fade-in
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-top
-        data-[state=closed]:fade-out
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
+      animation: ["slide", "slideFade"],
+      class: "data-[state=closed]:-translate-y-2",
     },
-
-    // SLIDE + FADE - top
     {
-      animation: "slideFade",
-      side: "top",
-      class: `
-        data-[state=open]:slide-in-from-bottom
-        data-[state=open]:fade-in
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-bottom
-        data-[state=closed]:fade-out
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
-    },
-
-    // SLIDE + FADE - left
-    {
-      animation: "slideFade",
       side: "left",
-      class: `
-        data-[state=open]:slide-in-from-right
-        data-[state=open]:fade-in
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-right
-        data-[state=closed]:fade-out
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
+      animation: ["slide", "slideFade"],
+      class: "data-[state=closed]:translate-x-2",
     },
-
-    // SLIDE + FADE - right
     {
-      animation: "slideFade",
       side: "right",
-      class: `
-        data-[state=open]:slide-in-from-left
-        data-[state=open]:fade-in
-        data-[state=open]:duration-200
-        data-[state=open]:ease-out
-
-        data-[state=closed]:slide-out-to-left
-        data-[state=closed]:fade-out
-        data-[state=closed]:duration-150
-        data-[state=closed]:ease-in
-      `,
+      animation: ["slide", "slideFade"],
+      class: "data-[state=closed]:-translate-x-2",
     },
   ],
 
   defaultVariants: {
-    rounded: "md",
-    shadow: "md",
-    animation: "slideFade",
     side: "bottom",
+    shadow: "md",
+    radius: "md",
+    animation: "slideFade",
   },
 });
 

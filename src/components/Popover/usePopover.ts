@@ -11,7 +11,7 @@ export const PopoverContext = createContext<PopoverContextProps>(
 
 export function usePopoverProvider(props: UsePopoverProviderProps) {
   const {
-    rounded = "md",
+    radius = "md",
     shadow = "md",
     animation = "slideFade",
     side = "bottom",
@@ -22,7 +22,7 @@ export function usePopoverProvider(props: UsePopoverProviderProps) {
 
   const popoverContextProps = {
     ...rest,
-    rounded,
+    radius,
     shadow,
     animation,
     side,

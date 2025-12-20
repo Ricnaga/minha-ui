@@ -9,7 +9,7 @@ interface PopoverContentProps extends UsePopoverContentProps {
 
 export function usePopoverContent(props: UsePopoverContentProps) {
   const {
-    rounded = "xl",
+    radius = "xl",
     shadow = "lg",
     animation = "slideFade",
     side = "bottom",
@@ -23,7 +23,7 @@ export function usePopoverContent(props: UsePopoverContentProps) {
     "data-state": isOpen ? "open" : "closed",
     "data-side": side,
     "aria-hidden": !isOpen,
-    className: popoverContent({ animation, rounded, shadow, side, }),
+    className: popoverContent({ animation, radius, shadow, side, }),
   };
 
   return { popoverContentProps };

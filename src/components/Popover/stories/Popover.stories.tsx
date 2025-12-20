@@ -34,13 +34,15 @@ export const Default: Story = {
         isOpen={isOpen}
       >
         <PopoverTrigger>
-          <button>abrir Popover</button>
+          <button className="bg-blue-400 p-2 rounded text-white">Abrir </button>
         </PopoverTrigger>
         <PopoverContent>
-          <div>
-            <p>Conteúdo do popover</p>
-            <button onClick={() => setAsOpen(false)}>Fechar Popover</button>
-          </div>
+          <button
+            onClick={() => setAsOpen(false)}
+            className="bg-red-400 p-2 rounded text-white"
+          >
+            Fechar Popover
+          </button>
         </PopoverContent>
       </Popover>
     );
