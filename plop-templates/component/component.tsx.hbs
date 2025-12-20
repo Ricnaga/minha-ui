@@ -1,0 +1,12 @@
+import { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+import { use{{pascalCase name}} } from "./use{{pascalCase name}}";
+
+export function {{pascalCase name}}(props: {{pascalCase name}}Props) {
+  const props = use{{pascalCase name}}(props);
+  
+  return (
+    <div {...props}>
+      {/* TODO: Implement {{pascalCase name}} */}
+    </div>
+  );
+}
