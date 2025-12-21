@@ -29,6 +29,11 @@ module.exports = function (plop) {
         path: "src/components/{{pascalCase name}}/use{{pascalCase name}}.ts",
         templateFile: "plop-templates/component/useHook.ts.hbs",
       },
+      {
+        type: "add",
+        path: "src/theme/{{kebabCase name}}.tv.ts",
+        templateFile: "plop-templates/theme/theme.tv.ts.hbs",
+      },
     ],
   });
 };
