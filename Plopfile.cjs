@@ -34,6 +34,54 @@ module.exports = function (plop) {
         path: "src/theme/{{kebabCase name}}.tv.ts",
         templateFile: "plop-templates/theme/theme.tv.ts.hbs",
       },
+      {
+        type: "modify",
+        path: "src/components/index.ts",
+        transform: (content, data) => {
+          const componentName = plop.getHelper("pascalCase")(data.name);
+          const newExport = `export * from "./${componentName}";`;
+
+          // evita duplicar
+          if (content.includes(newExport)) {
+            return content;
+          }
+
+          const lines = content
+            .split("\n")
+            .map((line) => line.trim())
+            .filter(Boolean);
+
+          lines.push(newExport);
+
+          lines.sort((a, b) => a.localeCompare(b));
+
+          return lines.join("\n") + "\n";
+        },
+      },
+      {
+        type: "modify",
+        path: "src/theme/index.ts",
+        transform: (content, data) => {
+          const themeName = plop.getHelper("kebabCase")(data.name);
+          const newExport = `export * from "./${themeName}.tv";`;
+
+          // evita duplicar
+          if (content.includes(newExport)) {
+            return content;
+          }
+
+          const lines = content
+            .split("\n")
+            .map((line) => line.trim())
+            .filter(Boolean);
+
+          lines.push(newExport);
+
+          lines.sort((a, b) => a.localeCompare(b));
+
+          return lines.join("\n") + "\n";
+        },
+      },
     ],
   });
 };
