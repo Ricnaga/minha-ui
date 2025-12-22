@@ -1,0 +1,12 @@
+import type { {{pascalCase name}}Variants } from "../../theme";
+import type { use{{pascalCase name}}Provider } from "./use{{pascalCase name}}";
+import type { RequiredChildren } from "../../types";
+
+export type Use{{pascalCase name}}ProviderProps = {{pascalCase name}}Variants & RequiredChildren
+
+export type {{pascalCase name}}Props = Use{{pascalCase name}}ProviderProps;
+
+export type {{pascalCase name}}ContextProps = Omit<
+  ReturnType<typeof use{{pascalCase name}}Provider>,
+  "children"
+>;

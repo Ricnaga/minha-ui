@@ -1,0 +1,24 @@
+import { createContext } from "react";
+import { useContext } from "../../hooks";
+import type {
+  {{pascalCase name}}ContextProps,
+  Use{{pascalCase name}}ProviderProps,
+} from "./{{kebabCase name}}.types";
+
+export const {{pascalCase name}}Context = createContext<{{pascalCase name}}ContextProps>(
+  {} as {{pascalCase name}}ContextProps
+);
+
+export function use{{pascalCase name}}Provider(props: Use{{pascalCase name}}ProviderProps) {
+    const { children, ...rest } = props;
+
+    return  { children, ...rest }
+}
+
+export function use{{pascalCase name}}() {
+  return useContext({
+    context: {{pascalCase name}}Context,
+    hookName: use{{pascalCase name}}.name,
+    providerName: {{pascalCase name}}Context.name,
+  });
+}
