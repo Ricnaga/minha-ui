@@ -1,5 +1,4 @@
 export * from "./_custom";
-
 export * from "./Accordion";
 export * from "./AccordionContent";
 export * from "./AccordionHeader";
@@ -21,6 +20,7 @@ export * from "./Chip";
 export * from "./Divider";
 export * from "./IconButton";
 export * from "./Input";
+export * from "./Modal";
 export * from "./Pagination";
 export * from "./Popover";
 export * from "./PopoverContent";
