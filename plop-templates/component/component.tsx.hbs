@@ -1,11 +1,11 @@
-import { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+import type { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
 import { use{{pascalCase name}} } from "./use{{pascalCase name}}";
 
 export function {{pascalCase name}}(props: {{pascalCase name}}Props) {
-  const props = use{{pascalCase name}}(props);
+  const args = use{{pascalCase name}}(props);
   
   return (
-    <div {...props}>
+    <div {...args}>
       {/* TODO: Implement {{pascalCase name}} */}
     </div>
   );
