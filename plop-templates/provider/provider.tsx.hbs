@@ -1,0 +1,7 @@
+import type { {{pascalCase name}} } from "./{{camelCase name}}.types";
+import { {{pascalCase name}}Context, use{{pascalCase name}}Provider } from "./use{{pascalCase name}}";
+
+export function {{pascalCase name}}(props: {{pascalCase name}}Props) {
+  const { contextProps } = use{{pascalCase name}}Provider(props);
+  return <{{pascalCase name}}Context.Provider {...contextProps} />;
+}
