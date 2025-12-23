@@ -1,8 +1,8 @@
+import { modalContainer } from "../../theme";
 import type {
   ModalContainerProps,
   UseModalContainerProps,
 } from "./modal-container.types";
-import { modalContainer } from "../../theme";
 
 export function useModalContainer(props: UseModalContainerProps) {
   const { radius = "md", shadow = "md", ...rest } = props;
