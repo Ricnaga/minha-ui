@@ -40,7 +40,7 @@ export const Default: Story = {
           onClick={handleOpen}
           className="p-2 bg-blue-400 rounded text-white cursor-pointer"
         >
-          Abrir modal
+          Abrir Modal Footer
         </button>
         <Modal isOpen={isToogle} onClose={handleClose}>
           <ModalFooter {...args} />

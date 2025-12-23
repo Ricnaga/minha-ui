@@ -21,6 +21,7 @@ export * from "./Divider";
 export * from "./IconButton";
 export * from "./Input";
 export * from "./Modal";
+export * from "./ModalActions";
 export * from "./ModalContainer";
 export * from "./ModalContent";
 export * from "./ModalFooter";

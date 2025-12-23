@@ -16,6 +16,7 @@ export * from "./chip.tv";
 export * from "./divider.tv";
 export * from "./icon-button.tv";
 export * from "./input.tv";
+export * from "./modal-actions.tv";
 export * from "./modal-container.tv";
 export * from "./modal-content.tv";
 export * from "./modal-footer.tv";
