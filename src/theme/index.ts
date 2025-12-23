@@ -16,6 +16,10 @@ export * from "./chip.tv";
 export * from "./divider.tv";
 export * from "./icon-button.tv";
 export * from "./input.tv";
+export * from "./modal-container.tv";
+export * from "./modal-content.tv";
+export * from "./modal-footer.tv";
+export * from "./modal-header.tv";
 export * from "./pagination.tv";
 export * from "./popover-content.tv";
 export * from "./progress.tv";
@@ -25,4 +29,3 @@ export * from "./spinner.tv";
 export * from "./tabs.tv";
 export * from "./toast.tv";
 export * from "./tooltip.tv";
-
