@@ -23,6 +23,7 @@ export * from "./Input";
 export * from "./Modal";
 export * from "./ModalContainer";
 export * from "./ModalContent";
+export * from "./ModalFooter";
 export * from "./ModalHeader";
 export * from "./Pagination";
 export * from "./Popover";
