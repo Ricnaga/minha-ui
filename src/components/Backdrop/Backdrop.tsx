@@ -5,17 +5,17 @@ import type { BackdropProps } from "./backdrop.types";
 import { useBackdrop } from "./useBackdrop";
 
 export function Backdrop(props: BackdropProps) {
-  const { backdropProps, mode, wrapperProps } = useBackdrop(props);
+  const { children, backdropProps, mode, wrapperProps } = useBackdrop(props);
 
-  const backdropContent = (
-    <div {...backdropProps}>
-      <Activity mode={mode}>
-        <div {...wrapperProps}>
-          <Spinner />
-        </div>
-      </Activity>
-    </div>
+  const backdropChildren = children ?? (
+    <Activity mode={mode}>
+      <div {...wrapperProps}>
+        <Spinner />
+      </div>
+    </Activity>
   );
+
+  const backdropContent = <div {...backdropProps}>{backdropChildren}</div>;
 
   return createPortal(backdropContent, document.body);
 }

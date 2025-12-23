@@ -10,6 +10,7 @@ export function useBackdrop(props: UseBackdropProps) {
     blur = "md",
     zIndex = 1000,
     isLoading = false,
+    children,
     ...rest
   } = props;
 
@@ -28,5 +29,5 @@ export function useBackdrop(props: UseBackdropProps) {
 
   const mode: ActivityProps["mode"] = isLoading ? "visible" : "hidden";
 
-  return { backdropProps, mode, wrapperProps };
+  return { children, backdropProps, mode, wrapperProps };
 }

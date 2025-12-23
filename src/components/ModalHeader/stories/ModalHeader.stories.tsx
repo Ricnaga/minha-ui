@@ -1,6 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ModalHeader } from "../ModalHeader";
 import type { ModalHeaderProps } from "../modal-header.types";
+import { useToggle } from "../../../hooks";
+import { Modal } from "../../Modal/Modal";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ModalHeaderProps> = {
@@ -14,7 +17,7 @@ const meta: Meta<ModalHeaderProps> = {
     children: { control: false }, // evita mostrar JSON nos controls
   },
   args: {
-    children: <h2>Children do Modal Header</h2>,
+    children: <h2 className="text-center">Children do Modal Header</h2>,
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -24,4 +27,22 @@ export default meta;
 type Story = StoryObj<ModalHeaderProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Default: Story = {};
+export const Default: Story = {
+  render: (args) => {
+    const { isToogle, handleClose, handleOpen } = useToggle();
+
+    return (
+      <>
+        <button
+          onClick={handleOpen}
+          className="p-2 bg-blue-400 rounded text-white cursor-pointer"
+        >
+          Abrir modal
+        </button>
+        <Modal isOpen={isToogle} onClose={handleClose}>
+          <ModalHeader {...args} />
+        </Modal>
+      </>
+    );
+  },
+};

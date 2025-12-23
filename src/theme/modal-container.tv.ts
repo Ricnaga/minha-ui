@@ -1,7 +1,11 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const modalContainer = tv({
-  base: ["grid gap-4 p-6 bg-white", "min-w-80 max-w-xl max-h-[80vh]"],
+  base: [
+    "grid gap-4 p-6 bg-white",
+    "min-w-80 max-w-xl max-h-[80vh]",
+    "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+  ],
   variants: {
     radius: {
       sm: "rounded-sm",
