@@ -6,5 +6,6 @@ export interface UseBackdropProps
     HTMLAttributes<HTMLDivElement> {
   zIndex?: number;
   isLoading?: boolean;
+  onClose?: VoidFunction;
 }
 export type BackdropProps = UseBackdropProps;
