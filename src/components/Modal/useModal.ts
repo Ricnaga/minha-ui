@@ -1,6 +1,7 @@
 import { createContext, useId } from "react";
 import { useContext } from "../../hooks";
 import type { ModalContextProps, UseModalProviderProps } from "./modal.types";
+import type { ModalContainerProps } from "../ModalContainer";
 
 export const ModalContext = createContext<ModalContextProps>(
   {} as ModalContextProps
@@ -8,9 +9,17 @@ export const ModalContext = createContext<ModalContextProps>(
 
 export function useModalProvider(props: UseModalProviderProps) {
   const reactId = useId();
-  const { children, titleId = reactId, ...rest } = props;
+  const {
+    children,
+    titleId = reactId,
+    radius = "md",
+    shadow = "md",
+    ...rest
+  } = props;
 
-  return { children, titleId, ...rest };
+  const modalContainerProps: ModalContainerProps = { radius, shadow, children };
+
+  return { titleId, modalContainerProps, ...rest };
 }
 
 export function useModal() {
