@@ -18,6 +18,8 @@ export * from "./CardTitle";
 export * from "./Checkbox";
 export * from "./Chip";
 export * from "./Divider";
+export * from "./Drawer";
+export * from "./DrawerContainer";
 export * from "./IconButton";
 export * from "./Input";
 export * from "./Modal";
