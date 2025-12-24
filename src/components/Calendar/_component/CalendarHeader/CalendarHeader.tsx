@@ -2,6 +2,9 @@
 
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { useCalendar } from "../../useCalendar";
+import { calendar } from "../../../../theme";
+
+const { headerWrapper, headerButton, headerLabel } = calendar();
 
 export function CalendarHeader() {
   const { currentMonth, goToNextMonth, goToPrevMonth, locale } = useCalendar();
@@ -12,18 +15,12 @@ export function CalendarHeader() {
   }).format(currentMonth);
 
   return (
-    <header className="flex items-center justify-between p-2">
-      <button
-        onClick={goToPrevMonth}
-        className="transition-all rounded-full bg-sky-50 p-2 hover:bg-sky-100 cursor-pointer"
-      >
+    <header className={headerWrapper()}>
+      <button onClick={goToPrevMonth} className={headerButton()}>
         <CaretLeftIcon />
       </button>
-      <h2 className="capitalize font-medium">{label}</h2>
-      <button
-        onClick={goToNextMonth}
-        className="transition-all rounded-full bg-sky-50 p-2 hover:bg-sky-100 cursor-pointer"
-      >
+      <h2 className={headerLabel()}>{label}</h2>
+      <button onClick={goToNextMonth} className={headerButton()}>
         <CaretRightIcon />
       </button>
     </header>

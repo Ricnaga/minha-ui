@@ -2,6 +2,7 @@ export * from "./accordion.tv";
 export * from "./backdrop.tv";
 export * from "./badge.tv";
 export * from "./button.tv";
+export * from "./calendar.tv";
 export * from "./card-actions.tv";
 export * from "./card-body.tv";
 export * from "./card-description.tv";

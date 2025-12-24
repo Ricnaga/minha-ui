@@ -1,4 +1,7 @@
+import { calendar } from "../../../../theme";
 import { useCalendar } from "../../useCalendar";
+
+const { gridWrapper, gridDay } = calendar();
 
 function getCalendarDays(month: Date) {
   const year = month.getFullYear();
@@ -16,36 +19,33 @@ export function CalendarGrid() {
   const { currentMonth, setValue, value } = useCalendar();
   const days = getCalendarDays(currentMonth);
 
+  const ButtonDays = (buttonDaysProps: { day: Date }) => {
+    const isSelected =
+      value && buttonDaysProps.day.toDateString() === value.toDateString();
+
+    const isOutsideMonth =
+      buttonDaysProps.day.getMonth() !== currentMonth.getMonth();
+
+    return (
+      <button
+        key={buttonDaysProps.day.toISOString()}
+        onClick={() => setValue(buttonDaysProps.day)}
+        className={gridDay({
+          isSelected: !!isSelected,
+          hasNotSelectedAndHasNotOutsideMonth: !isSelected && isOutsideMonth,
+          hasNotSelectedAndIsOutsideMonth: !isSelected && isOutsideMonth,
+        })}
+      >
+        {buttonDaysProps.day.getDate()}
+      </button>
+    );
+  };
+
   return (
-    <section className="grid grid-cols-7 gap-1 p-2">
-      {days.map((day) => {
-        const isSelected = value && day.toDateString() === value.toDateString();
-
-        const isOutsideMonth = day.getMonth() !== currentMonth.getMonth();
-
-        return (
-          <button
-            key={day.toISOString()}
-            onClick={() => setValue(day)}
-            className={[
-              "size-8 rounded-full text-sm transition-colors cursor-pointer",
-
-              // dia selecionado
-              isSelected && "bg-sky-400 text-white",
-
-              // fora do mês
-              !isSelected && isOutsideMonth && "text-neutral-400 opacity-40",
-
-              // hover normal
-              !isSelected && !isOutsideMonth && "hover:bg-sky-100",
-            ]
-              .filter(Boolean)
-              .join(" ")}
-          >
-            {day.getDate()}
-          </button>
-        );
-      })}
+    <section className={gridWrapper()}>
+      {days.map((day) => (
+        <ButtonDays key={day.toISOString()} day={day} />
+      ))}
     </section>
   );
 }
