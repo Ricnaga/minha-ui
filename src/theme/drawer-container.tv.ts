@@ -2,7 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const drawerContainer = tv({
   base: [
-    "fixed z-50 bg-white",
+    "fixed z-50 bg-white p-6",
     "duration-200 ease-out",
     "pointer-events-none",
     "will-change-transform",

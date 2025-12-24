@@ -15,6 +15,7 @@ export * from "./checkbox.tv";
 export * from "./chip.tv";
 export * from "./divider.tv";
 export * from "./drawer-container.tv";
+export * from "./drawer-header.tv";
 export * from "./icon-button.tv";
 export * from "./input.tv";
 export * from "./modal-actions.tv";
