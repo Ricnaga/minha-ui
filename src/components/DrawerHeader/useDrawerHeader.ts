@@ -10,10 +10,11 @@ const { closeButton, wrapper } = drawerHeader();
 
 export function useDrawerHeader(props: UseDrawerHeaderProps) {
   const { children, ...rest } = props;
-  const { onClose } = useDrawer();
+  const { onClose, titleId } = useDrawer();
 
   const drawerHeaderProps: DrawerHeaderProps = {
     ...rest,
+    id: titleId,
     className: wrapper(),
   };
 

@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useId } from "react";
 import { useContext } from "../../hooks";
 import type {
   DrawerContextProps,
@@ -10,9 +10,17 @@ export const DrawerContext = createContext<DrawerContextProps>(
 );
 
 export function useDrawerProvider(props: UseDrawerProviderProps) {
-  const { children, isOpen = false, side = "right", ...rest } = props;
+  const reactId = useId();
 
-  return { children, isOpen, side, ...rest };
+  const {
+    children,
+    isOpen = false,
+    side = "right",
+    titleId = reactId,
+    ...rest
+  } = props;
+
+  return { children, isOpen, side, titleId, ...rest };
 }
 
 export function useDrawer() {

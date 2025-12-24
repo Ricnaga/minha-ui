@@ -5,6 +5,7 @@ import type { DrawerContainerVariants } from "../../theme";
 export type UseDrawerProviderProps = DrawerContainerVariants &
   RequiredChildren<{
     onClose: VoidFunction;
+    titleId?: string;
   }>;
 
 export type DrawerProps = UseDrawerProviderProps;
