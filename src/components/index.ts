@@ -6,6 +6,7 @@ export * from "./AccordionItem";
 export * from "./Backdrop";
 export * from "./Badge";
 export * from "./Button";
+export * from "./Calendar";
 export * from "./Card";
 export * from "./CardActions";
 export * from "./CardBody";
