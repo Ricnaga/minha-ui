@@ -28,37 +28,7 @@ module.exports = (
     path: "src/components/{{pascalCase name}}/use{{pascalCase name}}.ts",
     templateFile: "plop-templates/provider/useHook.ts.hbs",
   },
-  /**
-   * =========================
-   * THEME (somente component)
-   * =========================
-   */
-  {
-    type: "add",
-    path: "src/theme/{{kebabCase name}}.tv.ts",
-    templateFile: "plop-templates/theme/theme.tv.ts.hbs",
-  },
-  {
-    type: "modify",
-    path: "src/theme/index.ts",
-    transform: (content, data) => {
-      const themeName = plop.getHelper("kebabCase")(data.name);
-      const newExport = `export * from "./${themeName}.tv";`;
 
-      if (content.includes(newExport)) return content;
-
-      const lines = content
-        .split("\n")
-        .map((line) => line.trim())
-        .filter(Boolean);
-
-      lines.push(newExport);
-
-      lines.sort((a, b) => a.localeCompare(b));
-
-      return lines.join("\n") + "\n";
-    },
-  },
   /**
    * =========================
    * COMPONENT INDEX EXPORT

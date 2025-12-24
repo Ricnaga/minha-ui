@@ -2,10 +2,10 @@ import type { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
 import { use{{pascalCase name}} } from "./use{{pascalCase name}}";
 
 export function {{pascalCase name}}(props: {{pascalCase name}}Props) {
-  const args = use{{pascalCase name}}(props);
+  const { {{camelCase name}}Props } = use{{pascalCase name}}(props);
   
   return (
-    <div {...args}>
+    <div {...{{camelCase name}}Props}>
       {/* TODO: Implement {{pascalCase name}} */}
     </div>
   );

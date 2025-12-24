@@ -1,2 +1,4 @@
-export type Use{{pascalCase name}}Props = unknown;
+import type { {{pascalCase name}}Variants } from "../../theme";
+
+export type Use{{pascalCase name}}Props = {{pascalCase name}}Variants;
 export type {{pascalCase name}}Props = Use{{pascalCase name}}Props

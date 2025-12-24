@@ -1,7 +1,16 @@
-import type { Use{{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+import type { 
+  {{pascalCase name}}Props,  
+  Use{{pascalCase name}}Props 
+} from "./{{kebabCase name}}.types";
 import { {{camelCase name}} } from "../../theme";
 
-export function use{{pascalCase name}}(props:Use{{pascalCase name}}Props) {
+export function use{{pascalCase name}}(props: Use{{pascalCase name}}Props) {
+  
   // TODO: Implement hook logic
-  return {};
+  const {{camelCase name}}Props: {{pascalCase name}}Props = {
+    ...props,
+    className: {{camelCase name}}(),
+  };
+
+  return { {{camelCase name}}Props };
 }
