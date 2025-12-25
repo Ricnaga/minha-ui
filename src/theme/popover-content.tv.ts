@@ -1,17 +1,13 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const popoverContent = tv({
-  base: [
-    "absolute z-50 p-2",
-    "bg-white text-gray-900",
-    "border border-gray-200",
-    "will-change-[transform,opacity]",
-    "transition-[opacity,transform]",
-    "duration-500",
-    "data-[state=closed]:opacity-0",
-    "data-[state=closed]:pointer-events-none",
-    "transform-gpu",
-  ],
+  base: `
+    absolute z-50 bg-white p-2
+    data-[state=open]:animate-in
+    data-[state=closed]:animate-out
+    duration-200 ease-out
+    data-[state=closed]:opacity-0
+  `,
   variants: {
     side: {
       top: "bottom-full left-1/2 -translate-x-1/2 mb-2 origin-bottom",
@@ -35,57 +31,85 @@ export const popoverContent = tv({
     },
 
     animation: {
-      fade: ["data-[state=open]:fade-in-0", "data-[state=closed]:fade-out-0"],
-
-      slide: [
-        "data-[side=top]:data-[state=open]:slide-in-from-bottom-2",
-        "data-[side=bottom]:data-[state=open]:slide-in-from-top-2",
-        "data-[side=left]:data-[state=open]:slide-in-from-right-2",
-        "data-[side=right]:data-[state=open]:slide-in-from-left-2",
-
-        "data-[side=top]:data-[state=closed]:slide-out-to-bottom-2",
-        "data-[side=bottom]:data-[state=closed]:slide-out-to-top-2",
-        "data-[side=left]:data-[state=closed]:slide-out-to-right-2",
-        "data-[side=right]:data-[state=closed]:slide-out-to-left-2",
-      ],
-
-      slideFade: [
-        "data-[state=open]:fade-in-0",
-        "data-[state=closed]:fade-out-0",
-
-        "data-[side=top]:data-[state=open]:slide-in-from-bottom-2",
-        "data-[side=bottom]:data-[state=open]:slide-in-from-top-2",
-        "data-[side=left]:data-[state=open]:slide-in-from-right-2",
-        "data-[side=right]:data-[state=open]:slide-in-from-left-2",
-
-        "data-[side=top]:data-[state=closed]:slide-out-to-bottom-2",
-        "data-[side=bottom]:data-[state=closed]:slide-out-to-top-2",
-        "data-[side=left]:data-[state=closed]:slide-out-to-right-2",
-        "data-[side=right]:data-[state=closed]:slide-out-to-left-2",
-      ],
+      fade: ["data-[state=open]:fade-in", "data-[state=closed]:fade-out"],
+      slide: "",
+      slideFade: `
+        data-[state=open]:fade-in data-[state=open]:zoom-in
+        data-[state=closed]:fade-out data-[state=closed]:zoom-out
+      `,
     },
   },
-
   compoundVariants: [
+    // TOP
     {
+      animation: "slide",
       side: "top",
-      animation: ["slide", "slideFade"],
-      class: "data-[state=closed]:translate-y-2",
+      class: [
+        "data-[state=open]:slide-in-from-bottom",
+        "data-[state=closed]:slide-out-to-bottom",
+      ],
     },
     {
+      animation: "slideFade",
+      side: "top",
+      class: [
+        "data-[state=open]:slide-in-from-bottom",
+        "data-[state=closed]:slide-out-to-bottom",
+      ],
+    },
+
+    // BOTTOM
+    {
+      animation: "slide",
       side: "bottom",
-      animation: ["slide", "slideFade"],
-      class: "data-[state=closed]:-translate-y-2",
+      class: [
+        "data-[state=open]:slide-in-from-top",
+        "data-[state=closed]:slide-out-to-top",
+      ],
     },
     {
+      animation: "slideFade",
+      side: "bottom",
+      class: [
+        "data-[state=open]:slide-in-from-top",
+        "data-[state=closed]:slide-out-to-top",
+      ],
+    },
+
+    // LEFT
+    {
+      animation: "slide",
       side: "left",
-      animation: ["slide", "slideFade"],
-      class: "data-[state=closed]:translate-x-2",
+      class: [
+        "data-[state=open]:slide-in-from-right",
+        "data-[state=closed]:slide-out-to-right",
+      ],
     },
     {
+      animation: "slideFade",
+      side: "left",
+      class: [
+        "data-[state=open]:slide-in-from-right",
+        "data-[state=closed]:slide-out-to-right",
+      ],
+    },
+
+    // RIGHT
+    {
+      animation: "slide",
       side: "right",
-      animation: ["slide", "slideFade"],
-      class: "data-[state=closed]:-translate-x-2",
+      class: [
+        "data-[state=open]:slide-in-from-left",
+        "data-[state=closed]:slide-out-to-left",
+      ],
+    },
+    {
+      animation: "slideFade",
+      side: "right",
+      class: [
+        "data-[state=open]:slide-in-from-left",
+        "data-[state=closed]:slide-out-to-left",
+      ],
     },
   ],
 
