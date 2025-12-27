@@ -5,7 +5,7 @@ import type { UseSelectProps } from "./select.types";
 export function useSelect(props: UseSelectProps) {
   const { options } = props;
 
-  const { handleClose, isToogle, handleToggle, handleOpen } = useToggle();
+  const { handleClose, istoggle, handleToggle, handleOpen } = useToggle();
 
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -26,7 +26,7 @@ export function useSelect(props: UseSelectProps) {
     ? "visible"
     : "hidden";
 
-  const isOpenDropdown: ActivityProps["mode"] = isToogle ? "visible" : "hidden";
+  const isOpenDropdown: ActivityProps["mode"] = istoggle ? "visible" : "hidden";
 
   return {
     options,

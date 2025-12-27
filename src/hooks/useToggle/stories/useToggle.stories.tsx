@@ -15,7 +15,7 @@ export default meta;
 // Exemplo interativo padrão
 // --------------------------------------------------
 export const Default = () => {
-  const { isToogle, handleToggle } = useToggle();
+  const { isToggle, handleToggle } = useToggle();
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -23,9 +23,9 @@ export const Default = () => {
         onClick={handleToggle}
         className="px-6 py-3 bg-blue-600 text-white rounded-md"
       >
-        {isToogle ? "Desativar" : "Ativar"}
+        {isToggle ? "Desativar" : "Ativar"}
       </button>
-      <div>Status: {isToogle ? "Ativo" : "Inativo"}</div>
+      <div>Status: {isToggle ? "Ativo" : "Inativo"}</div>
     </div>
   );
 };
@@ -34,7 +34,7 @@ export const Default = () => {
 // Exemplo completo com open/close
 // --------------------------------------------------
 export const FullExample = () => {
-  const { isToogle, handleToggle, handleOpen, handleClose } = useToggle();
+  const { isToggle, handleToggle, handleOpen, handleClose } = useToggle();
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -58,7 +58,7 @@ export const FullExample = () => {
           Fechar
         </button>
       </div>
-      <div>Status atual: {isToogle ? "Ativo" : "Inativo"}</div>
+      <div>Status atual: {isToggle ? "Ativo" : "Inativo"}</div>
 
       <div style={{ marginTop: 16 }}>
         <strong>Props retornadas pelo hook:</strong>
@@ -72,7 +72,7 @@ export const FullExample = () => {
           </thead>
           <tbody>
             <tr>
-              <td>isToogle</td>
+              <td>isToggle</td>
               <td>boolean</td>
               <td>Estado atual do toggle</td>
             </tr>

@@ -32,7 +32,7 @@ type Story = StoryObj<DrawerBodyProps>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   render: (args) => {
-    const { isToogle, handleClose, handleOpen } = useToggle();
+    const { istoggle, handleClose, handleOpen } = useToggle();
 
     return (
       <>
@@ -42,7 +42,7 @@ export const Default: Story = {
         >
           Abrir Modal Content
         </button>
-        <Drawer isOpen={isToogle} onClose={handleClose}>
+        <Drawer isOpen={istoggle} onClose={handleClose}>
           <DrawerBody {...args} />
         </Drawer>
       </>

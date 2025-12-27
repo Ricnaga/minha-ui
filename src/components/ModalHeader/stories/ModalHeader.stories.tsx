@@ -29,7 +29,7 @@ type Story = StoryObj<ModalHeaderProps>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   render: (args) => {
-    const { isToogle, handleClose, handleOpen } = useToggle();
+    const { istoggle, handleClose, handleOpen } = useToggle();
 
     return (
       <>
@@ -39,7 +39,7 @@ export const Default: Story = {
         >
           Abrir Modal Header
         </button>
-        <Modal isOpen={isToogle} onClose={handleClose}>
+        <Modal isOpen={istoggle} onClose={handleClose}>
           <ModalHeader {...args} />
         </Modal>
       </>

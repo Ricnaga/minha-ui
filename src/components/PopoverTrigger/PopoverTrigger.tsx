@@ -6,7 +6,8 @@ export function PopoverTrigger(props: PopoverTriggerProps) {
   const { children, onPopoverChange } = usePopoverTrigger(props);
 
   return cloneElement(children, {
-    onClick: (event) => {
+    onMouseDown: (event) => {
+      event.preventDefault();
       children.props.onClick?.(event);
       onPopoverChange();
     },

@@ -1,13 +1,13 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const popoverContent = tv({
-  base: `
-    absolute z-50 bg-white p-2
-    data-[state=open]:animate-in
-    data-[state=closed]:animate-out
-    duration-200 ease-out
-    data-[state=closed]:opacity-0
-  `,
+  base: [
+    "absolute z-50 bg-white p-2 w-full",
+    "data-[state=open]:animate-in",
+    "data-[state=closed]:animate-out",
+    "duration-200 ease-out",
+    "data-[state=closed]:opacity-0",
+  ],
   variants: {
     side: {
       top: "bottom-full left-1/2 -translate-x-1/2 mb-2 origin-bottom",

@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export function useToggle(isTruthy: boolean = false) {
-  const [isToogle, setAsToggle] = useState<boolean>(isTruthy);
+  const [isToggle, setAsToggle] = useState<boolean>(isTruthy);
 
   function handleToggle() {
-    setAsToggle(!isToogle);
+    setAsToggle(!isToggle);
   }
 
   function handleClose() {
@@ -15,5 +15,5 @@ export function useToggle(isTruthy: boolean = false) {
     setAsToggle(true);
   }
 
-  return { isToogle, handleToggle, handleClose, handleOpen, setAsToggle };
+  return { isToggle, handleToggle, handleClose, handleOpen, setAsToggle };
 }

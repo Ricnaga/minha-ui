@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { useState } from "react";
+import { useToggle } from "../../../hooks";
 import { PopoverContent } from "../../PopoverContent";
 import { PopoverTrigger } from "../../PopoverTrigger";
 import { Popover } from "../Popover";
@@ -25,21 +25,17 @@ type Story = StoryObj<PopoverProps>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   render: (args) => {
-    const [isOpen, setAsOpen] = useState<boolean>(false);
+    const { isToggle, handleOpen, handleClose } = useToggle();
 
     return (
-      <Popover
-        {...args}
-        onPopoverChange={() => setAsOpen(true)}
-        isOpen={isOpen}
-      >
+      <Popover {...args} onPopoverChange={handleOpen} isOpen={isToggle}>
         <PopoverTrigger>
-          <button className="bg-blue-400 p-2 rounded text-white">Abrir </button>
+          <button className="bg-blue-400 p-2 rounded text-white cursor-pointer">Abrir Popover</button>
         </PopoverTrigger>
         <PopoverContent>
           <button
-            onClick={() => setAsOpen(false)}
-            className="bg-red-400 p-2 rounded text-white"
+            onClick={handleClose}
+            className="bg-red-400 p-2 rounded text-white cursor-pointer"
           >
             Fechar Popover
           </button>
