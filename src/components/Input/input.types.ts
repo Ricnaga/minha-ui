@@ -3,7 +3,7 @@ import type { InputVariantsProps } from "../../theme";
 
 export interface UseInputProps
   extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
+  label?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   variant?: InputVariantsProps["variant"];
