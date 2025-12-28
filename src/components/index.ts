@@ -21,6 +21,7 @@ export * from "./Chip";
 export * from "./DatePicker";
 export * from "./DatePickerCalendar";
 export * from "./DatePickerInput";
+export * from "./DatePickerPopover";
 export * from "./DatePickerProvider";
 export * from "./Divider";
 export * from "./Drawer";
