@@ -1,8 +1,8 @@
 import { createContext } from "react";
-import { useContext } from "../../hooks";
+import { useContext, useToggle } from "../../hooks";
 import type {
   DatePickerProviderContextProps,
-  UseDatePickerProviderProviderProps,
+  UseDatePickerProviderProps,
 } from "./date-picker-provider.types";
 
 export const DatePickerProviderContext =
@@ -10,18 +10,18 @@ export const DatePickerProviderContext =
     {} as DatePickerProviderContextProps
   );
 
-export function useDatePickerProviderProvider(
-  props: UseDatePickerProviderProviderProps
-) {
+export function useDatePickerProvider(props: UseDatePickerProviderProps) {
+  const { isToggle: isOpen, handleClose, handleOpen } = useToggle();
+  
   const { children, ...rest } = props;
 
-  return { children, ...rest };
+  return { children, isOpen, handleClose, handleOpen, ...rest };
 }
 
-export function useDatePickerProvider() {
+export function useDatePickerContext() {
   return useContext({
     context: DatePickerProviderContext,
-    hookName: useDatePickerProvider.name,
+    hookName: useDatePickerContext.name,
     providerName: DatePickerProviderContext.name,
   });
 }

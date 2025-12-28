@@ -1,14 +1,14 @@
 import type { RequiredChildren } from "../../types";
-import type { useDatePickerProviderProvider } from "./useDatePickerProvider";
+import type { useDatePickerProvider } from "./useDatePickerProvider";
 
-export type UseDatePickerProviderProviderProps = RequiredChildren<{
+export type UseDatePickerProviderProps = RequiredChildren<{
   dateValue: Date | null;
   onDateChange: (dateValue: Date | null) => void;
 }>;
 
-export type DatePickerProviderProps = UseDatePickerProviderProviderProps;
+export type DatePickerProviderProps = UseDatePickerProviderProps;
 
 export type DatePickerProviderContextProps = Omit<
-  ReturnType<typeof useDatePickerProviderProvider>,
+  ReturnType<typeof useDatePickerProvider>,
   "children"
 >;
