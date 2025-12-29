@@ -1,6 +1,6 @@
+import type { RequiredChildren } from "@/types";
 import { createContext, useState } from "react";
 import { useContext } from "..";
-import type { RequiredChildren } from "../../../types";
 
 export default {
   title: "Hooks/useContext",
