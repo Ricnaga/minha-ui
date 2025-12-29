@@ -1,5 +1,5 @@
-const componentActions = require("./plop-actions/component.cjs");
-const providerActions = require("./plop-actions/provider.cjs");
+const componentActions = require("./actions/component.cjs");
+const providerActions = require("./actions/provider.cjs");
 
 module.exports = function (
   /** @type {import('plop').NodePlopAPI} */

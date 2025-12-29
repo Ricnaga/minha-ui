@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "plop": "plop --plopfile ./plop/plopfile.cjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

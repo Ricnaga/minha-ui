@@ -10,23 +10,23 @@ module.exports = (
    */
   {
     type: "add",
-    path: "src/components/{{pascalCase name}}/index.ts",
-    templateFile: "plop-templates/provider/index.ts.hbs",
+    path: process.cwd().concat("/src/components/{{pascalCase name}}/index.ts"),
+    templateFile: "templates/provider/index.ts.hbs",
   },
   {
     type: "add",
-    path: "src/components/{{pascalCase name}}/{{kebabCase name}}.types.ts",
-    templateFile: "plop-templates/provider/provider.types.ts.hbs",
+    path: process.cwd().concat("/src/components/{{pascalCase name}}/{{kebabCase name}}.types.ts"),
+    templateFile: "templates/provider/provider.types.ts.hbs",
   },
   {
     type: "add",
-    path: "src/components/{{pascalCase name}}/{{pascalCase name}}.tsx",
-    templateFile: "plop-templates/provider/provider.tsx.hbs",
+    path: process.cwd().concat("/src/components/{{pascalCase name}}/{{pascalCase name}}.tsx"),
+    templateFile: "templates/provider/provider.tsx.hbs",
   },
   {
     type: "add",
-    path: "src/components/{{pascalCase name}}/use{{pascalCase name}}.ts",
-    templateFile: "plop-templates/provider/useHook.ts.hbs",
+    path: process.cwd().concat("/src/components/{{pascalCase name}}/use{{pascalCase name}}.ts"),
+    templateFile: "templates/provider/useHook.ts.hbs",
   },
 
   /**
@@ -36,7 +36,7 @@ module.exports = (
    */
   {
     type: "modify",
-    path: "src/components/index.ts",
+    path: process.cwd().concat("/src/components/index.ts"),
     transform: (content, data) => {
       const componentName = plop.getHelper("pascalCase")(data.name);
       const newExport = `export * from "./${componentName}";`;
