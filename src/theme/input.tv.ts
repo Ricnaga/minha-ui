@@ -35,7 +35,7 @@ export const input = tv({
         field: [
           "rounded-md border border-blue-300",
           "px-3 py-3",
-          "text-blue-700 text-sm",
+          "text-sm text-neutral-800 font-medium",
           "focus:border-2 focus:border-pink-500 ",
         ],
         title: [
