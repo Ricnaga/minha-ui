@@ -1,5 +1,5 @@
-import type { AccordionVariants } from "../../theme";
-import type { RequiredChildren } from "../../types";
+import type { RequiredChildren } from "@/types";
+import type { AccordionVariants } from "@/theme";
 import type { useAccordionProvider } from "./useAccordion";
 
 type AccordionType = "single" | "multiple";

@@ -2,7 +2,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ModalHeader } from "../ModalHeader";
 import type { ModalHeaderProps } from "../modal-header.types";
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 import { Modal } from "../../Modal/Modal";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export

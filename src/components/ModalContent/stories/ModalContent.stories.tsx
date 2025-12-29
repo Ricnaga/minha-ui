@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 import { Modal } from "../../Modal/Modal";
 import { ModalContent } from "../ModalContent";
 import type { ModalContentProps } from "../modal-content.types";

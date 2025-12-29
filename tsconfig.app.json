@@ -22,7 +22,14 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/hooks": ["src/hooks"],
+      "@/types": ["src/types"],
+      "@/theme": ["src/theme"]
+    }
   },
   "include": ["src"]
 }

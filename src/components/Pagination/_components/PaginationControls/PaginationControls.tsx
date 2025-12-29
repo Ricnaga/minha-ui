@@ -1,4 +1,4 @@
-import { paginationControls } from "../../../../theme";
+import { paginationControls } from "@/theme";
 
 const { buttonPage, ellipsis } = paginationControls();
 

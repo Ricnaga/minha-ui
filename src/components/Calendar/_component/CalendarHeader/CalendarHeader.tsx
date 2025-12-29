@@ -2,7 +2,7 @@
 
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { useCalendar } from "../../useCalendar";
-import { calendar } from "../../../../theme";
+import { calendar } from "@/theme";
 
 const { headerWrapper, headerButton, headerLabel } = calendar();
 

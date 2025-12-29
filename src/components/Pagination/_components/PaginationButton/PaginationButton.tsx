@@ -1,5 +1,5 @@
+import { paginationButton } from "@/theme";
 import type { ReactNode } from "react";
-import { paginationButton } from "../../../../theme";
 
 type PaginationButtonProps = {
   children: ReactNode;

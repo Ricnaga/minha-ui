@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ModalFooter } from "../ModalFooter";
 import type { ModalFooterProps } from "../modal-footer.types";
 import { Modal } from "../../Modal/Modal";
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ModalFooterProps> = {

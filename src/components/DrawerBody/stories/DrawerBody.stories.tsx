@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { DrawerBody } from "../DrawerBody";
 import type { DrawerBodyProps } from "../drawer-body.types";
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 import { Drawer } from "../../Drawer/Drawer";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export

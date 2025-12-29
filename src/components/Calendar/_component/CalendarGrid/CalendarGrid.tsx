@@ -1,4 +1,4 @@
-import { calendar } from "../../../../theme";
+import { calendar } from "@/theme";
 import { useCalendar } from "../../useCalendar";
 
 const { gridWrapper, gridDay } = calendar();

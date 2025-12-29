@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DrawerHeader } from "../DrawerHeader";
 import type { DrawerHeaderProps } from "../drawer-header.types";
 import { Drawer } from "../../Drawer/Drawer";
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<DrawerHeaderProps> = {

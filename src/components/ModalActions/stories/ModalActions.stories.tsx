@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { ModalActions } from "../ModalActions";
 import type { ModalActionsProps } from "../modal-actions.types";
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 import { Modal } from "../../Modal/Modal";
 import { ModalFooter } from "../../ModalFooter";
 

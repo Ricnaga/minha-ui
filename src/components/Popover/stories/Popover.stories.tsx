@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { useToggle } from "../../../hooks";
+import { useToggle } from "@/hooks";
 import { PopoverContent } from "../../PopoverContent";
 import { PopoverTrigger } from "../../PopoverTrigger";
 import { Popover } from "../Popover";
