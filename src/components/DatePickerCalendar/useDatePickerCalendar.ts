@@ -1,8 +1,12 @@
 import type { CalendarProps } from "../Calendar";
+import { useDatePickerContext } from "../DatePickerProvider/useDatePickerProvider";
 
 export function useDatePickerCalendar() {
-  // TODO: Implement hook logic
-  const calendarProps: CalendarProps = {};
+  const { handleCalendarChange } = useDatePickerContext();
+
+  const calendarProps: CalendarProps = {
+    onDateChange: handleCalendarChange,
+  };
 
   return { calendarProps };
 }

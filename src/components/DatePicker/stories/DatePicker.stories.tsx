@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
+import { useState } from "react";
 import { DatePicker } from "../DatePicker";
 import type { DatePickerProps } from "../date-picker.types";
 
@@ -17,12 +19,22 @@ const meta: Meta<DatePickerProps> = {
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: {},
-}
+};
 
 export default meta;
 type Story = StoryObj<DatePickerProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
-  args: {},
+  render: (args) => {
+    const [dateValue, setDateValue] = useState<Date | null>(new Date());
+
+    return (
+      <DatePicker
+        {...args}
+        dateValue={dateValue}
+        onDateChange={setDateValue}
+      />
+    );
+  },
 };

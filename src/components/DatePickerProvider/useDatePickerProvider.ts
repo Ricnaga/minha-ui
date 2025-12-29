@@ -11,11 +11,23 @@ export const DatePickerProviderContext =
   );
 
 export function useDatePickerProvider(props: UseDatePickerProviderProps) {
+  const { onDateChange } = props;
   const { isToggle: isOpen, handleClose, handleOpen } = useToggle();
-  
+
+  function handleCalendarChange(value: Date | null) {
+    onDateChange(value);
+  }
+
   const { children, ...rest } = props;
 
-  return { children, isOpen, handleClose, handleOpen, ...rest };
+  return {
+    children,
+    isOpen,
+    handleClose,
+    handleOpen,
+    handleCalendarChange,
+    ...rest,
+  };
 }
 
 export function useDatePickerContext() {
