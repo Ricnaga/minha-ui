@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import { modalHeader } from "../../theme";
+import { modalHeader } from "@/theme";
 import { useModal } from "../Modal";
 import type {
   ModalHeaderProps,

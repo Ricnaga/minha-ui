@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import type { BackdropVariants } from "../../theme";
+import type { BackdropVariants } from "@/theme";
 
 export interface UseBackdropProps
   extends BackdropVariants,

@@ -1,6 +1,6 @@
 import { createContext, useCallback, useState } from "react";
-import { useContext } from "../../hooks";
-import type { ToastVariants } from "../../theme";
+import { useContext } from "@/hooks";
+import type { ToastVariants } from "@/theme";
 import { ToastContainer } from "./ToastContainer";
 
 interface ShowToastArgs extends ToastVariants {

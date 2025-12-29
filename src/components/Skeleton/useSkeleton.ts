@@ -1,4 +1,4 @@
-import { skeleton } from "../../theme";
+import { skeleton } from "@/theme";
 import type { SkeletonProps, UseSkeletonProps } from "./skeleton.types";
 
 export function useSkeleton(props: UseSkeletonProps) {

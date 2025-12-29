@@ -2,7 +2,7 @@ import type {
   DrawerContainerProps,
   UseDrawerContainerProps,
 } from "./drawer-container.types";
-import { drawerContainer } from "../../theme";
+import { drawerContainer } from "@/theme";
 import { useDrawer } from "../Drawer/useDrawer";
 
 export function useDrawerContainer(props: UseDrawerContainerProps) {

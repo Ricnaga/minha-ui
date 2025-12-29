@@ -3,7 +3,7 @@ import { PaginationButton } from "./_components/PaginationButton/PaginationButto
 import { PaginationControls } from "./_components/PaginationControls/PaginationControls";
 import type { PaginationProps } from "./pagination.types";
 import { usePagination } from "./usePagination";
-import { pagination } from "../../theme";
+import { pagination } from "@/theme";
 
 const { base, description, icons, items, wrapper } = pagination();
 

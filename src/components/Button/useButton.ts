@@ -1,6 +1,6 @@
 import type { MouseEvent } from "react";
-import { useRipple } from "../../hooks";
-import { button } from "../../theme";
+import { useRipple } from "@/hooks";
+import { button } from "@/theme";
 import type { ButtonProps, UseButtonProps } from "./button.types";
 
 export function useButton(props: UseButtonProps) {

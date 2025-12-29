@@ -1,4 +1,4 @@
-import { tabs } from "../../theme";
+import { tabs } from "@/theme";
 import { useTabs } from "../Tabs/useTabs";
 import type {
   TabsTriggerProps,

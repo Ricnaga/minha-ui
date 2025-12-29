@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import type { ChipVariants } from "../../theme";
+import type { ChipVariants } from "@/theme";
 
 export interface UseChipProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, "color">,

@@ -1,5 +1,5 @@
-import type { PopoverContentVariants } from "../../theme";
-import type { RequiredChildren } from "../../types";
+import type { PopoverContentVariants } from "@/theme";
+import type { RequiredChildren } from "@/types";
 import type { usePopoverProvider } from "./usePopover";
 
 export type UsePopoverProviderProps = PopoverContentVariants &

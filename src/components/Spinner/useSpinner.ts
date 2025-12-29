@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { SpinnerProps, UseSpinnerProps } from "./spinner.types";
-import { spinner, spinnerSheet } from "../../theme";
+import { spinner, spinnerSheet } from "@/theme";
 
 const { icon } = spinner();
 

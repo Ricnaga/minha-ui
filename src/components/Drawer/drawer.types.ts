@@ -1,6 +1,6 @@
 import type { useDrawerProvider } from "./useDrawer";
-import type { RequiredChildren } from "../../types";
-import type { DrawerContainerVariants } from "../../theme";
+import type { RequiredChildren } from "@/types";
+import type { DrawerContainerVariants } from "@/theme";
 
 export type UseDrawerProviderProps = DrawerContainerVariants &
   RequiredChildren<{

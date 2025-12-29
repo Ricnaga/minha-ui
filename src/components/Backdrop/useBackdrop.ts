@@ -1,5 +1,5 @@
 import type { ActivityProps, HTMLAttributes } from "react";
-import { backdrop } from "../../theme";
+import { backdrop } from "@/theme";
 import type { BackdropProps, UseBackdropProps } from "./backdrop.types";
 
 const { base, wrapper } = backdrop();

@@ -1,4 +1,4 @@
-import { cardSubtitle } from "../../theme";
+import { cardSubtitle } from "@/theme";
 import type {
   CardSubtitleProps,
   UseCardSubtitleProps,

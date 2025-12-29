@@ -1,5 +1,5 @@
 import { useState, type HTMLAttributes } from "react";
-import { tooltip } from "../../theme";
+import { tooltip } from "@/theme";
 import { type TooltipProps, type UseTooltipProps } from "./tooltip.types";
 
 export function useTooltip(props: UseTooltipProps) {

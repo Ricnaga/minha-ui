@@ -1,5 +1,5 @@
 import { useState, type ActivityProps, type ChangeEvent } from "react";
-import { useToggle } from "../../hooks";
+import { useToggle } from "@/hooks";
 import type { UseSelectProps } from "./select.types";
 
 export function useSelect(props: UseSelectProps) {

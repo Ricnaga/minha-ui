@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import type { DrawerHeaderVariants } from "../../theme";
+import type { DrawerHeaderVariants } from "@/theme";
 
 export type UseDrawerHeaderProps = DrawerHeaderVariants &
   HTMLAttributes<HTMLElement>;

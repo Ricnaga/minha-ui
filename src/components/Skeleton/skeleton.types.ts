@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import type { SkeletonVariants } from "../../theme";
+import type { SkeletonVariants } from "@/theme";
 
 export interface UseSkeletonProps
   extends HTMLAttributes<HTMLDivElement>,

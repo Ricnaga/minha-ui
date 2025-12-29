@@ -1,4 +1,4 @@
-import type { RequiredChildren } from "../../types";
+import type { RequiredChildren } from "@/types";
 import type { useAccordionItemProvider } from "./useAccordionItem";
 
 export type UseAccordionItemProviderProps = RequiredChildren<{ value: string }>;

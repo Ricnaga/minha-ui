@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import { drawerHeader } from "../../theme";
+import { drawerHeader } from "@/theme";
 import { useDrawer } from "../Drawer/useDrawer";
 import type {
   DrawerHeaderProps,

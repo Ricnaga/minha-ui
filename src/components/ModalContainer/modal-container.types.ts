@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from "react";
-import type { ModalContainerVariants } from "../../theme";
+import type { ModalContainerVariants } from "@/theme";
 
 export type UseModalContainerProps = ModalContainerVariants &
   HTMLAttributes<HTMLDivElement>;

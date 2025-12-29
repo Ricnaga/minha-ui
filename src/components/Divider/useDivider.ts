@@ -1,4 +1,4 @@
-import { divider } from "../../theme";
+import { divider } from "@/theme";
 import type { DividerProps, UseDividerProps } from "./divider.types";
 
 export function useDivider(props: UseDividerProps) {

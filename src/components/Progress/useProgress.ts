@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { progress, progressSheet } from "../../theme";
+import { progress, progressSheet } from "@/theme";
 import type { ProgressProps, UseProgressProps } from "./progress.types";
 
 export function useProgress(props: UseProgressProps) {

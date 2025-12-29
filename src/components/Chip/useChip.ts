@@ -1,4 +1,4 @@
-import { chip } from "../../theme";
+import { chip } from "@/theme";
 import { type ChipProps, type UseChipProps } from "./chip.types";
 
 export function useChip(props: UseChipProps) {

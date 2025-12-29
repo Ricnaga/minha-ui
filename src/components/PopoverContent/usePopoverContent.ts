@@ -1,4 +1,4 @@
-import { popoverContent, type PopoverContentVariants } from "../../theme";
+import { popoverContent, type PopoverContentVariants } from "@/theme";
 import { usePopover } from "../Popover/usePopover";
 import type { UsePopoverContentProps } from "./popover-content.types";
 

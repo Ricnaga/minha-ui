@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useContext } from "../../hooks";
+import { useContext } from "@/hooks";
 import type {
   AccordionItemContextProps,
   UseAccordionItemProviderProps,

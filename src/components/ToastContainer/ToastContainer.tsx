@@ -1,4 +1,4 @@
-import type { RequiredChildren } from "../../types";
+import type { RequiredChildren } from "@/types";
 import { Toast } from "./Toast";
 import { ToastContext, useToastProvider } from "./useToast";
 

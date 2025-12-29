@@ -1,4 +1,4 @@
-import { badge } from "../../theme";
+import { badge } from "@/theme";
 import { type BadgeProps, type UseBadgeProps } from "./badge.types";
 
 export function useBadge(props: UseBadgeProps) {

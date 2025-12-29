@@ -2,7 +2,7 @@ import type {
   ModalContentProps,
   UseModalContentProps,
 } from "./modal-content.types";
-import { modalContent } from "../../theme";
+import { modalContent } from "@/theme";
 import { useModal } from "../Modal/useModal";
 
 export function useModalContent(props: UseModalContentProps) {

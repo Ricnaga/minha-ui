@@ -1,4 +1,4 @@
-import { cardActions } from "../../theme";
+import { cardActions } from "@/theme";
 import type {
   CardActionsProps,
   UseCardActionsProps,

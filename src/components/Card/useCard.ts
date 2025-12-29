@@ -1,4 +1,4 @@
-import { card } from "../../theme";
+import { card } from "@/theme";
 import type { CardProps, UseCardProps } from "./card.types";
 
 export function useCard(props: UseCardProps) {

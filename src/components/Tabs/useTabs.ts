@@ -1,5 +1,5 @@
 import { createContext, type ProviderProps } from "react";
-import { useContext } from "../../hooks";
+import { useContext } from "@/hooks";
 import type {
   TabsContextProps,
   UseTabsContextProps

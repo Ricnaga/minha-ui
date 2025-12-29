@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
-import type { InputVariantsProps } from "../../theme";
+import type { InputVariantsProps } from "@/theme";
 
 export interface UseInputProps
   extends InputHTMLAttributes<HTMLInputElement> {

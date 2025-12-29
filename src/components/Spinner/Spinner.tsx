@@ -1,4 +1,4 @@
-import { spinner } from "../../theme";
+import { spinner } from "@/theme";
 import type { SpinnerProps } from "./spinner.types";
 import { useSpinner } from "./useSpinner";
 

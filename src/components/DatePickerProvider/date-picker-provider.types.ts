@@ -1,4 +1,4 @@
-import type { RequiredChildren } from "../../types";
+import type { RequiredChildren } from "@/types";
 import type { useDatePickerProvider } from "./useDatePickerProvider";
 
 export type UseDatePickerProviderProps = RequiredChildren<{

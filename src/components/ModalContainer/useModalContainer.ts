@@ -1,4 +1,4 @@
-import { modalContainer } from "../../theme";
+import { modalContainer } from "@/theme";
 import { useModal } from "../Modal/useModal";
 import type {
   ModalContainerProps,

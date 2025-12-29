@@ -1,6 +1,6 @@
 import type { useModalProvider } from "./useModal";
-import type { RequiredChildren } from "../../types";
-import type { ModalContainerVariants } from "../../theme";
+import type { RequiredChildren } from "@/types";
+import type { ModalContainerVariants } from "@/theme";
 
 export type UseModalProviderProps = ModalContainerVariants &
   RequiredChildren<{

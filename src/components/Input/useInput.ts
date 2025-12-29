@@ -5,7 +5,7 @@ import type {
   LabelHTMLAttributes,
 } from "react";
 import type { UseInputProps } from "./input.types";
-import { input } from "../../theme";
+import { input } from "@/theme";
 
 const { container, startIconWrapper, endIconWrapper, field, title } = input();
 

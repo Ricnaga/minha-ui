@@ -1,4 +1,4 @@
-import { cardDescription } from "../../theme";
+import { cardDescription } from "@/theme";
 import type {
   CardDescriptionProps,
   UseCardDescriptionProps,

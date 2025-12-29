@@ -1,6 +1,6 @@
 import { CaretUpDownIcon, XIcon } from "@phosphor-icons/react";
 import { Activity } from "react";
-import { select } from "../../theme";
+import { select } from "@/theme";
 import type { SelectProps } from "./select.types";
 import { useSelect } from "./useSelect";
 

@@ -1,5 +1,5 @@
-import type { TabsVariant } from "../../theme";
-import type { RequiredChildren } from "../../types";
+import type { TabsVariant } from "@/theme";
+import type { RequiredChildren } from "@/types";
 
 export type UseTabsContextProps = TabsVariant &
   RequiredChildren<{

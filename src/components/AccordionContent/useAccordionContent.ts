@@ -1,4 +1,4 @@
-import { accordion } from "../../theme";
+import { accordion } from "@/theme";
 import { useAccordion } from "../Accordion/useAccordion";
 import { useAccordionItem } from "../AccordionItem/useAccordionItem";
 import type {

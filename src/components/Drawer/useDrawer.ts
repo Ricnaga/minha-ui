@@ -1,5 +1,5 @@
 import { createContext, useId } from "react";
-import { useContext } from "../../hooks";
+import { useContext } from "@/hooks";
 import type {
   DrawerContextProps,
   UseDrawerProviderProps,

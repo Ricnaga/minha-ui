@@ -1,4 +1,4 @@
-import { cardTitle } from "../../theme";
+import { cardTitle } from "@/theme";
 import type {
   CardTitleProps,
   HeadingTags,

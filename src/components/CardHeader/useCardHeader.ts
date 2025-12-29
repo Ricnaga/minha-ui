@@ -1,4 +1,4 @@
-import { cardHeader } from "../../theme";
+import { cardHeader } from "@/theme";
 import type { CardHeaderProps, UseCardHeaderProps } from "./card-header.types";
 
 export function useCardHeader(props: UseCardHeaderProps) {
