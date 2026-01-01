@@ -36,4 +36,4 @@ export * from "./spinner.tv";
 export * from "./tabs.tv";
 export * from "./toast.tv";
 export * from "./tooltip.tv";
-
+export * from "./video-player.tv";

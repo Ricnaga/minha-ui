@@ -5,7 +5,7 @@ export const modalHeader = tv({
     wrapper: ["relative py-6 grid items-center"],
     closeButton: [
       "p-2 rounded-full transition-all",
-      "bg-sky-200/80 hover:bg-sky-200 cursor-pointer absolute -top-3 -right-3",
+      "bg-sky-200/80 hover:bg-sky-200 cursor-pointer absolute -top-1 -right-1",
     ],
   },
 });
