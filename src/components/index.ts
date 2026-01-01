@@ -34,6 +34,7 @@ export * from "./DrawerBody";
 export * from "./DrawerContainer";
 export * from "./DrawerFooter";
 export * from "./DrawerHeader";
+export * from "./Focustrap";
 export * from "./IconButton";
 export * from "./Input";
 export * from "./Modal";
