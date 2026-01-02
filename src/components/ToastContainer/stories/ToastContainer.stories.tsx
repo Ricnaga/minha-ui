@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { ToastContainer } from "../ToastContainer";
 import { Button } from "../../Button";
-import { useToast } from "../useToast";
+import { useToast } from "../useToastContainer";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+const meta: Meta = {
   title: "Components/ToastContainer",
   component: ToastContainer,
   parameters: {
@@ -20,19 +20,20 @@ const meta = {
       <Story />
     </ToastContainer>
   ),
-} satisfies Meta<typeof ToastContainer>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   render: () => {
-    const toast = useToast();
+    const { showToast } = useToast();
+
     return (
       <Button
         onClick={() =>
-          toast.show({
+          showToast({
             message: "Toasty",
           })
         }
