@@ -16,6 +16,13 @@ const ANIMATION_DURATION = 300; // ms (tem que bater com o Tailwind)
 export function useToastContainerProvider(
   props: UseToastContainerProviderProps
 ) {
+  const positions = {
+    "top-right": "top-4 right-4 items-end",
+    "top-left": "top-4 left-4 items-start",
+    "bottom-right": "bottom-4 right-4 items-end",
+    "bottom-left": "bottom-4 left-4 items-start",
+  };
+
   const [toasts, setToasts] = useState<ToastState[]>([]);
 
   const showToast = useCallback(
@@ -44,7 +51,7 @@ export function useToastContainerProvider(
     []
   );
 
-  return { ...props, toasts, showToast };
+  return { ...props, positions, toasts, showToast };
 }
 
 export function useToast() {
