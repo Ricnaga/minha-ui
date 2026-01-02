@@ -28,8 +28,9 @@
     "paths": {
       "@/components": ["src/components"],
       "@/hooks": ["src/hooks"],
-      "@/types": ["src/types"],
-      "@/theme": ["src/theme"]
+      "@/icons": ["src/icons"],
+      "@/theme": ["src/theme"],
+      "@/types": ["src/types"]
     }
   },
   "include": ["src"]
