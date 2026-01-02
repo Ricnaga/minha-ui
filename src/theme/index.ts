@@ -20,6 +20,7 @@ export * from "./drawer-container.tv";
 export * from "./drawer-footer.tv";
 export * from "./drawer-header.tv";
 export * from "./icon-button.tv";
+export * from "./input-password.tv";
 export * from "./input.tv";
 export * from "./modal-actions.tv";
 export * from "./modal-container.tv";

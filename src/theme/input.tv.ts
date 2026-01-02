@@ -3,8 +3,8 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const input = tv({
   slots: {
     container: "relative h-11 w-full min-w-50",
-    startIconWrapper: "absolute left-3 flex items-center pointer-events-none",
-    endIconWrapper: "absolute right-3 flex items-center pointer-events-none",
+    startIconWrapper: "absolute left-3 flex items-center",
+    endIconWrapper: "absolute right-3 flex items-center",
     field: "peer w-full bg-transparent focus:outline-none transition-all",
     title: [
       "absolute left-3 -top-2.5 text-xs",
