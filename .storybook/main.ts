@@ -4,7 +4,7 @@ const config: StorybookConfig = {
   stories: [
     "../src/components/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../src/hooks/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)",
-    // "../src/types/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../src/types/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../src/utils/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
