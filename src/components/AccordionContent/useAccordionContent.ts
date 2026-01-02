@@ -12,12 +12,14 @@ export function useAccordionContent(props: UseAccordionContentProps) {
   const { value: itemValue } = useAccordionItem();
   const { value } = useAccordion();
 
-  const hasIncludeValue = value?.includes(itemValue);
+  const isOpen = value?.includes(itemValue);
 
   const accordionProps: AccordionContentProps = {
     ...props,
+    "data-state": isOpen ? "open" : "closed",
+    hidden: !isOpen, // acessibilidade
     className: accordionContent(),
   };
 
-  return { hasIncludeValue, accordionProps };
+  return { accordionProps };
 }

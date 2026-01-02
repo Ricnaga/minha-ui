@@ -7,6 +7,7 @@ import { AccordionItem } from "../../AccordionItem/AccordionItem";
 import { AccordionHeader } from "../../AccordionHeader";
 import { AccordionContent } from "../../AccordionContent";
 import { useState } from "react";
+import { fn } from "storybook/test";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<AccordionProps> = {
@@ -16,6 +17,19 @@ const meta: Meta<AccordionProps> = {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
   },
+  args: {
+    type: "single",
+    onValueChange: fn(),
+    defaultValue: ["item-1"],
+    value: [],
+  },
+  argTypes: {
+    type: {
+      control: { type: "select" },
+      options: ["single", "multiple"],
+    },
+  },
+
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
 };
@@ -25,6 +39,10 @@ type Story = StoryObj<AccordionProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
+  args: {
+    type: "multiple",
+  },
+
   render: (args) => {
     const [value, setValue] = useState<string[]>(["item-1"]);
 

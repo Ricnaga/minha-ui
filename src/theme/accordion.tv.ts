@@ -5,7 +5,11 @@ export const accordion = tv({
     accordionItem:
       "rounded-lg shadow-lg shadow-neutral-200 overflow-hidden w-full transition-colors bg-white",
     accordionHeader: "text-neutral-50 font-medium",
-    accordionContent: "p-2",
+    accordionContent: [
+      "p-2",
+      "data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up",
+      "overflow-hidden p-2 transition-all",
+    ],
   },
   variants: {
     variant: {
