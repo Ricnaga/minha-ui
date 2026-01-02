@@ -1,6 +1,3 @@
-// https://tailwindflex.com/@abhirajk/accordion-2
-// https://tailwindflex.com/@nikola-malecka/accordion-faq-3
-
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const accordion = tv({
