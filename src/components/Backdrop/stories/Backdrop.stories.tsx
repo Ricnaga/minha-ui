@@ -4,6 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Backdrop } from "../Backdrop";
 import type { BackdropProps } from "../backdrop.types";
 import { useEffect, useState } from "react";
+import { fn } from "storybook/test";
+import { testDefaultBackdrop } from "./Backdrop.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<BackdropProps> = {
@@ -12,6 +14,11 @@ const meta: Meta<BackdropProps> = {
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
+  },
+  args: {
+    zIndex: 1000,
+    isLoading: false,
+    onClose: fn(),
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -44,4 +51,5 @@ export const Default: Story = {
       </div>
     );
   },
+  play: testDefaultBackdrop,
 };
