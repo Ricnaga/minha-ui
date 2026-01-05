@@ -10,7 +10,9 @@ export function Backdrop(props: BackdropProps) {
   const backdropChildren = children ?? (
     <Activity mode={mode}>
       <div {...wrapperProps}>
-        <Spinner />
+        <div className="size-14">
+          <Spinner />
+        </div>
       </div>
     </Activity>
   );

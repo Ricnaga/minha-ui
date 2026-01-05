@@ -9,6 +9,9 @@ export function useButton(props: UseButtonProps) {
     radius = "medium",
     variant = "contained",
     color = "primary",
+    isLoading = false,
+    disabled,
+    children,
     className,
     onClick,
     ...rest
@@ -23,9 +26,10 @@ export function useButton(props: UseButtonProps) {
 
   const buttonProps: ButtonProps = {
     ...rest,
-    className: button({ size, radius, variant, color, className }),
+    disabled: isLoading ?? disabled,
+    className: button({ size, radius, variant, color, className, isLoading }),
     onClick: handleClick,
   };
 
-  return { buttonProps };
+  return { buttonProps, isLoading, children };
 }

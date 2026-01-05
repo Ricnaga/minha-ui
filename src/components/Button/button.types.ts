@@ -3,6 +3,8 @@ import type { ButtonVariants } from "@/theme";
 
 export interface UseButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color">,
-    ButtonVariants {}
+    ButtonVariants {
+  isLoading?: boolean;
+}
 
 export type ButtonProps = UseButtonProps;
