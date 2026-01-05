@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import type { CalendarProps } from "../calendar.types";
 import { Calendar } from "../Calendar";
+import { testDefaultCalendar } from "./Calendar.play";
 
 const meta: Meta<CalendarProps> = {
   title: "Components/Calendar",
@@ -27,4 +28,5 @@ export const Default: Story = {
 
     return <Calendar {...args} value={date} onDateChange={setDate} />;
   },
+  play: testDefaultCalendar,
 };

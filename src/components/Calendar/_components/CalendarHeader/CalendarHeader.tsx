@@ -9,11 +9,19 @@ export function CalendarHeader() {
 
   return (
     <header className={headerWrapper()}>
-      <button onClick={goToPrevMonth} className={headerButton()}>
+      <button
+        onClick={goToPrevMonth}
+        className={headerButton()}
+        aria-label="previous-month"
+      >
         <CaretLeftIcon />
       </button>
       <h2 className={headerLabel()}>{label}</h2>
-      <button onClick={goToNextMonth} className={headerButton()}>
+      <button
+        onClick={goToNextMonth}
+        className={headerButton()}
+        aria-label="next-month"
+      >
         <CaretRightIcon />
       </button>
     </header>
