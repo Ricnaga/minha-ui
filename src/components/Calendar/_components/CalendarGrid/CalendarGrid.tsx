@@ -1,23 +1,10 @@
 import { calendar } from "@/theme";
-import { useCalendar } from "../../useCalendar";
+import { useCalendarGrid } from "./useCalendarGrid";
 
 const { gridWrapper, gridDay } = calendar();
 
-function getCalendarDays(month: Date) {
-  const year = month.getFullYear();
-  const monthIndex = month.getMonth();
-  const firstDayOfMonth = new Date(year, monthIndex, 1);
-  const startDay = firstDayOfMonth.getDay();
-
-  return Array.from(
-    { length: 42 },
-    (_, i) => new Date(year, monthIndex, i - startDay + 1)
-  );
-}
-
 export function CalendarGrid() {
-  const { currentMonth, setValue, value } = useCalendar();
-  const days = getCalendarDays(currentMonth);
+  const { days, currentMonth, setValue, value } = useCalendarGrid();
 
   const ButtonDays = (buttonDaysProps: { day: Date }) => {
     const isSelected =

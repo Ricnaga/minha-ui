@@ -1,5 +1,5 @@
-import { CalendarGrid } from "./_component/CalendarGrid/CalendarGrid";
-import { CalendarHeader } from "./_component/CalendarHeader/CalendarHeader";
+import { CalendarGrid } from "./_components/CalendarGrid/CalendarGrid";
+import { CalendarHeader } from "./_components/CalendarHeader/CalendarHeader";
 import type { CalendarProps } from "./calendar.types";
 import { CalendarContext, useCalendarProvider } from "./useCalendar";
 

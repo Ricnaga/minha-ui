@@ -1,18 +1,11 @@
-// CalendarHeader.tsx
-
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { useCalendar } from "../../useCalendar";
 import { calendar } from "@/theme";
+import { useCalendarHeader } from "./useCalendarHeader";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 
 const { headerWrapper, headerButton, headerLabel } = calendar();
 
 export function CalendarHeader() {
-  const { currentMonth, goToNextMonth, goToPrevMonth, locale } = useCalendar();
-
-  const label = new Intl.DateTimeFormat(locale, {
-    month: "long",
-    year: "numeric",
-  }).format(currentMonth);
+  const { label, goToNextMonth, goToPrevMonth } = useCalendarHeader();
 
   return (
     <header className={headerWrapper()}>
