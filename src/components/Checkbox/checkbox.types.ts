@@ -1,8 +1,8 @@
 import type { InputHTMLAttributes } from "react";
-import type { CheckboxVariantsProps } from "@/theme";
+import type { CheckboxVariants } from "@/theme";
 
 export interface UseCheckboxProps
   extends InputHTMLAttributes<HTMLInputElement>,
-    CheckboxVariantsProps {}
+    CheckboxVariants {}
 
 export type CheckboxProps = UseCheckboxProps;

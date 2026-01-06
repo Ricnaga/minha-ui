@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Checkbox } from "../Checkbox";
+import { testDefaultCheckbox } from "./Checkbox.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -9,6 +10,33 @@ const meta = {
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
+  },
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["glow"], // colocar aqui todas as variants do tv
+      description: "Escolha a variant do checkbox",
+      table: {
+        type: { summary: "variant" },
+        defaultValue: { summary: "glow" },
+      },
+    },
+    disabled: {
+      control: { type: "boolean" },
+      description: "Desabilita o checkbox",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: undefined },
+      },
+    },
+    indeterminate: {
+      control: { type: "boolean" },
+      description: "Define o checkbox como indeterminado",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: undefined },
+      },
+    },
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -19,5 +47,5 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
-  args: {},
+  play: testDefaultCheckbox,
 };
