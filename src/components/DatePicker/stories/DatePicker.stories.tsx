@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { DatePicker } from "../DatePicker";
 import type { DatePickerProps } from "../date-picker.types";
+import { testDefaultDatepicker } from "./Datepicker.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<DatePickerProps> = {
@@ -30,11 +31,8 @@ export const Default: Story = {
     const [dateValue, setDateValue] = useState<Date | null>(new Date());
 
     return (
-      <DatePicker
-        {...args}
-        dateValue={dateValue}
-        onDateChange={setDateValue}
-      />
+      <DatePicker {...args} dateValue={dateValue} onDateChange={setDateValue} />
     );
   },
+  play: testDefaultDatepicker,
 };
