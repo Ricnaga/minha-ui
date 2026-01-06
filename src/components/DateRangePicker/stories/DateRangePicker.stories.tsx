@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { DateRangePicker } from "../DateRangePicker";
-import type { DateRangePickerProps } from "../date-range-picker.types";
 import { useState } from "react";
 import type { DateRange } from "src/components/RangeCalendar";
+import { DateRangePicker } from "../DateRangePicker";
+import type { DateRangePickerProps } from "../date-range-picker.types";
+import { testDefaultDateRangepicker } from "./DateRangepicker.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<DateRangePickerProps> = {
@@ -41,4 +42,5 @@ export const Default: Story = {
       />
     );
   },
+  play: testDefaultDateRangepicker,
 };

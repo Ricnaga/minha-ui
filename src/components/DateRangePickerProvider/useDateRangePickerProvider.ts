@@ -19,6 +19,10 @@ export function useDateRangePickerProvider(
 
   function handleRangeCalendarChange(value: DateRange | null) {
     onRangeDateChange(value);
+
+    if (value?.start && value?.end) {
+      handleClose();
+    }
   }
 
   const { children, ...rest } = props;

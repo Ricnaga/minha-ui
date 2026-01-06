@@ -5,8 +5,6 @@ import type { InputProps } from "../Input";
 export function useDateRangePickerInput() {
   const { handleOpen, dateValue } = useDateRangePickerContext();
 
-  // const formattedValue = formatToDate(dateValue?.start ?? new Date());
-
   const formattedValue = Object.values(dateValue ?? {})
     .map((value) => formatToDate(value ?? new Date()))
     .join(" - ");
