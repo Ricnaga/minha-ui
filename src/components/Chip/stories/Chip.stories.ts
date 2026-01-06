@@ -2,9 +2,11 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { fn } from "storybook/test";
 import { Chip } from "../Chip";
+import { testDefaultChip } from "./Chip.play";
+import type { ChipProps } from "../chip.types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+const meta: Meta<ChipProps> = {
   title: "Components/Chip",
   component: Chip,
   parameters: {
@@ -17,12 +19,12 @@ const meta = {
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: { onClick: fn(), children: "Chip" },
-} satisfies Meta<typeof Chip>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<ChipProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
-  args: {},
+  play: testDefaultChip,
 };

@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Checkbox } from "../Checkbox";
 import { testDefaultCheckbox } from "./Checkbox.play";
+import type { CheckboxProps } from "../checkbox.types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
+const meta: Meta<CheckboxProps> = {
   title: "Components/Checkbox",
   component: Checkbox,
   parameters: {
@@ -40,10 +41,10 @@ const meta = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
-} satisfies Meta<typeof Checkbox>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<CheckboxProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
