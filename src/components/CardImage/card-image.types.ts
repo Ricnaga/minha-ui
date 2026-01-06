@@ -1,4 +1,6 @@
-import type { HTMLAttributes } from "react";
+import type { CardImageVariants } from "@/theme";
+import type { ImgHTMLAttributes } from "react";
 
-export type UseCardImageProps = HTMLAttributes<HTMLImageElement>;
+export type UseCardImageProps = CardImageVariants &
+  ImgHTMLAttributes<HTMLImageElement>;
 export type CardImageProps = UseCardImageProps;
