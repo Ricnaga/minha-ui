@@ -5,9 +5,17 @@ import type {
 } from "./card-actions.types";
 
 export function useCardActions(props: UseCardActionsProps) {
+  const {
+    align = "end",
+    direction = "row",
+    wrap = false,
+    divider = false,
+    ...rest
+  } = props;
+  
   const cardActionsProps: CardActionsProps = {
-    ...props,
-    className: cardActions(),
+    ...rest,
+    className: cardActions({ align, direction, divider, wrap }),
   };
 
   return { cardActionsProps };

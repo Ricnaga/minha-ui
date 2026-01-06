@@ -17,6 +17,52 @@ const meta: Meta<CardActionsProps> = {
   tags: ["autodocs"],
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: { children: "Conteúdo do Card Actions" },
+  argTypes: {
+    align: {
+      description:
+        "Define o alinhamento horizontal das ações dentro do container.",
+      control: { type: "select" },
+      options: ["start", "center", "end", "between"],
+      table: {
+        type: { summary: `"start" | "center" | "end" | "between"` },
+        defaultValue: { summary: "end" },
+        category: "Layout",
+      },
+    },
+
+    direction: {
+      description: "Define a direção do fluxo de ações (linha ou coluna).",
+      control: { type: "select" },
+      options: ["row", "column"],
+      table: {
+        type: { summary: `"row" | "column"` },
+        defaultValue: { summary: "row" },
+        category: "Layout",
+      },
+    },
+
+    wrap: {
+      description:
+        "Define se as ações podem quebrar a linha (wrap) quando não cabem.",
+      control: { type: "boolean" },
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: undefined },
+        category: "Layout",
+      },
+    },
+
+    divider: {
+      description:
+        "Adiciona uma borda superior ao container de ações, separando do conteúdo do Card.",
+      control: { type: "boolean" },
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: undefined },
+        category: "Style",
+      },
+    },
+  },
   decorators: (Story) => (
     <Card>
       <Story />
