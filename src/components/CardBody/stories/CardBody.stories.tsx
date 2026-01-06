@@ -18,6 +18,38 @@ const meta: Meta<CardBodyProps> = {
   tags: ["autodocs"],
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: { children: "Conteúdo do Card Body" },
+  argTypes: {
+    padding: {
+      description: "Define o padding interno do Card Body.",
+      control: { type: "select" },
+      options: ["none", "sm", "md", "lg"],
+      table: {
+        type: { summary: `"none" | "sm" | "md" | "lg"` },
+        defaultValue: { summary: "md" },
+        category: "Layout",
+      },
+    },
+    gap: {
+      description: "Define o espaçamento entre elementos filhos.",
+      control: { type: "select" },
+      options: ["none", "sm", "md", "lg"],
+      table: {
+        type: { summary: `"none" | "sm" | "md" | "lg"` },
+        defaultValue: { summary: "md" },
+        category: "Layout",
+      },
+    },
+    background: {
+      description: "Define o background do Card Body.",
+      control: { type: "select" },
+      options: ["none", "light", "default"],
+      table: {
+        type: { summary: `"none" | "light" | "default"` },
+        defaultValue: { summary: "none" },
+        category: "Style",
+      },
+    },
+  },
   decorators: (Story) => (
     <Card>
       <CardHeader>Conteúdo do Card Header</CardHeader>
