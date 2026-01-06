@@ -6,7 +6,7 @@ export type HeadingTags = Extract<
 >;
 
 export interface UseCardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
-  as: HeadingTags;
+  as?: HeadingTags;
 }
 
 export type CardTitleProps = UseCardTitleProps;
