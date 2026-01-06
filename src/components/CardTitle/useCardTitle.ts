@@ -6,11 +6,20 @@ import type {
 } from "./card-title.types";
 
 export function useCardTitle(props: UseCardTitleProps) {
-  const Component: HeadingTags = props.as ?? "h2";
+  const {
+    as = "h2",
+    size = "md",
+    weight = "bold",
+    color = "default",
+    align = "left",
+    ...rest
+  } = props;
+
+  const Component: HeadingTags = as;
 
   const cardTitleProps: CardTitleProps = {
-    ...props,
-    className: cardTitle(),
+    ...rest,
+    className: cardTitle({ align, color, size, weight }),
   };
 
   return { cardTitleProps, Component };

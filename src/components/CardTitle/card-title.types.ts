@@ -1,3 +1,4 @@
+import type { CardTitleVariants } from "@/theme";
 import type { HTMLAttributes, JSX } from "react";
 
 export type HeadingTags = Extract<
@@ -5,7 +6,9 @@ export type HeadingTags = Extract<
   "h2" | "h3" | "h4"
 >;
 
-export interface UseCardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
+export interface UseCardTitleProps
+  extends CardTitleVariants,
+    Omit<HTMLAttributes<HTMLHeadingElement>, "color"> {
   as?: HeadingTags;
 }
 
