@@ -5,9 +5,17 @@ import type {
 } from "./card-subtitle.types";
 
 export function useCardSubtitle(props: UseCardSubtitleProps) {
+  const {
+    size = "md",
+    weight = "normal",
+    color = "default",
+    align = "left",
+    ...rest
+  } = props;
+  
   const cardSubtitleProps: CardSubtitleProps = {
-    ...props,
-    className: cardSubtitle(),
+    ...rest,
+    className: cardSubtitle({ align, color, size, weight }),
   };
 
   return { cardSubtitleProps };
