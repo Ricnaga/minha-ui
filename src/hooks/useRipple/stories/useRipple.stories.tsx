@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/react-vite";
-import { useRipple } from "../useRipple";
+import { useRipple } from "../";
 
 const meta: Meta = {
   title: "Hooks/useRipple",
