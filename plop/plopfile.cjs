@@ -1,5 +1,6 @@
 const componentActions = require("./actions/component.cjs");
 const providerActions = require("./actions/provider.cjs");
+const hooksActions = require("./actions/hooks.cjs");
 
 module.exports = function (
   /** @type {import('plop').NodePlopAPI} */
@@ -15,6 +16,7 @@ module.exports = function (
         choices: [
           { name: "Component", value: "component" },
           { name: "Provider", value: "provider" },
+          { name: "Hook", value: "hooks" },
         ],
       },
       {
@@ -30,6 +32,9 @@ module.exports = function (
 
         case "provider":
           return providerActions(plop);
+          
+        case "hooks":
+          return hooksActions(plop);
 
         default:
           return [];

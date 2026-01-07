@@ -40,9 +40,19 @@ module.exports = (
     type: "add",
     path: process
       .cwd()
+      .concat(
+        "/src/components/{{pascalCase name}}/stories/{{pascalCase name}}.play.ts"
+      ),
+    templateFile: "templates/component/playTest.ts.hbs",
+  },
+  {
+    type: "add",
+    path: process
+      .cwd()
       .concat("/src/components/{{pascalCase name}}/use{{pascalCase name}}.ts"),
     templateFile: "templates/component/useHook.ts.hbs",
   },
+  
 
   /**
    * =========================
