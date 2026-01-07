@@ -22,7 +22,18 @@ module.exports = function (
       {
         type: "input",
         name: "name",
-        message: "Nome do componente (ex: modal-header)?",
+        message: (answers) => {
+          switch (answers.kind) {
+            case "component":
+              return "Nome do componente (ex: modal-header)?";
+            case "provider":
+              return "Nome do componente provider (ex: modal-header)?";
+            case "hooks":
+              return "Nome do hook (ex: entrada form, o hook criado: useForm)?";
+            default:
+              return "Inválido";
+          }
+        },
       },
     ],
     actions: (data) => {
@@ -32,7 +43,7 @@ module.exports = function (
 
         case "provider":
           return providerActions(plop);
-          
+
         case "hooks":
           return hooksActions(plop);
 
