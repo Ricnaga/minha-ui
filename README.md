@@ -71,4 +71,4 @@ export default defineConfig([
   },
 ])
 ```
-# sef-ui
+# minha-ui
