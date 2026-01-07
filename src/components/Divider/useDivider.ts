@@ -11,6 +11,8 @@ export function useDivider(props: UseDividerProps) {
 
   const dividerProps: DividerProps = {
     ...rest,
+    role: "separator",
+    "aria-orientation": orientation,
     className: divider({ orientation, inset, className }),
   };
 

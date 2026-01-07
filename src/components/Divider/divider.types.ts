@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
-import type { DividerVariantsProps } from "@/theme";
+import type { DividerVariants } from "@/theme";
 
 export interface UseDividerProps
   extends HTMLAttributes<HTMLDivElement>,
-    DividerVariantsProps {}
+    DividerVariants {}
 
 export type DividerProps = UseDividerProps;

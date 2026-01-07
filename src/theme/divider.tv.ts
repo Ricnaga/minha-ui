@@ -20,4 +20,4 @@ export const divider = tv({
   },
 });
 
-export type DividerVariantsProps = VariantProps<typeof divider>;
+export type DividerVariants = VariantProps<typeof divider>;

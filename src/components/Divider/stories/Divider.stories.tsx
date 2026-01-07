@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import { Divider } from "../Divider";
+import { testDefaultDivider, testVerticalDivider } from "./Divider.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -22,6 +23,7 @@ export const Default: Story = {
   args: {
     className: "w-full min-w-40",
   },
+  play: testDefaultDivider,
 };
 
 export const Vertical: Story = {
@@ -29,4 +31,5 @@ export const Vertical: Story = {
     orientation: "vertical",
     className: "h-40",
   },
+  play: testVerticalDivider,
 };
