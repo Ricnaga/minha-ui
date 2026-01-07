@@ -9,17 +9,23 @@ import type {
 const { closeButton, wrapper } = drawerHeader();
 
 export function useDrawerHeader(props: UseDrawerHeaderProps) {
-  const { children, ...rest } = props;
+  const {
+    children,
+    size = "md",
+    align = "center",
+    closeColor = "default",
+    ...rest
+  } = props;
   const { onClose, titleId } = useDrawer();
 
   const drawerHeaderProps: DrawerHeaderProps = {
     ...rest,
     id: titleId,
-    className: wrapper(),
+    className: wrapper({ size, align }),
   };
 
   const closeButtonProps: HTMLAttributes<HTMLButtonElement> = {
-    className: closeButton(),
+    className: closeButton({ size, closeColor }),
     onClick: onClose,
   };
 

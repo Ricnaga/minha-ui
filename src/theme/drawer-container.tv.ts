@@ -2,15 +2,16 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const drawerContainer = tv({
   base: [
-    "fixed z-50 bg-white p-6",
+    "fixed bg-white p-6",
     "duration-200 ease-out",
     "pointer-events-none",
     "will-change-transform",
+    "z-(--z-drawer,50)",
   ],
   variants: {
     isOpen: {
-      true: "pointer-events-auto animate-in",
-      false: "animate-out",
+      true: "pointer-events-auto animate-in opacity-100",
+      false: "animate-out opacity-0",
     },
     side: {
       right: "top-0 right-0 h-full w-80",
