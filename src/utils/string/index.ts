@@ -72,8 +72,8 @@ export function extractDigits(value: string): string {
   return value.replace(/\D/g, "");
 }
 
-export const capitalize = (str: string): string => {
+export function capitalize(str: string): string {
   if (!str) return "";
-  
+
   return str.charAt(0).toUpperCase() + str.slice(1);
-};
+}

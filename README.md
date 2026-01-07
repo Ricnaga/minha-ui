@@ -65,20 +65,23 @@ pnpm dev
 pnpm storybook
 ```
 
-## 🛠️ Estrutura do projeto
+pasta `src/` está organizada da seguinte forma:
 
 ```
-├── public/ # Arquivos estáticos
-├── src/ # Código-fonte da aplicação
-│ ├── components/ # Componentes reutilizáveis da UI
-│ ├── styles/ # Estilos globais e temas
-│ └── main.tsx # Ponto de entrada da aplicação
-├── .storybook/ # Configuração do Storybook
-├── vite.config.ts # Configuração do Vite
-├── tsconfig.json # Configuração do TypeScript
-├── package.json # Dependências e scripts do projeto
-└── README.md # Documentação do projeto
+├── components/       # Componentes reutilizáveis da UI
+├── hooks/            # Hooks de uso mais comum
+├── theme/            # Estilos dos componentes
+├── types/            # Tipos TypeScript mais utilizados
+└── utils/            # Funções utilitárias (ex.: manipulação de strings, porcentagens, valores monetários)
 ```
+
+> Cada pasta contém arquivos específicos do seu propósito:
+>
+> - `components/` → Botões, inputs, cards, etc.
+> - `hooks/` → Hooks customizados que podem ser usados em vários lugares da aplicação.
+> - `theme/` → Variáveis, temas e estilos globais dos componentes.
+> - `types/` → Definições de tipos compartilhadas por toda a aplicação.
+> - `utils/` → Funções utilitárias de uso diário, como formatação de valores ou manipulação de dados.
 
 ---
 
