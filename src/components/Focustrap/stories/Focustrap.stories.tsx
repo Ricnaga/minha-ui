@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
+import { useToggle } from "@/hooks";
 import { Focustrap } from "../Focustrap";
 import type { FocustrapProps } from "../focustrap.types";
-import { useState } from "react";
+import { testDefaultFocustrap, testToggleFocusTrap } from "./Focustrap.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<FocustrapProps> = {
@@ -31,53 +32,44 @@ export const Default: Story = {
   render: (args) => (
     <Focustrap {...args}>
       <div className="flex flex-col gap-4 p-6 border rounded-lg w-80 bg-gray-50">
-        <input type="text" placeholder="Nome" className="border p-2 rounded" />
-        <input
-          type="email"
-          placeholder="Email"
-          className="border p-2 rounded"
-        />
-        <button className="bg-blue-500 text-white py-2 px-4 rounded">
-          Enviar
+        <input data-testid="first" type="text" placeholder="Nome" />
+        <button
+          className="bg-blue-500 text-white p-2 rounded cursor-pointer focus:bg-blue-800"
+          data-testid="middle"
+        >
+          Salvar
         </button>
-        <button className="bg-gray-300 py-2 px-4 rounded">Cancelar</button>
+        <input data-testid="last" type="text" placeholder="Email" />
       </div>
     </Focustrap>
   ),
+  play: testDefaultFocustrap,
 };
 
 export const ToggleFocusTrap: Story = {
   render: () => {
-    const [active, setActive] = useState<boolean>(true);
+    const { isToggle, handleToggle } = useToggle();
 
     return (
       <div className="flex flex-col items-center gap-4">
         <button
           className="bg-green-500 text-white py-2 px-4 rounded"
-          onClick={() => setActive((prev) => !prev)}
+          onClick={handleToggle}
         >
-          {active ? "Desativar FocusTrap" : "Ativar FocusTrap"}
+          {isToggle ? "Desativar FocusTrap" : "Ativar FocusTrap"}
         </button>
 
-        <Focustrap isFocus={active}>
+        <Focustrap isFocus={isToggle}>
           <div className="flex flex-col gap-4 p-6 border rounded-lg w-80 bg-gray-50">
             <input
               type="text"
               placeholder="Nome"
               className="border p-2 rounded"
             />
-            <input
-              type="email"
-              placeholder="Email"
-              className="border p-2 rounded"
-            />
-            <button className="bg-blue-500 text-white py-2 px-4 rounded">
-              Enviar
-            </button>
-            <button className="bg-gray-300 py-2 px-4 rounded">Cancelar</button>
           </div>
         </Focustrap>
       </div>
     );
   },
+  play: testToggleFocusTrap,
 };
