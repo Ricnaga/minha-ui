@@ -5,9 +5,10 @@ import type {
 import { modalFooter } from "@/theme";
 
 export function useModalFooter(props: UseModalFooterProps) {
+  const { padding = "md", align = "right", ...rest } = props;
   const modalFooterProps: ModalFooterProps = {
-    ...props,
-    className: modalFooter(),
+    ...rest,
+    className: modalFooter({ align, padding }),
   };
 
   return { modalFooterProps };
