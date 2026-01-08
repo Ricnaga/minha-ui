@@ -2,7 +2,7 @@ import type { ModalContainerProps } from "./modal-container.types";
 import { useModalContainer } from "./useModalContainer";
 
 export function ModalContainer(props: ModalContainerProps) {
-  const { modalContainerProps } = useModalContainer(props);
+  const { modalContainerProps, modalContainerRef } = useModalContainer(props);
 
-  return <div {...modalContainerProps} />;
+  return <div {...modalContainerProps} ref={modalContainerRef} />;
 }

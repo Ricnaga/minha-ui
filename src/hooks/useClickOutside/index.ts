@@ -5,7 +5,7 @@ type UseOutsideClickOptions = {
   enabled?: boolean;
 };
 
-export function useOutsideClick<T extends Node = HTMLElement>({
+export function useClickOutside<T extends Node = HTMLElement>({
   onOutsideClick,
   enabled = true,
 }: UseOutsideClickOptions) {

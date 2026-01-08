@@ -3,10 +3,10 @@
 import { useToggle } from "@/hooks";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { useOutsideClick } from "..";
+import { useClickOutside } from "..";
 
 const meta: Meta = {
-  title: "Hooks/useOutsideClick",
+  title: "Hooks/useClickOutside",
   parameters: {
     layout: "centered",
   },
@@ -21,7 +21,7 @@ export const Default: StoryObj = {
     const { isToggle, handleClose, handleOpen } = useToggle();
     const [log, setLog] = useState<string>("Nenhum clique fora ainda");
 
-    const ref = useOutsideClick<HTMLDivElement>({
+    const ref = useClickOutside<HTMLDivElement>({
       enabled: isToggle,
       onOutsideClick: () => {
         setLog("➡️ Clique fora detectado");
