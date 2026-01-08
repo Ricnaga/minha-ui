@@ -6,14 +6,14 @@ import type {
 } from "./modal-container.types";
 
 export function useModalContainer(props: UseModalContainerProps) {
-  const { radius = "md", shadow = "md", ...rest } = props;
+  const { radius = "md", shadow = "md", padding = "md", ...rest } = props;
 
   const { isOpen } = useModal();
 
   const modalContainerProps: ModalContainerProps = {
     ...rest,
     "data-testid": "modal-container",
-    className: modalContainer({ radius, shadow, isOpen }),
+    className: modalContainer({ radius, shadow, isOpen, padding }),
   };
 
   return { modalContainerProps };

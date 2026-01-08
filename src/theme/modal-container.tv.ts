@@ -2,7 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const modalContainer = tv({
   base: [
-    "grid gap-2 p-4 bg-white",
+    "grid gap-2 bg-white",
     "min-w-80 max-w-xl max-h-[80vh]",
     "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
   ],
@@ -25,11 +25,19 @@ export const modalContainer = tv({
       lg: "shadow-lg",
       xl: "shadow-xl",
     },
+    padding: {
+      none: "p-0",
+      sm: "p-2",
+      md: "p-4",
+      lg: "p-6",
+      xl: "p-8",
+    },
   },
   defaultVariants: {
     radius: "md",
     shadow: "md",
     isOpen: false,
+    padding: "md",
   },
 });
 
