@@ -11,6 +11,7 @@ export function Input(props: InputProps) {
     inputProps,
     labelProps,
     startIconProps,
+    inputWrapperProps,
   } = useInput(props);
   return (
     <div {...containerProps}>
@@ -18,13 +19,14 @@ export function Input(props: InputProps) {
         <div {...startIconProps} />
       </Activity>
 
-      <input {...inputProps} />
+      <div {...inputWrapperProps}>
+        <input {...inputProps} />
+        <label {...labelProps} />
+      </div>
 
       <Activity mode={hasEndIcon}>
         <div {...endIconProps} />
       </Activity>
-
-      <label {...labelProps} />
     </div>
   );
 }

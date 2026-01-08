@@ -6,8 +6,16 @@ import type {
 } from "react";
 import type { UseInputProps } from "./input.types";
 import { input } from "@/theme";
+import type { DataTestidProps } from "@/types";
 
-const { container, startIconWrapper, endIconWrapper, field, title } = input();
+const {
+  container,
+  startIconWrapper,
+  endIconWrapper,
+  field,
+  title,
+  inputWrapper,
+} = input();
 
 export function useInput(props: UseInputProps) {
   const {
@@ -16,6 +24,7 @@ export function useInput(props: UseInputProps) {
     endIcon,
     className,
     variant = "outline",
+    id = `input-${Math.random().toString(36)}`,
     ...rest
   } = props;
 
@@ -27,17 +36,25 @@ export function useInput(props: UseInputProps) {
     children: startIcon,
   };
 
-  const startIconProps: HTMLAttributes<HTMLDivElement> = {
+  const startIconProps: DataTestidProps<HTMLAttributes<HTMLDivElement>> = {
+    "data-testid": "input-start-icon",
     className: startIconWrapper({ variant }),
     children: startIcon,
   };
 
-  const endIconProps: HTMLAttributes<HTMLDivElement> = {
+  const endIconProps: DataTestidProps<HTMLAttributes<HTMLDivElement>> = {
+    "data-testid": "input-end-icon",
     className: endIconWrapper({ variant }),
     children: endIcon,
   };
 
+  const inputWrapperProps: HTMLAttributes<HTMLDivElement> = {
+    className: inputWrapper({ variant }),
+    children: startIcon,
+  };
+
   const inputProps: InputHTMLAttributes<HTMLInputElement> = {
+    id,
     type: "text",
     placeholder: " ",
     className: field({
@@ -49,11 +66,13 @@ export function useInput(props: UseInputProps) {
   };
 
   const labelProps: LabelHTMLAttributes<HTMLLabelElement> = {
-    className: title({ variant }),
+    htmlFor: id,
+    className: title({ variant, startIcon: !!startIcon }),
     children: label,
   };
 
   return {
+    inputWrapperProps,
     hasEndIcon,
     hasStartIcon,
     containerProps,
