@@ -12,12 +12,18 @@ export function useModalProvider(props: UseModalProviderProps) {
   const {
     children,
     titleId = reactId,
+    padding = "md",
     radius = "md",
     shadow = "md",
     ...rest
   } = props;
 
-  const modalContainerProps: ModalContainerProps = { radius, shadow, children };
+  const modalContainerProps: ModalContainerProps = {
+    radius,
+    shadow,
+    children,
+    padding,
+  };
 
   return { titleId, modalContainerProps, ...rest };
 }

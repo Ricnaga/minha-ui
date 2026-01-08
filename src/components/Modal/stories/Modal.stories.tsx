@@ -24,10 +24,40 @@ const meta: Meta<ModalProps> = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     children: { control: false }, // evita mostrar JSON nos controls
+    shadow: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "xl"],
+      description: "Sombra do modal",
+      table: {
+        type: { summary: "sm | md | lg | xl" },
+        defaultValue: { summary: "md" },
+      },
+    },
+    radius: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "xl", "2xl", "3xl"],
+      description: "Raio das bordas do modal",
+      table: {
+        type: { summary: "sm | md | lg | xl | 2xl | 3xl" },
+        defaultValue: { summary: "md" },
+      },
+    },
+    padding: {
+      control: { type: "select" },
+      options: ["none", "sm", "md", "lg", "xl"],
+      description: "Sombra do modal",
+      table: {
+        type: { summary: "none | sm | md | lg | xl" },
+        defaultValue: { summary: "md" },
+      },
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: {
     children: <h2 className="text-center">Children do Modal</h2>,
+    radius: "md",
+    shadow: "md",
+    padding: "md",
   },
 };
 
