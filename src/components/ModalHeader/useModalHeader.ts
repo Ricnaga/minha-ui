@@ -9,15 +9,17 @@ import type {
 const { closeButton, wrapper } = modalHeader();
 
 export function useModalHeader(props: UseModalHeaderProps) {
-  const { children, ...rest } = props;
+  const { children, padding = "lg", align = "left", ...rest } = props;
   const { onClose } = useModal();
 
   const modalHeaderProps: ModalHeaderProps = {
     ...rest,
-    className: wrapper(),
+    role: "banner",
+    className: wrapper({ align, padding }),
   };
 
   const closeButtonProps: HTMLAttributes<HTMLButtonElement> = {
+    "aria-label": "close-modal",
     className: closeButton(),
     onClick: onClose,
   };
