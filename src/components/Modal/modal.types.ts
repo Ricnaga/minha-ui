@@ -1,13 +1,14 @@
-import type { useModalProvider } from "./useModal";
-import type { RequiredChildren } from "@/types";
 import type { ModalContainerVariants } from "@/theme";
+import type { RequiredChildren } from "@/types";
+import type { useModalProvider } from "./useModal";
 
-export type UseModalProviderProps = ModalContainerVariants &
-  RequiredChildren<{
-    isOpen: boolean;
-    onClose: VoidFunction;
-    titleId?: string;
-  }>;
+export interface UseModalProviderProps
+  extends ModalContainerVariants,
+    RequiredChildren {
+  isOpen: boolean;
+  onClose: VoidFunction;
+  titleId?: string;
+}
 
 export type ModalProps = UseModalProviderProps;
 

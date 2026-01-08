@@ -8,9 +8,9 @@ import { useModal } from "../Modal/useModal";
 export function useModalActions(props: UseModalActionsProps) {
   const { onClose } = useModal();
 
-  // TODO: Implement hook logic
   const modalActionsProps: ModalActionsProps = {
     ...props,
+    "data-testid": "modal-actions",
     className: modalActions(),
   };
 

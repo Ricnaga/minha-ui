@@ -77,4 +77,4 @@ export const input = tv({
   },
 });
 
-export type InputVariantsProps = VariantProps<typeof input>;
+export type InputVariants = VariantProps<typeof input>;

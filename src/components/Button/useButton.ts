@@ -26,7 +26,7 @@ export function useButton(props: UseButtonProps) {
 
   const buttonProps: ButtonProps = {
     ...rest,
-    disabled: isLoading ?? disabled,
+    disabled: isLoading || disabled,
     className: button({ size, radius, variant, color, className, isLoading }),
     onClick: handleClick,
   };

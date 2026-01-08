@@ -4,6 +4,6 @@ export type RequiredChildren<T = unknown> = T & {
   children: ReactNode;
 };
 
-export type DataTestidProps<T> = T & {
+export type DataTestidProps<T = unknown> = T & {
   "data-testid"?: string;
 };
