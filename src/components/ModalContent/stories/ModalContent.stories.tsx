@@ -5,6 +5,7 @@ import { useToggle } from "@/hooks";
 import { Modal } from "../../Modal/Modal";
 import { ModalContent } from "../ModalContent";
 import type { ModalContentProps } from "../modal-content.types";
+import { testDefaultModalContent } from "./ModalContent.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ModalContentProps> = {
@@ -32,7 +33,7 @@ type Story = StoryObj<ModalContentProps>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   render: (args) => {
-    const { istoggle, handleClose, handleOpen } = useToggle();
+    const { isToggle, handleClose, handleOpen } = useToggle();
 
     return (
       <>
@@ -42,10 +43,11 @@ export const Default: Story = {
         >
           Abrir Modal Content
         </button>
-        <Modal isOpen={istoggle} onClose={handleClose}>
+        <Modal isOpen={isToggle} onClose={handleClose}>
           <ModalContent {...args} />
         </Modal>
       </>
     );
   },
+  play: testDefaultModalContent,
 };
