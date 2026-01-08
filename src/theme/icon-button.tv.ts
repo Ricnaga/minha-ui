@@ -4,6 +4,15 @@ import { button } from "./button.tv";
 export const iconButton = tv({
   extend: button,
 
+  base: [
+    "relative", // necessário para o pseudo-elemento
+    "after:content-['']",
+    "after:absolute after:inset-1/2",
+    "after:-translate-x-1/2 after:-translate-y-1/2",
+    "after:min-h-11 after:min-w-11",
+    "after:pointer-events-auto",
+  ],
+
   variants: {
     size: {
       small: "h-8 min-w-8 p-1",

@@ -9,8 +9,11 @@ export function useIconButton(props: UseIconButtonProps) {
     radius = "full",
     variant = "contained",
     color = "primary",
+    isLoading = false,
     className,
     onClick,
+    children,
+    disabled,
     ...rest
   } = props;
 
@@ -23,9 +26,17 @@ export function useIconButton(props: UseIconButtonProps) {
 
   const iconButtonProps: IconButtonProps = {
     ...rest,
-    className: iconButton({ size, radius, variant, color, className }),
+    disabled: isLoading ?? disabled,
+    className: iconButton({
+      size,
+      radius,
+      variant,
+      color,
+      className,
+      isLoading,
+    }),
     onClick: handleClick,
   };
 
-  return { iconButtonProps };
+  return { iconButtonProps, children, isLoading };
 }
