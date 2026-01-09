@@ -1,19 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, type HTMLAttributes } from "react";
 import { progress, progressSheet } from "@/theme";
 import type { ProgressProps, UseProgressProps } from "./progress.types";
+import { formatToPercentage } from "src/utils/number";
+
+const { core, wrapper } = progress();
 
 export function useProgress(props: UseProgressProps) {
+  const {
+    size = "md",
+    color = "primary",
+    animated = true,
+    value = 25,
+    ...rest
+  } = props;
+
+  const valuePercentage = formatToPercentage({ value: value / 100 });
+
   useEffect(() => {
-    document.adoptedStyleSheets = [
-      ...document.adoptedStyleSheets,
-      progressSheet,
-    ];
+    if ("adoptedStyleSheets" in document) {
+      if (!document.adoptedStyleSheets.includes(progressSheet)) {
+        document.adoptedStyleSheets = [
+          ...document.adoptedStyleSheets,
+          progressSheet,
+        ];
+      }
+    }
   }, []);
 
-  const progressProps: ProgressProps = {
-    ...props,
-    className: progress(),
+  const wrapperProps: HTMLAttributes<HTMLDivElement> = {
+    className: wrapper({ animated, color, size }),
   };
 
-  return { progressProps };
+  const coreProps: ProgressProps = {
+    ...rest,
+    style: { width: valuePercentage },
+    className: core({ animated, color, size }),
+  };
+
+  return { coreProps, wrapperProps };
 }

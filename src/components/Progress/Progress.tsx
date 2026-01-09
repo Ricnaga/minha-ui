@@ -2,7 +2,11 @@ import type { ProgressProps } from "./progress.types";
 import { useProgress } from "./useProgress";
 
 export function Progress(props: ProgressProps) {
-  const { progressProps } = useProgress(props);
+  const { coreProps, wrapperProps } = useProgress(props);
 
-  return <div {...progressProps} />;
+  return (
+    <div {...wrapperProps}>
+      <div {...coreProps} />
+    </div>
+  );
 }
