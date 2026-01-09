@@ -8,22 +8,23 @@ interface PopoverContentProps extends UsePopoverContentProps {
 }
 
 export function usePopoverContent(props: UsePopoverContentProps) {
-  const {
-    radius = "xl",
-    shadow = "lg",
-    animation = "slideFade",
-    side = "bottom",
-    ...rest
-  } = props;
-
-  const { isOpen } = usePopover();
+  const { isOpen, side, offset, width, padding, shadow, radius, animation } =
+    usePopover();
 
   const popoverContentProps: PopoverContentProps = {
-    ...rest,
+    ...props,
     "data-state": isOpen ? "open" : "closed",
     "data-side": side,
     "aria-hidden": !isOpen,
-    className: popoverContent({ animation, radius, shadow, side, }),
+    className: popoverContent({
+      animation,
+      radius,
+      shadow,
+      side,
+      offset,
+      padding,
+      width,
+    }),
   };
 
   return { popoverContentProps };

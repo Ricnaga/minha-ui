@@ -11,10 +11,13 @@ export const PopoverContext = createContext<PopoverContextProps>(
 
 export function usePopoverProvider(props: UsePopoverProviderProps) {
   const {
-    radius = "md",
-    shadow = "md",
-    animation = "slideFade",
     side = "bottom",
+    offset = "md",
+    width = "auto",
+    padding = "md",
+    shadow = "md",
+    radius = "md",
+    animation = "slideFade",
     isOpen = false,
     children,
     ...rest
@@ -27,7 +30,11 @@ export function usePopoverProvider(props: UsePopoverProviderProps) {
     animation,
     side,
     isOpen,
+    width,
+    padding,
+    offset
   };
+  
   return { children, ...popoverContextProps };
 }
 
