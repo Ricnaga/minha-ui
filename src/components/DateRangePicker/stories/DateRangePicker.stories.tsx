@@ -30,8 +30,8 @@ type Story = StoryObj<DateRangePickerProps>;
 export const Default: Story = {
   render: (args) => {
     const [dateValue, setRangeDateValue] = useState<DateRange | null>({
-      start: new Date(),
-      end: new Date(),
+      from: new Date(),
+      to: new Date(),
     });
 
     return (

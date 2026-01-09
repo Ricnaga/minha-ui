@@ -20,7 +20,7 @@ export function useDateRangePickerProvider(
   function handleRangeCalendarChange(value: DateRange | null) {
     onRangeDateChange(value);
 
-    if (value?.start && value?.end) {
+    if (value?.from && value?.to) {
       handleClose();
     }
   }
