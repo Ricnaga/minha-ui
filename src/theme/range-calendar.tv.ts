@@ -12,7 +12,8 @@ export const rangeCalendar = tv({
 
     headerLabel: ["capitalize font-medium"],
 
-    gridWrapper: ["grid grid-cols-7", "auto-rows-[1.75rem]", "p-2"],
+    gridWrapper: ["grid grid-cols-7", "auto-rows-", "p-2"],
+
 
     gridDay: [
       "relative size-7",

@@ -1,13 +1,13 @@
-import type {
-  RangeCalendarHeaderProps,
-  UseRangeCalendarHeaderProps,
-} from "./range-calendar-header.types";
+import { useRangeCalendar } from "../../useRangeCalendar";
 
-export function useRangeCalendarHeader(props: UseRangeCalendarHeaderProps) {
-  // TODO: Implement hook logic
-  const rangeCalendarHeaderProps: RangeCalendarHeaderProps = {
-    ...props,
-  };
+export function useRangeCalendarHeader() {
+  const { currentMonth, goToNextMonth, goToPrevMonth, locale } =
+    useRangeCalendar();
 
-  return { rangeCalendarHeaderProps };
+  const label = new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+  }).format(currentMonth);
+
+  return { goToNextMonth, goToPrevMonth, label };
 }

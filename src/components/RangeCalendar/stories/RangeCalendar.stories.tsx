@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import type { DateRange, RangeCalendarProps } from "../range-calendar.types";
 import { RangeCalendar } from "../RangeCalendar";
+import { testDefaultRangeCalendar } from "./RangeCalendar.play";
 
 const meta: Meta<RangeCalendarProps> = {
   title: "Components/RangeCalendar",
@@ -23,10 +24,11 @@ type Story = StoryObj<RangeCalendarProps>;
 export const Default: Story = {
   render: (args) => {
     const [range, setRange] = useState<DateRange>({
-      start: new Date(),
-      end: null,
+      from: new Date(),
+      to: null,
     });
 
     return <RangeCalendar {...args} value={range} onDateChange={setRange} />;
   },
+  play: testDefaultRangeCalendar,
 };

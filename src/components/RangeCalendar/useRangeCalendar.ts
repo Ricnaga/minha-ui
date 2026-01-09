@@ -14,44 +14,44 @@ export function useRangeCalendarProvider(props: UseRangeCalendarProviderProps) {
   const { value: controlledValue, onDateChange, locale = "pt-BR" } = props;
 
   const [uncontrolledValue, setUncontrolledValue] = useState<DateRange>({
-    start: null,
-    end: null,
+    from: null,
+    to: null,
   });
 
   const value = controlledValue ?? uncontrolledValue;
 
   const [currentMonth, setCurrentMonth] = useState<Date>(
-    value.start ?? new Date()
+    value.from ?? new Date()
   );
 
   function setRange(date: Date) {
-    // Se não tem start ou range já completo → reset
-    if (!value.start || value.end) {
-      const next = { start: date, end: null };
+    // Se não tem from ou range já completo → reset
+    if (!value.from || value.to) {
+      const next: DateRange = { from: date, to: null };
       onDateChange?.(next);
       setUncontrolledValue(next);
       return;
     }
 
-    // start existe, ainda não tem end
-    if (date < value.start) {
+    // from existe, ainda não tem end
+    if (date < value.from) {
       // Inverte automaticamente
-      const next = { start: date, end: value.start };
+      const next: DateRange = { from: date, to: value.from };
       onDateChange?.(next);
       setUncontrolledValue(next);
       return;
     }
 
-    if (date.getTime() === value.start.getTime()) {
+    if (date.getTime() === value.from.getTime()) {
       // clicar na mesma data → range de 1 dia
-      const next = { start: date, end: date };
+      const next: DateRange = { from: date, to: date };
       onDateChange?.(next);
       setUncontrolledValue(next);
       return;
     }
 
-    // caso normal: data maior que start
-    const next = { start: value.start, end: date };
+    // caso normal: data maior que from
+    const next: DateRange = { from: value.from, to: date };
     onDateChange?.(next);
     setUncontrolledValue(next);
   }

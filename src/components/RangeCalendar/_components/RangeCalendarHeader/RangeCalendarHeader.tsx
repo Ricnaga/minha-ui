@@ -1,17 +1,11 @@
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { useRangeCalendar } from "../../useRangeCalendar";
 import { rangeCalendar } from "@/theme";
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { useRangeCalendarHeader } from "./useRangeCalendarHeader";
 
 const { headerWrapper, headerButton, headerLabel } = rangeCalendar();
 
 export function RangeCalendarHeader() {
-  const { currentMonth, goToNextMonth, goToPrevMonth, locale } =
-    useRangeCalendar();
-
-  const label = new Intl.DateTimeFormat(locale, {
-    month: "long",
-    year: "numeric",
-  }).format(currentMonth);
+  const { goToNextMonth, goToPrevMonth, label } = useRangeCalendarHeader();
 
   return (
     <header className={headerWrapper()}>

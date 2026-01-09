@@ -21,15 +21,15 @@ export function useRangeCalendarGridButton(
 
   const isOutsideMonth = day.getMonth() !== currentMonth.getMonth();
 
-  const hasCompleteRange = Boolean(value.start && value.end);
+  const hasCompleteRange = Boolean(value.from && value.to);
 
-  const isSelected = isSameDay(day, value.start) && !hasCompleteRange;
+  const isSelected = isSameDay(day, value.from) && !hasCompleteRange;
 
-  const isRangeStart = hasCompleteRange && isSameDay(day, value.start);
+  const isRangeStart = hasCompleteRange && isSameDay(day, value.from);
 
-  const isRangeEnd = hasCompleteRange && isSameDay(day, value.end);
+  const isRangeEnd = hasCompleteRange && isSameDay(day, value.to);
 
-  const inRange = hasCompleteRange && isInRange(day, value.start, value.end);
+  const inRange = hasCompleteRange && isInRange(day, value.from, value.to);
 
   const buttonProps: HTMLAttributes<HTMLButtonElement> = {
     className: gridDay({

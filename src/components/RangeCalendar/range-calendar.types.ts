@@ -1,8 +1,8 @@
 import type { useRangeCalendarProvider } from "./useRangeCalendar";
 
 export type DateRange = {
-  start: Date | null;
-  end: Date | null;
+  from: Date | null;
+  to: Date | null;
 };
 
 export type UseRangeCalendarProviderProps = {
