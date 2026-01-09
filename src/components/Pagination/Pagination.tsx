@@ -15,6 +15,7 @@ export function Pagination(props: PaginationProps) {
     <div className={base()}>
       <div className={wrapper()}>
         <PaginationButton
+          aria-label="Página anterior"
           onPageChange={() => handlePageChange(currentPage - 1)}
         >
           <CaretLeftIcon className={icons()} />
@@ -30,6 +31,7 @@ export function Pagination(props: PaginationProps) {
           ))}
         </div>
         <PaginationButton
+          aria-label="Próxima página"
           onPageChange={() => handlePageChange(currentPage + 1)}
         >
           <CaretRightIcon className={icons()} />

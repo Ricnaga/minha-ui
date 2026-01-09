@@ -29,7 +29,7 @@ module.exports = function (
             case "provider":
               return "Nome do componente provider (ex: modal-header)?";
             case "hooks":
-              return "Nome do hook (ex: entrada form, o hook criado: useForm)?";
+              return "Nome do hook (ex: entrada user-form, o hook criado: useUserForm)?";
             default:
               return "Inválido";
           }

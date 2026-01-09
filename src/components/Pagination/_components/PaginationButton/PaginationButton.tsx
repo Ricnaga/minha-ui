@@ -1,16 +1,20 @@
 import { paginationButton } from "@/theme";
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-type PaginationButtonProps = {
-  children: ReactNode;
+interface PaginationButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   onPageChange?: VoidFunction;
-};
+}
 
 export function PaginationButton(props: PaginationButtonProps) {
-  const { children, onPageChange } = props;
+  const { children, onPageChange, ...buttonProps } = props;
 
   return (
-    <button className={paginationButton()} onClick={onPageChange}>
+    <button
+      {...buttonProps}
+      className={paginationButton()}
+      onClick={onPageChange}
+    >
       {children}
     </button>
   );

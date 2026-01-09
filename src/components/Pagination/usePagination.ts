@@ -40,7 +40,7 @@ function buildPaginationItems(args: BuildPaginationItemsArgs) {
 }
 
 export function usePagination(props: UsePaginationProps) {
-  const { totalPages } = props;
+  const { totalPages,onPageChange } = props;
 
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -50,6 +50,7 @@ export function usePagination(props: UsePaginationProps) {
     if (pageNumber < 1 || pageNumber > totalPages || pageNumber === currentPage)
       return;
     setCurrentPage(pageNumber);
+    onPageChange(pageNumber)
   }
 
   const paginationItems = buildPaginationItems({
