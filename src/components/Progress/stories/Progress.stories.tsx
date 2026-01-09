@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Progress, type ProgressProps } from "../..";
+import { testDefaultProgress } from "./Progress.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ProgressProps> = {
@@ -66,4 +67,5 @@ export const Default: Story = {
       </div>
     );
   },
+  play: testDefaultProgress,
 };
