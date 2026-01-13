@@ -31,7 +31,7 @@ export * from "./pagination.tv";
 export * from "./popover-content.tv";
 export * from "./progress.tv";
 export * from "./range-calendar.tv";
-export * from "./select.tv";
+export * from "./select-item.tv";
 export * from "./skeleton.tv";
 export * from "./spinner.tv";
 export * from "./tabs.tv";

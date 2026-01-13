@@ -32,6 +32,7 @@ export const popoverContent = tv({
     },
 
     padding: {
+      none: "p-0",
       sm: "p-2",
       md: "p-3",
       lg: "p-4",

@@ -48,7 +48,7 @@ const meta: Meta<PopoverProps> = {
     },
     padding: {
       control: { type: "select" },
-      options: ["sm", "md", "lg"],
+      options: ["none", "sm", "md", "lg"],
       description: "Padding interno do popover",
       table: {
         category: "Variants",
