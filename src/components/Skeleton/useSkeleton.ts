@@ -2,11 +2,13 @@ import { skeleton } from "@/theme";
 import type { SkeletonProps, UseSkeletonProps } from "./skeleton.types";
 
 export function useSkeleton(props: UseSkeletonProps) {
-  const { className, variant = "rounded", size = "md", ...rest } = props;
+  const { className, shape = "rounded", ...rest } = props;
 
   const skeletonProps: SkeletonProps = {
     ...rest,
-    className: skeleton({ variant, size, className }),
+    role: "status",
+    "aria-busy": "true",
+    className: skeleton({ shape, className }),
   };
 
   return { skeletonProps };
