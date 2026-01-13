@@ -14,8 +14,28 @@ const meta: Meta<SkeletonProps> = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
+  argTypes: {
+    shape: {
+      control: { type: "select" },
+      options: ["rounded", "square", "circle"],
+      description: "Formato do Skeleton",
+      defaultValue: "rounded",
+      table: {
+        type: { summary: '"rounded" | "square" | "circle"' },
+        defaultValue: { summary: "rounded" },
+      },
+    },
+    className: {
+      control: "text",
+      description: "Classe Tailwind opcional para layout/customização",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+  },
   args: {
     shape: "rounded",
+    className: "h-14 w-32",
   },
 };
 
