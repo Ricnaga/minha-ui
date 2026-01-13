@@ -21,7 +21,7 @@ export function useSelectProvider(props: UseSelectProviderProps) {
       (optionValue) => optionValue.key === option.key
     );
 
-    if (foundedOption === -1 || selectOption === undefined) {
+    if (foundedOption === -1) {
       if (isMultiple) {
         const formattedOptions = [...selectOption, option];
         setSelectedOption(formattedOptions);
@@ -34,6 +34,7 @@ export function useSelectProvider(props: UseSelectProviderProps) {
       return;
     }
 
+    
     if (isMultiple) {
       const filteredOptions = selectOption.filter(
         (optionValue) => optionValue.key !== option.key
@@ -41,6 +42,7 @@ export function useSelectProvider(props: UseSelectProviderProps) {
 
       setSelectedOption(filteredOptions);
       onSelectChange(filteredOptions);
+      return
     }
 
     setSelectedOption([]);

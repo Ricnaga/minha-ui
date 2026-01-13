@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Select } from "../Select";
 import type { SelectProps } from "../select.types";
 import { fn } from "storybook/test";
-import { testDefaultSelect } from "./Select.play";
+import { testDefaultMultiple, testDefaultSelect } from "./Select.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<SelectProps> = {
@@ -39,4 +39,11 @@ type Story = StoryObj<SelectProps>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
   play: testDefaultSelect,
+};
+
+export const Multiple: Story = {
+  args: {
+    isMultiple: true,
+  },
+  play: testDefaultMultiple,
 };
