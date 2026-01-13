@@ -6,7 +6,7 @@ import type { InputProps } from "../input.types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<InputProps> = {
-  title: "Components/Input",
+  title: "Components/Formularios/Input",
   component: Input,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

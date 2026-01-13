@@ -11,7 +11,7 @@ import { testCompleteDrawer, testDefaultDrawer } from "./Drawer.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<DrawerProps> = {
-  title: "Components/Drawer",
+  title: "Components/Interação/Drawer",
   component: Drawer,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

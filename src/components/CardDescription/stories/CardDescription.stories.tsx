@@ -9,7 +9,7 @@ import { testDefaultCardDescription } from "./CardDescription.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<CardDescriptionProps> = {
-  title: "Components/Card/CardDescription",
+  title: "Components/Estruturas/Card/CardDescription",
   component: CardDescription,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

@@ -9,7 +9,7 @@ import { testDefaultDateRangepicker } from "./DateRangepicker.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<DateRangePickerProps> = {
-  title: "Components/DateRangePicker",
+  title: "Components/Formularios/DateRangePicker",
   component: DateRangePicker,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

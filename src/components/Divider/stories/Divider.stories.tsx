@@ -5,7 +5,7 @@ import { testDefaultDivider, testVerticalDivider } from "./Divider.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Components/Divider",
+  title: "Components/Estruturas/Divider",
   component: Divider,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

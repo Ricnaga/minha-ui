@@ -7,7 +7,7 @@ import { testDefaultMultiple, testDefaultSelect } from "./Select.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<SelectProps> = {
-  title: "Components/Select",
+  title: "Components/Formularios/Select",
   component: Select,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout

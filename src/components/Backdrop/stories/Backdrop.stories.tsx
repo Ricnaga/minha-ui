@@ -9,7 +9,7 @@ import { testDefaultBackdrop } from "./Backdrop.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<BackdropProps> = {
-  title: "Components/Backdrop",
+  title: "Components/Estruturas/Backdrop",
   component: Backdrop,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
