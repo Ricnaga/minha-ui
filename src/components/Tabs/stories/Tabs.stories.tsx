@@ -9,6 +9,7 @@ import { TabsTrigger } from "../../TabsTrigger";
 import { TabsList } from "../../TabsList";
 import { TabsPanels } from "../../TabsPanels";
 import { TabsPanel } from "../../TabsPanel";
+import { testDefaultTabs } from "./Tabs.play";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<TabsProps> = {
@@ -17,6 +18,15 @@ const meta: Meta<TabsProps> = {
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
+  },
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["default", "contained", "ghost"],
+    },
+  },
+  args: {
+    variant: "default",
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
@@ -46,4 +56,5 @@ export const Default: Story = {
       </Tabs>
     );
   },
+  play: testDefaultTabs,
 };
