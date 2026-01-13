@@ -3,15 +3,9 @@ import type { ButtonProps } from "./button.types";
 import { useButton } from "./useButton";
 
 export function Button(props: ButtonProps) {
-  const { buttonProps, children, isLoading } = useButton(props);
+  const { buttonProps, children, isLoading, spinnerProps } = useButton(props);
 
-  const buttonChildren = isLoading ? (
-    <div className="size-4">
-      <Spinner />
-    </div>
-  ) : (
-    children
-  );
+  const buttonChildren = isLoading ? <Spinner {...spinnerProps} /> : children;
 
   return <button {...buttonProps}>{buttonChildren}</button>;
 }

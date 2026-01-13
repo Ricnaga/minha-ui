@@ -8,7 +8,7 @@ export function Spinner(props: SpinnerProps) {
   const { svgProps } = useSpinner(props);
 
   return (
-    <div className={container()}>
+    <div className={container()} role="status" aria-busy="true">
       <div className={wrapper()}>
         <svg {...svgProps}>
           <circle cx="50" cy="50" r="20" />

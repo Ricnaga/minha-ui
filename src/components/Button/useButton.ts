@@ -2,6 +2,7 @@ import type { MouseEvent } from "react";
 import { useRipple } from "@/hooks";
 import { button } from "@/theme";
 import type { ButtonProps, UseButtonProps } from "./button.types";
+import type { SpinnerProps } from "../Spinner";
 
 export function useButton(props: UseButtonProps) {
   const {
@@ -31,5 +32,10 @@ export function useButton(props: UseButtonProps) {
     onClick: handleClick,
   };
 
-  return { buttonProps, isLoading, children };
+  const spinnerProps: SpinnerProps = {
+    color,
+    className: "size-4",
+  };
+
+  return { buttonProps, isLoading, children, spinnerProps };
 }

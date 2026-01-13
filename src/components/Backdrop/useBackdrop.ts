@@ -1,6 +1,7 @@
 import type { ActivityProps, HTMLAttributes } from "react";
 import { backdrop } from "@/theme";
 import type { BackdropProps, UseBackdropProps } from "./backdrop.types";
+import type { SpinnerProps } from "../Spinner";
 
 const { base, wrapper } = backdrop();
 
@@ -27,7 +28,13 @@ export function useBackdrop(props: UseBackdropProps) {
     className: wrapper({ isLoading }),
   };
 
+  const spinnerProps: SpinnerProps = {
+    color: "primary",
+    thickness: "lg",
+    className: "size-20",
+  };
+
   const mode: ActivityProps["mode"] = isLoading ? "visible" : "hidden";
 
-  return { children, backdropProps, mode, wrapperProps };
+  return { children, backdropProps, mode, wrapperProps, spinnerProps };
 }
