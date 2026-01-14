@@ -5,7 +5,7 @@ import { videoPlayer } from "@/theme";
 const { thumbnail, thumbnailButton, thumbnailIcon } = videoPlayer();
 
 export function useThumbnail(props: UseThumbnailProps) {
-  const { onOpen, thumbnailSrc, alt } = props;
+  const { onOpen, thumbnailSrc, thumbnailSize, alt } = props;
 
   const playButtonProps: HTMLAttributes<HTMLButtonElement> = {
     onClick: onOpen,
@@ -16,7 +16,7 @@ export function useThumbnail(props: UseThumbnailProps) {
   const coverProps: ImgHTMLAttributes<HTMLImageElement> = {
     src: thumbnailSrc,
     alt,
-    className: thumbnail(),
+    className: thumbnail({ thumbnailSize }),
   };
 
   const playIconProps: HTMLAttributes<HTMLSpanElement> = {

@@ -11,7 +11,7 @@ export function Thumbnail(props: ThumbnailProps) {
 
       {/* Indicador visual de play */}
       <span {...playIconProps}>
-        <PlayIcon />
+        <PlayIcon weight="fill" />
       </span>
     </button>
   );
