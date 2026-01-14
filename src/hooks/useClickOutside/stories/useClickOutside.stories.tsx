@@ -4,7 +4,7 @@ import { useToggle } from "@/hooks";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { useClickOutside } from "..";
-import { testClickOutside } from "./useClickOutside.play";
+import { testDefaultClickOutside } from "./useClickOutside.play";
 
 const meta: Meta = {
   title: "Hooks/useClickOutside",
@@ -64,5 +64,5 @@ export const Default: StoryObj = {
       </div>
     );
   },
-  play: testClickOutside,
+  play: testDefaultClickOutside,
 };
