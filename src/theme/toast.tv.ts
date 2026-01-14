@@ -3,7 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const toast = tv({
   base: [
     "pointer-events-auto flex items-center gap-3",
-    "rounded-md shadow-lg p-4 text-white",
+    "rounded-md shadow-md p-4 text-white",
     "transition-all",
     "fill-mode-both",
     "data-[state=open]:animate-in",
@@ -11,12 +11,12 @@ export const toast = tv({
   ],
   variants: {
     variant: {
-      primary: "bg-sky-600",
-      secondary: "bg-pink-600",
-      success: "bg-emerald-600",
-      error: "bg-red-600",
-      warning: "bg-amber-600 text-black",
-      info: "bg-blue-600",
+      primary: "bg-sky-600 text-sky-950",
+      secondary: "bg-pink-600 text-pink-950",
+      success: "bg-emerald-600 text-emerald-950",
+      error: "bg-red-600 text-red-950",
+      warning: "bg-amber-600 text-amber-950",
+      info: "bg-blue-600 text-blue-950",
     },
     position: {
       "top-right": [

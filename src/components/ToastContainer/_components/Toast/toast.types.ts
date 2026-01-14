@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "react";
 export interface UseToastProps
   extends HTMLAttributes<HTMLDivElement>,
     ToastVariants {
-  state: "open" | "closed";
+  state?: "open" | "closed";
   "data-state"?: "open" | "closed";
 }
 
