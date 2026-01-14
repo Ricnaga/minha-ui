@@ -1,6 +1,8 @@
 import type { RequiredChildren } from "@/types";
 import { createContext, useState } from "react";
 import { useContext } from "..";
+import type { StoryObj } from "@storybook/react-vite";
+import { testDefaultContext } from "./useContext.play";
 
 export default {
   title: "Hooks/useContext",
@@ -15,41 +17,44 @@ export default {
 type DemoContextType = { value: string; setValue: (v: string) => void };
 const DemoContext = createContext<DemoContextType | undefined>(undefined);
 
-export const Default = () => {
-  // Provider minimalista para o story
-  const DemoProvider = ({ children }: RequiredChildren) => {
-    const [value, setValue] = useState("Hello Storybook!");
+export const Default: StoryObj = {
+  render: () => {
+    // Provider minimalista para o story
+    const DemoProvider = ({ children }: RequiredChildren) => {
+      const [value, setValue] = useState("Hello Storybook!");
+      return (
+        <DemoContext.Provider value={{ value, setValue }}>
+          {children}
+        </DemoContext.Provider>
+      );
+    };
+
+    // Usando o hook
+    const DemoConsumer = () => {
+      const { value, setValue } = useContext({
+        context: DemoContext,
+        hookName: "useDemoContext",
+        providerName: "Demo",
+      });
+
+      return (
+        <div className="text-center">
+          <p>Value from context: {value}</p>
+          <button
+            className="text-white bg-blue-500 rounded p-1 cursor-pointer"
+            onClick={() => setValue("Updated value!")}
+          >
+            Update Value
+          </button>
+        </div>
+      );
+    };
+
     return (
-      <DemoContext.Provider value={{ value, setValue }}>
-        {children}
-      </DemoContext.Provider>
+      <DemoProvider>
+        <DemoConsumer />
+      </DemoProvider>
     );
-  };
-
-  // Usando o hook
-  const DemoConsumer = () => {
-    const { value, setValue } = useContext({
-      context: DemoContext,
-      hookName: "useDemoContext",
-      providerName: "Demo",
-    });
-
-    return (
-      <div className="text-center">
-        <p>Value from context: {value}</p>
-        <button
-          className="text-white bg-blue-500 rounded p-1 cursor-pointer"
-          onClick={() => setValue("Updated value!")}
-        >
-          Update Value
-        </button>
-      </div>
-    );
-  };
-
-  return (
-    <DemoProvider>
-      <DemoConsumer />
-    </DemoProvider>
-  );
+  },
+  play: testDefaultContext,
 };
