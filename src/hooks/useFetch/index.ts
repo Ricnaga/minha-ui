@@ -14,7 +14,7 @@ export interface FetcherBase<T extends unknown | string = string>
 const fetcher = async <T extends unknown | string = string>(
   data: FetcherBase
 ): Promise<T> => {
-  const FETCHER_URL = new URL("/api".concat(data.endpoint), data.baseURL);
+  const FETCHER_URL = new URL(data.endpoint, data.baseURL);
 
   if (data.params) {
     Object.entries(data.params).forEach(([key, value]) => {
@@ -57,7 +57,7 @@ type FetchState<T> = {
 };
 
 export function useFetch<T = unknown>(options: UseFetchOptions) {
-  const { isRequesting = true, ...fetchOptions } = options;
+  const { isRequesting = true, baseURL, ...fetchOptions } = options;
 
   const [state, setState] = useState<FetchState<T>>({
     data: null,
@@ -80,6 +80,7 @@ export function useFetch<T = unknown>(options: UseFetchOptions) {
       try {
         const data = await fetcher<T>({
           endpoint: memoizedOptions.endpoint,
+          baseURL,
           config: { ...memoizedOptions, signal },
         });
 
@@ -88,13 +89,14 @@ export function useFetch<T = unknown>(options: UseFetchOptions) {
         if (!(err instanceof DOMException && err.name === "AbortError")) {
           setState((prev) => ({
             ...prev,
+            data: null,
             isLoading: false,
             error: err as Error,
           }));
         }
       }
     },
-    [memoizedOptions]
+    [baseURL, memoizedOptions]
   );
 
   useEffect(() => {
