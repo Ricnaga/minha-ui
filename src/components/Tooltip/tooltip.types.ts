@@ -2,9 +2,9 @@ import type { HTMLAttributes, ReactNode } from "react";
 import type { TooltipVariants } from "@/theme";
 
 export interface UseTooltipProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "color">,
+  extends Omit<HTMLAttributes<HTMLDivElement>, "color" | "content">,
     TooltipVariants {
-  description: ReactNode;
+  content: ReactNode;
 }
 
 export type TooltipProps = UseTooltipProps;

@@ -1,5 +1,6 @@
-import { useState, type HTMLAttributes } from "react";
+import { useDisclosure } from "@/hooks";
 import { tooltip } from "@/theme";
+import { type HTMLAttributes } from "react";
 import { type TooltipProps, type UseTooltipProps } from "./tooltip.types";
 
 export function useTooltip(props: UseTooltipProps) {
@@ -8,25 +9,28 @@ export function useTooltip(props: UseTooltipProps) {
     color = "black",
     position = "top",
     children,
-    description,
+    content,
     ...rest
   } = props;
 
-  const [isVisible, setAsVisible] = useState<boolean>(false);
+  const { handleClose, handleOpen, isOpen } = useDisclosure();
 
   const wrapperProps: HTMLAttributes<HTMLDivElement> = {
     className: "relative inline-block",
-    onMouseEnter: () => setAsVisible(true),
-    onMouseLeave: () => setAsVisible(false),
+    onMouseEnter: handleOpen,
+    onMouseLeave: handleClose,
+    onFocus: handleOpen,
+    onBlur: handleClose,
   };
 
-  const tooltipProps: Omit<TooltipProps, "description"> = {
+  const tooltipProps: Omit<TooltipProps, "content"> = {
     ...rest,
-    children: description,
+    children: content,
+    role: "tooltip",
+    "aria-hidden": !isOpen,
     className: tooltip({
       color,
       position,
-      isVisible,
       className,
     }),
   };
