@@ -7,7 +7,7 @@ export const testDefaultIntersectionObserver: PlayFunction = async ({
   const canvas = within(canvasElement);
 
   // Seleciona o elemento que será observado
-  const observedElement = await canvas.getByText(/fora da tela/i);
+  const observedElement = await canvas.findByText(/fora da tela/i);
 
   // Verifica que inicialmente está vermelho
   await waitFor(() => {
