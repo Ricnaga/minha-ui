@@ -3,6 +3,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { useDebounce } from "../";
+import { testDefaultDebounce } from "./useDebounce.play";
 
 const meta: Meta = {
   title: "Hooks/useDebounce",
@@ -41,10 +42,13 @@ export const Default: StoryObj = {
 
           <p>
             <strong>Valor debounced:</strong>{" "}
-            <span className="text-green-600">{debouncedValue || "—"}</span>
+            <span data-testid="debounced-value" className="text-green-600">
+              {debouncedValue || "—"}
+            </span>
           </p>
         </div>
       </div>
     );
   },
+  play: testDefaultDebounce,
 };
