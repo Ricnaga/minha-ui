@@ -1,9 +1,12 @@
-type Listener = VoidFunction;
+type Listener = (key?: string) => void;
 
 const listeners = new Set<Listener>();
 
-const emit = () => {
-  listeners.forEach((listener) => listener());
+const canUseDOM =
+  typeof window !== "undefined" && typeof window.localStorage !== "undefined";
+
+const emit = (key?: string) => {
+  listeners.forEach((listener) => listener(key));
 };
 
 const subscribe = (listener: Listener) => {
@@ -12,10 +15,14 @@ const subscribe = (listener: Listener) => {
 };
 
 const getItem = <T>(key: string): T | null => {
-  if (typeof window === "undefined") return null;
+  if (!canUseDOM) return null;
 
-  const value = localStorage.getItem(key);
-  return value ? JSON.parse(value) : null;
+  try {
+    const value = localStorage.getItem(key);
+    return value ? (JSON.parse(value) as T) : null;
+  } catch {
+    return null;
+  }
 };
 
 const setItem = <T>(key: string, value: T) => {
@@ -34,7 +41,9 @@ const clear = () => {
 };
 
 if (typeof window !== "undefined") {
-  window.addEventListener("storage", emit);
+  window.addEventListener("storage", (event) => {
+    emit(event.key ?? undefined);
+  });
 }
 
 export const localStorageStore = {
@@ -43,4 +52,5 @@ export const localStorageStore = {
   setItem,
   removeItem,
   clear,
+  emit,
 };
