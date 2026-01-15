@@ -9,7 +9,6 @@ export const testDefaultLocalStorage: PlayFunction = async ({
 
   // 2️⃣ Seleciona os botões pelo texto
   const createButton = await canvas.findByRole("button", { name: /create/i });
-  const updateButton = await canvas.findByRole("button", { name: /update/i });
   const removeButton = await canvas.findByRole("button", { name: /remove/i });
   const clearButton = await canvas.findByRole("button", { name: /clear/i });
 
@@ -19,12 +18,6 @@ export const testDefaultLocalStorage: PlayFunction = async ({
   await userEvent.click(createButton);
   await waitFor(() => {
     expect(valueContainer).toHaveTextContent("created value");
-  });
-
-  // 4️⃣ Testa Update
-  await userEvent.click(updateButton);
-  await waitFor(() => {
-    expect(valueContainer).toHaveTextContent("updated value");
   });
 
   // 5️⃣ Testa Remove

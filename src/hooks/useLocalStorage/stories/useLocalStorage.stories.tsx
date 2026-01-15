@@ -15,7 +15,7 @@ export default meta;
 
 export const Default: StoryObj = {
   render: () => {
-    const { value, create, update, remove, clear } = useLocalStorage<string>(
+    const { value, create, remove, clear } = useLocalStorage<string>(
       "storybook-example",
       "initial value"
     );
@@ -37,13 +37,6 @@ export const Default: StoryObj = {
             className="rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-700"
           >
             Create
-          </button>
-
-          <button
-            onClick={() => update("updated value")}
-            className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
-          >
-            Update
           </button>
 
           <button

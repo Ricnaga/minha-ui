@@ -12,10 +12,6 @@ export function useLocalStorage<T>(key: string, initialValue?: T) {
     localStorageStore.setItem(key, value);
   };
 
-  const update = (value: T) => {
-    localStorageStore.setItem(key, value);
-  };
-
   const remove = () => {
     localStorageStore.removeItem(key);
   };
@@ -27,7 +23,6 @@ export function useLocalStorage<T>(key: string, initialValue?: T) {
   return {
     value,
     create,
-    update,
     remove,
     clear,
   };
