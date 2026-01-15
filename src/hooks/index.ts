@@ -4,6 +4,7 @@ export * from "./useDisclosure";
 export * from "./useFetch";
 export * from "./useInfiniteScroll";
 export * from "./useIntersectionObserver";
+export * from "./useLocalStorage";
 export * from "./usePagination";
 export * from "./useRipple";
 export * from "./useToggle";
