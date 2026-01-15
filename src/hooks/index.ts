@@ -1,3 +1,4 @@
+export * from "./useBroadcastChannel";
 export * from "./useClickOutside";
 export * from "./useContext";
 export * from "./useDisclosure";
