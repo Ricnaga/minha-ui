@@ -34,7 +34,7 @@ const clear = () => {
 };
 
 if (typeof window !== "undefined") {
-  addEventListener("storage", emit);
+  window.addEventListener("storage", emit);
 }
 
 export const localStorageStore = {

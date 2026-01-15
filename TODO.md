@@ -1,5 +1,4 @@
 ver hooks
 usepagination
-usedisclosure (stories)
-useinfinitescroll
-useintersectionobserver
+usar new map no select
+stories do datetestid
