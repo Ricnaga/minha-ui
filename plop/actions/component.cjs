@@ -43,7 +43,7 @@ module.exports = (
       .concat(
         "/src/components/{{pascalCase name}}/stories/{{pascalCase name}}.play.ts"
       ),
-    templateFile: "templates/component/playTest.ts.hbs",
+    templateFile: "templates/testing/playTest.ts.hbs",
   },
   {
     type: "add",

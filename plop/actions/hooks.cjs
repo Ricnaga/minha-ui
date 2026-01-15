@@ -5,9 +5,7 @@ module.exports = (
 ) => [
   {
     type: "add",
-    path: process
-      .cwd()
-      .concat("/src/hooks/use{{pascalCase name}}/index.ts"),
+    path: process.cwd().concat("/src/hooks/use{{pascalCase name}}/index.ts"),
     templateFile: "templates/hooks/useHooks.ts.hbs",
   },
   {
@@ -18,6 +16,15 @@ module.exports = (
         "/src/hooks/use{{pascalCase name}}/stories/use{{pascalCase name}}.stories.tsx"
       ),
     templateFile: "templates/hooks/stories.tsx.hbs",
+  },
+  {
+    type: "add",
+    path: process
+      .cwd()
+      .concat(
+        "/src/hooks/use{{pascalCase name}}/stories/use{{pascalCase name}}.play.ts"
+      ),
+    templateFile: "templates/testing/playTest.ts.hbs",
   },
   {
     type: "modify",
