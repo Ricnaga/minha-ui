@@ -1,13 +1,16 @@
 import type { FetcherBase } from "@/types";
+import { getCachedResource, getCacheKey, setCachedResource } from "./cache";
 import { fetcher } from "./fetcher";
 
-const FetchStatus = {
+export const FetchStatus = {
   PENDING: "PENDING",
   SUCCESS: "SUCCESS",
   ERROR: "ERROR",
 } as const;
 
-type Status = (typeof FetchStatus)[keyof typeof FetchStatus];
+export type Status = (typeof FetchStatus)[keyof typeof FetchStatus];
+
+export type Resource = ReturnType<typeof promiseWrapper>;
 
 export const promiseWrapper = <T>(
   factory: (signal: AbortSignal) => Promise<T>,
@@ -45,29 +48,17 @@ export const promiseWrapper = <T>(
   };
 };
 
-const resourceCache = new Map<string, ReturnType<typeof promiseWrapper>>();
-
-export function getCacheKey(data: FetcherBase) {
-  return `${data.baseURL}${data.endpoint}?${JSON.stringify(data.params ?? {})}`;
-}
-
 export const createResource = <T>(data: FetcherBase) => {
   const key = getCacheKey(data);
 
-  if (resourceCache.has(key)) return resourceCache.get(key)!;
+  const cached = getCachedResource(key);
+  if (cached) return cached;
 
   const resource = promiseWrapper<T>((signal) =>
     fetcher<T>({ ...data, config: { ...data.config, signal } }),
   );
 
-  resourceCache.set(key, resource);
+  setCachedResource(key, resource);
+
   return resource;
 };
-
-export function invalidateResource(key: string) {
-  if (resourceCache.has(key)) {
-    const resource = resourceCache.get(key)!;
-    resource.abort(); // opcional: cancela fetch pendente
-    resourceCache.delete(key);
-  }
-}

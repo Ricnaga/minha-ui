@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import {
-  createResource,
-  getCacheKey,
-  invalidateResource,
-} from "src/infra/fetchers/wrapper";
+import { getCacheKey, invalidateResource } from "src/infra/fetchers/cache";
+import { createResource } from "src/infra/fetchers/wrapper";
 import type { FetcherBase } from "src/types/api";
 
 export function useResource<T>(props: FetcherBase) {
