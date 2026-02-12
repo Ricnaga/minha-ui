@@ -7,9 +7,14 @@ import { useDatePickerPopover } from "./useDatePickerPopover";
 
 export function DatePickerPopover() {
   const { isOpen, handleOpen } = useDatePickerPopover();
-  
+
   return (
-    <Popover isOpen={isOpen} onPopoverChange={handleOpen} shadow="xl">
+    <Popover
+      isOpen={isOpen}
+      onPopoverChange={handleOpen}
+      shadow="xl"
+      width="trigger"
+    >
       <PopoverTrigger>
         <DatePickerInput />
       </PopoverTrigger>

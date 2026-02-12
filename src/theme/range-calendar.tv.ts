@@ -2,7 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const rangeCalendar = tv({
   slots: {
-    headerWrapper: ["flex items-center justify-between", "p-2 text-sm"],
+    headerWrapper: ["flex items-center justify-between", "p-2 text-sm text-center"],
 
     headerButton: [
       "transition-all rounded-full",
@@ -12,7 +12,7 @@ export const rangeCalendar = tv({
 
     headerLabel: ["capitalize font-medium"],
 
-    gridWrapper: ["grid grid-cols-7", "auto-rows-", "p-2"],
+    gridWrapper: ["grid grid-cols-7", "auto-rows"],
 
 
     gridDay: [

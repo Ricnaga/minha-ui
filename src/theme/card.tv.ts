@@ -1,10 +1,9 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const card = tv({
-  base: "w-full min-w-60 p-2 grid items-center justify-center",
+  base: "w-full min-w-60 p-2 grid items-center justify-center border border-neutral-400/40",
   variants: {
     radius: {
-      none: "border-0",
       sm: "rounded-sm",
       md: "rounded-md",
       lg: "rounded-lg",

@@ -9,7 +9,7 @@ export function DateRangePickerPopover() {
   const { handleOpen, isOpen } = useDateRangePickerPopover();
 
   return (
-    <Popover isOpen={isOpen} onPopoverChange={handleOpen} shadow="xl">
+    <Popover isOpen={isOpen} onPopoverChange={handleOpen} shadow="xl" width="trigger">
       <PopoverTrigger>
         <DateRangePickerInput />
       </PopoverTrigger>

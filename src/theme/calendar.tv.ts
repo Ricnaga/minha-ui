@@ -2,13 +2,13 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const calendar = tv({
   slots: {
-    headerWrapper: ["flex items-center justify-between p-2 text-sm"],
+    headerWrapper: ["flex items-center justify-between text-center gap-2 p-2 text-sm"],
     headerButton: [
       "transition-all rounded-full",
       "bg-sky-50 p-1 hover:bg-sky-100 cursor-pointer ",
     ],
     headerLabel: ["capitalize font-medium"],
-    gridWrapper: ["grid grid-cols-7 gap-1 p-2"],
+    gridWrapper: ["grid grid-cols-7 gap-1"],
     gridDay: [
       "size-6 rounded-full text-sm transition-colors cursor-pointer",
       "hover:bg-sky-400/20"

@@ -22,8 +22,18 @@ const meta: Meta<CardProps> = {
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
+  argTypes: {
+    radius: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg", "full"],
+    },
+    shadow: {
+      control: { type: "select" },
+      options: ["none", "sm", "md", "lg", "xl"],
+    },
+  },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { children: "Conteúdo do Card" },
+  args: { children: "Conteúdo do Card", radius: "md", shadow: "md" },
 };
 
 export default meta;
