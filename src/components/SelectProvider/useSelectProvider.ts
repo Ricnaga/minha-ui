@@ -14,39 +14,28 @@ export function useSelectProvider(props: UseSelectProviderProps) {
   const { isMultiple, onSelectChange } = props;
   const { isOpen, handleOpen, handleClose } = useDisclosure();
 
-  const [selectOption, setSelectedOption] = useState<SelectOptions[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<Map<string, SelectOptions>>(new Map());
 
   function handleSelectChange(option: SelectOptions) {
-    const foundedOption = selectOption.findIndex(
-      (optionValue) => optionValue.key === option.key
-    );
+    setSelectedOptions((prev) => {
+      const newMap = new Map(prev);
 
-    if (foundedOption === -1) {
-      if (isMultiple) {
-        const formattedOptions = [...selectOption, option];
-        setSelectedOption(formattedOptions);
-        onSelectChange(formattedOptions);
-        return;
+      if (newMap.has(option.key.toString())) {
+        if (isMultiple) {
+          newMap.delete(option.key.toString());
+        } else {
+          newMap.clear();
+        }
+      } else {
+        if (!isMultiple) {
+          newMap.clear();
+        }
+        newMap.set(option.key.toString(), option);
       }
 
-      setSelectedOption([option]);
-      onSelectChange([option]);
-      return;
-    }
-
-    
-    if (isMultiple) {
-      const filteredOptions = selectOption.filter(
-        (optionValue) => optionValue.key !== option.key
-      );
-
-      setSelectedOption(filteredOptions);
-      onSelectChange(filteredOptions);
-      return
-    }
-
-    setSelectedOption([]);
-    onSelectChange([]);
+      onSelectChange(Array.from(newMap.values()));
+      return newMap;
+    });
   }
 
   return {
@@ -54,7 +43,8 @@ export function useSelectProvider(props: UseSelectProviderProps) {
     handleOpen,
     handleClose,
     handleSelectChange,
-    selectOption,
+    selectedOptions,
+    selectOption: Array.from(selectedOptions.values()),
     ...props,
   };
 }

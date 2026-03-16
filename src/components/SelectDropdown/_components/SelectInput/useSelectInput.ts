@@ -2,11 +2,13 @@ import type { InputProps } from "src/components/Input";
 import { useSelectContext } from "src/components/SelectProvider/useSelectProvider";
 
 export function useSelectInput() {
-  const { selectOption } = useSelectContext();
+  const { selectedOptions } = useSelectContext();
 
   const inputProps: InputProps = {
     readOnly: true,
-    value: selectOption.map((values) => values.value).join(",") ?? "",
+    value: Array.from(selectedOptions.values())
+      .map((v) => v.value)
+      .join(",") ?? "",
   };
 
   return {
