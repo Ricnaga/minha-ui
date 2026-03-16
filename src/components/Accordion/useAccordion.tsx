@@ -10,7 +10,7 @@ export const AccordionContext = createContext<AccordionContextProps>(
 );
 
 export function useAccordionProvider(props: UseAccordionProviderProps) {
-  const { children, type = "single", defaultValue = [], onValueChange } = props;
+  const { children, type = "single", defaultValue = [], onValueChange, variant, size } = props;
 
   const [accordionValue, setAccordionValue] = useState<string[]>(defaultValue);
 
@@ -35,7 +35,7 @@ export function useAccordionProvider(props: UseAccordionProviderProps) {
     );
   }
 
-  return { children, handleToggle, value: props.value, type };
+  return { children, handleToggle, value: props.value, type, currentValue, variant, size };
 }
 
 export function useAccordion() {

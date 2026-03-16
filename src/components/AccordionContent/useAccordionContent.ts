@@ -1,25 +1,20 @@
 import { accordion } from "@/theme";
-import { useAccordion } from "../Accordion/useAccordion";
 import { useAccordionItem } from "../AccordionItem/useAccordionItem";
-import type {
-  AccordionContentProps,
-  UseAccordionContentProps,
-} from "./accordion-content.types";
 
-const { accordionContent } = accordion();
+export function useAccordionContent() {
+  const { accordionContentWrapper, accordionContentInner } = accordion();
+  const { isOpen, variant } = useAccordionItem();
 
-export function useAccordionContent(props: UseAccordionContentProps) {
-  const { value: itemValue } = useAccordionItem();
-  const { value } = useAccordion();
-
-  const isOpen = value?.includes(itemValue);
-
-  const accordionProps: AccordionContentProps = {
-    ...props,
-    "data-state": isOpen ? "open" : "closed",
-    hidden: !isOpen, // acessibilidade
-    className: accordionContent(),
+  return {
+    accordionContentWrapperProps: {
+      "data-state": isOpen ? "open" : "closed",
+      className: accordionContentWrapper({ variant }),
+      style: {
+        gridTemplateRows: isOpen ? "1fr" : "0fr",
+      },
+    },
+    accordionContentInnerProps: {
+      className: accordionContentInner({ variant }),
+    },
   };
-
-  return { accordionProps };
 }

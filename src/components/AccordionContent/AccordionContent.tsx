@@ -1,8 +1,14 @@
-import type { AccordionContentProps } from "./accordion-content.types";
 import { useAccordionContent } from "./useAccordionContent";
 
-export function AccordionContent(props: AccordionContentProps) {
-  const { accordionProps } = useAccordionContent(props);
+export function AccordionContent({ children }: { children: React.ReactNode }) {
+  const { accordionContentWrapperProps, accordionContentInnerProps } =
+    useAccordionContent();
 
-  return <div {...accordionProps} />;
+  return (
+    <div {...accordionContentWrapperProps}>
+      <div {...accordionContentInnerProps}>
+        <div className="p-2">{children}</div>
+      </div>
+    </div>
+  );
 }
