@@ -34,6 +34,8 @@ export * from "./range-calendar.tv";
 export * from "./select-item.tv";
 export * from "./skeleton.tv";
 export * from "./spinner.tv";
+export * from "./stepper.tv";
+export * from "./stepper-item.tv";
 export * from "./tabs.tv";
 export * from "./toast.tv";
 export * from "./tooltip.tv";
