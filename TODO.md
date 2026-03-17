@@ -1,4 +1,2 @@
-ver hooks
-usepagination
-usar new map no select
-stories do datetestid
+criar loading topbar
+montar os components customizados (um usa suspense e error boundary e o outro é guiado por isloading, iserror, etc)
