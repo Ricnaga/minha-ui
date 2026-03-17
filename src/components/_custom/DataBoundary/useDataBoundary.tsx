@@ -23,7 +23,7 @@ export function useDataBoundary<T>(props: UseDataBoundaryProps<T>) {
 
     if (hasData && children) {
       if (typeof children === "function") {
-        return children({ data: data as T });
+        return children({ data });
       }
       return children;
     }
