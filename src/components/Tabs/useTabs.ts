@@ -1,4 +1,4 @@
-import { createContext, type ProviderProps } from "react";
+import { createContext, useState, type ProviderProps } from "react";
 import { useContext } from "@/hooks";
 import type {
   TabsContextProps,
@@ -10,12 +10,21 @@ export const TabsContext = createContext<TabsContextProps>(
 );
 
 export function useTabsProvider(props: UseTabsContextProps) {
-  const { children, variant = "default", ...rest } = props;
+  const { children, variant = "default", value, onTabChange } = props;
+
+  const [prevValue, setPrevValue] = useState(value);
+
+  const handleTabChange = (newValue: string) => {
+    setPrevValue(value);
+    onTabChange(newValue);
+  };
 
   const contextProps: ProviderProps<TabsContextProps> = {
     children,
     value: {
-      ...rest,
+      value,
+      prevValue,
+      onTabChange: handleTabChange,
       variant,
     },
   };

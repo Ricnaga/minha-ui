@@ -8,4 +8,6 @@ export interface UseTabsContextProps extends TabsVariants, RequiredChildren {
 
 export type TabsProps = UseTabsContextProps;
 
-export type TabsContextProps = Omit<UseTabsContextProps, "children">;
+export type TabsContextProps = Omit<UseTabsContextProps, "children"> & {
+  prevValue: string;
+};
