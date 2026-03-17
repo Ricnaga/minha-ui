@@ -1,20 +1,31 @@
+import { tabs } from "@/theme";
 import { useTabs } from "../Tabs/useTabs";
 import {
   type TabsPanelProps,
   type UseTabsPanelProps,
 } from "./tabs-panel.types";
 
-export function useTabsPanel(props: UseTabsPanelProps) {
-  const { value: tabsValue, ...rest } = props;
+const { panel: panelVariants } = tabs();
 
-  const { value: active } = useTabs();
+export function useTabsPanel(props: UseTabsPanelProps) {
+  const { value: tabsValue, className, ...rest } = props;
+
+  const { value: active, variant } = useTabs();
   const isActive = active === tabsValue;
 
-  const tabsPanelProps: Omit<TabsPanelProps, "value"> = {
+  const tabsPanelProps = {
     ...rest,
-    role: "tabspanel",
-    style: { display: isActive ? "block" : "none" },
-  };
+    role: "tabpanel",
+    "data-value": tabsValue,
+    className: panelVariants({
+      variant,
+      className,
+    }),
+    style: {
+      display: isActive ? "block" : "none",
+      ...rest.style,
+    },
+  } as Omit<TabsPanelProps, "value">;
 
   return { tabsPanelProps };
 }
