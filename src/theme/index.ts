@@ -38,5 +38,6 @@ export * from "./stepper.tv";
 export * from "./stepper-item.tv";
 export * from "./tabs.tv";
 export * from "./toast.tv";
+export * from "./top-loading-bar.tv";
 export * from "./tooltip.tv";
 export * from "./video-player.tv";

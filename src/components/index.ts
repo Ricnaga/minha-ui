@@ -58,5 +58,6 @@ export * from "./TabsPanel";
 export * from "./TabsPanels";
 export * from "./TabsTrigger";
 export * from "./ToastContainer";
+export * from "./TopLoadingBarProvider";
 export * from "./Tooltip";
 export * from "./VideoPlayer";
