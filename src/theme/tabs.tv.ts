@@ -9,6 +9,7 @@ export const tabs = tv({
       "flex items-center justify-center gap-2 px-3 py-2.5 hover:cursor-pointer transition-all",
       "transition-colors duration-300 ease-in-out",
     ],
+    panel: "",
   },
   variants: {
     variant: {
@@ -41,10 +42,7 @@ export const tabs = tv({
       isSelected: true,
       variant: "default",
       class: {
-        listItem: [
-          "text-sky-700",
-          "after:left-0 after:w-full",
-        ],
+        listItem: ["text-sky-700", "after:left-0 after:w-full"],
       },
     },
     {
