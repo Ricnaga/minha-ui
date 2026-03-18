@@ -1,14 +1,14 @@
 import { useEffect, useRef, useCallback } from "react";
 
-type UseOutsideClickOptions = {
+type UseClickAwayOptions = {
   onOutsideClick: (event: Event) => void;
   enabled?: boolean;
 };
 
-export function useClickOutside<T extends Node = HTMLElement>({
+export function useClickAway<T extends Node = HTMLElement>({
   onOutsideClick,
   enabled = true,
-}: UseOutsideClickOptions) {
+}: UseClickAwayOptions) {
   const nodeRef = useRef<T | null>(null);
 
   const setRef = useCallback((node: T | null) => {

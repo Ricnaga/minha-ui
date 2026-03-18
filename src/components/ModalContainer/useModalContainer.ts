@@ -1,4 +1,4 @@
-import { useClickOutside } from "@/hooks";
+import { useClickAway } from "@/hooks";
 import { modalContainer } from "@/theme";
 import { useModal } from "../Modal/useModal";
 import type {
@@ -10,7 +10,7 @@ export function useModalContainer(props: UseModalContainerProps) {
   const { radius = "md", shadow = "md", padding = "md", ...rest } = props;
   const { onClose, isOpen } = useModal();
 
-  const modalContainerRef = useClickOutside({
+  const modalContainerRef = useClickAway({
     onOutsideClick: onClose,
     enabled: true,
   });

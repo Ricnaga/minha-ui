@@ -1,7 +1,7 @@
 import type { PlayFunction } from "storybook/internal/csf";
 import { expect, userEvent, within } from "storybook/test";
 
-export const testDefaultClickOutside: PlayFunction = async ({ canvasElement }) => {
+export const testDefaultClickAway: PlayFunction = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   const user = userEvent.setup();
 

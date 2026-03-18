@@ -1,6 +1,7 @@
 export * from "./useBroadcastChannel";
-export * from "./useClickOutside";
+export * from "./useClickAway";
 export * from "./useContext";
+export * from "./useCopyToClipboard";
 export * from "./useDisclosure";
 export * from "./useFetch";
 export * from "./useInfiniteScroll";
@@ -9,4 +10,5 @@ export * from "./useLocalStorage";
 export * from "./usePagination";
 export * from "./useResource";
 export * from "./useRipple";
+export * from "./useThrottle";
 export * from "./useToggle";

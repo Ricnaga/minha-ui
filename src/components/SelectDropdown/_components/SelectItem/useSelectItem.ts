@@ -1,4 +1,4 @@
-import { useClickOutside } from "@/hooks";
+import { useClickAway } from "@/hooks";
 import type { SelectOptions } from "src/components/Select/select.types";
 import { useSelectContext } from "src/components/SelectProvider/useSelectProvider";
 
@@ -6,7 +6,7 @@ export function useSelectItem() {
   const { handleClose, options, handleSelectChange, selectedOptions } =
     useSelectContext();
 
-  const containerRef = useClickOutside<HTMLDivElement>({
+  const containerRef = useClickAway<HTMLDivElement>({
     enabled: true,
     onOutsideClick: handleClose,
   });
