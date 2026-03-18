@@ -30,6 +30,7 @@
       "@/hooks": ["src/hooks"],
       "@/icons": ["src/icons"],
       "@/theme": ["src/theme"],
+      "@/infra": ["src/infra"],
       "@/types": ["src/types"]
     }
   },
