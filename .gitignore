@@ -26,5 +26,8 @@ dist-ssr
 *storybook.log
 storybook-static
 
+# Vitest
+__snapshots__
+
 # Changeset
 .changeset/
