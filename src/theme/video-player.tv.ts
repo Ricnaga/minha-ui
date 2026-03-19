@@ -1,39 +1,39 @@
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from 'tailwind-variants';
 
 export const videoPlayer = tv({
-  base: "group relative",
+  base: 'group relative',
   slots: {
     thumbnail: [
-      "rounded-3xl shadow-2xl brightness-50",
-      "transition-all duration-300 ease-in-out",
-      "hover:brightness-60",
+      'rounded-3xl shadow-2xl brightness-50',
+      'transition-all duration-300 ease-in-out',
+      'hover:brightness-60',
     ],
     thumbnailButton: [
-      "relative rounded-3xl focus:outline-none cursor-pointer",
-      "flex items-center justify-center",
+      'relative rounded-3xl focus:outline-none cursor-pointer',
+      'flex items-center justify-center',
     ],
     thumbnailIcon: [
-      "absolute inset-0 pointer-events-none flex items-center justify-center",
-      "text-4xl text-sky-600",
+      'absolute inset-0 pointer-events-none flex items-center justify-center',
+      'text-4xl text-sky-600',
     ],
-    player: ["rounded-3xl shadow-2xl"],
+    player: ['rounded-3xl shadow-2xl'],
   },
   variants: {
     thumbnailSize: {
-      sm: { thumbnail: "w-48 h-28 hover:w-50 hover:h-30" },
-      md: { thumbnail: "w-72 h-40 hover:w-74 hover:h-42" },
-      lg: { thumbnail: "w-96 h-56 hover:w-98 hover:h-56" },
+      sm: { thumbnail: 'w-48 h-28 hover:w-52 hover:h-32' },
+      md: { thumbnail: 'w-72 h-40 hover:w-80 hover:h-48' },
+      lg: { thumbnail: 'w-96 h-56 hover:w-[28rem] hover:h-64' },
     },
     playerSize: {
-      sm: { player: "w-48 h-28" },
-      md: { player: "w-72 h-40" },
-      lg: { player: "w-96 h-56" },
-      full: { player: "size-full rounded-none" },
+      sm: { player: 'w-48 h-28' },
+      md: { player: 'w-72 h-40' },
+      lg: { player: 'w-96 h-56' },
+      full: { player: 'size-full rounded-none' },
     },
   },
   defaultVariants: {
-    thumbnailSize: "md",
-    playerSize: "md",
+    thumbnailSize: 'md',
+    playerSize: 'md',
   },
 });
 
