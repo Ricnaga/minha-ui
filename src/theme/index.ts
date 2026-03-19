@@ -19,7 +19,6 @@ export * from "./drawer-body.tv";
 export * from "./drawer-container.tv";
 export * from "./drawer-footer.tv";
 export * from "./drawer-header.tv";
-export * from "./error-boundary.tv";
 export * from "./icon-button.tv";
 export * from "./input-password.tv";
 export * from "./input.tv";
