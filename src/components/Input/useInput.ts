@@ -3,10 +3,10 @@ import type {
   HTMLAttributes,
   InputHTMLAttributes,
   LabelHTMLAttributes,
-} from "react";
-import type { UseInputProps } from "./input.types";
-import { input } from "@/theme";
-import type { DataTestidProps } from "@/types";
+} from 'react';
+import type { UseInputProps } from './input.types';
+import { input } from '@/theme';
+import type { DataTestidProps } from '@/types';
 
 const {
   container,
@@ -23,13 +23,13 @@ export function useInput(props: UseInputProps) {
     startIcon,
     endIcon,
     className,
-    variant = "outline",
-    id = `input-${Math.random().toString(36)}`,
+    variant = 'outline',
+    id = `input-fixed-id`,
     ...rest
   } = props;
 
-  const hasStartIcon: ActivityProps["mode"] = startIcon ? "visible" : "hidden";
-  const hasEndIcon: ActivityProps["mode"] = endIcon ? "visible" : "hidden";
+  const hasStartIcon: ActivityProps['mode'] = startIcon ? 'visible' : 'hidden';
+  const hasEndIcon: ActivityProps['mode'] = endIcon ? 'visible' : 'hidden';
 
   const containerProps: HTMLAttributes<HTMLDivElement> = {
     className: container({ className, variant }),
@@ -37,13 +37,13 @@ export function useInput(props: UseInputProps) {
   };
 
   const startIconProps: DataTestidProps<HTMLAttributes<HTMLDivElement>> = {
-    "data-testid": "input-start-icon",
+    'data-testid': 'input-start-icon',
     className: startIconWrapper({ variant }),
     children: startIcon,
   };
 
   const endIconProps: DataTestidProps<HTMLAttributes<HTMLDivElement>> = {
-    "data-testid": "input-end-icon",
+    'data-testid': 'input-end-icon',
     className: endIconWrapper({ variant }),
     children: endIcon,
   };
@@ -55,8 +55,8 @@ export function useInput(props: UseInputProps) {
 
   const inputProps: InputHTMLAttributes<HTMLInputElement> = {
     id,
-    type: "text",
-    placeholder: " ",
+    type: 'text',
+    placeholder: ' ',
     className: field({
       variant,
       endIcon: !!endIcon,
