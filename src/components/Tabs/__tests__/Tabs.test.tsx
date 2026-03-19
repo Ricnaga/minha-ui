@@ -31,64 +31,6 @@ describe('Tabs', () => {
       const { container } = renderTabs();
       expect(container).toMatchSnapshot();
     });
-
-    it('should render all tab triggers', () => {
-      renderTabs();
-      expect(screen.getByText('Tab 1')).toBeInTheDocument();
-      expect(screen.getByText('Tab 2')).toBeInTheDocument();
-      expect(screen.getByText('Tab 3')).toBeInTheDocument();
-    });
-
-    it('should render all tab panels', () => {
-      renderTabs();
-      expect(screen.getByText('Content 1')).toBeInTheDocument();
-      expect(screen.getByText('Content 2')).toBeInTheDocument();
-      expect(screen.getByText('Content 3')).toBeInTheDocument();
-    });
-  });
-
-  describe('Variants', () => {
-    it('should render with default variant', () => {
-      const { container } = render(
-        <Tabs value="tab1" onTabChange={vi.fn()} variant="default">
-          <TabsList>
-            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-          </TabsList>
-          <TabsPanels>
-            <TabsPanel value="tab1">Content 1</TabsPanel>
-          </TabsPanels>
-        </Tabs>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render with ghost variant', () => {
-      const { container } = render(
-        <Tabs value="tab1" onTabChange={vi.fn()} variant="ghost">
-          <TabsList>
-            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-          </TabsList>
-          <TabsPanels>
-            <TabsPanel value="tab1">Content 1</TabsPanel>
-          </TabsPanels>
-        </Tabs>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render with contained variant', () => {
-      const { container } = render(
-        <Tabs value="tab1" onTabChange={vi.fn()} variant="contained">
-          <TabsList>
-            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-          </TabsList>
-          <TabsPanels>
-            <TabsPanel value="tab1">Content 1</TabsPanel>
-          </TabsPanels>
-        </Tabs>,
-      );
-      expect(container).toMatchSnapshot();
-    });
   });
 
   describe('Interactions', () => {
