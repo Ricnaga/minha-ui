@@ -22,11 +22,17 @@ export default mergeConfig(
       coverage: {
         provider: 'v8',
         reporter: ['text', 'html'],
+        include: ['src/components/**', 'src/hooks/**'],
         exclude: [
           'node_modules/**',
           'src/**/*.stories.{ts,tsx}',
           'src/**/*.play.{ts,tsx}',
           'src/types/**',
+          'src/infra/**',
+          'src/theme/**',
+          'src/icons/**',
+          'src/utils/**',
+          'src/components/**/types/**',
           '**/*.d.ts',
           '**/*.config.*',
           '**/mockData/**',
