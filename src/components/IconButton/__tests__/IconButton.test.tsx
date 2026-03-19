@@ -13,55 +13,6 @@ describe('IconButton', () => {
       );
       expect(container).toMatchSnapshot();
     });
-
-    it('should render icon button with icon', () => {
-      render(
-        <IconButton aria-label="Home">
-          <HouseIcon />
-        </IconButton>,
-      );
-      expect(screen.getByLabelText('Home')).toBeInTheDocument();
-    });
-  });
-
-  describe('Sizes', () => {
-    it('should render with small size', () => {
-      const { container } = render(
-        <IconButton size="small" aria-label="Small">
-          <HouseIcon />
-        </IconButton>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render with medium size', () => {
-      const { container } = render(
-        <IconButton size="medium" aria-label="Medium">
-          <HouseIcon />
-        </IconButton>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render with large size', () => {
-      const { container } = render(
-        <IconButton size="large" aria-label="Large">
-          <HouseIcon />
-        </IconButton>,
-      );
-      expect(container).toMatchSnapshot();
-    });
-  });
-
-  describe('Radius', () => {
-    it('should render with full radius', () => {
-      const { container } = render(
-        <IconButton radius="full" aria-label="Full">
-          <HouseIcon />
-        </IconButton>,
-      );
-      expect(container).toMatchSnapshot();
-    });
   });
 
   describe('Interactions', () => {

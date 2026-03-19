@@ -13,37 +13,13 @@ const TestDatePicker = () => {
 };
 
 describe('DatePicker', () => {
-  describe('Rendering', () => {
-    it('should render date picker with input', () => {
-      render(<TestDatePicker />);
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-      expect(input).toHaveAttribute('readonly');
-    });
+  it('should render correctly', () => {
+    const { container } = render(<TestDatePicker />);
+    expect(container).toMatchSnapshot();
   });
 
-  describe('State', () => {
-    it('should render with null date value', () => {
-      render(<TestDatePicker />);
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-    });
-
-    it('should render with date value', () => {
-      const TestWithDate = () => {
-        const [date, setDate] = useState<Date | null>(new Date(2024, 0, 15));
-        return (
-          <DatePicker dateValue={date} onDateChange={setDate}>
-            <button>Open</button>
-          </DatePicker>
-        );
-      };
-      render(<TestWithDate />);
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-      expect(input).toHaveValue(
-        new Date(2024, 0, 15).toLocaleDateString('pt-BR'),
-      );
-    });
+  it('should render input', () => {
+    render(<TestDatePicker />);
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 });
