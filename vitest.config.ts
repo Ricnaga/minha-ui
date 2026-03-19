@@ -16,12 +16,34 @@ export default mergeConfig(
     test: {
       globals: true,
       environment: 'jsdom',
-      include: ['src/**/*.{test,spec}.{ts,tsx}'],
+      maxWorkers: 4,
+      testTimeout: 10000,
+      hookTimeout: 10000,
       coverage: {
         provider: 'v8',
-        reporter: ['text', 'json', 'html'],
+        reporter: ['text'],
+        exclude: [
+          'node_modules/**',
+          'src/**/*.stories.{ts,tsx}',
+          'src/**/*.play.{ts,tsx}',
+          'src/types/**',
+          '**/*.d.ts',
+          '**/*.config.*',
+          '**/mockData/**',
+          '**/mocks/**',
+          '**/__snapshots__/**',
+        ],
       },
       projects: [
+        {
+          extends: true,
+          test: {
+            name: 'unit',
+            include: ['src/**/__tests__/*.test.{ts,tsx}'],
+            exclude: ['src/**/*.snap'],
+            setupFiles: ['./vitest.setup.ts'],
+          },
+        },
         {
           extends: true,
           plugins: [
