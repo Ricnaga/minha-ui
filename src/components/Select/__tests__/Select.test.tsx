@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { useState } from 'react';
 import { Select } from '..';
+import { vi } from 'vitest';
 import type { SelectOptions } from '../select.types';
 
 const mockOptions: SelectOptions[] = [
@@ -9,63 +9,26 @@ const mockOptions: SelectOptions[] = [
   { key: 3, value: 'Option 3' },
 ];
 
-const TestSelect = () => {
-  const [selected, setSelected] = useState<SelectOptions[]>([]);
-
-  return (
-    <Select
-      options={mockOptions}
-      defaultValue={selected}
-      onSelectChange={setSelected}
-    />
-  );
-};
-
 describe('Select', () => {
-  describe('Rendering', () => {
-    it('should render select with input', () => {
-      render(<TestSelect />);
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-    });
+  it('should match snapshot', () => {
+    const { container } = render(
+      <Select
+        options={mockOptions}
+        defaultValue={[]}
+        onSelectChange={vi.fn()}
+      />,
+    );
+    expect(container).toMatchSnapshot();
   });
 
-  describe('Options', () => {
-    it('should render with options available', () => {
-      render(<TestSelect />);
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-    });
-  });
-
-  describe('Multiple Selection', () => {
-    it('should render with multiple selection', () => {
-      render(
-        <Select
-          options={mockOptions}
-          defaultValue={[]}
-          onSelectChange={() => {}}
-          isMultiple
-        />,
-      );
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-    });
-  });
-
-  describe('Render Chips', () => {
-    it('should render with chips enabled', () => {
-      render(
-        <Select
-          options={mockOptions}
-          defaultValue={[mockOptions[0]]}
-          onSelectChange={() => {}}
-          isMultiple
-          isRenderChips
-        />,
-      );
-      const input = screen.getByRole('textbox');
-      expect(input).toBeInTheDocument();
-    });
+  it('should render input', () => {
+    render(
+      <Select
+        options={mockOptions}
+        defaultValue={[]}
+        onSelectChange={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 });

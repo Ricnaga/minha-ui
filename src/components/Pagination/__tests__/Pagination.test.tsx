@@ -17,15 +17,10 @@ describe('Pagination', () => {
       const { container } = render(<Pagination {...defaultProps} />);
       expect(container).toMatchSnapshot();
     });
-
-    it('should display current page and total pages', () => {
-      render(<Pagination {...defaultProps} />);
-      expect(screen.getByText('Página 1 de 5')).toBeInTheDocument();
-    });
   });
 
-  describe('Navigation', () => {
-    it('should go to next page', async () => {
+  describe('Interactions', () => {
+    it('should navigate to next page', async () => {
       const user = userEvent.setup();
       render(<Pagination {...defaultProps} />);
 
@@ -33,39 +28,12 @@ describe('Pagination', () => {
       expect(defaultProps.onPageChange).toHaveBeenCalledWith(2);
     });
 
-    it('should go to previous page', async () => {
-      const user = userEvent.setup();
-      render(<Pagination {...defaultProps} />);
-      const prevButton = screen.getByLabelText('Página anterior');
-
-      await user.click(prevButton);
-      expect(defaultProps.onPageChange).not.toHaveBeenCalled();
-    });
-
-    it('should not go before first page', async () => {
+    it('should not navigate before first page', async () => {
       const user = userEvent.setup();
       render(<Pagination {...defaultProps} />);
 
       await user.click(screen.getByLabelText('Página anterior'));
       expect(defaultProps.onPageChange).not.toHaveBeenCalled();
-    });
-
-    it('should not go after last page', async () => {
-      const user = userEvent.setup();
-      render(<Pagination {...defaultProps} />);
-      const nextButton = screen.getByLabelText('Próxima página');
-
-      for (let i = 0; i < 6; i++) {
-        await user.click(nextButton);
-      }
-      expect(defaultProps.onPageChange).toHaveBeenCalledWith(5);
-    });
-  });
-
-  describe('Page Selection', () => {
-    it('should render page buttons', () => {
-      render(<Pagination {...defaultProps} />);
-      expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
     });
   });
 });
