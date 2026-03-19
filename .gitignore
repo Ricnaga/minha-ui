@@ -28,6 +28,7 @@ storybook-static
 
 # Vitest
 __snapshots__
+coverage/
 
 # Changeset
 .changeset/

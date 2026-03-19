@@ -21,7 +21,7 @@ export default mergeConfig(
       hookTimeout: 10000,
       coverage: {
         provider: 'v8',
-        reporter: ['text'],
+        reporter: ['text', 'html'],
         exclude: [
           'node_modules/**',
           'src/**/*.stories.{ts,tsx}',
@@ -32,6 +32,7 @@ export default mergeConfig(
           '**/mockData/**',
           '**/mocks/**',
           '**/__snapshots__/**',
+          '**/index.ts',
         ],
       },
       projects: [
