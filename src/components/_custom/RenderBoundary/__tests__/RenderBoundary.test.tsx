@@ -2,6 +2,18 @@ import { render, screen } from '@testing-library/react';
 import { RenderBoundary } from '../RenderBoundary';
 
 describe('RenderBoundary', () => {
+  describe('Snapshot', () => {
+    it('should match snapshot with children', () => {
+      const { container } = render(
+        <RenderBoundary>
+          <div>Children content</div>
+        </RenderBoundary>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('Default rendering', () => {
     it('should render children directly when no loading or error', () => {
       render(

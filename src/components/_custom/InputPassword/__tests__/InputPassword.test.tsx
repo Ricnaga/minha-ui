@@ -29,6 +29,14 @@ vi.mock('src/components/Input', () => ({
 }));
 
 describe('InputPassword', () => {
+  describe('Snapshot', () => {
+    it('should match snapshot', () => {
+      const { container } = render(<InputPassword placeholder="Password" />);
+
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   it('should render Input component', () => {
     render(<InputPassword placeholder="Enter password" />);
 

@@ -2,6 +2,18 @@ import { render, screen } from '@testing-library/react';
 import { DataBoundary } from '../DataBoundary';
 
 describe('DataBoundary', () => {
+  describe('Snapshot', () => {
+    it('should match snapshot with children', () => {
+      const { container } = render(
+        <DataBoundary>
+          <div>Content</div>
+        </DataBoundary>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   describe('Loading state', () => {
     it('should render children when not loading', () => {
       render(
