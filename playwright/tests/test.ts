@@ -21,6 +21,7 @@ interface StoryFixtures {
     locator: T['locator'];
   };
   navigate: (storyId: string) => Promise<void>;
+  waitForCanvas: (timeout?: number) => Promise<Locator>;
 }
 
 export interface Fixtures {
@@ -45,6 +46,13 @@ export const test = base.extend<Fixtures>({
           `${STORYBOOK_URL}/iframe.html?id=${storyId}&viewMode=story`,
         );
         await page.waitForLoadState('networkidle');
+      },
+      waitForCanvas: async (timeout = 10000) => {
+        const canvas = page.locator(
+          '#storybook-root, [id="storybook-root"], #root',
+        );
+        await canvas.waitFor({ timeout });
+        return canvas;
       },
     };
     await use(story);

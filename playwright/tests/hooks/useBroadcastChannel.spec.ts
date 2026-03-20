@@ -1,4 +1,4 @@
-import { test, expect, STORYBOOK_URL } from '../test';
+import { test, expect } from '../test';
 
 test.describe('useBroadcastChannel', () => {
   test.beforeEach(async ({ story }) => {

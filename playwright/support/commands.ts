@@ -1,4 +1,5 @@
 import type { Page } from '@playwright/test';
+import { expect } from '@playwright/test';
 
 export interface Commands {
   page: Page;
@@ -52,8 +53,6 @@ export async function expectToHaveText(
 ): Promise<void> {
   await expect(page.locator(selector)).toHaveText(text);
 }
-
-import { expect } from '@playwright/test';
 
 export const commands = {
   waitForElement,
