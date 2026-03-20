@@ -1,13 +1,14 @@
 import type {
   RenderBoundaryProps,
   UseRenderBoundaryProps,
-} from "./render-boundary.types";
+} from './render-boundary.types';
 
 export function useRenderBoundary(props: UseRenderBoundaryProps) {
-  // TODO: Implement hook logic
+  const { loadingProps, errorProps, children } = props;
+
   const renderBoundaryProps: RenderBoundaryProps = {
     ...props,
   };
 
-  return { renderBoundaryProps };
+  return { renderBoundaryProps, loadingProps, errorProps, children };
 }
