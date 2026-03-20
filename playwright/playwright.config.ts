@@ -10,6 +10,8 @@ const dirname =
 export default defineConfig({
   testDir: path.join(dirname, 'tests'),
   outputDir: path.join(dirname, 'test-results'),
+  testMatch: '**/*.spec.ts',
+  testIgnore: ['**/*.test.ts', '**/*.test.tsx'],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -19,17 +21,12 @@ export default defineConfig({
         ['github'],
         ['html', { outputFolder: path.join(dirname, 'playwright-report') }],
       ]
-    : [
-        [
-          'html',
-          {
-            outputFolder: path.join(dirname, 'playwright-report'),
-            open: 'never',
-          },
-        ],
-      ],
+    : [['list']],
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL:
+      process.env.E2E_TEST_TYPE === 'storybook'
+        ? 'http://localhost:6006'
+        : 'http://localhost:5173',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -39,19 +36,5 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
   ],
-  webServer: {
-    command: 'pnpm dev',
-    url: 'http://localhost:5173',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120000,
-  },
 });
