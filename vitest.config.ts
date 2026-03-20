@@ -21,7 +21,7 @@ export default mergeConfig(
       hookTimeout: 10000,
       coverage: {
         provider: 'v8',
-        reporter: ['text', 'html'],
+        reporter: ['text', 'html', 'lcov'],
         include: ['src/components/**', 'src/hooks/**'],
         exclude: [
           'node_modules/**',
