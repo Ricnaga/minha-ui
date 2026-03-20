@@ -14,19 +14,29 @@ describe('useRipple', () => {
 
     const mockEvent = {
       currentTarget: {
-        getBoundingClientRect: () => ({ width: 100, height: 40 }),
+        getBoundingClientRect: () => ({
+          width: 100,
+          height: 40,
+          x: 0,
+          y: 0,
+          bottom: 40,
+          left: 0,
+          right: 100,
+          top: 0,
+          toJSON: () => ({}),
+        }),
         appendChild: vi.fn(),
       },
       clientX: 50,
       clientY: 20,
-    } as any;
+    };
 
-    result.current.handleRipple(mockEvent);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    result.current.handleRipple(mockEvent as any);
 
     expect(mockEvent.currentTarget.appendChild).toHaveBeenCalled();
-    const appendedElement = (
-      mockEvent.currentTarget.appendChild as ReturnType<typeof vi.fn>
-    ).mock.calls[0][0];
+    const appendedElement =
+      mockEvent.currentTarget.appendChild.mock.calls[0][0];
     expect(appendedElement.tagName).toBe('SPAN');
   });
 });
