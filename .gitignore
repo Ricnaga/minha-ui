@@ -33,6 +33,7 @@ coverage/
 # Playwright
 playwright/test-results/
 playwright/playwright-report/
+test-results/
 
 # Changeset
 .changeset/
