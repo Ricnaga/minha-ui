@@ -1,17 +1,12 @@
 import { test, expect } from '../test';
 
 test.describe('Backdrop', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test.beforeEach(async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=components-estruturas-backdrop--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-estruturas-backdrop--default');
   });
 
   test('should render backdrop when open', async ({ story }) => {
-    const canvas = story.page.locator('#storybook-root');
+    const canvas = story.canvas;
     const trigger = canvas.getByRole('button').first();
 
     await trigger.click();

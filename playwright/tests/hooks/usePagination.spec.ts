@@ -1,17 +1,12 @@
 import { test, expect } from '../test';
 
 test.describe('usePagination', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test.beforeEach(async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=hooks-usepagination--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('hooks-usepagination--default');
   });
 
   test('should render pagination controls', async ({ story }) => {
-    const canvas = story.page.locator('#storybook-root');
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });

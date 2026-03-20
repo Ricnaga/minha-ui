@@ -1,17 +1,12 @@
 import { test, expect } from '../test';
 
 test.describe('VideoPlayer', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test.beforeEach(async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=components-multim%C3%ADdia-videoplayer--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-multimídia-videoplayer--default');
   });
 
   test('should render video player', async ({ story }) => {
-    const canvas = story.page.locator('#storybook-root');
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });

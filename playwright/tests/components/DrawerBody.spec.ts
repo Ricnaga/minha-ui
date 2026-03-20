@@ -1,15 +1,10 @@
 import { test, expect } from '../test';
 
 test.describe('DrawerBody', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test('should render drawer body', async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=components-intera%C3%A7%C3%A3o-drawer-drawerbody--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-interação-drawer-drawerbody--default');
 
-    const canvas = story.page.locator('#storybook-root');
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });

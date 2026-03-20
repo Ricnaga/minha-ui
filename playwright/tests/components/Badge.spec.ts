@@ -1,27 +1,18 @@
 import { test, expect } from '../test';
 
 test.describe('Badge', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test.beforeEach(async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=components-indicadores-badge--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-indicadores-badge--default');
   });
 
   test('should render badge story', async ({ story }) => {
-    const canvas = story.page.locator(
-      '#storybook-root, [id="storybook-root"], #root',
-    );
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });
 
   test('should display value', async ({ story }) => {
-    const canvas = story.page.locator(
-      '#storybook-root, [id="storybook-root"], #root',
-    );
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });

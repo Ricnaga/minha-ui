@@ -1,15 +1,10 @@
 import { test, expect } from '../test';
 
 test.describe('ModalActions', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test('should render modal actions', async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=components-intera%C3%A7%C3%A3o-modal-modalactions--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-interação-modal-modalactions--default');
 
-    const canvas = story.page.locator('#storybook-root');
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });

@@ -1,17 +1,12 @@
 import { test, expect } from '../test';
 
 test.describe('Tooltip', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test.beforeEach(async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=components-intera%C3%A7%C3%A3o-tooltip--default&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-interação-tooltip--default');
   });
 
   test('should render tooltip', async ({ story }) => {
-    const canvas = story.page.locator('#storybook-root');
+    const canvas = story.canvas;
 
     await expect(canvas).toBeVisible();
   });
