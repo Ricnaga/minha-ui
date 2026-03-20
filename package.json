@@ -11,6 +11,9 @@
     "test:unit": "vitest --run --project=unit",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --run --project=unit --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
@@ -20,11 +23,6 @@
     "changeset": "changeset",
     "version": "changeset version",
     "release": "changeset publish"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -42,6 +40,7 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@eslint/js": "^9.39.4",
+    "@playwright/test": "^1.58.2",
     "@storybook/addon-a11y": "^10.2.19",
     "@storybook/addon-docs": "^10.2.19",
     "@storybook/addon-vitest": "^10.2.19",
