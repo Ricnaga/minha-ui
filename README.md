@@ -21,11 +21,18 @@ O objetivo principal do projeto é praticar:
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-- **React**
-- **TypeScript**
-- **Vite**
-- **Storybook**
-- **ESLint**
+- **React 19** - Biblioteca principal para construção de interfaces
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e servidor de desenvolvimento
+- **Tailwind CSS v4** - Framework de estilização
+- **Storybook** - Documentação e desenvolvimento de componentes
+- **Vitest** - Testes unitários
+- **Playwright** - Testes end-to-end
+- **ESLint** + **Prettier** - Linting e formatação de código
+- **Husky** + **Commitlint** - Git hooks e conventional commits
+- **Phosphor Icons** - Biblioteca de ícones
+- **React Error Boundary** - Tratamento de erros
+- **Changesets** - Versionamento e changelog
 
 ---
 
