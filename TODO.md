@@ -1,2 +1,7 @@
 - [ ] OTP Input
 - [ ] Drag n Drop
+- [ ] Switch
+- [ ] AutoComplete
+- [ ] Slider
+- [ ] Breadcrumb
+- [ ] EmptyState
