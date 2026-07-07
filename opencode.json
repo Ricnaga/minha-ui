@@ -1,0 +1,8 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "front-end-engineer",
+  "instructions": [".opencode/skills/minha-ui-rules/SKILL.md"],
+  "skills": {
+    "paths": [".opencode/skills"]
+  }
+}
