@@ -55,6 +55,7 @@ export const test = base.extend<Fixtures>({
         return canvas;
       },
     };
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await use(story);
   },
 });
