@@ -157,6 +157,127 @@ Regras:
 - Um nível de indentação por função (use early return)
 - Efeitos colaterais devem ser explícitos no nome (`saveToLocalStorage` não `process`)
 
+#### Prefira early return a else
+
+Estruturas com `if/else` aninhados aumentam a complexidade cognitiva. Prefira
+retornar cedo nas condições de guarda e evitar o `else`.
+
+```tsx
+// ❌ ERRADO: else desnecessário, aninhamento extra
+if (itemId && fromList) {
+  if (onReorder) {
+    fazerAlgo();
+  } else if (onMoveItem) {
+    fazerOutro();
+  }
+} else {
+  limpar();
+}
+
+// ✅ CERTO: early return elimina else e aninhamento
+if (!itemId || !fromList) {
+  limpar();
+  return;
+}
+
+if (onReorder) {
+  fazerAlgo();
+  limpar();
+  return;
+}
+
+if (onMoveItem) {
+  fazerOutro();
+  limpar();
+  return;
+}
+
+limpar();
+```
+
+Benefícios:
+- Cada path termina com `return`, deixando explícito que a função não continua
+- Reduz aninhamento (máximo 1 nível de indentação)
+- Torna óbvio quais são as condições de guarda do fluxo principal
+
+### Estado
+
+- Prefira `useState` para estado local simples (1-2 campos)
+- Use `useReducer` quando o estado tem múltiplos campos que mudam juntos em
+  transições bem definidas (ex: formulário multi-etapa)
+- Use um único `useState` com objeto quando 3+ `useState` são atualizados
+  **sempre juntos** nos mesmos eventos
+
+```tsx
+// ❌ ERRADO: 6 useState que são SEMPRE atualizados juntos
+const [activeItemId, setActiveItemId] = useState<string | null>(null);
+const [activeListId, setActiveListId] = useState<string | null>(null);
+const [dragPosition, setDragPosition] = useState<{x:number;y:number}|null>(null);
+const [dragOverItemId, setDragOverItemId] = useState<string | null>(null);
+const [dragOverListId, setDragOverListId] = useState<string | null>(null);
+const [isDragging, setIsDragging] = useState(false);
+
+// Em cada evento precisamos chamar todos juntos:
+setActiveItemId(id);
+setActiveListId(listId);
+setDragPosition({ x, y });
+// ...
+
+// ✅ CERTO: um único estado agrupado
+interface DragState {
+  isDragging: boolean;
+  activeItemId: string | null;
+  activeListId: string | null;
+  dragPosition: { x: number; y: number } | null;
+  dragOverItemId: string | null;
+  dragOverListId: string | null;
+}
+
+const DRAG_IDLE: DragState = {
+  isDragging: false,
+  activeItemId: null,
+  activeListId: null,
+  dragPosition: null,
+  dragOverItemId: null,
+  dragOverListId: null,
+};
+
+const [drag, setDrag] = useState<DragState>(DRAG_IDLE);
+
+// Atualização: um setter só
+setDrag(prev => ({ ...prev, isDragging: true, activeItemId: id }));
+
+// Reset completo: uma linha só
+setDrag(DRAG_IDLE);
+```
+
+Quando aplicar:
+- 3+ `useState` que aparecem **juntos** nos mesmos callbacks/efeitos
+- O reset/cleanup sempre seta todos os campos (ex: `null`, `false`)
+- Os campos representam uma **única entidade conceitual** (ex: "sessão de drag")
+
+Quando **não** aplicar:
+- Campos que mudam independentemente (ex: `isOpen` do modal e `value` do input)
+- Apenas 2 estados que às vezes são atualizados juntos (simples demais para
+  merecer objeto)
+
+#### Nomeação do estado agrupado
+
+Use o sufixo `State` tanto na variável quanto no setter para deixar explícito
+que é um estado-objeto:
+
+```ts
+// ❌ ERRADO: nome genérico, parece confuso
+const [drag, setDrag] = useState<DragSessionState>(IDLE);
+
+// ✅ CERTO: sufixo State deixa claro que é um estado agrupado
+const [dragState, setDragState] = useState<DragSessionState>(DRAG_IDLE);
+```
+
+Regra:
+- `const [<Nome>State, set<Nome>State] = useState<<Nome>State>(...)`
+- O tipo da interface também usa o sufixo `State` (ex: `DragSessionState`)
+
 ### Imports
 
 ```tsx
