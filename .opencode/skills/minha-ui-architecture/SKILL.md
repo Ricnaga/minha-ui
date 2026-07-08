@@ -46,6 +46,164 @@ Button/
 - The theme file lives in `src/theme/` as `ComponentName.tv.ts` and is
   exported from `src/theme/index.ts`
 
+## Provider Pattern — Compound Components com provedor separado
+
+Componentes que compartilham estado complexo entre várias peças seguem o
+**Provider Pattern**, onde o contexto e a lógica de estado ficam em um
+componente `*Provider` separado do container visual.
+
+### Quando usar Provider separado vs contexto inline
+
+| Padrão | Quando usar | Exemplos |
+|---|---|---|
+| **Contexto inline** no próprio componente | Estado simples (value/onChange), sub-componentes amarrados ao pai | `Tabs`, `Accordion`, `Drawer` |
+| **Provider separado** (`*Provider/`) | Estado complexo (múltiplos valores, validação, efeitos colaterais), sub-componentes independentes que podem ser usados em diferentes layouts | `DatePickerProvider`, `StepperProvider`, `SelectProvider`, `DnDProvider` |
+
+### Estrutura de pastas — Provider separado
+
+```
+src/components/
+├── DnDProvider/            # Provider — contexto + estado + lógica
+│   ├── DnDProvider.tsx     # Só renderiza <Context.Provider value={rest}>
+│   ├── useDnDProvider.ts   # Estado global, handlers, createContext + useContext
+│   ├── dnd-provider.types.ts
+│   └── index.ts
+├── DnD/                    # Container visual principal
+│   ├── DnD.tsx             # JSX puro — lê contexto, renderiza filhos
+│   ├── useDnD.ts           # Só variantes tv()
+│   ├── dnd.types.ts
+│   ├── stories/            # Histórias ficam no container principal
+│   └── index.ts
+├── DnDList/                # Sub-componente 1
+│   ├── DnDList.tsx
+│   ├── useDnDList.ts       # Lê contexto, lógica própria
+│   ├── dnd-list.types.ts
+│   └── index.ts
+└── DnDItem/                # Sub-componente 2
+    ├── DnDItem.tsx
+    ├── useDnDItem.ts
+    ├── dnd-item.types.ts
+    └── index.ts
+```
+
+### Padrão de tipos do Provider
+
+```ts
+// dnd-provider.types.ts
+import type { useDnDProvider } from "./useDnDProvider";
+import type { RequiredChildren } from "@/types";
+
+export type UseDnDProviderProps = RequiredChildren<{
+  onReorder?: (items: string[]) => void;
+  onMoveItem?: (itemId: string, fromList: string, toList: string, index: number) => void;
+}>;
+
+export type DnDProviderProps = UseDnDProviderProps;
+
+export type DnDProviderContextProps = Omit<
+  ReturnType<typeof useDnDProvider>,
+  "children"
+>;
+```
+
+O tipo `DnDProviderContextProps` usa `ReturnType<typeof useDnDProvider>` para
+garantir que o contexto reflita exatamente o que o hook retorna, sem duplicação
+manual.
+
+### Consumo nos sub-componentes
+
+```ts
+// useDnDList.ts — sub-componente lê o contexto
+import { useDnDContext } from "../DnDProvider";
+
+export function useDnDList(props: UseDnDListProps) {
+  const { activeItem, dragOverListId } = useDnDContext();
+  // ...
+}
+```
+
+### Uso no JSX
+
+```tsx
+<DnDProvider onReorder={handleReorder}>
+  <DnD orientation="horizontal">
+    <DnDList listId="todo">
+      <DnDItem id="1">Item 1</DnDItem>
+      <DnDItem id="2">Item 2</DnDItem>
+    </DnDList>
+  </DnD>
+</DnDProvider>
+```
+
+## HTML Semântico e Acessibilidade
+
+TODO componente deve usar **HTML semântico** — a estrutura da tag deve comunicar
+o significado do conteúdo, não apenas a aparência.
+
+### Mapeamento de elementos
+
+| Componente | Tag | Motivo |
+|---|---|---|
+| Container de seção (listas, abas) | `<section>` | Landmark — representa uma área do documento |
+| Lista de itens (menu, dropdown, dnd list) | `<ul>` | Lista não ordenada de itens |
+| Item de lista (opção, tab, dnd item) | `<li>` | Item pertencente a uma lista |
+| Navegação (tabs, paginação) | `<nav>` | Landmark de navegação |
+| Grupo de controles (radio, checkbox) | `<fieldset>` | Agrupa campos relacionados |
+| Título descritivo | `<h1>`–`<h6>` | Hierarquia de cabeçalhos |
+| Botão | `<button>` | Ação acionável (não `<div>`) |
+| Texto genérico | `<span>` | Sem significado semântico |
+
+### Regras
+
+1. **Nunca use `<div>` ou `<span>` onde um elemento semântico existe.**
+   - ❌ `<div onClick={...}>Salvar</div>`
+   - ✅ `<button onClick={...}>Salvar</button>`
+2. **Use `aria-label` ou `aria-labelledby` em landmarks** para identificar
+   seções. Ex: `<section aria-label="Lista de tarefas">`
+3. **Itens arrastáveis** (`DndItem`) usam `<li>` com `aria-grabbed` e
+   `aria-roledescription="draggable item"`.
+4. **Cabeçalhos** de seção devem ter `id` correspondente ao `aria-labelledby`
+   da seção pai.
+5. **Botões de ícone** (`IconButton`) devem ter `aria-label` descrevendo a ação.
+6. **Elementos desabilitados** devem ter o atributo `disabled` ou `aria-disabled`.
+
+### Exemplo
+
+```tsx
+<section aria-labelledby="todo-heading">
+  <h3 id="todo-heading">A Fazer</h3>
+  <ul>
+    <li
+      role="listitem"
+      aria-grabbed="false"
+      aria-roledescription="draggable item"
+    >
+      Item 1
+    </li>
+  </ul>
+</section>
+```
+
+### Categorias de Storybook
+
+Cada componente no Storybook segue o padrão:
+
+```
+Components/<Categoria>/<Componente>
+Components/<Categoria>/<Pai>/<Filho>
+```
+
+Categorias existentes:
+
+| Categoria | Componentes |
+|---|---|
+| `Interação` | Tabs, Accordion, Modal, Drawer, Popover, Tooltip, Dnd |
+| `Formularios` | Input, Select, DatePicker, DateRangePicker |
+| `Estruturas` | Card, Divider, Backdrop |
+| `Feedback` | Progress, ToastContainer, TopLoadingBar |
+| `Indicadores` | Stepper |
+| `Customizados` | DataBoundary, InputPassword |
+
 ## Plop — scaffolding
 
 Run `pnpm plop` and choose from 3 generators:
