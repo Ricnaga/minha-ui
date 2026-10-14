@@ -59,6 +59,7 @@ export * from './RangeCalendar';
 export * from './Select';
 export * from './Skeleton';
 export * from './Spinner';
+export * from './Switch';
 export * from './Tabs';
 export * from './TabsList';
 export * from './TabsPanel';

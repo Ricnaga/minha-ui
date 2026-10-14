@@ -41,6 +41,7 @@ export * from './skeleton.tv';
 export * from './spinner.tv';
 export * from './stepper-item.tv';
 export * from './stepper.tv';
+export * from './switch.tv';
 export * from './tabs.tv';
 export * from './toast.tv';
 export * from './tooltip.tv';
