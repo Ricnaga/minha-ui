@@ -1,7 +1,8 @@
-import type { ReactNode } from "react";
-import type { DndItemVariants } from "@/theme";
+import type { LiHTMLAttributes, ReactNode } from 'react';
+import type { DndItemVariants } from '@/theme';
 
-export interface UseDndItemProps extends DndItemVariants {
+export interface UseDndItemProps
+  extends DndItemVariants, LiHTMLAttributes<HTMLLIElement> {
   id: string;
   listId?: string;
   index?: number;

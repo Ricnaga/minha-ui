@@ -1,7 +1,8 @@
-import type { ReactNode } from "react";
-import type { DndListVariants } from "@/theme";
+import type { HTMLAttributes, ReactNode } from 'react';
+import type { DndListVariants } from '@/theme';
 
-export interface UseDndListProps extends DndListVariants {
+export interface UseDndListProps
+  extends DndListVariants, HTMLAttributes<HTMLElement> {
   listId: string;
   heading?: string;
   children?: ReactNode;
