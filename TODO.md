@@ -1,7 +1,7 @@
-- [ ] OTP Input
-- [ ] Switch
-- [ ] AutoComplete
 - [ ] Slider
 - [ ] Breadcrumb
 - [ ] EmptyState
+- [ ] ErrorState
 - [ ] Gráfico
+- [ ] Scroll Area
+- [ ] Transition Container
