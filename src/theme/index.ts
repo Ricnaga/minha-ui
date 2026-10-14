@@ -31,6 +31,7 @@ export * from './modal-container.tv';
 export * from './modal-content.tv';
 export * from './modal-footer.tv';
 export * from './modal-header.tv';
+export * from './otp-input.tv';
 export * from './pagination.tv';
 export * from './popover-content.tv';
 export * from './progress.tv';

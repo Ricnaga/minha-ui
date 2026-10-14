@@ -49,6 +49,7 @@ export * from './ModalContainer';
 export * from './ModalContent';
 export * from './ModalFooter';
 export * from './ModalHeader';
+export * from './OtpInput';
 export * from './Pagination';
 export * from './Popover';
 export * from './PopoverContent';
