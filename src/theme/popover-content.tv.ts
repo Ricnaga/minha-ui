@@ -7,6 +7,7 @@ export const popoverContent = tv({
     'data-[state=closed]:animate-out',
     'duration-200 ease-out',
     'data-[state=closed]:opacity-0',
+    'data-[state=closed]:pointer-events-none',
   ],
 
   variants: {
