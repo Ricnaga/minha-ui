@@ -31,3 +31,11 @@ export const chip = tv({
 });
 
 export type ChipVariants = VariantProps<typeof chip>;
+
+export const chipClose = tv({
+  base: [
+    'ml-1 inline-flex items-center justify-center rounded-full p-0.5',
+    'cursor-pointer transition-colors hover:bg-black/10',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current',
+  ],
+});
