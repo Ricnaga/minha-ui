@@ -4,9 +4,9 @@ import {
   type FocusEvent,
   type KeyboardEvent,
   type SourceHTMLAttributes,
-} from "react";
-import type { PlayerProps, UsePlayerProps } from "./player.types";
-import { videoPlayer } from "@/theme";
+} from 'react';
+import type { PlayerProps, UsePlayerProps } from './player.types';
+import { videoPlayer } from '@/theme';
 
 const { player } = videoPlayer();
 
@@ -19,7 +19,10 @@ export function usePlayer(props: UsePlayerProps) {
     const videoCurrent = videoRef.current;
 
     if (isOpen) {
-      videoCurrent?.play();
+      const playPromise = videoCurrent?.play();
+
+      // O navegador pode bloquear o autoplay; o usuário ainda pode iniciar manualmente
+      playPromise?.catch(() => undefined);
       videoCurrent?.focus();
     }
 
@@ -32,7 +35,7 @@ export function usePlayer(props: UsePlayerProps) {
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLVideoElement>) {
-    if (e.key === "Escape") {
+    if (e.key === 'Escape') {
       videoRef.current?.pause();
       onKeyDown?.(e);
 
@@ -40,11 +43,11 @@ export function usePlayer(props: UsePlayerProps) {
     }
   }
 
-  const playerProps: Omit<PlayerProps, "isOpen"> = {
+  const playerProps: Omit<PlayerProps, 'isOpen'> = {
     ...rest,
-    role: "video",
+    role: 'video',
     tabIndex: 0,
-    "aria-label": "Video player",
+    'aria-label': 'Video player',
     onBlur: handleBlur,
     onKeyDown: handleKeyDown,
     className: player({ playerSize }),
@@ -54,7 +57,7 @@ export function usePlayer(props: UsePlayerProps) {
 
   const sourceProps: SourceHTMLAttributes<HTMLSourceElement> = {
     src,
-    type: "video/mp4",
+    type: 'video/mp4',
   };
 
   return { videoRef, playerProps, sourceProps };
