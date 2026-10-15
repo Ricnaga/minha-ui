@@ -1,10 +1,10 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef } from 'react';
 
 type UseThrottleCallback<T extends unknown[]> = (...args: T) => void;
 
 export function useThrottle<T extends unknown[]>(
   callback: UseThrottleCallback<T>,
-  delay: number
+  delay: number,
 ): UseThrottleCallback<T> {
   const lastCall = useRef<number>(0);
   const lastArgs = useRef<T | null>(null);
@@ -20,19 +20,20 @@ export function useThrottle<T extends unknown[]>(
       if (timeSinceLastCall >= delay) {
         lastCall.current = now;
         callback(...args);
-      } else {
-        if (timeoutId.current) {
-          clearTimeout(timeoutId.current);
-        }
-
-        timeoutId.current = setTimeout(() => {
-          if (lastArgs.current) {
-            lastCall.current = Date.now();
-            callback(...lastArgs.current);
-          }
-        }, delay - timeSinceLastCall);
+        return;
       }
+
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current);
+      }
+
+      timeoutId.current = setTimeout(() => {
+        if (lastArgs.current) {
+          lastCall.current = Date.now();
+          callback(...lastArgs.current);
+        }
+      }, delay - timeSinceLastCall);
     },
-    [callback, delay]
+    [callback, delay],
   ) as UseThrottleCallback<T>;
 }
