@@ -69,3 +69,8 @@ export * from './ToastContainer';
 export * from './Tooltip';
 export * from './TopLoadingBarProvider';
 export * from './VideoPlayer';
+export * from './Slider';
+export * from './SliderMark';
+export * from './SliderRange';
+export * from './SliderThumb';
+export * from './SliderTrack';
