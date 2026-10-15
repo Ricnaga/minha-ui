@@ -48,3 +48,4 @@ export * from './tooltip.tv';
 export * from './top-loading-bar.tv';
 export * from './video-player.tv';
 export * from './slider.tv';
+export * from './breadcrumb.tv';
