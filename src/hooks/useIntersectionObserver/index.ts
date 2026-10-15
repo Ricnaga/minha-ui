@@ -1,18 +1,17 @@
-import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 
-export interface UseIntersectionObserverOptions
-  extends IntersectionObserverInit {
+export interface UseIntersectionObserverOptions extends IntersectionObserverInit {
   once?: boolean;
 }
 
 export function useIntersectionObserver(
-  options: UseIntersectionObserverOptions = {}
+  options: UseIntersectionObserverOptions = {},
 ): {
   ref: RefObject<HTMLDivElement | null>;
   isIntersecting: boolean;
 } {
   const { once = false, ...observerOptions } = options;
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
   const memoizedOptions = useMemo(
@@ -25,7 +24,7 @@ export function useIntersectionObserver(
       observerOptions.root,
       observerOptions.rootMargin,
       observerOptions.threshold,
-    ]
+    ],
   );
 
   useEffect(() => {

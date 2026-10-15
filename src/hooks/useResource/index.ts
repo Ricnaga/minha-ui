@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
-import { getCacheKey, invalidateResource } from "src/infra/fetchers/cache";
-import { createResource } from "src/infra/fetchers/wrapper";
-import type { FetcherBase } from "src/types/api";
+import { useCallback, useEffect, useState } from 'react';
+import { getCacheKey, invalidateResource } from 'src/infra/fetchers/cache';
+import { createResource, type Resource } from 'src/infra/fetchers/wrapper';
+import type { FetcherBase } from 'src/types/api';
 
 export function useResource<T>(props: FetcherBase) {
-  const [resource, setResource] = useState(() => createResource<T>(props));
+  const [resource, setResource] = useState<Resource>(() =>
+    createResource<T>(props),
+  );
 
   // cleanup automático ao desmontar
   useEffect(() => {

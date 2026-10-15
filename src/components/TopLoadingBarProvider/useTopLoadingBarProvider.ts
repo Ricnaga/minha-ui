@@ -1,28 +1,28 @@
-import { useContext } from "@/hooks";
-import { createContext, useState, useCallback, useRef } from "react";
+import { useContext } from '@/hooks';
+import { createContext, useState, useCallback, useRef } from 'react';
 import type {
   TopLoadingBarContextProps,
   UseTopLoadingBarProviderProps,
-} from "./top-loading-bar-provider.types";
+} from './top-loading-bar-provider.types';
 
 export const TopLoadingBarContext = createContext<TopLoadingBarContextProps>(
-  {} as TopLoadingBarContextProps
+  {} as TopLoadingBarContextProps,
 );
 
 export function useTopLoadingBarProvider(props: UseTopLoadingBarProviderProps) {
-  const { color = "primary", children } = props;
-  const [progress, setProgress] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const { color = 'primary', children } = props;
+  const [progress, setProgress] = useState<number>(0);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const intervalRef = useRef<number | null>(null);
 
   const start = useCallback(() => {
     setIsAnimating(true);
     setProgress(0);
-    
+
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-    
+
     intervalRef.current = window.setInterval(() => {
       setProgress((prev) => {
         if (prev >= 90) {

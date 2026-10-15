@@ -37,7 +37,7 @@ export function useOtpInput(props: UseOtpInputProps): UseOtpInputReturn {
     'data-testid': dataTestId,
   } = props;
 
-  const [internalValue, setInternalValue] = useState(() =>
+  const [internalValue, setInternalValue] = useState<string>(() =>
     toDigits(defaultValue, length).join(''),
   );
 

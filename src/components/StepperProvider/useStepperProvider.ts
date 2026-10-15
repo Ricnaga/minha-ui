@@ -1,16 +1,16 @@
-import { useContext } from "@/hooks";
-import { createContext, useState, useCallback } from "react";
+import { useContext } from '@/hooks';
+import { createContext, useState, useCallback } from 'react';
 import type {
   StepperProviderContextProps,
   UseStepperProviderProps,
-} from "./stepper-provider.types";
+} from './stepper-provider.types';
 
 export const StepperProviderContext =
   createContext<StepperProviderContextProps>({} as StepperProviderContextProps);
 
 export function useStepperProvider(props: UseStepperProviderProps) {
   const {
-    orientation = "horizontal",
+    orientation = 'horizontal',
     steps,
     activeStep = 0,
     onStepChange,
@@ -18,7 +18,7 @@ export function useStepperProvider(props: UseStepperProviderProps) {
     children,
   } = props;
 
-  const [currentStep, setCurrentStep] = useState(activeStep);
+  const [currentStep, setCurrentStep] = useState<number>(activeStep ?? 0);
 
   const handleStepChange = useCallback(
     (step: number) => {

@@ -43,13 +43,13 @@ export function useAutoCompleteProvider(props: UseAutoCompleteProviderProps) {
   } = props;
 
   const { isOpen, handleOpen, handleClose } = useDisclosure();
-  const [internalQuery, setInternalQuery] = useState(
+  const [internalQuery, setInternalQuery] = useState<string>(
     isMultiple ? '' : defaultValue,
   );
   const [internalValues, setInternalValues] = useState<SelectOptions[]>(
     defaultValues ?? [],
   );
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 
   const autoCompleteId = useId();
   const inputId = `${autoCompleteId}-input`;
