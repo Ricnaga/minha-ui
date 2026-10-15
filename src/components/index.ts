@@ -84,4 +84,5 @@ export * from './TabsTrigger';
 export * from './ToastContainer';
 export * from './Tooltip';
 export * from './TopLoadingBarProvider';
+export * from './TransitionContainer';
 export * from './VideoPlayer';
