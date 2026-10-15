@@ -1,31 +1,31 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
-import { Dnd } from "../Dnd";
-import { DndList } from "../../DndList";
-import { DndItem } from "../../DndItem";
-import { DndProvider } from "../../DndProvider";
-import type { DndProps } from "../dnd.types";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState, type Dispatch, type SetStateAction } from 'react';
+import { Dnd } from '../Dnd';
+import { DndList } from '../../DndList';
+import { DndItem } from '../../DndItem';
+import { DndProvider } from '../../DndProvider';
+import type { DndProps } from '../dnd.types';
 
 const meta: Meta<DndProps> = {
-  title: "Components/Interação/Dnd",
+  title: 'Components/Interação/Dnd',
   component: Dnd,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     orientation: {
-      control: "select",
-      options: ["horizontal", "vertical"],
+      control: 'select',
+      options: ['horizontal', 'vertical'],
     },
   },
-  args: { orientation: "horizontal" },
+  args: { orientation: 'horizontal' },
 };
 
 export default meta;
 type Story = StoryObj<DndProps>;
 
-const ITEMS = ["Item 1", "Item 2", "Item 3", "Item 4"];
+const ITEMS = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
 
 function DndSingleListTemplate(args: DndProps) {
   const [items, setItems] = useState(ITEMS);
@@ -49,16 +49,20 @@ export const SingleList: Story = {
   render: (args) => <DndSingleListTemplate {...args} />,
 };
 
-const TODO_ITEMS = ["Tarefa 1", "Tarefa 2", "Tarefa 3"];
-const DONE_ITEMS = ["Feito 1", "Feito 2"];
+const TODO_ITEMS = ['Tarefa 1', 'Tarefa 2', 'Tarefa 3'];
+const DONE_ITEMS = ['Feito 1', 'Feito 2'];
 
 function DndMultipleListsTemplate(args: DndProps) {
   const [todo, setTodo] = useState(TODO_ITEMS);
   const [done, setDone] = useState(DONE_ITEMS);
 
+  const listSetters: Record<string, Dispatch<SetStateAction<string[]>>> = {
+    todo: setTodo,
+    done: setDone,
+  };
+
   const handleReorder = (listId: string, items: string[]) => {
-    if (listId === "todo") setTodo(items);
-    if (listId === "done") setDone(items);
+    listSetters[listId]?.(items);
   };
 
   const handleMoveItem = (
@@ -67,25 +71,13 @@ function DndMultipleListsTemplate(args: DndProps) {
     toList: string,
     toIndex: number,
   ) => {
-    if (fromList === "todo") {
-      setTodo((prev) => prev.filter((i) => i !== itemId));
-    } else {
-      setDone((prev) => prev.filter((i) => i !== itemId));
-    }
+    listSetters[fromList]?.((prev) => prev.filter((i) => i !== itemId));
 
-    if (toList === "todo") {
-      setTodo((prev) => {
-        const next = [...prev];
-        next.splice(toIndex, 0, itemId);
-        return next;
-      });
-    } else {
-      setDone((prev) => {
-        const next = [...prev];
-        next.splice(toIndex, 0, itemId);
-        return next;
-      });
-    }
+    listSetters[toList]?.((prev) => {
+      const next = [...prev];
+      next.splice(toIndex, 0, itemId);
+      return next;
+    });
   };
 
   return (
@@ -116,7 +108,7 @@ export const MultipleLists: Story = {
 
 export const Vertical: Story = {
   args: {
-    orientation: "vertical",
+    orientation: 'vertical',
   },
   render: (args) => <DndSingleListTemplate {...args} />,
 };

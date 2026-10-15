@@ -1,28 +1,28 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useEffect, useState } from "react";
-import { TopLoadingBarProvider, useTopLoadingBarContext } from "../..";
-import { testTopLoadingBarProvider } from "./TopLoadingBarProvider.play";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useEffect, useState } from 'react';
+import { TopLoadingBarProvider, useTopLoadingBarContext } from '../..';
+import { testTopLoadingBarProvider } from './TopLoadingBarProvider.play';
 
 const meta: Meta<typeof TopLoadingBarProvider> = {
-  title: "Components/Feedback/TopLoadingBarProvider",
+  title: 'Components/Feedback/TopLoadingBarProvider',
   component: TopLoadingBarProvider,
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     color: {
-      control: { type: "select" },
-      options: ["primary", "secondary", "success", "info", "warning", "error"],
-      description: "Cor da barra de carregamento",
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'success', 'info', 'warning', 'error'],
+      description: 'Cor da barra de carregamento',
       table: {
-        category: "Variants",
-        defaultValue: { summary: "primary" },
+        category: 'Variants',
+        defaultValue: { summary: 'primary' },
       },
     },
   },
   args: {
-    color: "primary",
+    color: 'primary',
   },
 };
 
@@ -36,9 +36,10 @@ function DemoContent() {
   useEffect(() => {
     if (isLoading) {
       start();
-    } else {
-      complete();
+      return;
     }
+
+    complete();
   }, [isLoading, start, complete]);
 
   return (
@@ -60,7 +61,7 @@ function DemoContent() {
         </button>
         <div className="text-sm text-gray-600">
           <p>Progress: {Math.round(progress)}%</p>
-          <p>Animating: {isAnimating ? "Sim" : "Não"}</p>
+          <p>Animating: {isAnimating ? 'Sim' : 'Não'}</p>
         </div>
       </div>
     </div>
