@@ -83,3 +83,4 @@ export * from './BreadcrumbSeparator';
 export * from './EmptyState';
 export * from './ErrorState';
 export * from './Chart';
+export * from './ChartPie';

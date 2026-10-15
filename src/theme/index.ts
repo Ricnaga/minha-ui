@@ -52,3 +52,4 @@ export * from './breadcrumb.tv';
 export * from './empty-state.tv';
 export * from './error-state.tv';
 export * from './chart.tv';
+export * from './chart-pie.tv';
