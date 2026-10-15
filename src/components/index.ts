@@ -66,6 +66,7 @@ export * from './PopoverContent';
 export * from './PopoverTrigger';
 export * from './Progress';
 export * from './RangeCalendar';
+export * from './ScrollArea';
 export * from './Select';
 export * from './Skeleton';
 export * from './Slider';
