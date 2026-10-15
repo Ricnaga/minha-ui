@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { TopLoadingBarProvider, useTopLoadingBarContext } from '../..';
 import { testTopLoadingBarProvider } from './TopLoadingBarProvider.play';
 
@@ -32,14 +32,18 @@ type Story = StoryObj<typeof TopLoadingBarProvider>;
 function DemoContent() {
   const { start, complete, progress, isAnimating } = useTopLoadingBarContext();
   const [isLoading, setIsLoading] = useState(false);
+  const hasStartedRef = useRef(false);
 
   useEffect(() => {
     if (isLoading) {
+      hasStartedRef.current = true;
       start();
       return;
     }
 
-    complete();
+    if (hasStartedRef.current) {
+      complete();
+    }
   }, [isLoading, start, complete]);
 
   return (

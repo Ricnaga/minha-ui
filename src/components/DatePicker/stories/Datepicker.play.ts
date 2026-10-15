@@ -1,26 +1,31 @@
-import type { PlayFunction } from "storybook/internal/types";
-import { expect, screen, userEvent, within } from "storybook/test";
+import type { PlayFunction } from 'storybook/internal/types';
+import { expect, screen, userEvent, waitFor, within } from 'storybook/test';
 
 export const testDefaultDatepicker: PlayFunction = async ({
   canvasElement,
 }) => {
   const canvas = within(canvasElement);
 
-  // 1️⃣ abre o datepicker
-  const input = canvas.getByRole("textbox");
+  // 1️⃣ Abre o datepicker clicando no input
+  const input = canvas.getByRole('textbox');
   await userEvent.click(input);
 
-  // 2️⃣ calendário está no portal → usa screen
-  const calendarRegion = await screen.findByRole("region");
-  expect(calendarRegion).toBeInTheDocument();
+  // 2️⃣ O calendário fica dentro do PopoverContent (não visível até abrir)
+  const calendarRegion = await screen.findByRole('region');
+  await waitFor(() => expect(calendarRegion).toBeVisible());
 
-  // 3️⃣ seleciona um dia visível (ex: 15)
-  const dayButton = await screen.findByRole("button", {
-    name: "15",
+  // 3️⃣ Seleciona o dia 15 do mês corrente
+  const dayButton = within(calendarRegion).getByRole('button', {
+    name: '15',
   });
-
   await userEvent.click(dayButton);
 
-  // 4️⃣ input recebeu valor formatado
-  expect(input).toHaveValue("15/01/2026");
+  // 4️⃣ O input recebe a data selecionada (mês atual, não um mês fixo)
+  const today = new Date();
+  const expectedValue = `15/${String(today.getMonth() + 1).padStart(
+    2,
+    '0',
+  )}/${today.getFullYear()}`;
+
+  await waitFor(() => expect(input).toHaveValue(expectedValue));
 };
