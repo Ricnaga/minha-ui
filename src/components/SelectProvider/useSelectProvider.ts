@@ -1,40 +1,55 @@
-import { useContext, useDisclosure } from "@/hooks";
-import { createContext, useState } from "react";
-import type { SelectOptions } from "../Select";
+import { useContext, useDisclosure } from '@/hooks';
+import { createContext, useState } from 'react';
+import type { SelectOptions } from '../Select';
 import type {
   SelectProviderContextProps,
   UseSelectProviderProps,
-} from "./select-provider.types";
+} from './select-provider.types';
+
+function resolveSelection(
+  previous: Map<string, SelectOptions>,
+  option: SelectOptions,
+  isMultiple: boolean,
+): Map<string, SelectOptions> {
+  const key = option.key.toString();
+
+  // Adiciona a seleção (limpa as anteriores quando não é múltipla)
+  if (!previous.has(key)) {
+    const next = isMultiple
+      ? new Map(previous)
+      : new Map<string, SelectOptions>();
+    next.set(key, option);
+    return next;
+  }
+
+  // Já selecionado: remove (múltipla) ou limpa tudo (única)
+  if (isMultiple) {
+    const next = new Map(previous);
+    next.delete(key);
+    return next;
+  }
+
+  return new Map();
+}
 
 export const SelectProviderContext = createContext<SelectProviderContextProps>(
-  {} as SelectProviderContextProps
+  {} as SelectProviderContextProps,
 );
 
 export function useSelectProvider(props: UseSelectProviderProps) {
-  const { isMultiple, onSelectChange } = props;
+  const { isMultiple = false, onSelectChange } = props;
   const { isOpen, handleOpen, handleClose } = useDisclosure();
 
-  const [selectedOptions, setSelectedOptions] = useState<Map<string, SelectOptions>>(new Map());
+  const [selectedOptions, setSelectedOptions] = useState<
+    Map<string, SelectOptions>
+  >(new Map());
 
   function handleSelectChange(option: SelectOptions) {
     setSelectedOptions((prev) => {
-      const newMap = new Map(prev);
+      const nextSelection = resolveSelection(prev, option, isMultiple);
 
-      if (newMap.has(option.key.toString())) {
-        if (isMultiple) {
-          newMap.delete(option.key.toString());
-        } else {
-          newMap.clear();
-        }
-      } else {
-        if (!isMultiple) {
-          newMap.clear();
-        }
-        newMap.set(option.key.toString(), option);
-      }
-
-      onSelectChange(Array.from(newMap.values()));
-      return newMap;
+      onSelectChange(Array.from(nextSelection.values()));
+      return nextSelection;
     });
   }
 
