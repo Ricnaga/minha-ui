@@ -3,3 +3,4 @@
 - [] - avaliar tamanho da pasta de components
 - [] - atualizar playwright
 - [] - rever testes quebrados via storybook
+- [] - migrar estados assíncronos (useFetch, useCopyToClipboard) para união discriminada
