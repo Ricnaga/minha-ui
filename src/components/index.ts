@@ -82,3 +82,4 @@ export * from './BreadcrumbPage';
 export * from './BreadcrumbSeparator';
 export * from './EmptyState';
 export * from './ErrorState';
+export * from './Chart';
