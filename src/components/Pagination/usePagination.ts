@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { UsePaginationProps } from "./pagination.types";
+import { useState } from 'react';
+import type { UsePaginationProps } from './pagination.types';
 
 type BuildPaginationItemsArgs = {
   currentPage: number;
@@ -18,7 +18,7 @@ function buildPaginationItems(args: BuildPaginationItemsArgs) {
 
   // Adiciona ellipsis antes das páginas
   if (startPage > 2) {
-    paginationNumbers.push("previous-ellipsis");
+    paginationNumbers.push('previous-ellipsis');
   }
 
   // Adiciona páginas intermediárias
@@ -28,7 +28,7 @@ function buildPaginationItems(args: BuildPaginationItemsArgs) {
 
   // Adiciona ellipsis depois das páginas
   if (endPage < totalPages - 1) {
-    paginationNumbers.push("next-ellipsis");
+    paginationNumbers.push('next-ellipsis');
   }
 
   // Sempre mostrar a última página, se houver mais de uma página
@@ -40,17 +40,20 @@ function buildPaginationItems(args: BuildPaginationItemsArgs) {
 }
 
 export function usePagination(props: UsePaginationProps) {
-  const { totalPages,onPageChange } = props;
+  const { totalPages, currentPage: controlledPage, onPageChange } = props;
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [internalPage, setInternalPage] = useState<number>(1);
+  const isControlled = controlledPage !== undefined;
+  const currentPage = isControlled ? controlledPage : internalPage;
 
   function handlePageChange(pageNumber: number | string) {
-    if (typeof pageNumber === "string") return;
+    if (typeof pageNumber === 'string') return;
 
     if (pageNumber < 1 || pageNumber > totalPages || pageNumber === currentPage)
       return;
-    setCurrentPage(pageNumber);
-    onPageChange(pageNumber)
+
+    if (!isControlled) setInternalPage(pageNumber);
+    onPageChange(pageNumber);
   }
 
   const paginationItems = buildPaginationItems({
