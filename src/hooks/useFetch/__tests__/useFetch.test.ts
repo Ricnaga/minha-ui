@@ -22,6 +22,10 @@ describe('useFetch', () => {
     expect(result.current.data).toBeNull();
     expect(result.current.isLoading).toBe(false);
     expect(result.current.error).toBeNull();
+    expect(result.current.isIdle).toBe(true);
+    expect(result.current.isSuccess).toBe(false);
+    expect(result.current.isError).toBe(false);
+    expect(result.current.state.status).toBe('idle');
   });
 
   it('should fetch data when isRequesting is true', async () => {
@@ -37,6 +41,9 @@ describe('useFetch', () => {
 
     expect(result.current.data).toEqual({ data: 'test-data' });
     expect(result.current.error).toBeNull();
+    expect(result.current.isSuccess).toBe(true);
+    expect(result.current.isIdle).toBe(false);
+    expect(result.current.state.status).toBe('success');
   });
 
   it('should handle error', async () => {
@@ -52,6 +59,10 @@ describe('useFetch', () => {
 
     expect(result.current.error).toBeInstanceOf(Error);
     expect(result.current.error?.message).toBe('Fetch error');
+    expect(result.current.isError).toBe(true);
+    expect(result.current.isSuccess).toBe(false);
+    expect(result.current.data).toBeNull();
+    expect(result.current.state.status).toBe('error');
   });
 
   it('should provide refetch function', async () => {
