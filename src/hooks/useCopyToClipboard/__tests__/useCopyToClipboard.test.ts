@@ -21,6 +21,9 @@ describe('useCopyToClipboard', () => {
     expect(result.current.copiedValue).toBeNull();
     expect(result.current.error).toBeNull();
     expect(result.current.isCopied).toBe(false);
+    expect(result.current.isIdle).toBe(true);
+    expect(result.current.isError).toBe(false);
+    expect(result.current.state.status).toBe('idle');
   });
 
   it('should copy text to clipboard successfully', async () => {
@@ -35,6 +38,9 @@ describe('useCopyToClipboard', () => {
     expect(result.current.copiedValue).toBe('test text');
     expect(result.current.isCopied).toBe(true);
     expect(result.current.error).toBeNull();
+    expect(result.current.isIdle).toBe(false);
+    expect(result.current.isError).toBe(false);
+    expect(result.current.state.status).toBe('success');
   });
 
   it('should handle clipboard error', async () => {
@@ -50,6 +56,8 @@ describe('useCopyToClipboard', () => {
     expect(result.current.error).toBeInstanceOf(Error);
     expect(result.current.isCopied).toBe(false);
     expect(result.current.copiedValue).toBeNull();
+    expect(result.current.isError).toBe(true);
+    expect(result.current.state.status).toBe('error');
   });
 
   it('should reset state', async () => {
@@ -68,5 +76,7 @@ describe('useCopyToClipboard', () => {
     expect(result.current.copiedValue).toBeNull();
     expect(result.current.error).toBeNull();
     expect(result.current.isCopied).toBe(false);
+    expect(result.current.isIdle).toBe(true);
+    expect(result.current.state.status).toBe('idle');
   });
 });
