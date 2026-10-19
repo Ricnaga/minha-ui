@@ -10,7 +10,7 @@ describe('Calendar', () => {
 
   it('should render calendar with navigation buttons', () => {
     render(<Calendar onDateChange={vi.fn()} />);
-    expect(screen.getByLabelText('previous-month')).toBeInTheDocument();
-    expect(screen.getByLabelText('next-month')).toBeInTheDocument();
+    expect(screen.getByLabelText('Mês anterior')).toBeInTheDocument();
+    expect(screen.getByLabelText('Próximo mês')).toBeInTheDocument();
   });
 });

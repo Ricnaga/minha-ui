@@ -34,9 +34,9 @@ const preview: Preview = {
 
     a11y: {
       // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
+      // 'error' - fail CI on a11y violations (modo definitivo do projeto)
       // 'off' - skip a11y checks entirely
-      test: 'todo',
+      test: 'error',
     },
   },
   // Preserva o comportamento atual (desktop) na carga inicial; stories
