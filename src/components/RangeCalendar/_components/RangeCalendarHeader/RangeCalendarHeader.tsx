@@ -1,6 +1,6 @@
-import { rangeCalendar } from "@/theme";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { useRangeCalendarHeader } from "./useRangeCalendarHeader";
+import { rangeCalendar } from '@/theme';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import { useRangeCalendarHeader } from './useRangeCalendarHeader';
 
 const { headerWrapper, headerButton, headerLabel } = rangeCalendar();
 
@@ -9,11 +9,19 @@ export function RangeCalendarHeader() {
 
   return (
     <header className={headerWrapper()}>
-      <button onClick={goToPrevMonth} className={headerButton()}>
+      <button
+        onClick={goToPrevMonth}
+        className={headerButton()}
+        aria-label="Mês anterior"
+      >
         <CaretLeftIcon />
       </button>
       <h2 className={headerLabel()}>{label}</h2>
-      <button onClick={goToNextMonth} className={headerButton()}>
+      <button
+        onClick={goToNextMonth}
+        className={headerButton()}
+        aria-label="Próximo mês"
+      >
         <CaretRightIcon />
       </button>
     </header>

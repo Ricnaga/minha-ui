@@ -19,7 +19,7 @@ describe('DatePickerCalendar', () => {
         <DatePickerCalendar />
       </DatePickerProvider>,
     );
-    expect(screen.getByLabelText('previous-month')).toBeInTheDocument();
-    expect(screen.getByLabelText('next-month')).toBeInTheDocument();
+    expect(screen.getByLabelText('Mês anterior')).toBeInTheDocument();
+    expect(screen.getByLabelText('Próximo mês')).toBeInTheDocument();
   });
 });

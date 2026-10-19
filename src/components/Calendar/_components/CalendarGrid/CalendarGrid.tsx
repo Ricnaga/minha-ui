@@ -1,5 +1,5 @@
-import { calendar } from "@/theme";
-import { useCalendarGrid } from "./useCalendarGrid";
+import { calendar } from '@/theme';
+import { useCalendarGrid } from './useCalendarGrid';
 
 const { gridWrapper, gridDay } = calendar();
 
@@ -36,10 +36,10 @@ export function CalendarGrid() {
   };
 
   return (
-    <section className={gridWrapper()} role="region">
+    <div className={gridWrapper()} role="region" aria-label="Calendário">
       {days.map((day) => (
         <ButtonDays key={day.toISOString()} day={day} />
       ))}
-    </section>
+    </div>
   );
 }

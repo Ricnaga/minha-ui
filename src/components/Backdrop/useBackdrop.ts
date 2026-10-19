@@ -1,14 +1,14 @@
-import type { ActivityProps, HTMLAttributes } from "react";
-import { backdrop } from "@/theme";
-import type { BackdropProps, UseBackdropProps } from "./backdrop.types";
-import type { SpinnerProps } from "../Spinner";
+import type { ActivityProps, HTMLAttributes } from 'react';
+import { backdrop } from '@/theme';
+import type { BackdropProps, UseBackdropProps } from './backdrop.types';
+import type { SpinnerProps } from '../Spinner';
 
 const { base, wrapper } = backdrop();
 
 export function useBackdrop(props: UseBackdropProps) {
   const {
     isOpen = false,
-    blur = "md",
+    blur = 'md',
     zIndex = 1000,
     isLoading = false,
     children,
@@ -17,8 +17,9 @@ export function useBackdrop(props: UseBackdropProps) {
 
   const backdropProps: BackdropProps = {
     ...rest,
-    role: "presentation",
-    "aria-hidden": "true",
+    role: 'presentation',
+    'aria-hidden': 'true',
+    inert: true,
     className: base({ isOpen, blur }),
     style: { zIndex },
   };
@@ -29,12 +30,12 @@ export function useBackdrop(props: UseBackdropProps) {
   };
 
   const spinnerProps: SpinnerProps = {
-    color: "primary",
-    thickness: "lg",
-    className: "size-20",
+    color: 'primary',
+    thickness: 'lg',
+    className: 'size-20',
   };
 
-  const mode: ActivityProps["mode"] = isLoading ? "visible" : "hidden";
+  const mode: ActivityProps['mode'] = isLoading ? 'visible' : 'hidden';
 
   return { children, backdropProps, mode, wrapperProps, spinnerProps };
 }

@@ -1,6 +1,6 @@
-import { calendar } from "@/theme";
-import { useCalendarHeader } from "./useCalendarHeader";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { calendar } from '@/theme';
+import { useCalendarHeader } from './useCalendarHeader';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 
 const { headerWrapper, headerButton, headerLabel } = calendar();
 
@@ -12,7 +12,7 @@ export function CalendarHeader() {
       <button
         onClick={goToPrevMonth}
         className={headerButton()}
-        aria-label="previous-month"
+        aria-label="Mês anterior"
       >
         <CaretLeftIcon />
       </button>
@@ -20,7 +20,7 @@ export function CalendarHeader() {
       <button
         onClick={goToNextMonth}
         className={headerButton()}
-        aria-label="next-month"
+        aria-label="Próximo mês"
       >
         <CaretRightIcon />
       </button>
