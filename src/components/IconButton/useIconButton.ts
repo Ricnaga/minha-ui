@@ -1,14 +1,14 @@
-import type { MouseEvent } from "react";
-import { useRipple } from "@/hooks";
-import { iconButton } from "@/theme";
-import type { IconButtonProps, UseIconButtonProps } from "./icon-button.types";
+import type { MouseEvent } from 'react';
+import { useRipple } from '@/hooks';
+import { iconButton } from '@/theme';
+import type { IconButtonProps, UseIconButtonProps } from './icon-button.types';
 
 export function useIconButton(props: UseIconButtonProps) {
   const {
-    size = "medium",
-    radius = "full",
-    variant = "contained",
-    color = "primary",
+    size = 'medium',
+    radius = 'full',
+    variant = 'contained',
+    color = 'primary',
     isLoading = false,
     className,
     onClick,
@@ -24,7 +24,7 @@ export function useIconButton(props: UseIconButtonProps) {
     onClick?.(event);
   }
 
-  const iconButtonProps: IconButtonProps = {
+  const iconButtonProps: Omit<IconButtonProps, 'children'> = {
     ...rest,
     disabled: isLoading ?? disabled,
     className: iconButton({
