@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
-import { useThrottle } from "../";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { useThrottle } from '../';
 import {
   testDefaultThrottle,
   testSearchInputThrottle,
-} from "./useThrottle.play";
+} from './useThrottle.play';
 
 const meta: Meta = {
-  title: "Hooks/useThrottle",
+  title: 'Hooks/useThrottle',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
     docs: {
       description: {
         component: `
@@ -54,7 +54,7 @@ const throttledSearch = useThrottle((query: string) => {
       },
     },
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -65,7 +65,10 @@ export const Default: StoryObj = {
     const [count, setCount] = useState(0);
 
     const throttledLog = useThrottle((message: string) => {
-      setLogs((prev) => [...prev, `${new Date().toLocaleTimeString()}: ${message}`]);
+      setLogs((prev) => [
+        ...prev,
+        `${new Date().toLocaleTimeString()}: ${message}`,
+      ]);
     }, 500);
 
     const handleClick = () => {
@@ -85,7 +88,7 @@ export const Default: StoryObj = {
         <button
           onClick={handleClick}
           data-testid="throttle-button"
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors w-fit"
+          className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors w-fit"
         >
           Clique rápido! (Throttle: 500ms)
         </button>
@@ -93,12 +96,14 @@ export const Default: StoryObj = {
         <div className="flex gap-4">
           <div className="p-4 bg-gray-100 rounded">
             <strong data-testid="click-count">
-              Total de cliques: <span data-testid="click-count-value">{count}</span>
+              Total de cliques:{' '}
+              <span data-testid="click-count-value">{count}</span>
             </strong>
           </div>
           <div className="p-4 bg-gray-100 rounded">
             <strong data-testid="execution-count">
-              Execuções: <span data-testid="execution-count-value">{logs.length}</span>
+              Execuções:{' '}
+              <span data-testid="execution-count-value">{logs.length}</span>
             </strong>
           </div>
         </div>
@@ -120,9 +125,9 @@ export const Default: StoryObj = {
 };
 
 export const SearchInput: StoryObj = {
-  name: "Input de busca com throttle",
+  name: 'Input de busca com throttle',
   render: () => {
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState('');
     const [searchLogs, setSearchLogs] = useState<string[]>([]);
     const [requestCount, setRequestCount] = useState(0);
 
@@ -159,7 +164,8 @@ export const SearchInput: StoryObj = {
         <div className="flex gap-4">
           <div className="p-3 bg-blue-50 border border-blue-200 rounded">
             <strong data-testid="request-count">
-              Requisições: <span data-testid="request-count-value">{requestCount}</span>
+              Requisições:{' '}
+              <span data-testid="request-count-value">{requestCount}</span>
             </strong>
           </div>
           <div className="p-3 bg-gray-100 rounded">

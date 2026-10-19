@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useIntersectionObserver } from "../";
-import { testDefaultIntersectionObserver } from "./useIntersectionObserver.play";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useIntersectionObserver } from '../';
+import { testDefaultIntersectionObserver } from './useIntersectionObserver.play';
 
 const meta: Meta = {
-  title: "Hooks/useIntersectionObserver",
+  title: 'Hooks/useIntersectionObserver',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -20,7 +20,7 @@ export const Default: StoryObj = {
   render: () => {
     const { ref, isIntersecting } = useIntersectionObserver({
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: 0.5,
       once: false,
     });
@@ -34,10 +34,10 @@ export const Default: StoryObj = {
         <div
           ref={ref}
           className={`mt-[150vh] h-24 flex items-center justify-center font-bold text-white transition-colors duration-300 ${
-            isIntersecting ? "bg-green-500" : "bg-red-500"
+            isIntersecting ? 'bg-green-700' : 'bg-red-600'
           }`}
         >
-          {isIntersecting ? "Visível" : "Fora da tela"}
+          {isIntersecting ? 'Visível' : 'Fora da tela'}
         </div>
       </div>
     );

@@ -1,19 +1,19 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Backdrop } from "../Backdrop";
-import type { BackdropProps } from "../backdrop.types";
-import { useEffect, useState } from "react";
-import { fn } from "storybook/test";
-import { testDefaultBackdrop } from "./Backdrop.play";
+import { Backdrop } from '../Backdrop';
+import type { BackdropProps } from '../backdrop.types';
+import { useEffect, useState } from 'react';
+import { fn } from 'storybook/test';
+import { testDefaultBackdrop } from './Backdrop.play';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<BackdropProps> = {
-  title: "Components/Estruturas/Backdrop",
+  title: 'Components/Estruturas/Backdrop',
   component: Backdrop,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
+    layout: 'centered',
   },
   args: {
     zIndex: 1000,
@@ -21,7 +21,7 @@ const meta: Meta<BackdropProps> = {
     onClose: fn(),
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -42,7 +42,7 @@ export const Default: Story = {
       <div className="text-center">
         <button
           onClick={() => setAsOpen(true)}
-          className="cursor-pointer bg-blue-400 rounded p-2 text-white"
+          className="cursor-pointer bg-blue-600 rounded p-2 text-white"
         >
           Ativar backdrop
         </button>

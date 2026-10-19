@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useDisclosure } from "../";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useDisclosure } from '../';
 import {
   testDefaultDisclosure,
   testFullExampleDisclosure,
-} from "./useDisclosure.play";
+} from './useDisclosure.play';
 
 const meta: Meta = {
-  title: "Hooks/useDisclosure",
+  title: 'Hooks/useDisclosure',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -29,9 +29,9 @@ export const Default: StoryObj = {
           onClick={handleToggle}
           className="px-6 py-3 bg-blue-600 text-white rounded-md"
         >
-          {isOpen ? "Desativar" : "Ativar"}
+          {isOpen ? 'Desativar' : 'Ativar'}
         </button>
-        <div>Status: {isOpen ? "Ativo" : "Inativo"}</div>
+        <div>Status: {isOpen ? 'Ativo' : 'Inativo'}</div>
       </div>
     );
   },
@@ -56,7 +56,7 @@ export const FullExample: StoryObj = {
           </button>
           <button
             onClick={handleOpen}
-            className="px-4 py-2 bg-green-600 text-white rounded-md"
+            className="px-4 py-2 bg-green-700 text-white rounded-md"
           >
             Abrir
           </button>
@@ -67,7 +67,7 @@ export const FullExample: StoryObj = {
             Fechar
           </button>
         </div>
-        <div>Status atual: {isOpen ? "Ativo" : "Inativo"}</div>
+        <div>Status atual: {isOpen ? 'Ativo' : 'Inativo'}</div>
 
         <div style={{ marginTop: 16 }}>
           <strong>Props retornadas pelo hook:</strong>

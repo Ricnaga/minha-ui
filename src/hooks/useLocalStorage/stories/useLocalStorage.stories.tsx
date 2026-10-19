@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useLocalStorage } from "../";
-import { testDefaultLocalStorage } from "./useLocalStorage.play";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useLocalStorage } from '../';
+import { testDefaultLocalStorage } from './useLocalStorage.play';
 
 const meta: Meta = {
-  title: "Hooks/useLocalStorage",
+  title: 'Hooks/useLocalStorage',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -16,8 +16,8 @@ export default meta;
 export const Default: StoryObj = {
   render: () => {
     const { value, create, remove, clear } = useLocalStorage<string>(
-      "storybook-example",
-      "initial value"
+      'storybook-example',
+      'initial value',
     );
 
     return (
@@ -27,21 +27,21 @@ export const Default: StoryObj = {
         </h3>
 
         <p className="mb-4 text-sm text-zinc-600">
-          <span className="font-medium text-zinc-800">Value:</span>{" "}
+          <span className="font-medium text-zinc-800">Value:</span>{' '}
           {value ?? <em className="text-zinc-400">null</em>}
         </p>
 
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={() => create("created value")}
-            className="rounded-md bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-700"
+            onClick={() => create('created value')}
+            className="rounded-md bg-emerald-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-emerald-800"
           >
             Create
           </button>
 
           <button
             onClick={remove}
-            className="rounded-md bg-amber-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-amber-600"
+            className="rounded-md bg-amber-700 px-3 py-1.5 text-sm font-medium text-white hover:bg-amber-800"
           >
             Remove
           </button>

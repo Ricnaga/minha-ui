@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { usePagination } from "../";
-import { useEffect, useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { usePagination } from '../';
+import { useEffect, useState } from 'react';
 import {
   testDefaultPagination,
   testPaginationFromMockApi,
-} from "./usePagination.play";
+} from './usePagination.play';
 
 const meta: Meta = {
-  title: "Hooks/usePagination",
+  title: 'Hooks/usePagination',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -46,14 +46,14 @@ export const Default: StoryObj = {
             <button
               onClick={onPrevPage}
               disabled={pagination.pageNumber === 1}
-              className="px-3 py-1 mr-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+              className="px-3 py-1 mr-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
             >
               Prev
             </button>
             <button
               onClick={onNextPage}
               disabled={pagination.pageNumber === totalPages}
-              className="px-3 py-1 bg-blue-500 text-white rounded disabled:bg-gray-300"
+              className="px-3 py-1 bg-blue-600 text-white rounded disabled:bg-gray-300"
             >
               Next
             </button>
@@ -136,14 +136,14 @@ export const FromMockApi: StoryObj = {
             <button
               onClick={onPrevPage}
               disabled={pagination.pageNumber === 1}
-              className="px-3 py-1 mr-2 bg-blue-500 text-white rounded disabled:bg-gray-300"
+              className="px-3 py-1 mr-2 bg-blue-600 text-white rounded disabled:bg-gray-300"
             >
               Prev
             </button>
             <button
               onClick={onNextPage}
               disabled={pagination.pageNumber === totalPages}
-              className="px-3 py-1 bg-blue-500 text-white rounded disabled:bg-gray-300"
+              className="px-3 py-1 bg-blue-600 text-white rounded disabled:bg-gray-300"
             >
               Next
             </button>

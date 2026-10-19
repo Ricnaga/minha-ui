@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useToggle } from "..";
-import { testDefaultToggle, testFullExample } from "./useToggle.play";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useToggle } from '..';
+import { testDefaultToggle, testFullExample } from './useToggle.play';
 
 const meta: Meta = {
-  title: "Hooks/useToggle",
+  title: 'Hooks/useToggle',
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -19,14 +19,14 @@ export const Default: StoryObj = {
     const { isToggle, handleToggle } = useToggle();
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <button
           onClick={handleToggle}
           className="px-6 py-3 bg-blue-600 text-white rounded-md"
         >
-          {isToggle ? "Desativar" : "Ativar"}
+          {isToggle ? 'Desativar' : 'Ativar'}
         </button>
-        <div>Status: {isToggle ? "Ativo" : "Inativo"}</div>
+        <div>Status: {isToggle ? 'Ativo' : 'Inativo'}</div>
       </div>
     );
   },
@@ -48,7 +48,7 @@ export const FullExample: StoryObj = {
           </button>
           <button
             onClick={handleOpen}
-            className="px-4 py-2 bg-green-600 text-white rounded-md"
+            className="px-4 py-2 bg-green-700 text-white rounded-md"
           >
             Abrir
           </button>
@@ -59,7 +59,7 @@ export const FullExample: StoryObj = {
             Fechar
           </button>
         </div>
-        <div>Status atual: {isToggle ? "Ativo" : "Inativo"}</div>
+        <div>Status atual: {isToggle ? 'Ativo' : 'Inativo'}</div>
 
         <div style={{ marginTop: 16 }}>
           <strong>Props retornadas pelo hook:</strong>

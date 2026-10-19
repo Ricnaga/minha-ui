@@ -71,6 +71,9 @@ export default meta;
 type Story = StoryObj<SwitchProps>;
 
 export const Default: Story = {
+  args: {
+    label: 'Receber notificações',
+  },
   play: testDefaultSwitch,
 };
 

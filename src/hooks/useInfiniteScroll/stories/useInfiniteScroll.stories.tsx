@@ -1,16 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
-import { useInfiniteScroll } from "..";
-import { testeDefaultInfiniteScroll } from "./useInfiniteScroll.play";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { useInfiniteScroll } from '..';
+import { testeDefaultInfiniteScroll } from './useInfiniteScroll.play';
 
 const meta: Meta = {
-  title: "Hooks/useInfiniteScroll",
+  title: 'Hooks/useInfiniteScroll',
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -21,7 +21,7 @@ export default meta;
 export const Default: StoryObj = {
   render: () => {
     const [items, setItems] = useState(
-      Array.from({ length: 20 }, (_, i) => i + 1)
+      Array.from({ length: 20 }, (_, i) => i + 1),
     );
 
     const loadMore = async () => {
@@ -35,7 +35,12 @@ export const Default: StoryObj = {
     const { ref, isLoading } = useInfiniteScroll({ onLoadMore: loadMore });
 
     return (
-      <div className="space-y-4 p-4 h-[150vh] overflow-auto">
+      <div
+        className="space-y-4 p-4 h-[150vh] overflow-auto"
+        role="region"
+        aria-label="Lista de itens com scroll infinito"
+        tabIndex={0}
+      >
         {items.map((item) => (
           <div key={item} className="p-4 bg-gray-200 rounded">
             Item {item}
@@ -46,7 +51,7 @@ export const Default: StoryObj = {
           ref={ref}
           className="p-4 text-center text-gray-500 border border-dashed border-gray-400 rounded"
         >
-          {isLoading ? "Carregando..." : "Scroll para carregar mais"}
+          {isLoading ? 'Carregando...' : 'Scroll para carregar mais'}
         </div>
       </div>
     );

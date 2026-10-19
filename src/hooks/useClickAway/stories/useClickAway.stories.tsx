@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { useToggle } from "@/hooks";
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
-import { useClickAway } from "..";
-import { testDefaultClickAway } from "./useClickAway.play";
+import { useToggle } from '@/hooks';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { useClickAway } from '..';
+import { testDefaultClickAway } from './useClickAway.play';
 
 const meta: Meta = {
-  title: "Hooks/useClickAway",
+  title: 'Hooks/useClickAway',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -20,12 +20,12 @@ export default meta;
 export const Default: StoryObj = {
   render: () => {
     const { isToggle, handleClose, handleOpen } = useToggle();
-    const [log, setLog] = useState<string>("Nenhum clique fora ainda");
+    const [log, setLog] = useState<string>('Nenhum clique fora ainda');
 
     const ref = useClickAway<HTMLDivElement>({
       enabled: isToggle,
       onOutsideClick: () => {
-        setLog("➡️ Clique fora detectado");
+        setLog('➡️ Clique fora detectado');
         handleClose();
       },
     });
@@ -33,15 +33,15 @@ export const Default: StoryObj = {
     return (
       <div className="p-10">
         <p>
-          Clique <strong>dentro</strong> da caixa não faz nada. Clique{" "}
+          Clique <strong>dentro</strong> da caixa não faz nada. Clique{' '}
           <strong>fora</strong> fecha a caixa.
         </p>
 
         <button
-          className="text-white rounded p-1 cursor-pointer bg-blue-500"
+          className="text-white rounded p-1 cursor-pointer bg-blue-600"
           onClick={() => {
             handleOpen();
-            setLog("Caixa aberta novamente");
+            setLog('Caixa aberta novamente');
           }}
         >
           Abrir caixa

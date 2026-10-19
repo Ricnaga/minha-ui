@@ -108,7 +108,12 @@ export const Sizes: Story = {
   render: (args) => (
     <div className="flex w-96 flex-col gap-6">
       {(['sm', 'md', 'lg'] as const).map((size) => (
-        <Breadcrumb {...args} key={size} size={size}>
+        <Breadcrumb
+          {...args}
+          key={size}
+          size={size}
+          aria-label={`Breadcrumb ${size}`}
+        >
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Home</BreadcrumbLink>

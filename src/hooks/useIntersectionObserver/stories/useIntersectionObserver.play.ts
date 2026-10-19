@@ -1,5 +1,5 @@
-import type { PlayFunction } from "storybook/internal/types";
-import { waitFor, within } from "storybook/test";
+import type { PlayFunction } from 'storybook/internal/types';
+import { waitFor, within } from 'storybook/test';
 
 export const testDefaultIntersectionObserver: PlayFunction = async ({
   canvasElement,
@@ -11,8 +11,8 @@ export const testDefaultIntersectionObserver: PlayFunction = async ({
 
   // Verifica que inicialmente está vermelho
   await waitFor(() => {
-    if (!observedElement.className.includes("bg-red-500")) {
-      throw new Error("Elemento deveria estar vermelho inicialmente");
+    if (!observedElement.className.includes('bg-red-600')) {
+      throw new Error('Elemento deveria estar vermelho inicialmente');
     }
   });
 
@@ -21,14 +21,14 @@ export const testDefaultIntersectionObserver: PlayFunction = async ({
 
   // Espera até o elemento ficar visível
   await waitFor(() => {
-    if (!observedElement.className.includes("bg-green-500")) {
-      throw new Error("Elemento deveria estar verde após scroll");
+    if (!observedElement.className.includes('bg-green-700')) {
+      throw new Error('Elemento deveria estar verde após scroll');
     }
   });
 
   // Verifica o texto atualizado
   await waitFor(() => {
-    if (observedElement.textContent !== "Visível") {
+    if (observedElement.textContent !== 'Visível') {
       throw new Error("Texto do elemento não mudou para 'Visível'");
     }
   });

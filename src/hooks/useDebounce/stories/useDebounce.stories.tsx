@@ -1,23 +1,23 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
-import { useDebounce } from "../";
-import { testDefaultDebounce } from "./useDebounce.play";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { useDebounce } from '../';
+import { testDefaultDebounce } from './useDebounce.play';
 
 const meta: Meta = {
-  title: "Hooks/useDebounce",
+  title: 'Hooks/useDebounce',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 export const Default: StoryObj = {
   render: () => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
     const debouncedValue = useDebounce(value, 800);
 
     return (
@@ -36,14 +36,14 @@ export const Default: StoryObj = {
 
         <div className="mt-4 flex flex-col gap-2 text-sm">
           <p>
-            <strong>Valor atual:</strong>{" "}
-            <span className="text-blue-600">{value || "—"}</span>
+            <strong>Valor atual:</strong>{' '}
+            <span className="text-blue-600">{value || '—'}</span>
           </p>
 
           <p>
-            <strong>Valor debounced:</strong>{" "}
-            <span data-testid="debounced-value" className="text-green-600">
-              {debouncedValue || "—"}
+            <strong>Valor debounced:</strong>{' '}
+            <span data-testid="debounced-value" className="text-green-700">
+              {debouncedValue || '—'}
             </span>
           </p>
         </div>

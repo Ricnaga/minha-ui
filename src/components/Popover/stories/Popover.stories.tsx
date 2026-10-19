@@ -95,14 +95,14 @@ export const Default: Story = {
     return (
       <Popover {...args} onPopoverChange={handleOpen} isOpen={isOpen}>
         <PopoverTrigger>
-          <button className="bg-blue-400 p-2 rounded text-white cursor-pointer">
+          <button className="bg-blue-600 p-2 rounded text-white cursor-pointer">
             Abrir Popover
           </button>
         </PopoverTrigger>
         <PopoverContent>
           <button
             onClick={handleClose}
-            className="bg-red-400 p-2 rounded text-white cursor-pointer"
+            className="bg-red-600 p-2 rounded text-white cursor-pointer"
           >
             Fechar Popover
           </button>

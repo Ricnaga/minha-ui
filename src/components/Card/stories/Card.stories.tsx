@@ -1,39 +1,39 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Card } from "../Card";
-import type { CardProps } from "../card.types";
-import { CardHeader } from "src/components/CardHeader";
-import { CardBody } from "src/components/CardBody";
-import { CardActions } from "src/components/CardActions";
-import { CardTitle } from "src/components/CardTitle";
-import { CardSubtitle } from "src/components/CardSubtitle";
-import { CardDescription } from "src/components/CardDescription";
-import { CardFooter } from "src/components/CardFooter";
-import { CardImage } from "src/components/CardImage";
-import { testCompositionCard, testDefaultCard } from "./Card.play";
+import { Card } from '../Card';
+import type { CardProps } from '../card.types';
+import { CardHeader } from 'src/components/CardHeader';
+import { CardBody } from 'src/components/CardBody';
+import { CardActions } from 'src/components/CardActions';
+import { CardTitle } from 'src/components/CardTitle';
+import { CardSubtitle } from 'src/components/CardSubtitle';
+import { CardDescription } from 'src/components/CardDescription';
+import { CardFooter } from 'src/components/CardFooter';
+import { CardImage } from 'src/components/CardImage';
+import { testCompositionCard, testDefaultCard } from './Card.play';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<CardProps> = {
-  title: "Components/Estruturas/Card",
+  title: 'Components/Estruturas/Card',
   component: Card,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
+    layout: 'centered',
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     radius: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg", "full"],
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg', 'full'],
     },
     shadow: {
-      control: { type: "select" },
-      options: ["none", "sm", "md", "lg", "xl"],
+      control: { type: 'select' },
+      options: ['none', 'sm', 'md', 'lg', 'xl'],
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { children: "Conteúdo do Card", radius: "md", shadow: "md" },
+  args: { children: 'Conteúdo do Card', radius: 'md', shadow: 'md' },
 };
 
 export default meta;
@@ -57,6 +57,7 @@ export const Composition: Story = {
         <div className="m-6">
           <CardImage
             src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+            alt="Paisagem com montanhas e céu"
             className="size-20"
           />
         </div>

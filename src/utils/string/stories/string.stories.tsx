@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import {
   capitalize,
   extractDigits,
@@ -9,21 +9,21 @@ import {
   formatToCNPJ,
   formatToCPF,
   formatToMonetary,
-} from "..";
+} from '..';
 
 const meta: Meta = {
-  title: "Utils/String",
+  title: 'Utils/String',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 export const FormatToCPF: StoryObj = {
   render: () => {
-    const [cpf, setCpf] = useState<string>("");
+    const [cpf, setCpf] = useState<string>('');
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
       setCpf(formatToCPF(e.target.value));
@@ -46,8 +46,8 @@ export const FormatToCPF: StoryObj = {
         />
 
         <p className="text-sm">
-          <strong>Valor formatado:</strong>{" "}
-          <span className="text-green-600">{cpf || "—"}</span>
+          <strong>Valor formatado:</strong>{' '}
+          <span className="text-green-700">{cpf || '—'}</span>
         </p>
       </div>
     );
@@ -56,7 +56,7 @@ export const FormatToCPF: StoryObj = {
 
 export const FormatToCNPJ: StoryObj = {
   render: () => {
-    const [cnpj, setCNPJ] = useState<string>("");
+    const [cnpj, setCNPJ] = useState<string>('');
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
       setCNPJ(formatToCNPJ(e.target.value));
@@ -80,8 +80,8 @@ export const FormatToCNPJ: StoryObj = {
         />
 
         <p className="text-sm">
-          <strong>Valor formatado:</strong>{" "}
-          <span className="text-green-600">{cnpj || "—"}</span>
+          <strong>Valor formatado:</strong>{' '}
+          <span className="text-green-700">{cnpj || '—'}</span>
         </p>
       </div>
     );
@@ -90,7 +90,7 @@ export const FormatToCNPJ: StoryObj = {
 
 export const FormatToMonetary: StoryObj = {
   render: () => {
-    const [value, setValue] = useState<string>("");
+    const [value, setValue] = useState<string>('');
 
     return (
       <div className="p-10 flex flex-col gap-4 w-[300px]">
@@ -108,8 +108,8 @@ export const FormatToMonetary: StoryObj = {
         />
 
         <p className="text-sm">
-          <strong>Formatado:</strong>{" "}
-          <span className="text-green-600">{value || "—"}</span>
+          <strong>Formatado:</strong>{' '}
+          <span className="text-green-700">{value || '—'}</span>
         </p>
       </div>
     );
@@ -118,7 +118,7 @@ export const FormatToMonetary: StoryObj = {
 
 export const FormatToBRL: StoryObj = {
   render: () => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     return (
       <div className="p-10 flex flex-col gap-4 w-[300px]">
@@ -135,8 +135,8 @@ export const FormatToBRL: StoryObj = {
         />
 
         <p className="text-sm">
-          <strong>Formatado:</strong>{" "}
-          <span className="text-green-600">{value || "—"}</span>
+          <strong>Formatado:</strong>{' '}
+          <span className="text-green-700">{value || '—'}</span>
         </p>
       </div>
     );
@@ -145,14 +145,14 @@ export const FormatToBRL: StoryObj = {
 
 export const ExtractDigits: StoryObj = {
   render: () => {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState('');
 
     const examples = [
-      { label: "CPF", input: "123.456.789-01" },
-      { label: "CNPJ", input: "12.345.678/0001-90" },
-      { label: "Monetary", input: "1.234,56" },
-      { label: "BRL", input: "R$ 1.234,56" },
-      { label: "Texto com números", input: "Telefone: (11) 91234-5678" },
+      { label: 'CPF', input: '123.456.789-01' },
+      { label: 'CNPJ', input: '12.345.678/0001-90' },
+      { label: 'Monetary', input: '1.234,56' },
+      { label: 'BRL', input: 'R$ 1.234,56' },
+      { label: 'Texto com números', input: 'Telefone: (11) 91234-5678' },
     ];
 
     return (
@@ -174,8 +174,8 @@ export const ExtractDigits: StoryObj = {
         />
 
         <p className="text-sm">
-          <strong>Convertido:</strong>{" "}
-          <span className="text-green-600">{extractDigits(value) || "—"}</span>
+          <strong>Convertido:</strong>{' '}
+          <span className="text-green-700">{extractDigits(value) || '—'}</span>
         </p>
 
         <div className="mt-6">
@@ -183,8 +183,8 @@ export const ExtractDigits: StoryObj = {
           <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-neutral-700">
             {examples.map((ex) => (
               <li key={ex.label}>
-                <strong>{ex.label}:</strong> {ex.input} →{" "}
-                <span className="text-green-600">
+                <strong>{ex.label}:</strong> {ex.input} →{' '}
+                <span className="text-green-700">
                   {extractDigits(ex.input)}
                 </span>
               </li>
@@ -199,22 +199,24 @@ export const ExtractDigits: StoryObj = {
 export const Capitalize: StoryObj = {
   render: () => {
     const examples = [
-      { label: "Todas minúsculas", value: "hello world" },
-      { label: "Primeira maiúscula já", value: "JavaScript" },
-      { label: "Uma letra", value: "a" },
-      { label: "Vazio", value: "" },
-      { label: "Com número", value: "1teste" },
+      { label: 'Todas minúsculas', value: 'hello world' },
+      { label: 'Primeira maiúscula já', value: 'JavaScript' },
+      { label: 'Uma letra', value: 'a' },
+      { label: 'Vazio', value: '' },
+      { label: 'Com número', value: '1teste' },
     ];
 
     return (
       <div className="p-10 flex flex-col gap-4 w-[400px]">
-        <h2 className="text-lg font-bold">capitalizeFirst – Capitaliza primeira letra</h2>
+        <h2 className="text-lg font-bold">
+          capitalizeFirst – Capitaliza primeira letra
+        </h2>
 
         <ul className="list-disc ml-5 mt-2 text-sm text-neutral-700 space-y-1">
           {examples.map((ex) => (
             <li key={ex.label}>
-              <strong>{ex.label}:</strong> "{ex.value}" →{" "}
-              <span className="text-green-600">"{capitalize(ex.value)}"</span>
+              <strong>{ex.label}:</strong> "{ex.value}" →{' '}
+              <span className="text-green-700">"{capitalize(ex.value)}"</span>
             </li>
           ))}
         </ul>

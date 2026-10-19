@@ -62,7 +62,7 @@ export const Default: Story = {
 export const Horizontal: Story = {
   args: { orientation: 'horizontal' },
   render: (args) => (
-    <ScrollArea {...args}>
+    <ScrollArea {...args} aria-label="Lista horizontal de itens">
       <WideItems />
     </ScrollArea>
   ),
@@ -71,7 +71,7 @@ export const Horizontal: Story = {
 export const Both: Story = {
   args: { orientation: 'both' },
   render: (args) => (
-    <ScrollArea {...args}>
+    <ScrollArea {...args} aria-label="Lista com rolagem vertical e horizontal">
       <WideItems />
     </ScrollArea>
   ),
@@ -81,9 +81,13 @@ export const Sizes: Story = {
   render: (args) => (
     <div className="flex gap-4">
       {(['sm', 'md', 'lg'] as const).map((size) => (
-        <div key={size} className="flex flex-col gap-1 text-neutral-400">
+        <div key={size} className="flex flex-col gap-1 text-neutral-600">
           <span>{size}</span>
-          <ScrollArea {...args} size={size}>
+          <ScrollArea
+            {...args}
+            size={size}
+            aria-label={`Lista tamanho ${size}`}
+          >
             <Items count={12} />
           </ScrollArea>
         </div>
@@ -94,7 +98,7 @@ export const Sizes: Story = {
 
 export const Rtl: Story = {
   render: (args) => (
-    <ScrollArea {...args} dir="rtl">
+    <ScrollArea {...args} dir="rtl" aria-label="Lista de itens (RTL)">
       <Items />
     </ScrollArea>
   ),

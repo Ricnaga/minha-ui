@@ -75,7 +75,7 @@ export const Default: StoryObj = {
 
         <button
           onClick={refetch}
-          className="text-white p-1 bg-blue-500 rounded cursor-pointer"
+          className="text-white p-1 bg-blue-600 rounded cursor-pointer"
         >
           Refetch
         </button>

@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { formatISOToDateBR, formatToDate } from "..";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { formatISOToDateBR, formatToDate } from '..';
 
 const meta: Meta = {
-  title: "Utils/Date",
+  title: 'Utils/Date',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -14,11 +14,11 @@ export default meta;
 export const FormatToDate: StoryObj = {
   render: () => {
     const examples = [
-      { label: "Date nativo", value: new Date(2026, 0, 2) },
-      { label: "String ISO", value: "2026-01-02" },
-      { label: "String com outro formato ISO", value: "2000-12-25T00:00:00Z" },
-      { label: "Data inválida", value: "invalid string" },
-      { label: "Hoje", value: new Date() },
+      { label: 'Date nativo', value: new Date(2026, 0, 2) },
+      { label: 'String ISO', value: '2026-01-02' },
+      { label: 'String com outro formato ISO', value: '2000-12-25T00:00:00Z' },
+      { label: 'Data inválida', value: 'invalid string' },
+      { label: 'Hoje', value: new Date() },
     ];
 
     return (
@@ -37,8 +37,8 @@ export const FormatToDate: StoryObj = {
           <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-neutral-700">
             {examples.map((ex) => (
               <li key={ex.label}>
-                <strong>{ex.label}:</strong> {String(ex.value)} →{" "}
-                <span className="text-green-600">{formatToDate(ex.value)}</span>
+                <strong>{ex.label}:</strong> {String(ex.value)} →{' '}
+                <span className="text-green-700">{formatToDate(ex.value)}</span>
               </li>
             ))}
           </ul>
@@ -50,11 +50,11 @@ export const FormatToDate: StoryObj = {
 export const FormatISOToDateBR: StoryObj = {
   render: () => {
     const examples = [
-      { label: "ISO básico", value: "2026-01-02" },
-      { label: "ISO com hora UTC", value: "2026-01-02T00:00:00Z" },
-      { label: "ISO com hora local", value: "2026-01-02T15:30:00" },
-      { label: "Outra data", value: "2000-12-25" },
-      { label: "Inválida", value: "invalid" },
+      { label: 'ISO básico', value: '2026-01-02' },
+      { label: 'ISO com hora UTC', value: '2026-01-02T00:00:00Z' },
+      { label: 'ISO com hora local', value: '2026-01-02T15:30:00' },
+      { label: 'Outra data', value: '2000-12-25' },
+      { label: 'Inválida', value: 'invalid' },
     ];
 
     return (
@@ -73,9 +73,9 @@ export const FormatISOToDateBR: StoryObj = {
           <ul className="list-disc ml-5 mt-2 space-y-1 text-sm text-neutral-700">
             {examples.map((ex) => (
               <li key={ex.label}>
-                <strong>{ex.label}:</strong> {ex.value} →{" "}
-                <span className="text-green-600">
-                  {formatISOToDateBR(ex.value) || "Inválido"}
+                <strong>{ex.label}:</strong> {ex.value} →{' '}
+                <span className="text-green-700">
+                  {formatISOToDateBR(ex.value) || 'Inválido'}
                 </span>
               </li>
             ))}

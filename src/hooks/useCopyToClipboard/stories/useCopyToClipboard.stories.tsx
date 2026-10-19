@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState } from "react";
-import { useCopyToClipboard } from "../";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { useCopyToClipboard } from '../';
 import {
   testDefaultCopyToClipboard,
   testCopyCodeSnippet,
   testMultipleCopyButtons,
-} from "./useCopyToClipboard.play";
+} from './useCopyToClipboard.play';
 
 const meta: Meta = {
-  title: "Hooks/useCopyToClipboard",
+  title: 'Hooks/useCopyToClipboard',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
     docs: {
       description: {
         component: `
@@ -45,7 +45,7 @@ const { copyToClipboard, isCopied } = useCopyToClipboard();
       },
     },
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -54,7 +54,7 @@ export const Default: StoryObj = {
   render: () => {
     const { copyToClipboard, isCopied, copiedValue, reset } =
       useCopyToClipboard();
-    const [customText, setCustomText] = useState("Texto para copiar");
+    const [customText, setCustomText] = useState('Texto para copiar');
 
     return (
       <div className="p-10 flex flex-col gap-6">
@@ -79,16 +79,19 @@ export const Default: StoryObj = {
               data-testid="copy-button"
               className={`px-4 py-2 rounded font-medium transition-colors ${
                 isCopied
-                  ? "bg-green-500 text-white"
-                  : "bg-blue-500 text-white hover:bg-blue-600"
+                  ? 'bg-green-700 text-white'
+                  : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
-              {isCopied ? "Copiado!" : "Copiar"}
+              {isCopied ? 'Copiado!' : 'Copiar'}
             </button>
           </div>
 
           {copiedValue && (
-            <div className="p-3 bg-green-50 border border-green-200 rounded text-sm" data-testid="copied-value-display">
+            <div
+              className="p-3 bg-green-50 border border-green-200 rounded text-sm"
+              data-testid="copied-value-display"
+            >
               <strong>Texto copiado:</strong> <code>{copiedValue}</code>
             </div>
           )}
@@ -110,7 +113,7 @@ export const Default: StoryObj = {
 };
 
 export const CopyCodeSnippet: StoryObj = {
-  name: "Copiar trecho de código",
+  name: 'Copiar trecho de código',
   render: () => {
     const { copyToClipboard, isCopied } = useCopyToClipboard();
     const codeSnippet = `const greet = (name) => {
@@ -133,11 +136,11 @@ export const CopyCodeSnippet: StoryObj = {
             data-testid="copy-code-button"
             className={`absolute top-2 right-2 px-3 py-1 rounded text-sm font-medium transition-colors ${
               isCopied
-                ? "bg-green-500 text-white"
-                : "bg-gray-700 text-white hover:bg-gray-600"
+                ? 'bg-green-700 text-white'
+                : 'bg-gray-700 text-white hover:bg-gray-600'
             }`}
           >
-            {isCopied ? "Copiado!" : "Copiar código"}
+            {isCopied ? 'Copiado!' : 'Copiar código'}
           </button>
         </div>
       </div>
@@ -147,12 +150,12 @@ export const CopyCodeSnippet: StoryObj = {
 };
 
 export const MultipleCopyButtons: StoryObj = {
-  name: "Múltiplos botões de copiar",
+  name: 'Múltiplos botões de copiar',
   render: () => {
     const items = [
-      { label: "E-mail", value: "usuario@exemplo.com" },
-      { label: "Telefone", value: "+55 (11) 99999-9999" },
-      { label: "GitHub", value: "github.com/usuario" },
+      { label: 'E-mail', value: 'usuario@exemplo.com' },
+      { label: 'Telefone', value: '+55 (11) 99999-9999' },
+      { label: 'GitHub', value: 'github.com/usuario' },
     ];
 
     const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -188,11 +191,11 @@ export const MultipleCopyButtons: StoryObj = {
                 data-testid={`copy-item-button-${index}`}
                 className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                   copiedIndex === index
-                    ? "bg-green-500 text-white"
-                    : "bg-gray-200 hover:bg-gray-300"
+                    ? 'bg-green-700 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300'
                 }`}
               >
-                {copiedIndex === index ? "Copiado!" : "Copiar"}
+                {copiedIndex === index ? 'Copiado!' : 'Copiar'}
               </button>
             </div>
           ))}

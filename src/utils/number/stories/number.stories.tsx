@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { formatToPercentage } from "..";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { formatToPercentage } from '..';
 
 const meta: Meta = {
-  title: "Utils/Number",
+  title: 'Utils/Number',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -17,7 +17,7 @@ export const FormatToPercentage: StoryObj = {
       <p className="text-gray-700">
         Valor original: <span className="font-mono">0.25</span>
       </p>
-      <p className="text-green-600 font-bold text-lg">
+      <p className="text-green-700 font-bold text-lg">
         Formatado: {formatToPercentage({ value: 0.25 })}
       </p>
     </div>

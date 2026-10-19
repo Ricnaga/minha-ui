@@ -1,50 +1,50 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { ModalActions } from "../ModalActions";
-import type { ModalActionsProps } from "../modal-actions.types";
-import { useToggle } from "@/hooks";
-import { Modal } from "../../Modal/Modal";
-import { ModalFooter } from "../../ModalFooter";
-import { testDefaultModalActions } from "./ModalActions.play";
+import { ModalActions } from '../ModalActions';
+import type { ModalActionsProps } from '../modal-actions.types';
+import { useToggle } from '@/hooks';
+import { Modal } from '../../Modal/Modal';
+import { ModalFooter } from '../../ModalFooter';
+import { testDefaultModalActions } from './ModalActions.play';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ModalActionsProps> = {
-  title: "Components/Interação/Modal/ModalActions",
+  title: 'Components/Interação/Modal/ModalActions',
   component: ModalActions,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
+    layout: 'centered',
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     children: { control: false }, // evita mostrar JSON nos controls
     columns: {
-      control: { type: "select" },
+      control: { type: 'select' },
       options: [1, 2, 3],
-      description: "Número de colunas do container de ações",
+      description: 'Número de colunas do container de ações',
       table: {
-        type: { summary: "1 | 2 | 3" },
-        defaultValue: { summary: "2" },
+        type: { summary: '1 | 2 | 3' },
+        defaultValue: { summary: '2' },
       },
     },
 
     align: {
-      control: { type: "select" },
-      options: ["left", "center", "right"],
-      description: "Alinhamento horizontal das ações dentro do container",
+      control: { type: 'select' },
+      options: ['left', 'center', 'right'],
+      description: 'Alinhamento horizontal das ações dentro do container',
       table: {
-        type: { summary: "left | center | right" },
-        defaultValue: { summary: "right" },
+        type: { summary: 'left | center | right' },
+        defaultValue: { summary: 'right' },
       },
     },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: {
     columns: 2,
-    align: "right",
+    align: 'right',
   },
 };
 
@@ -60,7 +60,7 @@ export const Default: Story = {
       <>
         <button
           onClick={handleOpen}
-          className="p-2 bg-blue-400 rounded text-white cursor-pointer"
+          className="p-2 bg-blue-600 rounded text-white cursor-pointer"
         >
           Abrir Modal Actions
         </button>

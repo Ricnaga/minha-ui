@@ -39,5 +39,8 @@ type Story = StoryObj<CheckboxProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Default: Story = {
+  args: {
+    'aria-label': 'Aceitar os termos',
+  },
   play: testDefaultCheckbox,
 };

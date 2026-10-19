@@ -1,14 +1,12 @@
- 
-
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import type { RequiredChildren } from "..";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { RequiredChildren } from '..';
 
 const meta: Meta = {
-  title: "Types",
+  title: 'Types',
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -22,7 +20,7 @@ export const ChildrenRequired: StoryObj = {
     const Box = ({ children, color }: BoxProps) => (
       <div
         className={`p-4 border-2 rounded-md ${
-          color ? `bg-[${color}]` : "bg-gray-100"
+          color ? `bg-[${color}]` : 'bg-gray-100'
         }`}
       >
         {children}
@@ -59,8 +57,8 @@ export const ChildrenRequired: StoryObj = {
         </div>
 
         <p className="mt-4 text-sm text-neutral-600">
-          Tente usar o componente <code>&lt;Box /&gt;</code> sem passar o{" "}
-          <code>children</code> e você verá um erro de TypeScript, já que{" "}
+          Tente usar o componente <code>&lt;Box /&gt;</code> sem passar o{' '}
+          <code>children</code> e você verá um erro de TypeScript, já que{' '}
           <code>children</code> é obrigatório.
         </p>
 
@@ -68,7 +66,7 @@ export const ChildrenRequired: StoryObj = {
           <p>
             <strong>Exemplo:</strong>
           </p>
-          <pre className="bg-gray-200 p-2 rounded-md text-xs">{`<Box /> // Erro: 'children' é obrigatório`}</pre>
+          <pre className="bg-gray-200 p-2 rounded-md text-xs text-gray-700">{`<Box /> // Erro: 'children' é obrigatório`}</pre>
         </div>
       </div>
     );

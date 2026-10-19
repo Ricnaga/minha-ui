@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "storybook/test";
-import { Suspense, useState } from "react";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
+import { Suspense, useState } from 'react';
 
-import { ErrorBoundary } from "../ErrorBoundary";
-import type { ErrorBoundaryProps } from "../error-boundary.types";
-import type { FallbackProps } from "react-error-boundary";
+import { ErrorBoundary } from '../ErrorBoundary';
+import type { ErrorBoundaryProps } from '../error-boundary.types';
+import type { FallbackProps } from 'react-error-boundary';
 import {
   testDefaultErrorBoundary,
   testWithFallback,
@@ -13,23 +13,23 @@ import {
   testWithFallbackComponent,
   testResetErrorBoundary,
   testNestedErrorBoundary,
-} from "./ErrorBoundary.play";
+} from './ErrorBoundary.play';
 
 const fetcherPromiseWrapper = <T,>(
   factory: (signal: AbortSignal) => Promise<T>,
 ) => {
   const controller = new AbortController();
 
-  let status: "PENDING" | "SUCCESS" | "ERROR" = "PENDING";
+  let status: 'PENDING' | 'SUCCESS' | 'ERROR' = 'PENDING';
   let result: T | Error;
 
   const suspender = factory(controller.signal).then(
     (value) => {
-      status = "SUCCESS";
+      status = 'SUCCESS';
       result = value;
     },
     (error) => {
-      status = "ERROR";
+      status = 'ERROR';
       result = error instanceof Error ? error : new Error(String(error));
     },
   );
@@ -37,11 +37,11 @@ const fetcherPromiseWrapper = <T,>(
   return {
     read() {
       switch (status) {
-        case "PENDING":
+        case 'PENDING':
           throw suspender;
-        case "SUCCESS":
+        case 'SUCCESS':
           return result as T;
-        case "ERROR":
+        case 'ERROR':
           throw result;
       }
     },
@@ -59,15 +59,14 @@ const fetcher = async <T extends unknown | string = string>(
 
   const response = await fetch(FETCHER_URL.toString(), {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("HTTP error! status:".concat(response.status.toString()));
-      }
-      return response.json();
-    });
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error('HTTP error! status:'.concat(response.status.toString()));
+    }
+    return response.json();
+  });
 
   return response;
 };
@@ -77,18 +76,18 @@ const createFetcherResource = <T,>(endpoint: string, baseURL?: string) => {
 };
 
 const meta: Meta<ErrorBoundaryProps> = {
-  title: "Components/Interação/ErrorBoundary",
+  title: 'Components/Interação/ErrorBoundary',
   component: ErrorBoundary,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
     docs: {
       description: {
         component:
-          "Componente wrapper que captura erros em componentes filhos usando react-error-boundary. Suporta múltiplas formas de renderizar fallbacks e callbacks para tratamento de erros.",
+          'Componente wrapper que captura erros em componentes filhos usando react-error-boundary. Suporta múltiplas formas de renderizar fallbacks e callbacks para tratamento de erros.',
       },
     },
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
     children: { control: false },
     fallback: { control: false },
@@ -109,37 +108,47 @@ type Story = StoryObj<ErrorBoundaryProps>;
 
 const ChildComponent = ({ shouldError = false }: { shouldError?: boolean }) => {
   if (shouldError) {
-    throw new Error("Erro simulado!");
+    throw new Error('Erro simulado!');
   }
-  return <div data-testid="success-content">Conteúdo renderizado com sucesso</div>;
+  return (
+    <div data-testid="success-content">Conteúdo renderizado com sucesso</div>
+  );
 };
 
 const ResettableChild = ({ resetKey }: { resetKey: string }) => {
-  const shouldError = resetKey === "0";
+  const shouldError = resetKey === '0';
 
   if (shouldError) {
-    throw new Error("Erro inicial!");
+    throw new Error('Erro inicial!');
   }
 
   return <div data-testid="success-content">Conteúdo após reset</div>;
 };
 
 const FallbackComponent = ({ error, resetErrorBoundary }: FallbackProps) => (
-  <div data-testid="error-fallback" className="p-5 border border-red-500 rounded-lg">
+  <div
+    data-testid="error-fallback"
+    className="p-5 border border-red-500 rounded-lg"
+  >
     <h3 className="text-red-600 mb-2">Algo deu errado!</h3>
     <p className="text-gray-600 mb-2">{String(error)}</p>
-    <button onClick={resetErrorBoundary} data-testid="reset-button" className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+    <button
+      onClick={resetErrorBoundary}
+      data-testid="reset-button"
+      className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+    >
       Tentar novamente
     </button>
   </div>
 );
 
 export const Default: Story = {
-  name: "Default (Sem Erro)",
+  name: 'Default (Sem Erro)',
   parameters: {
     docs: {
       description: {
-        story: "Componente funcionando normalmente quando não há erros nos filhos.",
+        story:
+          'Componente funcionando normalmente quando não há erros nos filhos.',
       },
     },
   },
@@ -152,16 +161,22 @@ export const Default: Story = {
 };
 
 export const WithFallback: Story = {
-  name: "Com Fallback (ReactNode)",
+  name: 'Com Fallback (ReactNode)',
   parameters: {
     docs: {
       description: {
-        story: "Exibe um fallback customizado quando ocorre um erro. O fallback é um ReactNode estático.",
+        story:
+          'Exibe um fallback customizado quando ocorre um erro. O fallback é um ReactNode estático.',
       },
     },
   },
   args: {
-    fallback: <FallbackComponent error={new Error("Erro simulado")} resetErrorBoundary={() => {}} />,
+    fallback: (
+      <FallbackComponent
+        error={new Error('Erro simulado')}
+        resetErrorBoundary={() => {}}
+      />
+    ),
   },
   render: (args: ErrorBoundaryProps) => (
     <ErrorBoundary {...args}>
@@ -172,20 +187,29 @@ export const WithFallback: Story = {
 };
 
 export const WithFallbackRender: Story = {
-  name: "Com FallbackRender (Função)",
+  name: 'Com FallbackRender (Função)',
   parameters: {
     docs: {
       description: {
-        story: "Usa `fallbackRender` para renderizar o fallback via função. Recebe `error`, `resetErrorBoundary`.",
+        story:
+          'Usa `fallbackRender` para renderizar o fallback via função. Recebe `error`, `resetErrorBoundary`.',
       },
     },
   },
   render: (args: ErrorBoundaryProps) => (
     <ErrorBoundary
       fallbackRender={({ error, resetErrorBoundary }: FallbackProps) => (
-        <div data-testid="fallback-render" className="p-5 bg-red-100 rounded-lg">
+        <div
+          data-testid="fallback-render"
+          className="p-5 bg-red-100 rounded-lg"
+        >
           <p data-testid="error-message">{String(error)}</p>
-          <button onClick={resetErrorBoundary} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Recarregar</button>
+          <button
+            onClick={resetErrorBoundary}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Recarregar
+          </button>
         </div>
       )}
       onError={args.onError}
@@ -197,11 +221,12 @@ export const WithFallbackRender: Story = {
 };
 
 export const WithFallbackComponent: Story = {
-  name: "Com FallbackComponent",
+  name: 'Com FallbackComponent',
   parameters: {
     docs: {
       description: {
-        story: "Usa `FallbackComponent` para um componente React dedicado ao fallback.",
+        story:
+          'Usa `FallbackComponent` para um componente React dedicado ao fallback.',
       },
     },
   },
@@ -217,11 +242,12 @@ export const WithFallbackComponent: Story = {
 };
 
 export const WithOnError: Story = {
-  name: "Com OnError (Callback)",
+  name: 'Com OnError (Callback)',
   parameters: {
     docs: {
       description: {
-        story: "Callback chamado quando um erro ocorre. Recebe o erro e info do React. Útil para logging.",
+        story:
+          'Callback chamado quando um erro ocorre. Recebe o erro e info do React. Útil para logging.',
       },
     },
   },
@@ -230,12 +256,17 @@ export const WithOnError: Story = {
       fallbackRender={({ error, resetErrorBoundary }: FallbackProps) => (
         <div data-testid="error-content" className="p-5">
           <p>Erro: {String(error)}</p>
-          <button onClick={resetErrorBoundary} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Reset</button>
+          <button
+            onClick={resetErrorBoundary}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Reset
+          </button>
         </div>
       )}
       onError={(error, errorInfo) => {
-        console.log("Erro capturado:", error);
-        console.log("Info:", errorInfo);
+        console.log('Erro capturado:', error);
+        console.log('Info:', errorInfo);
         args.onError?.(error, errorInfo);
       }}
     >
@@ -245,11 +276,12 @@ export const WithOnError: Story = {
 };
 
 export const WithOnReset: Story = {
-  name: "Com OnReset (Callback)",
+  name: 'Com OnReset (Callback)',
   parameters: {
     docs: {
       description: {
-        story: "Callback chamado quando `resetErrorBoundary` é invocado. Recebe detalhes do reset.",
+        story:
+          'Callback chamado quando `resetErrorBoundary` é invocado. Recebe detalhes do reset.',
       },
     },
   },
@@ -261,14 +293,19 @@ export const WithOnReset: Story = {
         resetKeys={[resetKey]}
         fallbackRender={({ resetErrorBoundary }: FallbackProps) => (
           <div data-testid="reset-trigger" className="p-5">
-            <button onClick={() => {
-              setResetKey(prev => prev + 1);
-              resetErrorBoundary();
-            }} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Reset</button>
+            <button
+              onClick={() => {
+                setResetKey((prev) => prev + 1);
+                resetErrorBoundary();
+              }}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Reset
+            </button>
           </div>
         )}
         onReset={(details) => {
-          console.log("Reset realizado:", details);
+          console.log('Reset realizado:', details);
           args.onReset?.(details);
         }}
       >
@@ -287,23 +324,29 @@ const ResetKeysChild = ({ resetKey }: { resetKey: string }) => (
 );
 
 export const WithResetKeys: Story = {
-  name: "Com ResetKeys",
+  name: 'Com ResetKeys',
   parameters: {
     docs: {
       description: {
-        story: "Quando `resetKeys` muda, o ErrorBoundary tenta renderizar novamente. Útil para re-fetch de dados.",
+        story:
+          'Quando `resetKeys` muda, o ErrorBoundary tenta renderizar novamente. Útil para re-fetch de dados.',
       },
     },
   },
   render: () => {
-    const [resetKey, setResetKey] = useState("key-1");
+    const [resetKey, setResetKey] = useState('key-1');
     return (
       <ErrorBoundary
         resetKeys={[resetKey]}
         fallbackRender={() => (
           <div className="p-5">
             <p>Erro! Clique para mudar a key e tentar novamente.</p>
-            <button onClick={() => setResetKey(`key-${Date.now()}`)} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Mudar Key</button>
+            <button
+              onClick={() => setResetKey(`key-${Date.now()}`)}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Mudar Key
+            </button>
           </div>
         )}
       >
@@ -315,23 +358,28 @@ export const WithResetKeys: Story = {
 
 const SuspenseFallback = () => <div data-testid="loading">Carregando...</div>;
 
-const FailingResourceComponent = ({ resource }: { resource: ReturnType<typeof fetcherPromiseWrapper> }) => {
+const FailingResourceComponent = ({
+  resource,
+}: {
+  resource: ReturnType<typeof fetcherPromiseWrapper>;
+}) => {
   const data = resource.read();
   return <div data-testid="resource-data">{JSON.stringify(data)}</div>;
 };
 
 export const ComFetcherError: Story = {
-  name: "Com Fetcher (Erro de API)",
+  name: 'Com Fetcher (Erro de API)',
   parameters: {
     docs: {
       description: {
-        story: "Demonstra integração com o wrapper de fetcher. Quando a API falha, o erro é capturado pelo ErrorBoundary.",
+        story:
+          'Demonstra integração com o wrapper de fetcher. Quando a API falha, o erro é capturado pelo ErrorBoundary.',
       },
     },
   },
   render: () => {
     const failingResource = createFetcherResource<never>(
-      "https://api.invalida.example.com/erro",
+      'https://api.invalida.example.com/erro',
     );
 
     return (
@@ -350,25 +398,30 @@ export const ComFetcherError: Story = {
   },
 };
 
-const SuccessResourceComponent = ({ resource }: { resource: ReturnType<typeof fetcherPromiseWrapper> }) => {
+const SuccessResourceComponent = ({
+  resource,
+}: {
+  resource: ReturnType<typeof fetcherPromiseWrapper>;
+}) => {
   const data = resource.read();
   return <div data-testid="success-data">{JSON.stringify(data)}</div>;
 };
 
 export const ComFetcherSuccess: Story = {
-  name: "Com Fetcher (Sucesso)",
+  name: 'Com Fetcher (Sucesso)',
   parameters: {
     docs: {
       description: {
-        story: "Demonstra fetcher retornando dados com sucesso. O ErrorBoundary envolve o componente em Suspense.",
+        story:
+          'Demonstra fetcher retornando dados com sucesso. O ErrorBoundary envolve o componente em Suspense.',
       },
     },
   },
   render: () => {
-    const successResource = createFetcherResource<{ name: string; age: number }>(
-      "/users/1",
-      "https://jsonplaceholder.typicode.com",
-    );
+    const successResource = createFetcherResource<{
+      name: string;
+      age: number;
+    }>('/users/1', 'https://jsonplaceholder.typicode.com');
 
     return (
       <ErrorBoundary
@@ -387,11 +440,12 @@ export const ComFetcherSuccess: Story = {
 };
 
 export const NestedErrorBoundary: Story = {
-  name: "ErrorBoundary Aninhado",
+  name: 'ErrorBoundary Aninhado',
   parameters: {
     docs: {
       description: {
-        story: "Cada ErrorBoundary captura apenas erros de seus filhos. Erros em componentes internos não disparam o externo.",
+        story:
+          'Cada ErrorBoundary captura apenas erros de seus filhos. Erros em componentes internos não disparam o externo.',
       },
     },
   },
@@ -400,7 +454,12 @@ export const NestedErrorBoundary: Story = {
       fallbackRender={({ error, resetErrorBoundary }: FallbackProps) => (
         <div data-testid="outer-error" className="p-5 bg-red-200">
           <p>Erro no componente externo: {String(error)}</p>
-          <button onClick={resetErrorBoundary} className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Reset Externo</button>
+          <button
+            onClick={resetErrorBoundary}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Reset Externo
+          </button>
         </div>
       )}
       onError={args.onError}
@@ -411,7 +470,12 @@ export const NestedErrorBoundary: Story = {
           fallbackRender={({ error, resetErrorBoundary }: FallbackProps) => (
             <div data-testid="inner-error" className="p-5 bg-green-200">
               <p>Erro interno capturado: {String(error)}</p>
-              <button onClick={resetErrorBoundary} className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Reset Interno</button>
+              <button
+                onClick={resetErrorBoundary}
+                className="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-800"
+              >
+                Reset Interno
+              </button>
             </div>
           )}
         >
