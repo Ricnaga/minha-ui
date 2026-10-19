@@ -51,6 +51,16 @@ export interface NiceTicks {
 }
 
 /**
+ * Escolhe o multiplicador de passo "agradável" (1/2/5/10) para o resíduo dado.
+ */
+function getStepMultiplier(residual: number): number {
+  if (residual < 1.5) return 1;
+  if (residual < 3) return 2;
+  if (residual < 7) return 5;
+  return 10;
+}
+
+/**
  * Calcula um domínio "arredondado" e ticks com passo agradável (`1/2/5/10 × 10ⁿ`).
  */
 export function getNiceTicks(
@@ -66,8 +76,7 @@ export function getNiceTicks(
   const magnitude = 10 ** Math.floor(Math.log10(rawStep));
   const residual = rawStep / magnitude;
 
-  const multiplier =
-    residual < 1.5 ? 1 : residual < 3 ? 2 : residual < 7 ? 5 : 10;
+  const multiplier = getStepMultiplier(residual);
   const step = multiplier * magnitude;
 
   const min = Math.floor(dataMin / step) * step;
