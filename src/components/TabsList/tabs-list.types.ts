@@ -1,5 +1,5 @@
-import type { HTMLAttributes } from "react";
+import type { ComponentPropsWithRef } from 'react';
 
-export type UseTabsListProps = HTMLAttributes<HTMLDivElement>;
+export type UseTabsListProps = ComponentPropsWithRef<'div'>;
 
 export type TabsListProps = UseTabsListProps;

@@ -1,5 +1,5 @@
-import type { TabsVariants } from "@/theme";
-import type { RequiredChildren } from "@/types";
+import type { TabsVariants } from '@/theme';
+import type { RequiredChildren } from '@/types';
 
 export interface UseTabsContextProps extends TabsVariants, RequiredChildren {
   value: string;
@@ -8,6 +8,12 @@ export interface UseTabsContextProps extends TabsVariants, RequiredChildren {
 
 export type TabsProps = UseTabsContextProps;
 
-export type TabsContextProps = Omit<UseTabsContextProps, "children"> & {
+export interface TabsIds {
+  tabId: string;
+  panelId: string;
+}
+
+export type TabsContextProps = Omit<UseTabsContextProps, 'children'> & {
   prevValue: string;
+  baseId: string;
 };
