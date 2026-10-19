@@ -19,17 +19,17 @@ export const calendar = tv({
   variants: {
     isSelected: {
       true: {
-        gridDay: 'bg-sky-400 text-white hover:bg-sky-500',
+        gridDay: 'bg-sky-700 text-white hover:bg-sky-800',
       },
     },
     hasNotSelectedAndIsOutsideMonth: {
       true: {
-        gridDay: 'text-neutral-400 opacity-40 ',
+        gridDay: 'text-neutral-500',
       },
     },
     hasNotSelectedAndHasNotOutsideMonth: {
       true: {
-        gridDay: 'text-neutral-400 opacity-40 ',
+        gridDay: 'text-neutral-500',
       },
     },
   },

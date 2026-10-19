@@ -9,7 +9,7 @@ export const chartPie = tv({
     legendItem: 'flex items-center gap-2 text-sm',
     swatch: 'size-3 shrink-0 rounded-full',
     legendLabel: 'text-neutral-700',
-    legendValue: 'ml-auto text-neutral-400',
+    legendValue: 'ml-auto text-neutral-500',
   },
 
   variants: {

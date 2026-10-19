@@ -1,33 +1,35 @@
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from 'tailwind-variants';
 
 export const rangeCalendar = tv({
   slots: {
-    headerWrapper: ["flex items-center justify-between", "p-2 text-sm text-center"],
-
-    headerButton: [
-      "transition-all rounded-full",
-      "bg-sky-50 p-2 hover:bg-sky-100",
-      "cursor-pointer",
+    headerWrapper: [
+      'flex items-center justify-between',
+      'p-2 text-sm text-center',
     ],
 
-    headerLabel: ["capitalize font-medium"],
+    headerButton: [
+      'transition-all rounded-full',
+      'bg-sky-50 p-2 hover:bg-sky-100',
+      'cursor-pointer',
+    ],
 
-    gridWrapper: ["grid grid-cols-7", "auto-rows"],
+    headerLabel: ['capitalize font-medium'],
 
+    gridWrapper: ['grid grid-cols-7', 'auto-rows'],
 
     gridDay: [
-      "relative size-7",
-      "flex items-center justify-center",
-      "text-sm cursor-pointer",
-      "overflow-hidden",
-      "hover:bg-sky-400/20",
+      'relative size-7',
+      'flex items-center justify-center',
+      'text-sm cursor-pointer',
+      'overflow-hidden',
+      'hover:bg-sky-400/20',
     ],
   },
 
   variants: {
     isOutsideMonth: {
       true: {
-        gridDay: ["text-neutral-400 opacity-40"],
+        gridDay: ['text-neutral-500'],
       },
     },
 
@@ -36,9 +38,9 @@ export const rangeCalendar = tv({
       true: {
         gridDay: [
           "before:content-['']",
-          "before:absolute before:inset-0",
-          "before:bg-sky-200",
-          "before:z-0",
+          'before:absolute before:inset-0',
+          'before:bg-sky-200',
+          'before:z-0',
         ],
       },
     },
@@ -47,20 +49,20 @@ export const rangeCalendar = tv({
     isRangeStart: {
       true: {
         gridDay: [
-          "text-white",
+          'text-white',
 
           // fundo do range (metade direita)
           "before:content-['']",
-          "before:absolute before:inset-y-0",
-          "before:left-1/2 before:right-0",
-          "before:bg-sky-200",
-          "before:z-0",
+          'before:absolute before:inset-y-0',
+          'before:left-1/2 before:right-0',
+          'before:bg-sky-200',
+          'before:z-0',
 
           // bolinha
           "after:content-['']",
-          "after:absolute after:inset-0",
-          "after:rounded-full after:bg-sky-500",
-          "after:z-10",
+          'after:absolute after:inset-0',
+          'after:rounded-full after:bg-sky-700',
+          'after:z-10',
         ],
       },
     },
@@ -69,20 +71,20 @@ export const rangeCalendar = tv({
     isRangeEnd: {
       true: {
         gridDay: [
-          "text-white",
+          'text-white',
 
           // fundo do range (metade esquerda)
           "before:content-['']",
-          "before:absolute before:inset-y-0",
-          "before:left-0 before:right-1/2",
-          "before:bg-sky-200",
-          "before:z-0",
+          'before:absolute before:inset-y-0',
+          'before:left-0 before:right-1/2',
+          'before:bg-sky-200',
+          'before:z-0',
 
           // bolinha
           "after:content-['']",
-          "after:absolute after:inset-0",
-          "after:rounded-full after:bg-sky-500",
-          "after:z-10",
+          'after:absolute after:inset-0',
+          'after:rounded-full after:bg-sky-700',
+          'after:z-10',
         ],
       },
     },
@@ -90,11 +92,11 @@ export const rangeCalendar = tv({
     isSelected: {
       true: {
         gridDay: [
-          "text-white",
+          'text-white',
           "after:content-['']",
-          "after:absolute after:inset-0",
-          "after:rounded-full after:bg-sky-500",
-          "after:z-10",
+          'after:absolute after:inset-0',
+          'after:rounded-full after:bg-sky-700',
+          'after:z-10',
         ],
       },
     },
