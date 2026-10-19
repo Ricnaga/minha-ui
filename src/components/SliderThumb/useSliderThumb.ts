@@ -3,6 +3,24 @@ import { slider } from '@/theme';
 import { useSlider } from '../Slider/useSlider';
 import type { UseSliderThumbProps } from './slider-thumb.types';
 
+interface ThumbAccessibleNameParams {
+  ariaLabel?: string;
+  isRange: boolean;
+  index: number;
+  rootLabel?: string;
+}
+
+function getThumbAccessibleName({
+  ariaLabel,
+  isRange,
+  index,
+  rootLabel,
+}: ThumbAccessibleNameParams): string {
+  if (ariaLabel) return ariaLabel;
+  if (isRange) return index === 0 ? 'Valor mínimo' : 'Valor máximo';
+  return rootLabel ?? 'Valor';
+}
+
 export function useSliderThumb(props: UseSliderThumbProps) {
   const { index = 0, className, 'aria-label': ariaLabel } = props;
 
@@ -15,6 +33,8 @@ export function useSliderThumb(props: UseSliderThumbProps) {
     disabled,
     showValue,
     activeThumbIndex,
+    rootLabel,
+    isRange,
     getPercent,
     handleThumbPointerDown,
     handleThumbPointerMove,
@@ -27,6 +47,13 @@ export function useSliderThumb(props: UseSliderThumbProps) {
   const value = values[index] ?? min;
   const isDragging = activeThumbIndex === index;
 
+  const accessibleName = getThumbAccessibleName({
+    ariaLabel,
+    isRange,
+    index,
+    rootLabel,
+  });
+
   return {
     showValue,
     valueLabel: value,
@@ -36,7 +63,7 @@ export function useSliderThumb(props: UseSliderThumbProps) {
       'aria-valuemin': min,
       'aria-valuemax': max,
       'aria-valuenow': value,
-      'aria-label': ariaLabel,
+      'aria-label': accessibleName,
       'aria-disabled': disabled,
       'data-testid': `slider-thumb-${index}`,
       'data-dragging': isDragging,

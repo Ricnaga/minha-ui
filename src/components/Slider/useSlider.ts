@@ -174,6 +174,7 @@ export function useSliderProvider(props: UseSliderProps) {
     color,
     disabled,
     showValue,
+    rootLabel: ariaLabel,
     values,
     isRange,
     activeThumbIndex,
