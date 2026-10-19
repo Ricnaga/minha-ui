@@ -1,1 +1,0 @@
-- [] - migrar estados assíncronos (useFetch, useCopyToClipboard) para união discriminada
