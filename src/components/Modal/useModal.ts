@@ -1,10 +1,10 @@
-import { createContext, useId } from "react";
-import { useContext } from "@/hooks";
-import type { ModalContextProps, UseModalProviderProps } from "./modal.types";
-import type { ModalContainerProps } from "../ModalContainer";
+import { createContext, useId } from 'react';
+import { useContext } from '@/hooks';
+import type { ModalContextProps, UseModalProviderProps } from './modal.types';
+import type { ModalContainerProps } from '../ModalContainer';
 
 export const ModalContext = createContext<ModalContextProps>(
-  {} as ModalContextProps
+  {} as ModalContextProps,
 );
 
 export function useModalProvider(props: UseModalProviderProps) {
@@ -12,9 +12,10 @@ export function useModalProvider(props: UseModalProviderProps) {
   const {
     children,
     titleId = reactId,
-    padding = "md",
-    radius = "md",
-    shadow = "md",
+    ariaLabel = 'Modal',
+    padding = 'md',
+    radius = 'md',
+    shadow = 'md',
     ...rest
   } = props;
 
@@ -25,7 +26,7 @@ export function useModalProvider(props: UseModalProviderProps) {
     padding,
   };
 
-  return { titleId, modalContainerProps, ...rest };
+  return { titleId, ariaLabel, modalContainerProps, ...rest };
 }
 
 export function useModal() {

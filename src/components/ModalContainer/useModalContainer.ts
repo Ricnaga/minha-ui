@@ -1,14 +1,14 @@
-import { useClickAway } from "@/hooks";
-import { modalContainer } from "@/theme";
-import { useModal } from "../Modal/useModal";
+import { useClickAway } from '@/hooks';
+import { modalContainer } from '@/theme';
+import { useModal } from '../Modal/useModal';
 import type {
   ModalContainerProps,
   UseModalContainerProps,
-} from "./modal-container.types";
+} from './modal-container.types';
 
 export function useModalContainer(props: UseModalContainerProps) {
-  const { radius = "md", shadow = "md", padding = "md", ...rest } = props;
-  const { onClose, isOpen } = useModal();
+  const { radius = 'md', shadow = 'md', padding = 'md', ...rest } = props;
+  const { onClose, isOpen, ariaLabel } = useModal();
 
   const modalContainerRef = useClickAway({
     onOutsideClick: onClose,
@@ -17,7 +17,10 @@ export function useModalContainer(props: UseModalContainerProps) {
 
   const modalContainerProps: ModalContainerProps = {
     ...rest,
-    "data-testid": "modal-container",
+    role: 'dialog',
+    'aria-modal': 'true',
+    'aria-label': ariaLabel,
+    'data-testid': 'modal-container',
     className: modalContainer({ radius, shadow, isOpen, padding }),
   };
 
