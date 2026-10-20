@@ -8,7 +8,7 @@ export const autoComplete = tv({
     // `item` is inherited from `selectItem` via `extend`; declared explicitly
     // so tailwind-variants infers its type for the `isHighlighted` variant.
     item: '',
-    list: 'w-full max-h-60 overflow-y-auto',
+    list: 'w-full max-h-[min(15rem,40dvh)] overflow-y-auto overscroll-contain',
     empty: 'p-2 text-sm text-neutral-400',
     multiField: [
       'flex flex-wrap items-center gap-2 w-full min-h-11',

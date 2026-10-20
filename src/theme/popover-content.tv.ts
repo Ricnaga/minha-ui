@@ -3,6 +3,8 @@ import { tv, type VariantProps } from 'tailwind-variants';
 export const popoverContent = tv({
   base: [
     'absolute z-50 bg-white border border-neutral-200',
+    // Nunca estoura a largura da viewport em telas pequenas.
+    'max-w-[calc(100vw-2rem)]',
     'data-[state=open]:animate-in',
     'data-[state=closed]:animate-out',
     'duration-200 ease-out',
@@ -12,8 +14,9 @@ export const popoverContent = tv({
 
   variants: {
     side: {
-      top: 'bottom-full left-1/2 -translate-x-1/2 origin-bottom',
-      bottom: 'top-full left-1/2 -translate-x-1/2 origin-top',
+      top: 'bottom-full left-1/2 -translate-x-1/2 origin-bottom max-sm:left-0 max-sm:translate-x-0',
+      bottom:
+        'top-full left-1/2 -translate-x-1/2 origin-top max-sm:left-0 max-sm:translate-x-0',
       left: 'right-full top-1/2 -translate-y-1/2 origin-right',
       right: 'left-full top-1/2 -translate-y-1/2 origin-left',
     },
