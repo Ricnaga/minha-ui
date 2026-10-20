@@ -3,11 +3,18 @@ import { tv, type VariantProps } from 'tailwind-variants';
 export const tabs = tv({
   slots: {
     base: '',
-    wrapper: 'flex items-center gap-2 text-sm font-medium',
+    wrapper: [
+      'flex items-center gap-2 text-sm font-medium',
+      // Mobile: permite rolar horizontalmente quando há muitas abas.
+      'overflow-x-auto flex-nowrap [scrollbar-width:thin]',
+      // Desktop: volta a quebrar linha e não rola.
+      'sm:flex-wrap sm:overflow-visible',
+    ],
     list: 'flex-1',
     listItem: [
       'flex items-center justify-center gap-2 px-3 py-2.5 hover:cursor-pointer transition-all',
       'transition-colors duration-300 ease-in-out',
+      'shrink-0 whitespace-nowrap',
     ],
     panel: 'animate-in fade-in slide-in-from-right-4 duration-300',
   },

@@ -2,7 +2,7 @@ import { tv, type VariantProps } from 'tailwind-variants';
 
 export const table = tv({
   slots: {
-    root: 'relative w-full overflow-x-auto',
+    root: 'relative w-full min-w-0 overflow-x-auto',
     table: 'w-full border-collapse text-sm text-neutral-700',
     header: 'border-b border-neutral-200',
     headerRow: '',
@@ -21,9 +21,19 @@ export const table = tv({
       right: { head: 'text-right', cell: 'text-right' },
     },
     size: {
-      sm: { head: 'h-8 px-2 text-xs', cell: 'px-2 py-2' },
-      md: { head: 'h-10 px-3 text-sm', cell: 'px-3 py-3' },
-      lg: { head: 'h-12 px-4 text-base', cell: 'px-4 py-4' },
+      // Mobile-first: paddings compactos, expandindo em telas >= sm.
+      sm: {
+        head: 'h-8 px-2 text-xs',
+        cell: 'px-2 py-1.5 sm:py-2',
+      },
+      md: {
+        head: 'h-9 px-2 text-xs sm:h-10 sm:px-3 sm:text-sm',
+        cell: 'px-2 py-2 text-xs sm:px-3 sm:py-3 sm:text-sm',
+      },
+      lg: {
+        head: 'h-10 px-3 text-sm sm:h-12 sm:px-4 sm:text-base',
+        cell: 'px-3 py-2.5 text-sm sm:px-4 sm:py-4 sm:text-base',
+      },
     },
     bordered: {
       true: {

@@ -16,15 +16,15 @@ export const breadcrumb = tv({
   variants: {
     size: {
       sm: {
-        list: 'gap-1 text-xs',
+        list: 'gap-0.5 text-xs sm:gap-1',
         separator: 'text-xs',
       },
       md: {
-        list: 'gap-1.5 text-sm',
+        list: 'gap-1 text-sm sm:gap-1.5',
         separator: 'text-sm',
       },
       lg: {
-        list: 'gap-2 text-base',
+        list: 'gap-1.5 text-base sm:gap-2',
         separator: 'text-base',
       },
     },

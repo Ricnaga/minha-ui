@@ -2,7 +2,7 @@ import { tv, type VariantProps } from 'tailwind-variants';
 
 export const input = tv({
   slots: {
-    container: 'relative w-full min-w-50 flex items-center h-11',
+    container: 'relative w-full min-w-0 flex items-center h-11 sm:min-w-50',
     startIconWrapper: 'absolute left-3 flex items-center pointer-events-none',
     endIconWrapper: 'absolute right-3 flex items-center pointer-events-none',
     inputWrapper: 'relative flex-1',

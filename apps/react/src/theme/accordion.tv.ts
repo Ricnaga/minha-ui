@@ -11,9 +11,9 @@ export const accordion = tv({
   },
   variants: {
     size: {
-      sm: { accordionItem: 'w-48' },
-      md: { accordionItem: 'w-72' },
-      lg: { accordionItem: 'w-96' },
+      sm: { accordionItem: 'w-full sm:w-48' },
+      md: { accordionItem: 'w-full sm:w-72' },
+      lg: { accordionItem: 'w-full sm:w-96' },
       full: { accordionItem: 'w-full' },
     },
     variant: {
