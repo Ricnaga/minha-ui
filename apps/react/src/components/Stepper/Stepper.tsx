@@ -4,9 +4,17 @@ import { StepperItem } from '../StepperItem';
 
 export function Stepper() {
   const { steps, orientation } = useStepperContext();
+  const isHorizontal = orientation === 'horizontal';
 
   return (
-    <div className={stepper({ orientation })}>
+    <div
+      className={stepper({ orientation })}
+      role="group"
+      aria-label="Etapas"
+      // O container horizontal rola em telas pequenas; torna-o focável por
+      // teclado para atender a regra de acessibilidade de regiões roláveis.
+      tabIndex={isHorizontal ? 0 : undefined}
+    >
       {steps.map((step, index) => (
         <StepperItem
           key={step.id}
