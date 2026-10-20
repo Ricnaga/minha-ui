@@ -15,11 +15,15 @@ export function useBackdrop(props: UseBackdropProps) {
     ...rest
   } = props;
 
+  // Overlay fechado: escondido de AT e sem elementos focáveis (`inert`).
+  // Overlay aberto: precisa permanecer interativo — o conteúdo (diálogo)
+  // vive dentro do backdrop, então `inert` fixo tornaria o botão de fechar
+  // e o conteúdo inalcançáveis.
   const backdropProps: BackdropProps = {
     ...rest,
     role: 'presentation',
-    'aria-hidden': 'true',
-    inert: true,
+    'aria-hidden': !isOpen,
+    inert: !isOpen,
     className: base({ isOpen, blur }),
     style: { zIndex },
   };
