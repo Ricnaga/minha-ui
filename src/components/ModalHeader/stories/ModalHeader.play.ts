@@ -1,5 +1,5 @@
-import type { PlayFunction } from "storybook/internal/types";
-import { expect, userEvent, waitFor, within } from "storybook/test";
+import type { PlayFunction } from 'storybook/internal/types';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 
 export const testDefaultModalHeader: PlayFunction = async ({
   canvasElement,
@@ -7,7 +7,7 @@ export const testDefaultModalHeader: PlayFunction = async ({
   const canvas = within(canvasElement);
 
   // 1️⃣ Clicar no botão que abre o modal
-  const openButton = canvas.getByRole("button", {
+  const openButton = canvas.getByRole('button', {
     name: /abrir modal header/i,
   });
   await userEvent.click(openButton);
@@ -22,8 +22,8 @@ export const testDefaultModalHeader: PlayFunction = async ({
   });
 
   // 4️⃣ Verificar se o botão de fechar existe e funciona
-  const closeButton = await body.findByRole("button", {
-    name: /close-modal/i,
+  const closeButton = await body.findByRole('button', {
+    name: /fechar/i,
     hidden: true,
   });
   expect(closeButton).toBeInTheDocument();

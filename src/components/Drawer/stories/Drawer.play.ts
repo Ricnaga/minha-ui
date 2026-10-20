@@ -1,5 +1,5 @@
-import type { PlayFunction } from "storybook/internal/csf";
-import { expect, userEvent, waitFor, within } from "storybook/test";
+import type { PlayFunction } from 'storybook/internal/csf';
+import { expect, userEvent, waitFor, within } from 'storybook/test';
 
 export const testDefaultDrawer: PlayFunction = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -7,7 +7,7 @@ export const testDefaultDrawer: PlayFunction = async ({ canvasElement }) => {
   const user = userEvent.setup();
 
   // Clica no botão para abrir o drawer
-  const openButton = canvas.getByRole("button", { name: /abrir drawer/i });
+  const openButton = canvas.getByRole('button', { name: /abrir drawer/i });
   await user.click(openButton);
 
   // Espera até que o drawer exista e esteja visível
@@ -15,14 +15,14 @@ export const testDefaultDrawer: PlayFunction = async ({ canvasElement }) => {
   await waitFor(() => {
     dialog = document.body.querySelector('[role="dialog"]') as HTMLElement;
     if (!dialog || dialog.offsetParent === null) {
-      throw new Error("Drawer ainda não visível");
+      throw new Error('Drawer ainda não visível');
     }
   });
 
   // Depois que apareceu, podemos usar dentro dele
   const drawer = within(dialog!);
   await expect(drawer.getByText(/children do drawer/i)).toBeInTheDocument();
-  await expect(dialog).toHaveAttribute("aria-modal", "true");
+  await expect(dialog).toHaveAttribute('aria-modal', 'true');
 };
 
 export const testCompleteDrawer: PlayFunction = async ({ canvasElement }) => {
@@ -31,14 +31,14 @@ export const testCompleteDrawer: PlayFunction = async ({ canvasElement }) => {
   const user = userEvent.setup();
 
   // Clica no botão para abrir o drawer
-  const openButton = canvas.getByRole("button", { name: /abrir drawer/i });
+  const openButton = canvas.getByRole('button', { name: /abrir drawer/i });
   await user.click(openButton);
 
   let dialog: HTMLElement | null = null;
   await waitFor(() => {
     dialog = document.body.querySelector('[role="dialog"]') as HTMLElement;
     if (!dialog || dialog.offsetParent === null) {
-      throw new Error("Drawer ainda não visível");
+      throw new Error('Drawer ainda não visível');
     }
   });
 
@@ -46,5 +46,18 @@ export const testCompleteDrawer: PlayFunction = async ({ canvasElement }) => {
   await expect(drawer.getByText(/drawer header/i)).toBeInTheDocument();
   await expect(drawer.getByText(/drawer body/i)).toBeInTheDocument();
   await expect(drawer.getByText(/drawer footer/i)).toBeInTheDocument();
-  await expect(dialog).toHaveAttribute("aria-modal", "true");
+  await expect(dialog).toHaveAttribute('aria-modal', 'true');
+
+  // Fecha pelo botão do header (regressão: o backdrop não pode ficar inert
+  // quando aberto, senão o clique nunca dispara o onClose).
+  await user.click(drawer.getByRole('button', { name: /fechar/i }));
+
+  // Ao fechar, o backdrop do portal (ancestral do diálogo) fica oculto
+  // para tecnologias assistivas e sem elementos focáveis.
+  await waitFor(() => {
+    const backdrop = dialog?.parentElement;
+    if (!backdrop || backdrop.getAttribute('aria-hidden') !== 'true') {
+      throw new Error('Drawer ainda visível após fechar');
+    }
+  });
 };

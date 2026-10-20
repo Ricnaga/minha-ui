@@ -12,8 +12,16 @@ export const testDefaultTooltip: PlayFunction = async ({ canvasElement }) => {
 
   let tooltip = getTooltip();
 
+  // O mouse pode permanecer sobre o trigger vindo de outra story (estado do
+  // navegador persiste entre execuções): dispara o leave explicitamente antes
+  // de assegurar o estado inicial oculto.
+  await userEvent.unhover(trigger);
+
   // Inicialmente escondido
-  expect(tooltip).toHaveAttribute('aria-hidden', 'true');
+  await waitFor(() => {
+    tooltip = getTooltip();
+    expect(tooltip).toHaveAttribute('aria-hidden', 'true');
+  });
 
   // Hover → tooltip aparece
   await userEvent.hover(trigger);
