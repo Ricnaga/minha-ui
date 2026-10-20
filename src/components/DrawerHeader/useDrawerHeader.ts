@@ -1,19 +1,19 @@
-import type { HTMLAttributes } from "react";
-import { drawerHeader } from "@/theme";
-import { useDrawer } from "../Drawer/useDrawer";
+import type { ButtonHTMLAttributes } from 'react';
+import { drawerHeader } from '@/theme';
+import { useDrawer } from '../Drawer/useDrawer';
 import type {
   DrawerHeaderProps,
   UseDrawerHeaderProps,
-} from "./drawer-header.types";
+} from './drawer-header.types';
 
 const { closeButton, wrapper } = drawerHeader();
 
 export function useDrawerHeader(props: UseDrawerHeaderProps) {
   const {
     children,
-    size = "md",
-    align = "center",
-    closeColor = "default",
+    size = 'md',
+    align = 'center',
+    closeColor = 'default',
     ...rest
   } = props;
   const { onClose, titleId } = useDrawer();
@@ -24,7 +24,9 @@ export function useDrawerHeader(props: UseDrawerHeaderProps) {
     className: wrapper({ size, align }),
   };
 
-  const closeButtonProps: HTMLAttributes<HTMLButtonElement> = {
+  const closeButtonProps: ButtonHTMLAttributes<HTMLButtonElement> = {
+    type: 'button',
+    'aria-label': 'Fechar',
     className: closeButton({ size, closeColor }),
     onClick: onClose,
   };

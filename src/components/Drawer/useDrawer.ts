@@ -1,12 +1,12 @@
-import { createContext, useId } from "react";
-import { useContext } from "@/hooks";
+import { createContext, useId } from 'react';
+import { useContext } from '@/hooks';
 import type {
   DrawerContextProps,
   UseDrawerProviderProps,
-} from "./drawer.types";
+} from './drawer.types';
 
 export const DrawerContext = createContext<DrawerContextProps>(
-  {} as DrawerContextProps
+  {} as DrawerContextProps,
 );
 
 export function useDrawerProvider(props: UseDrawerProviderProps) {
@@ -15,12 +15,13 @@ export function useDrawerProvider(props: UseDrawerProviderProps) {
   const {
     children,
     isOpen = false,
-    side = "right",
+    side = 'right',
     titleId = reactId,
+    ariaLabel = 'Drawer',
     ...rest
   } = props;
 
-  return { children, isOpen, side, titleId, ...rest };
+  return { children, isOpen, side, titleId, ariaLabel, ...rest };
 }
 
 export function useDrawer() {
