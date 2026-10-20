@@ -1,43 +1,49 @@
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from 'tailwind-variants';
 
 export const modalContainer = tv({
   base: [
-    "grid gap-2 bg-white",
-    "min-w-80 max-w-xl max-h-[80vh]",
-    "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+    'grid gap-2 bg-white',
+    // Mobile: ocupa a tela inteira (single scroll container previsível).
+    'inset-0 h-dvh max-h-dvh w-full min-w-0 max-w-none overflow-hidden',
+    'pt-[calc(1rem+env(safe-area-inset-top))] pb-[calc(1rem+env(safe-area-inset-bottom))]',
+    // Desktop (sm+): centraliza com as dimensões originais.
+    'sm:absolute sm:inset-auto sm:top-1/2 sm:left-1/2 sm:h-auto sm:min-w-80 sm:w-auto',
+    'sm:max-h-[80vh] sm:max-w-xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:overflow-visible',
+    'sm:pt-0 sm:pb-0',
   ],
   variants: {
     isOpen: {
-      true: "animate-in zoom-in-90 fade-in duration-300",
-      false: "animate-out zoom-out-95 fade-out",
+      true: 'animate-in fade-in slide-in-from-bottom-4 duration-300 motion-reduce:animate-none sm:zoom-in-90',
+      false:
+        'animate-out fade-out slide-out-to-bottom-4 sm:zoom-out-95 motion-reduce:animate-none',
     },
     radius: {
-      sm: "rounded-sm",
-      md: "rounded-md",
-      lg: "rounded-lg",
-      xl: "rounded-xl",
-      "2xl": "rounded-2xl",
-      "3xl": "rounded-3xl",
+      sm: 'rounded-none sm:rounded-sm',
+      md: 'rounded-none sm:rounded-md',
+      lg: 'rounded-none sm:rounded-lg',
+      xl: 'rounded-none sm:rounded-xl',
+      '2xl': 'rounded-none sm:rounded-2xl',
+      '3xl': 'rounded-none sm:rounded-3xl',
     },
     shadow: {
-      sm: "shadow-sm",
-      md: "shadow-md",
-      lg: "shadow-lg",
-      xl: "shadow-xl",
+      sm: 'shadow-none sm:shadow-sm',
+      md: 'shadow-none sm:shadow-md',
+      lg: 'shadow-none sm:shadow-lg',
+      xl: 'shadow-none sm:shadow-xl',
     },
     padding: {
-      none: "p-0",
-      sm: "p-2",
-      md: "p-4",
-      lg: "p-6",
-      xl: "p-8",
+      none: 'p-0',
+      sm: 'p-2',
+      md: 'p-4',
+      lg: 'p-6',
+      xl: 'p-8',
     },
   },
   defaultVariants: {
-    radius: "md",
-    shadow: "md",
+    radius: 'md',
+    shadow: 'md',
     isOpen: false,
-    padding: "md",
+    padding: 'md',
   },
 });
 
