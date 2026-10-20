@@ -12,10 +12,11 @@ export const testDefaultTooltip: PlayFunction = async ({ canvasElement }) => {
 
   let tooltip = getTooltip();
 
-  // O mouse pode permanecer sobre o trigger vindo de outra story (estado do
-  // navegador persiste entre execuções): dispara o leave explicitamente antes
-  // de assegurar o estado inicial oculto.
-  await userEvent.unhover(trigger);
+  // O mouse pode permanecer sobre o wrapper vindo de outra story (o estado do
+  // ponteiro persiste no navegador entre execuções). Dispara o leave no wrapper,
+  // onde ficam os handlers, garantindo o estado inicial oculto.
+  trigger.blur();
+  await userEvent.unhover(trigger.parentElement as HTMLElement);
 
   // Inicialmente escondido
   await waitFor(() => {
