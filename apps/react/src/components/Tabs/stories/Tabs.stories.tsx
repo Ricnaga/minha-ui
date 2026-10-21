@@ -58,3 +58,37 @@ export const Default: Story = {
   },
   play: testDefaultTabs,
 };
+
+export const Responsive: Story = {
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  render: (args) => {
+    const [value, setValue] = useState('tab-1');
+
+    return (
+      <Tabs {...args} value={value} onTabChange={setValue}>
+        <TabsList>
+          <TabsTrigger value="tab-1">Tab 1</TabsTrigger>
+          <TabsTrigger value="tab-2">Tab 2</TabsTrigger>
+          <TabsTrigger value="tab-3">Tab 3</TabsTrigger>
+          <TabsTrigger value="tab-4">Tab 4</TabsTrigger>
+          <TabsTrigger value="tab-5">Tab 5</TabsTrigger>
+          <TabsTrigger value="tab-6">Tab 6</TabsTrigger>
+        </TabsList>
+
+        <TabsPanels>
+          <TabsPanel value="tab-1">Conteúdo da Tab 1</TabsPanel>
+          <TabsPanel value="tab-2">Conteúdo da Tab 2</TabsPanel>
+          <TabsPanel value="tab-3">Conteúdo da Tab 3</TabsPanel>
+          <TabsPanel value="tab-4">Conteúdo da Tab 4</TabsPanel>
+          <TabsPanel value="tab-5">Conteúdo da Tab 5</TabsPanel>
+          <TabsPanel value="tab-6">Conteúdo da Tab 6</TabsPanel>
+        </TabsPanels>
+      </Tabs>
+    );
+  },
+};

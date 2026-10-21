@@ -109,3 +109,16 @@ export const WithIcons: Story = {
   },
   play: testWithIconsInput,
 };
+
+export const Responsive: Story = {
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  args: {
+    label: 'Nome',
+    variant: 'outline',
+  },
+};

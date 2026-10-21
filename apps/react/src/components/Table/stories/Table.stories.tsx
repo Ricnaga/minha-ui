@@ -115,3 +115,14 @@ export const Sizes: Story = {
     </div>
   ),
 };
+
+export const Responsive: Story = {
+  name: 'Responsivo',
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  render: () => renderTable(),
+};

@@ -28,3 +28,15 @@ type Story = StoryObj<PaginationProps>;
 export const Default: Story = {
   play: testDefaultPagination,
 };
+
+export const Responsive: Story = {
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  args: {
+    totalPages: 10,
+  },
+};

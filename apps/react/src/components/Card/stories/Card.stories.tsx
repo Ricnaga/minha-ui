@@ -69,3 +69,23 @@ export const Composition: Story = {
   ),
   play: testCompositionCard,
 };
+
+export const Responsive: Story = {
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  render: (args) => (
+    <Card {...args}>
+      <CardHeader>
+        <CardTitle>Conteúdo do card title</CardTitle>
+        <CardSubtitle>Conteúdo do card sub title</CardSubtitle>
+      </CardHeader>
+      <CardBody>
+        <CardDescription>Conteúdo do card description</CardDescription>
+      </CardBody>
+    </Card>
+  ),
+};

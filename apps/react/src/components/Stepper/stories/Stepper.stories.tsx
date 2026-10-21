@@ -90,3 +90,22 @@ export const NotClickable: Story = {
     </StepperProvider>
   ),
 };
+
+export const Responsive: Story = {
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  render: (args) => (
+    <StepperProvider
+      steps={steps}
+      orientation="horizontal"
+      isClickable={args.isClickable}
+      onStepChange={args.onStepChange}
+    >
+      <Stepper />
+    </StepperProvider>
+  ),
+};

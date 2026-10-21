@@ -66,3 +66,31 @@ export const Default: Story = {
   },
   play: testDefaultAccordion,
 };
+
+export const Responsive: Story = {
+  globals: {
+    viewport: { value: 'mobile', isRotated: false },
+  },
+  parameters: {
+    layout: 'padded',
+  },
+  args: {
+    type: 'single',
+    size: 'md',
+  },
+  render: (args) => (
+    <Accordion {...args}>
+      <AccordionItem value="item-1">
+        <AccordionHeader>Item 1</AccordionHeader>
+        <AccordionContent>
+          O item ocupa a largura total em telas pequenas e assume a largura fixa
+          do tamanho escolhido a partir de sm.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionHeader>Item 2</AccordionHeader>
+        <AccordionContent>Conteúdo 2</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
