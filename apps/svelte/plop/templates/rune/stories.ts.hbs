@@ -1,0 +1,18 @@
+import type { Meta, StoryObj } from "@storybook/svelte-vite";
+import { testDefault{{pascalCase name}} } from "./use{{pascalCase name}}.play";
+import Component from "./use{{pascalCase name}}.stories.svelte";
+
+const meta: Meta = {
+  title: "Runes/use{{pascalCase name}}",
+  component: Component,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+};
+
+export default meta;
+
+export const Default: StoryObj = {
+  play: testDefault{{pascalCase name}},
+};

@@ -20,8 +20,10 @@
     "test:e2e:hooks": "pnpm --filter @minha-ui/e2e test:e2e:hooks",
     "storybook": "pnpm --filter @minha-ui/react storybook",
     "storybook:vue": "pnpm --filter @minha-ui/vue storybook",
+    "storybook:svelte": "pnpm --filter @minha-ui/svelte storybook",
     "build-storybook": "pnpm --filter @minha-ui/react build-storybook",
     "build-storybook:vue": "pnpm --filter @minha-ui/vue build-storybook",
+    "build-storybook:svelte": "pnpm --filter @minha-ui/svelte build-storybook",
     "plop": "pnpm --filter @minha-ui/react plop",
     "precommit": "lint-staged",
     "prepare": "husky",
@@ -40,6 +42,7 @@
     "prettier": "^3.9.10",
     "prettier-plugin-organize-imports": "^4.3.0",
     "turbo": "^2.3.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "prettier-plugin-svelte": "^3.4.0"
   }
 }

@@ -1,0 +1,13 @@
+<script lang="ts">
+  import type { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+  import { use{{pascalCase name}} } from "./use{{pascalCase name}}.svelte";
+
+  const props: {{pascalCase name}}Props = $props();
+
+  const {{camelCase name}}Props = $derived(use{{pascalCase name}}(props).{{camelCase name}}Props);
+</script>
+
+<div {...{{camelCase name}}Props}>
+  <!-- TODO: Implement {{pascalCase name}} -->
+  {@render props.children?.()}
+</div>

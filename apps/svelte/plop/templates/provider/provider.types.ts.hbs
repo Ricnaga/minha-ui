@@ -1,0 +1,12 @@
+import type { Snippet } from "svelte";
+import type { use{{pascalCase name}}Provider } from "./use{{pascalCase name}}.svelte";
+
+export type Use{{pascalCase name}}ProviderProps = Record<string, unknown>;
+
+export type {{pascalCase name}}Props = Use{{pascalCase name}}ProviderProps & {
+  children?: Snippet;
+};
+
+export type {{pascalCase name}}ContextProps = ReturnType<
+  typeof use{{pascalCase name}}Provider
+>;

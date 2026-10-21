@@ -1,0 +1,10 @@
+<script lang="ts">
+  import type { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+  import { use{{pascalCase name}}Provider } from "./use{{pascalCase name}}.svelte";
+
+  let { children, ...rest }: {{pascalCase name}}Props = $props();
+
+  use{{pascalCase name}}Provider(rest);
+</script>
+
+{@render children?.()}
