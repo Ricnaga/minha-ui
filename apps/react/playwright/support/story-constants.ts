@@ -1,6 +1,5 @@
 export type StoryId =
-  | `components-${string}-${string}`
-  | `hooks-${string}-${string}`;
+  `components-${string}-${string}` | `hooks-${string}-${string}`;
 
 export interface StoryDefinition {
   id: StoryId;
