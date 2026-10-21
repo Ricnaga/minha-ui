@@ -34,8 +34,8 @@ __snapshots__
 coverage/
 
 # Playwright
-apps/react/playwright/test-results/
-apps/react/playwright/playwright-report/
+apps/e2e/test-results/
+apps/e2e/playwright-report/
 test-results/
 
 # Changeset

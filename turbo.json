@@ -17,6 +17,9 @@
     },
     "test:unit": {
       "outputs": []
+    },
+    "test:e2e": {
+      "outputs": []
     }
   }
 }

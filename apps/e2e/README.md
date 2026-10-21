@@ -1,26 +1,42 @@
 # Playwright E2E Tests
 
-Suíte E2E do pacote `@minha-ui/react`. As specs rodam contra as stories do
-Storybook.
+Suíte E2E do monorepo. As specs rodam contra as stories do Storybook de cada
+biblioteca de UI.
+
+A suíte é um app próprio (`@minha-ui/e2e`) para que as libs de UI não carreguem
+dependências de teste end-to-end, e para que a infraestrutura compartilhada
+tenha um único lugar.
 
 ## Estrutura
 
 ```
-apps/react/playwright/
+apps/e2e/
 ├── playwright.config.ts    # Configuração do Playwright
 ├── tsconfig.json           # Verificação de tipos da suíte
-├── support/                # Suporte e helpers
+├── support/                # Infraestrutura genérica, compartilhada entre libs
 │   ├── commands.ts         # Commands personalizados
+│   ├── test.ts             # Fixture `story` (navegação entre stories)
 │   ├── fixtures/           # Fixtures para testes
 │   │   ├── component-fixtures.ts
 │   │   └── story-fixtures.ts
-│   ├── storybook-helpers.ts
-│   └── story-constants.ts
-└── tests/                  # Testes E2E
-    ├── components/         # Testes de componentes
-    ├── hooks/              # Testes de hooks
-    └── test.ts             # Configuração de fixtures
+│   └── storybook-helpers.ts
+└── react/                  # Conhecimento da lib @minha-ui/react
+    ├── support/            # Helpers e constantes específicos da lib
+    │   └── story-constants.ts
+    └── tests/              # Testes E2E
+        ├── components/     # Testes de componentes
+        ├── hooks/          # Testes de hooks
+        ├── responsive/     # Testes de layout responsivo
+        └── test.ts         # Ponto de entrada: re-exporta a base compartilhada
 ```
+
+A separação segue a regra: **o que é genérico fica em `support/`**, o que é
+peculiaridade de cada lib fica na pasta da lib. A fixture `story` e os
+`commands` são genéricos (navegar no Storybook e operar no DOM) e por isso são
+compartilhados; os IDs das stories e as asserções de cada componente não são.
+
+Para adicionar uma lib nova, crie `apps/e2e/<lib>/` com `support/` e `tests/`,
+e registre um `project` em `playwright.config.ts`.
 
 ## Scripts Disponíveis
 
@@ -58,7 +74,7 @@ concorrência.
 
 ### Componentes
 
-Crie um novo arquivo em `tests/components/` usando a fixture `story`:
+Crie um novo arquivo em `react/tests/components/` usando a fixture `story`:
 
 ```typescript
 import { test, expect } from '../test';
@@ -82,7 +98,7 @@ asserções passam a rodar contra um canvas vazio.
 
 ### Hooks
 
-Crie um novo arquivo em `tests/hooks/` seguindo o padrão:
+Crie um novo arquivo em `react/tests/hooks/` seguindo o padrão:
 
 ```typescript
 import { test, expect } from '../test';

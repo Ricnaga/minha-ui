@@ -1,0 +1,26 @@
+{
+  "name": "@minha-ui/e2e",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc -b",
+    "test:e2e": "playwright test --config playwright.config.ts",
+    "test:e2e:ui": "playwright test --config playwright.config.ts --ui",
+    "test:e2e:headed": "playwright test --config playwright.config.ts --headed",
+    "test:e2e:storybook": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts",
+    "test:e2e:storybook:ui": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts --ui",
+    "test:e2e:components": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts react/tests/components",
+    "test:e2e:hooks": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts react/tests/hooks"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.13.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}

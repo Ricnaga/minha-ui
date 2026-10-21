@@ -8,7 +8,6 @@ const dirname =
     : path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  testDir: path.join(dirname, 'tests'),
   outputDir: path.join(dirname, 'test-results'),
   testMatch: '**/*.spec.ts',
   testIgnore: ['**/*.test.ts', '**/*.test.tsx'],
@@ -37,8 +36,7 @@ export default defineConfig({
     process.env.E2E_TEST_TYPE === 'storybook'
       ? {
           command:
-            'pnpm build-storybook && pnpm exec vite preview --outDir storybook-static --port 6006',
-          cwd: path.join(dirname, '..'),
+            'pnpm --filter @minha-ui/react build-storybook && pnpm --filter @minha-ui/react exec vite preview --outDir storybook-static --port 6006',
           url: 'http://localhost:6006/iframe.html',
           reuseExistingServer: !process.env.CI,
           timeout: 180_000,
@@ -46,7 +44,8 @@ export default defineConfig({
       : undefined,
   projects: [
     {
-      name: 'chromium',
+      name: 'react',
+      testDir: path.join(dirname, 'react', 'tests'),
       use: { ...devices['Desktop Chrome'] },
     },
   ],
