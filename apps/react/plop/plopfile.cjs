@@ -6,8 +6,10 @@ module.exports = function (
   /** @type {import('plop').NodePlopAPI} */
   plop
 ) {
-  plop.setGenerator("component", {
-    description: "O que deseja criar?",
+  // O nome do generator é o do app: o dispatcher da raiz carrega os plopfiles
+  // de todos os apps com `plop.load`, e generators com o mesmo nome colidiriam.
+  plop.setGenerator("react", {
+    description: "Criar componente, provider ou hook no app React",
     prompts: [
       {
         type: "list",
