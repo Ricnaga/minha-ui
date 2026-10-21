@@ -1,7 +1,7 @@
 # Minha UI
 
 🚧 **Projeto criado para estudo** 🚧  
-Um repositório de interfaces (UI) criado unicamente para fins de aprendizado e prática de desenvolvimento com React, TypeScript e monorepos. Não se trata de um projeto de produção nem de um produto final.
+Um repositório de interfaces (UI) criado unicamente para fins de aprendizado e prática de desenvolvimento com React, Vue, Svelte, TypeScript e monorepos. Não se trata de um projeto de produção nem de um produto final.
 
 ---
 
@@ -13,7 +13,7 @@ O objetivo principal do projeto é praticar:
 
 - Criação de componentes reutilizáveis
 - Organização de uma base de UI
-- Uso de ferramentas modernas do ecossistema React
+- Uso de ferramentas modernas dos ecossistemas React, Vue e Svelte
 - Estruturação de um monorepo com pnpm workspaces e Turborepo
 - Adaptação dos mesmos padrões para Vue e Svelte
 
