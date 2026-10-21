@@ -1,4 +1,8 @@
 // plop-actions/provider.js
+const path = require("node:path");
+
+const APP_DIR = path.resolve(__dirname, "..", "..");
+
 module.exports = (
   /** @type {import('plop').NodePlopAPI} */
   plop
@@ -10,22 +14,46 @@ module.exports = (
    */
   {
     type: "add",
-    path: process.cwd().concat("/src/components/{{pascalCase name}}/index.ts"),
+    path: path.join(
+      APP_DIR,
+      "src",
+      "components",
+      "{{pascalCase name}}",
+      "index.ts"
+    ),
     templateFile: "templates/provider/index.ts.hbs",
   },
   {
     type: "add",
-    path: process.cwd().concat("/src/components/{{pascalCase name}}/{{kebabCase name}}.types.ts"),
+    path: path.join(
+      APP_DIR,
+      "src",
+      "components",
+      "{{pascalCase name}}",
+      "{{kebabCase name}}.types.ts"
+    ),
     templateFile: "templates/provider/provider.types.ts.hbs",
   },
   {
     type: "add",
-    path: process.cwd().concat("/src/components/{{pascalCase name}}/{{pascalCase name}}.tsx"),
+    path: path.join(
+      APP_DIR,
+      "src",
+      "components",
+      "{{pascalCase name}}",
+      "{{pascalCase name}}.tsx"
+    ),
     templateFile: "templates/provider/provider.tsx.hbs",
   },
   {
     type: "add",
-    path: process.cwd().concat("/src/components/{{pascalCase name}}/use{{pascalCase name}}.ts"),
+    path: path.join(
+      APP_DIR,
+      "src",
+      "components",
+      "{{pascalCase name}}",
+      "use{{pascalCase name}}.ts"
+    ),
     templateFile: "templates/provider/useHook.ts.hbs",
   },
 
@@ -36,7 +64,7 @@ module.exports = (
    */
   {
     type: "modify",
-    path: process.cwd().concat("/src/components/index.ts"),
+    path: path.join(APP_DIR, "src", "components", "index.ts"),
     transform: (content, data) => {
       const componentName = plop.getHelper("pascalCase")(data.name);
       const newExport = `export * from "./${componentName}";`;
