@@ -57,6 +57,27 @@ mechanics for any lib. Story ids, assertions and domain helpers are not: they
 depend on how each lib builds its components. Keep the generic part in
 `support/` and the lib-specific part in the lib's folder.
 
+## Testing the Vue and Svelte apps
+
+Each app has its own Vitest setup, with the same two projects (`unit` and
+`storybook`):
+
+| App | Unit setup | Interaction setup | Coverage |
+|---|---|---|---|
+| React | `@testing-library/react` | `@storybook/react-vite` | `src/components/**`, `src/hooks/**` |
+| Vue | `@vue/test-utils` | `@storybook/vue3-vite` | `src/components/**`, `src/composables/**` |
+| Svelte | `@testing-library/svelte` | `@storybook/svelte-vite` | `src/components/**`, `src/runes/**` |
+
+- Run a single app: `pnpm --filter @minha-ui/vue exec vitest run --project=unit`
+- The Svelte app needs `resolve.conditions: ['browser']` at the root of
+  `vitest.config.ts` — without it Svelte 5 resolves the SSR build and `mount()`
+  throws `lifecycle_function_unavailable` in jsdom
+- Vue unit tests use `mount()` from `@vue/test-utils`; Svelte uses `render()`
+  from `@testing-library/svelte`
+- The Vue typecheck (`vue-tsc -b`) needs the props type of a component to be
+  resolvable by `@vue/compiler-sfc`: avoid conditional types (like
+  `VariantProps`) in the props of a SFC
+
 ## Layer 1 — Unit tests (Vitest + Testing Library)
 
 **Location:** `apps/react/src/**/__tests__/*.test.{ts,tsx}`
@@ -332,13 +353,15 @@ test.use({ viewport: { width: 390, height: 844 } });
 ```js
 // lint-staged.config.js
 export default {
-  '*.{ts,tsx}': [
+  '*.{ts,tsx,vue,svelte}': [
     () => 'pnpm --filter @minha-ui/react exec eslint . --fix',
+    () => 'pnpm --filter @minha-ui/vue exec eslint . --fix',
+    () => 'pnpm --filter @minha-ui/svelte exec eslint . --fix',
     () => 'pnpm --filter @minha-ui/e2e exec eslint . --fix',
     () => 'pnpm typecheck',
     () => 'pnpm test:unit',
   ],
-  '*.{js,jsx,ts,tsx,json,css}': ['prettier --write'],
+  '*.{js,jsx,ts,tsx,json,css,vue,svelte}': ['prettier --write'],
 };
 ```
 

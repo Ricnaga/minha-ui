@@ -20,6 +20,9 @@ Notes:
 - There is no `pnpm test` nor `pnpm test:ui`. The Storybook interaction tests
   are the `storybook` Vitest project:
   `pnpm --filter @minha-ui/react exec vitest run --project=storybook`
+- `pnpm test:unit` runs the `unit` project of every app. To run a single app:
+  `pnpm --filter @minha-ui/vue exec vitest run --project=unit` (same for
+  `@minha-ui/svelte`)
 - The E2E suite lives in the `apps/e2e` app. Specs are in
   `apps/e2e/react/tests/`, the shared fixture and commands in
   `apps/e2e/support/`.

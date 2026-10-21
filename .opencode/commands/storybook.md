@@ -14,3 +14,11 @@ Wait for the server to respond on `http://localhost:6006` and for the
 Storybook sidebar to render before reporting it is ready. Do not rely on
 `networkidle`: the dev server keeps a websocket open, so that state is never
 reached.
+
+The other libs have their own Storybook:
+
+| App | Command | Port | Logic stories |
+|---|---|---|---|
+| React | `pnpm storybook` | 6006 | `http://localhost:6006/?path=/story/hooks-*` |
+| Vue | `pnpm storybook:vue` | 6007 | `http://localhost:6007/?path=/story/composables-*` |
+| Svelte | `pnpm storybook:svelte` | 6008 | `http://localhost:6008/?path=/story/runes-*` |

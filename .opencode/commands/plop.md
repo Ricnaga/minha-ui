@@ -1,20 +1,40 @@
 ---
-description: Scaffold a new component, provider, or hook using Plop.
+description: Scaffold a new component, provider, hook, composable, or rune using Plop.
 agent: front-end-engineer
 ---
 
-Run `pnpm plop` to start the scaffolding prompts. Based on the user's
-description of what they want to create, guide them through the choices:
+Run `pnpm plop` to start the scaffolding prompts. The root plopfile is a
+dispatcher: it asks for the app and the kind, then loads the plopfile of that
+app (`apps/<app>/plop/plopfile.cjs`).
 
-1. **What to create** — component, provider, or hook
-2. **Name** — follow the project naming convention (kebab-case for
-   components like `date-picker`, `modal-header`; camelCase or descriptive
-   for hooks like `user-form` which generates `useUserForm`)
+The available combinations are:
+
+| App | Kinds | Output folder |
+|---|---|---|
+| `react` | `component`, `provider`, `hook` | `apps/react/src/hooks/use<Name>/` |
+| `vue` | `component`, `provider`, `composable` | `apps/vue/src/composables/use<Name>/` |
+| `svelte` | `component`, `provider`, `rune` | `apps/svelte/src/runes/use<Name>/` |
+
+Non-interactive usage: `pnpm plop <app> <kind> <name>`.
+
+Based on the user's description of what they want to create, guide them through
+the choices:
+
+1. **App** — react, vue or svelte
+2. **Kind** — component, provider, or the app's logic unit (hook / composable /
+   rune)
+3. **Name** — follow the project naming convention (kebab-case for components
+   like `date-picker`, `modal-header`; a descriptive name for logic units like
+   `toggle` or `user-form`, which generate `useToggle` and `useUserForm`)
+
+The name of a hook, composable or rune **must not** include the `use` prefix —
+the generator adds it.
 
 After plop completes, check that the generated files are correct:
-- `apps/react/src/components/index.ts` and `apps/react/src/theme/index.ts` were
-  updated (component/provider) or `apps/react/src/hooks/index.ts` (hook)
-- The theme file was created in `apps/react/src/theme/`
+- The barrel of the app was updated: `src/components/index.ts` and
+  `src/theme/index.ts` (component/provider) or `src/hooks/index.ts` /
+  `src/composables/index.ts` / `src/runes/index.ts` (logic unit)
+- The theme file was created in the app's `src/theme/`
 - Stories and play files exist
 
 Do NOT manually edit barrel files — plop handles that.
