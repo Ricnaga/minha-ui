@@ -20,4 +20,13 @@ describe('Input', () => {
       expect(handleChange).toHaveBeenCalled();
     });
   });
+
+  describe('Responsividade', () => {
+    it('should apply responsive min-width classes on the container', () => {
+      const { container } = render(<Input placeholder="Enter text" />);
+      const inputContainer = container.firstElementChild;
+
+      expect(inputContainer).toHaveClass('min-w-0', 'sm:min-w-50');
+    });
+  });
 });

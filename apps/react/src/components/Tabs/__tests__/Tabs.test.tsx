@@ -42,4 +42,14 @@ describe('Tabs', () => {
       expect(onTabChange).toHaveBeenCalledWith('tab2');
     });
   });
+
+  describe('Responsividade', () => {
+    it('should scroll horizontally on mobile and wrap on sm+', () => {
+      renderTabs();
+      const tablist = screen.getByRole('tablist');
+
+      expect(tablist).toHaveClass('overflow-x-auto', 'flex-nowrap');
+      expect(tablist).toHaveClass('sm:flex-wrap', 'sm:overflow-visible');
+    });
+  });
 });

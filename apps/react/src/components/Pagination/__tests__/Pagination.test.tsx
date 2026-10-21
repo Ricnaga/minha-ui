@@ -36,4 +36,13 @@ describe('Pagination', () => {
       expect(defaultProps.onPageChange).not.toHaveBeenCalled();
     });
   });
+
+  describe('Responsividade', () => {
+    it('should use larger touch targets on mobile and compact ones on sm+', () => {
+      render(<Pagination {...defaultProps} />);
+      const nextButton = screen.getByLabelText('Próxima página');
+
+      expect(nextButton).toHaveClass('size-10', 'sm:size-8');
+    });
+  });
 });

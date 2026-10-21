@@ -81,6 +81,13 @@ describe('Breadcrumb', () => {
       expect(container.querySelector('ol')?.className).toContain('text-xs');
     });
 
+    it('should apply responsive gap classes to the list', () => {
+      const { container } = renderBreadcrumb({ size: 'md' });
+      const list = container.querySelector('ol');
+
+      expect(list).toHaveClass('gap-1', 'sm:gap-1.5');
+    });
+
     it('should render a custom separator', () => {
       renderBreadcrumb({ separator: '/' });
       expect(screen.getAllByText('/')).toHaveLength(2);

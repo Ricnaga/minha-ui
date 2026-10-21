@@ -68,4 +68,27 @@ describe('Accordion', () => {
       expect(content1).toHaveAttribute('data-state', 'closed');
     });
   });
+
+  describe('Responsividade', () => {
+    it.each([
+      ['sm', 'sm:w-48'],
+      ['md', 'sm:w-72'],
+      ['lg', 'sm:w-96'],
+    ] as const)(
+      'should be full width on mobile and %s width on sm+',
+      (size, expectedClass) => {
+        const { container } = render(
+          <Accordion type="single" size={size} onValueChange={vi.fn()}>
+            <AccordionItem value="item-1">
+              <AccordionHeader>Header 1</AccordionHeader>
+              <AccordionContent>Content 1</AccordionContent>
+            </AccordionItem>
+          </Accordion>,
+        );
+        const item = container.querySelector('[role="presentation"]');
+
+        expect(item).toHaveClass('w-full', expectedClass);
+      },
+    );
+  });
 });

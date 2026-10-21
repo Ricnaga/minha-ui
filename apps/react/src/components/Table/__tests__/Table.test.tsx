@@ -162,4 +162,20 @@ describe('Table', () => {
       expect(onPageChange).toHaveBeenCalledWith(2);
     });
   });
+
+  describe('Responsividade', () => {
+    it('should keep horizontal scroll on the root container', () => {
+      const { container } = renderTable();
+      const root = container.firstElementChild;
+
+      expect(root).toHaveClass('overflow-x-auto', 'min-w-0');
+    });
+
+    it('should apply responsive padding on cells', () => {
+      renderTable({ size: 'md' });
+      const cell = screen.getByRole('cell', { name: 'John Doe' });
+
+      expect(cell).toHaveClass('px-2', 'sm:px-3', 'sm:py-3');
+    });
+  });
 });
