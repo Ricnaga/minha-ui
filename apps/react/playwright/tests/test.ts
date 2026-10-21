@@ -43,8 +43,14 @@ export const test = base.extend<Fixtures>({
       }),
       navigate: async (storyId: string) => {
         await page.goto(
-          `${STORYBOOK_URL}/iframe.html?id=${storyId}&viewMode=story`,
+          `${STORYBOOK_URL}/iframe.html?id=${storyId}&viewMode=story&embed=true`,
         );
+        await page
+          .locator('body:not(.sb-show-preparing-story)')
+          .waitFor({ timeout: 15000 });
+        await page.locator('#storybook-root > *').first().waitFor({
+          timeout: 15000,
+        });
         await page.waitForLoadState('networkidle');
       },
       waitForCanvas: async (timeout = 10000) => {

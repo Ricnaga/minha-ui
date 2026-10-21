@@ -31,6 +31,19 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
+  // Serve a build estática do Storybook (e não o dev server) para evitar
+  // compilação on-demand, que deixa os specs instáveis sob concorrência.
+  webServer:
+    process.env.E2E_TEST_TYPE === 'storybook'
+      ? {
+          command:
+            'pnpm build-storybook && pnpm exec vite preview --outDir storybook-static --port 6006',
+          cwd: path.join(dirname, '..'),
+          url: 'http://localhost:6006/iframe.html',
+          reuseExistingServer: !process.env.CI,
+          timeout: 180_000,
+        }
+      : undefined,
   projects: [
     {
       name: 'chromium',
