@@ -1,5 +1,5 @@
 import type { PlayFunction } from 'storybook/internal/csf';
-import { expect, userEvent, waitFor, within } from 'storybook/test';
+import { expect, fireEvent, userEvent, waitFor, within } from 'storybook/test';
 
 export const testDefaultTooltip: PlayFunction = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
@@ -12,11 +12,12 @@ export const testDefaultTooltip: PlayFunction = async ({ canvasElement }) => {
 
   let tooltip = getTooltip();
 
-  // O mouse pode permanecer sobre o wrapper vindo de outra story (o estado do
-  // ponteiro persiste no navegador entre execuções). Dispara o leave no wrapper,
-  // onde ficam os handlers, garantindo o estado inicial oculto.
+  // O ponteiro pode permanecer sobre o wrapper vindo de outra story (o estado
+  // de :hover persiste no navegador entre execuções e não é sincronizado com
+  // eventos sintéticos). Dispara explicitamente o leave no wrapper (onde ficam
+  // os handlers) para garantir o estado inicial oculto de forma determinística.
   trigger.blur();
-  await userEvent.unhover(trigger.parentElement as HTMLElement);
+  fireEvent.mouseLeave(trigger.parentElement as HTMLElement);
 
   // Inicialmente escondido
   await waitFor(() => {
