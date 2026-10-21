@@ -1,11 +1,14 @@
 # Playwright E2E Tests
 
+Suíte E2E do pacote `@minha-ui/react`. As specs rodam contra as stories do
+Storybook.
+
 ## Estrutura
 
 ```
-playwright/
+apps/react/playwright/
 ├── playwright.config.ts    # Configuração do Playwright
-├── setup.ts                # Setup global para testes
+├── tsconfig.json           # Verificação de tipos da suíte
 ├── support/                # Suporte e helpers
 │   ├── commands.ts         # Commands personalizados
 │   ├── fixtures/           # Fixtures para testes
@@ -15,28 +18,13 @@ playwright/
 │   └── story-constants.ts
 └── tests/                  # Testes E2E
     ├── components/         # Testes de componentes
-    │   ├── Badge.spec.ts
-    │   ├── Button.spec.ts
-    │   ├── Checkbox.spec.ts
-    │   ├── Chip.spec.ts
-    │   ├── Input.spec.ts
-    │   ├── Modal.spec.ts
-    │   ├── Progress.spec.ts
-    │   ├── Select.spec.ts
-    │   ├── Skeleton.spec.ts
-    │   ├── Spinner.spec.ts
-    │   └── Tabs.spec.ts
     ├── hooks/              # Testes de hooks
-    │   ├── useClickAway.spec.ts
-    │   ├── useCopyToClipboard.spec.ts
-    │   ├── useDebounce.spec.ts
-    │   ├── useDisclosure.spec.ts
-    │   ├── usePagination.spec.ts
-    │   └── useToggle.spec.ts
     └── test.ts             # Configuração de fixtures
 ```
 
 ## Scripts Disponíveis
+
+Os scripts rodam a partir da raiz do monorepo e delegam para o app.
 
 ```bash
 # Executar todos os testes E2E (usa dev server)
@@ -61,31 +49,36 @@ pnpm test:e2e:hooks
 pnpm test:e2e:storybook:ui
 ```
 
+Com `E2E_TEST_TYPE=storybook`, o Playwright sobe a **build estática** do
+Storybook via `webServer` e a serve na porta 6006. Usar a build, e não o dev
+server, evita a compilação sob demanda, que deixa os specs instáveis sob
+concorrência.
+
 ## Adicionando Novos Testes
 
 ### Componentes
 
-Crie um novo arquivo em `tests/components/` seguindo o padrão:
+Crie um novo arquivo em `tests/components/` usando a fixture `story`:
 
 ```typescript
 import { test, expect } from '../test';
 
 test.describe('ComponentName', () => {
-  const STORYBOOK_URL = 'http://localhost:6006';
-
   test.beforeEach(async ({ story }) => {
-    await story.page.goto(
-      `${STORYBOOK_URL}/iframe.html?id=story-id&viewMode=story`,
-    );
-    await story.page.waitForLoadState('networkidle');
+    await story.navigate('components-categoria-componentname--default');
   });
 
   test('should render component', async ({ story }) => {
-    const canvas = story.page.locator('#storybook-root');
-    // ...
+    await expect(
+      story.canvas.getByRole('button', { name: 'Salvar' }),
+    ).toBeVisible();
   });
 });
 ```
+
+`story.navigate` aguarda a story terminar de montar. Evite navegar com
+`page.goto` direto: o `networkidle` é atingido antes da renderização e as
+asserções passam a rodar contra um canvas vazio.
 
 ### Hooks
 
