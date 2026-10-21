@@ -9,9 +9,40 @@ description: >
 
 # minha-ui Architecture
 
-A component library built with React 19 + TypeScript + Vite + Tailwind CSS v4.
+A component library built with React 19 + TypeScript + Vite + Tailwind CSS v4,
+organized as a pnpm workspace orchestrated by Turborepo.
 
-## Project structure
+## Monorepo structure
+
+```
+minha-ui/
+├── apps/
+│   ├── react/            # The UI library app
+│   │   ├── src/          # components, hooks, infra, theme, types, utils
+│   │   ├── .storybook/   # Storybook config (a11y, viewport, vitest)
+│   │   └── plop/         # Scaffolding generators
+│   └── e2e/              # The E2E suite app (@minha-ui/e2e)
+│       ├── support/      # Generic infra shared by every lib
+│       └── react/        # Per-lib story ids and specs
+├── packages/
+│   ├── theme/            # Shared CSS tokens
+│   └── utils/            # Shared utilities (date, number, string, chart)
+└── .opencode/            # Agents, commands and skills
+```
+
+Rules:
+
+- **Every package has its own `package.json`**, is private, and is referenced by
+  `workspace:*`
+- **A lib never carries test-only dependencies of other packages.** E2E
+  dependencies live in `apps/e2e`, not in the lib it tests
+- **Each folder holds one app and its tests.** Generic infra is shared
+  (`apps/e2e/support/`), lib-specific knowledge stays with the lib
+  (`apps/e2e/react/`)
+- Root scripts delegate to a package with `pnpm --filter <pkg>`; Turbo runs
+  the same task across every package that declares it
+
+## Library structure (`apps/react/src`)
 
 ```
 src/
@@ -26,6 +57,12 @@ src/
 ├── types/            # Shared TS types
 └── utils/            # Formatting utilities (date, number, string)
 ```
+
+Path aliases inside the lib: `@/components`, `@/hooks`, `@/theme`, `@/infra`,
+`@/types`, `@/icons`.
+
+> From this point on, paths like `src/theme/...` are relative to
+> `apps/react/src`.
 
 ## Component pattern — Compound Components
 
@@ -210,12 +247,13 @@ Run `pnpm plop` and choose from 3 generators:
 
 | Generator | Creates | Auto-updates |
 |---|---|---|
-| **component** | `Component.tsx`, `useComponent.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts`, `theme/*.tv.ts` | `src/components/index.ts`, `src/theme/index.ts` |
-| **provider** | `Component.tsx` (with `createContext` + safe `useContext`), `useComponent.ts`, `component.types.ts`, `index.ts` | `src/components/index.ts` |
-| **hook** | `useHook/index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts` | `src/hooks/index.ts` |
+| **component** | `Component.tsx`, `useComponent.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts`, `theme/*.tv.ts` | `apps/react/src/components/index.ts`, `apps/react/src/theme/index.ts` |
+| **provider** | `Component.tsx` (with `createContext` + safe `useContext`), `useComponent.ts`, `component.types.ts`, `index.ts` | `apps/react/src/components/index.ts` |
+| **hook** | `useHook/index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts` | `apps/react/src/hooks/index.ts` |
 
-**Never** edit `src/components/index.ts`, `src/theme/index.ts`, or
-`src/hooks/index.ts` by hand — plop handles those exports.
+**Never** edit `apps/react/src/components/index.ts`,
+`apps/react/src/theme/index.ts`, or `apps/react/src/hooks/index.ts` by hand —
+plop handles those exports.
 
 ## Theme system
 
@@ -248,14 +286,17 @@ Three layers:
 
 | Layer | Tool | Location |
 |---|---|---|
-| Unit | Vitest + Testing Library | `src/**/__tests__/*.test.tsx` |
-| Interaction | Storybook Play functions | `**/stories/*.play.ts` |
-| E2E | Playwright | `playwright/tests/` |
+| Unit | Vitest + Testing Library | `apps/react/src/**/__tests__/*.test.tsx` |
+| Interaction | Storybook Play functions | `apps/react/src/**/stories/*.play.ts` |
+| E2E | Playwright | `apps/e2e/react/tests/` |
 
-Run with `pnpm test:unit`, `pnpm test:e2e`, or `pnpm storybook` + `pnpm test:e2e:storybook`.
+Run with `pnpm test:unit`, `pnpm test:e2e:storybook`, or `pnpm storybook` + `pnpm test:e2e:storybook`.
 
 - Use `@testing-library/user-event` for user interactions in unit tests
 - Coverage is collected for `src/components/**` and `src/hooks/**`
+- The E2E suite is its own app: generic fixtures live in `apps/e2e/support/`
+  and lib-specific specs in `apps/e2e/<lib>/`. See the `minha-ui-testing` skill
+  before writing E2E specs.
 
 ## State management
 
@@ -274,15 +315,20 @@ Two built-in patterns:
 
 ## Scripts
 
+Root scripts orchestrate the workspace; package-specific ones delegate with
+`pnpm --filter`.
+
 | Script | Purpose |
 |---|---|
 | `pnpm dev` | Start Vite dev server |
 | `pnpm build` | TypeScript check + Vite build |
 | `pnpm storybook` | Start Storybook on port 6006 |
+| `pnpm build-storybook` | Build the static Storybook |
 | `pnpm plop` | Run scaffolding generator |
-| `pnpm test:unit` | Run unit tests |
-| `pnpm test:e2e` | Run Playwright E2E tests |
-| `pnpm test:e2e:storybook` | Run Playwright tests against Storybook |
+| `pnpm test:unit` | Run unit tests (all packages) |
+| `pnpm test:e2e:storybook` | Run Playwright E2E tests against Storybook |
+| `pnpm test:e2e:components` | E2E — only the component specs |
+| `pnpm test:e2e:hooks` | E2E — only the hook specs |
 | `pnpm test:coverage` | Unit tests with coverage report |
 | `pnpm lint` | ESLint across the project |
 | `pnpm typecheck` | TypeScript type checking |

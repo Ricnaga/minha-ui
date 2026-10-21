@@ -12,9 +12,9 @@ description of what they want to create, guide them through the choices:
    for hooks like `user-form` which generates `useUserForm`)
 
 After plop completes, check that the generated files are correct:
-- `src/components/index.ts` and `src/theme/index.ts` were updated
-  (component/provider) or `src/hooks/index.ts` (hook)
-- The theme file was created in `src/theme/`
+- `apps/react/src/components/index.ts` and `apps/react/src/theme/index.ts` were
+  updated (component/provider) or `apps/react/src/hooks/index.ts` (hook)
+- The theme file was created in `apps/react/src/theme/`
 - Stories and play files exist
 
 Do NOT manually edit barrel files — plop handles that.

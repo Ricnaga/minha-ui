@@ -16,3 +16,7 @@ If typecheck fails, identify the type errors and fix them.
 If tests fail, show the failing tests and help fix them.
 
 Report a summary at the end: ✅ or ❌ for each step.
+
+E2E is optional in a review because it builds the static Storybook and takes a
+few minutes. Run `pnpm test:e2e:storybook` when the change touches rendering,
+navigation or viewport behaviour, or when the user asks for it explicitly.

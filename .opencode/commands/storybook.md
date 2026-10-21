@@ -10,4 +10,7 @@ Available stories:
 - Hooks: `http://localhost:6006/?path=/story/hooks-*`
 - Icons: `http://localhost:6006/?path=/story/icons-*`
 
-Wait for the "networkidle" state before reporting the server is ready.
+Wait for the server to respond on `http://localhost:6006` and for the
+Storybook sidebar to render before reporting it is ready. Do not rely on
+`networkidle`: the dev server keeps a websocket open, so that state is never
+reached.

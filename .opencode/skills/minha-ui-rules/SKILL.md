@@ -58,7 +58,7 @@ O que extrair:
 - Utilitários de formatação → `src/utils/`
 - Lógica de componentes → hooks customizados (`useComponent`)
 - Configuração de variantes → `src/theme/*.tv.ts`
-- Constantes de teste → `playwright/support/story-constants.ts`
+- Constantes de teste → `apps/e2e/react/support/story-constants.ts`
 - Tipos compartilhados → `src/types/`
 
 O que **não** extrair:
