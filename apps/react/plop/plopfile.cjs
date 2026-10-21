@@ -1,6 +1,6 @@
 const componentActions = require("./actions/component.cjs");
 const providerActions = require("./actions/provider.cjs");
-const hooksActions = require("./actions/hooks.cjs");
+const hookActions = require("./actions/hook.cjs");
 
 module.exports = function (
   /** @type {import('plop').NodePlopAPI} */
@@ -16,7 +16,7 @@ module.exports = function (
         choices: [
           { name: "Component", value: "component" },
           { name: "Provider", value: "provider" },
-          { name: "Hook", value: "hooks" },
+          { name: "Hook", value: "hook" },
         ],
       },
       {
@@ -28,7 +28,7 @@ module.exports = function (
               return "Nome do componente (ex: modal-header)?";
             case "provider":
               return "Nome do componente provider (ex: modal-header)?";
-            case "hooks":
+            case "hook":
               return "Nome do hook (ex: entrada user-form, o hook criado: useUserForm)?";
             default:
               return "Inválido";
@@ -44,8 +44,8 @@ module.exports = function (
         case "provider":
           return providerActions(plop);
 
-        case "hooks":
-          return hooksActions(plop);
+        case "hook":
+          return hookActions(plop);
 
         default:
           return [];

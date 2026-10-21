@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { use{{pascalCase name}} } from "../";
+import { testDefault{{pascalCase name}} } from "./use{{pascalCase name}}.play";
 
 const meta: Meta = {
   title: "Hooks/use{{pascalCase name}}",
@@ -12,4 +14,10 @@ const meta: Meta = {
 export default meta;
 
 export const Default: StoryObj = {
+  render: () => {
+    use{{pascalCase name}}();
+
+    return <div />;
+  },
+  play: testDefault{{pascalCase name}},
 };

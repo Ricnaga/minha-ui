@@ -1,6 +1,6 @@
 import type { PlayFunction } from "storybook/internal/csf";
-import { within } from "storybook/test";
+import { expect } from "storybook/test";
 
 export const testDefault{{pascalCase name}}: PlayFunction = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
+  await expect(canvasElement).toBeInTheDocument();
 };
