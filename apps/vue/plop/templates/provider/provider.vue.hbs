@@ -1,0 +1,12 @@
+<script setup lang="ts">
+import type { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+import { use{{pascalCase name}}Provider } from "./use{{pascalCase name}}";
+
+const props = defineProps<{{pascalCase name}}Props>();
+
+use{{pascalCase name}}Provider(props);
+</script>
+
+<template>
+  <slot />
+</template>

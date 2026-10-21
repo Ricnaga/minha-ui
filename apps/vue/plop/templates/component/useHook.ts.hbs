@@ -1,0 +1,13 @@
+import type { HTMLAttributes } from "vue";
+
+import type { Use{{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+import { {{camelCase name}} } from "@/theme";
+
+export function use{{pascalCase name}}(props: Use{{pascalCase name}}Props) {
+  // TODO: Implement composable logic
+  const {{camelCase name}}Props: HTMLAttributes = {
+    class: {{camelCase name}}({ variant: props.variant }),
+  };
+
+  return { {{camelCase name}}Props };
+}

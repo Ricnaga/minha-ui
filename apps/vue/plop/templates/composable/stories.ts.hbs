@@ -1,0 +1,25 @@
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { use{{pascalCase name}} } from "../";
+import { testDefault{{pascalCase name}} } from "./use{{pascalCase name}}.play";
+
+const meta: Meta = {
+  title: "Composables/use{{pascalCase name}}",
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+};
+
+export default meta;
+
+export const Default: StoryObj = {
+  render: () => ({
+    setup() {
+      use{{pascalCase name}}();
+
+      return {};
+    },
+    template: "<div />",
+  }),
+  play: testDefault{{pascalCase name}},
+};

@@ -1,0 +1,15 @@
+<script setup lang="ts">
+import type { {{pascalCase name}}Props } from "./{{kebabCase name}}.types";
+import { use{{pascalCase name}} } from "./use{{pascalCase name}}";
+
+const props = defineProps<{{pascalCase name}}Props>();
+
+const { {{camelCase name}}Props } = use{{pascalCase name}}(props);
+</script>
+
+<template>
+  <div v-bind="{{camelCase name}}Props">
+    <!-- TODO: Implement {{pascalCase name}} -->
+    <slot />
+  </div>
+</template>
