@@ -39,4 +39,13 @@ describe('Button', () => {
       expect(handleClick).not.toHaveBeenCalled();
     });
   });
+
+  describe('Loading', () => {
+    it('should render the spinner and keep the accessible name', () => {
+      render(<Button isLoading>Click me</Button>);
+
+      expect(screen.getByRole('status')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Click me' })).toBeDisabled();
+    });
+  });
 });

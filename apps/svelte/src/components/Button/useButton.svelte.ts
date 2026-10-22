@@ -1,7 +1,7 @@
-import type { HTMLButtonAttributes } from 'svelte/elements';
+import type { HTMLAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
 import { useRipple } from '@/runes';
-import { button } from '@/theme';
+import { button, buttonLabel } from '@/theme';
 
 import type { UseButtonProps } from './button.types';
 
@@ -43,8 +43,13 @@ export function useButton(getProps: () => UseButtonProps) {
     onclick: handleClick,
   };
 
+  const labelProps: HTMLAttributes<HTMLSpanElement> = {
+    class: buttonLabel(),
+  };
+
   return {
     buttonProps,
+    labelProps,
     get isLoading() {
       return isLoading();
     },

@@ -220,6 +220,14 @@ export type ButtonColor = keyof typeof buttonVariants.color;
 export type ButtonSize = keyof typeof buttonVariants.size;
 export type ButtonRadius = keyof typeof buttonVariants.radius;
 
+/**
+ * Rótulo acessível do botão: fica visualmente oculto enquanto o Spinner
+ * substitui o conteúdo, preservando o nome lido por leitores de tela.
+ */
+export const buttonLabel = tv({
+  base: 'sr-only',
+});
+
 export type ButtonVariants = {
   variant?: ButtonVariant;
   color?: ButtonColor;

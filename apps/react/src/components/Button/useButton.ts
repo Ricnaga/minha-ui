@@ -1,8 +1,8 @@
-import type { MouseEvent } from 'react';
 import { useRipple } from '@/hooks';
-import { button } from '@/theme';
-import type { ButtonProps, UseButtonProps } from './button.types';
+import { button, buttonLabel } from '@/theme';
+import type { MouseEvent } from 'react';
 import type { SpinnerProps } from '../Spinner';
+import type { ButtonProps, UseButtonProps } from './button.types';
 
 export function useButton(props: UseButtonProps) {
   const {
@@ -37,5 +37,9 @@ export function useButton(props: UseButtonProps) {
     className: 'size-4',
   };
 
-  return { buttonProps, isLoading, children, spinnerProps };
+  const labelProps: { className: string } = {
+    className: buttonLabel(),
+  };
+
+  return { buttonProps, isLoading, children, labelProps, spinnerProps };
 }

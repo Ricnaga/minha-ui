@@ -23,3 +23,18 @@ export const testDefaultButton: PlayFunction = async ({
   // 4. verifica se o onclick foi chamado
   await expect(args.onclick).toHaveBeenCalled();
 };
+
+export const testLoadingButton: PlayFunction = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = canvas.getByRole('button');
+
+  // 1. botão desabilitado durante o loading
+  await expect(button).toBeDisabled();
+
+  // 2. o rótulo continua acessível (a11y)
+  await expect(button).toHaveAccessibleName(/button/i);
+
+  // 3. conteúdo substituído pelo Spinner
+  await expect(canvas.getByRole('status')).toBeInTheDocument();
+};

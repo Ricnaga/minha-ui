@@ -5,12 +5,15 @@ import { useButton } from './useButton';
 
 const props = defineProps<ButtonProps>();
 
-const { buttonProps, isLoading } = useButton(props);
+const { buttonProps, isLoading, labelProps } = useButton(props);
 </script>
 
 <template>
   <button v-bind="buttonProps">
-    <Spinner v-if="isLoading" :color="color" class="size-4" />
+    <template v-if="isLoading">
+      <Spinner :color="color" class="size-4" />
+      <span v-bind="labelProps"><slot /></span>
+    </template>
     <slot v-else />
   </button>
 </template>

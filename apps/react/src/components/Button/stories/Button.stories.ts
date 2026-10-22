@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 import { Button } from '../Button';
 import type { ButtonProps } from '../button.types';
-import { testDefaultButton } from './Button.play';
+import { testDefaultButton, testLoadingButton } from './Button.play';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<ButtonProps> = {
@@ -36,9 +36,23 @@ const meta: Meta<ButtonProps> = {
       control: { type: 'select' },
       options: ['none', 'small', 'medium', 'large'],
     },
+
+    isLoading: {
+      control: 'boolean',
+      description: 'Desabilita o botão e exibe o Spinner no lugar do conteúdo',
+    },
+
+    disabled: {
+      control: 'boolean',
+    },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { onClick: fn(), children: 'Button' },
+  args: {
+    onClick: fn(),
+    children: 'Button',
+    isLoading: false,
+    disabled: false,
+  },
 };
 
 export default meta;
@@ -48,4 +62,9 @@ type Story = StoryObj<ButtonProps>;
 export const Default: Story = {
   args: {},
   play: testDefaultButton,
+};
+
+export const Loading: Story = {
+  args: { isLoading: true },
+  play: testLoadingButton,
 };

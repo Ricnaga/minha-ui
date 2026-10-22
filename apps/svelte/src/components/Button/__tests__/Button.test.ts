@@ -60,6 +60,14 @@ describe('Button', () => {
       expect(screen.getByRole('status')).toBeInTheDocument();
     });
 
+    it('should keep the accessible name while loading', () => {
+      render(ButtonStory, {
+        props: { isLoading: true, children: 'Click me' },
+      });
+
+      expect(screen.getByRole('button', { name: 'Click me' })).toBeDisabled();
+    });
+
     it('should be disabled while loading', async () => {
       const onclick = vi.fn();
       render(ButtonStory, { props: { onclick, isLoading: true } });

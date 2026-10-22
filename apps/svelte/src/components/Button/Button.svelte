@@ -11,6 +11,7 @@
 <button {...button.buttonProps}>
   {#if button.isLoading}
     <Spinner color={props.color} class="size-4" />
+    <span {...button.labelProps}>{@render props.children?.()}</span>
   {:else}
     {@render props.children?.()}
   {/if}

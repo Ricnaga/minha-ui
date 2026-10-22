@@ -56,14 +56,17 @@ describe('Button', () => {
   });
 
   describe('Loading', () => {
-    it('should render the spinner instead of the content', () => {
+    it('should render the spinner and keep the accessible name', () => {
       const wrapper = mount(Button, {
         props: { isLoading: true },
         slots: { default: 'Click me' },
       });
 
-      expect(wrapper.find('[role="status"]').exists()).toBe(true);
-      expect(wrapper.text()).not.toContain('Click me');
+      const button = wrapper.get('button');
+
+      expect(button.find('[role="status"]').exists()).toBe(true);
+      expect(button.find('.sr-only').exists()).toBe(true);
+      expect(button.text()).toContain('Click me');
     });
 
     it('should be disabled while loading', async () => {

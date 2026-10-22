@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes } from 'react';
 import type { ButtonVariants } from '@/theme';
+import type { ButtonHTMLAttributes } from 'react';
 
 export interface UseButtonProps
   extends

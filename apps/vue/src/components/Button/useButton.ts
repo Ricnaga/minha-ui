@@ -1,7 +1,7 @@
-import { computed, type ButtonHTMLAttributes } from 'vue';
+import { computed, type ButtonHTMLAttributes, type HTMLAttributes } from 'vue';
 
 import { useRipple } from '@/composables';
-import { button } from '@/theme';
+import { button, buttonLabel } from '@/theme';
 
 import type { UseButtonProps } from './button.types';
 
@@ -27,5 +27,9 @@ export function useButton(props: UseButtonProps) {
     onClick: handleClick,
   }));
 
-  return { buttonProps, isLoading };
+  const labelProps: HTMLAttributes = {
+    class: buttonLabel(),
+  };
+
+  return { buttonProps, isLoading, labelProps };
 }
