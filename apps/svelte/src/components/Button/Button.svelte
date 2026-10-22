@@ -1,13 +1,17 @@
 <script lang="ts">
+  import { Spinner } from '../Spinner';
   import type { ButtonProps } from './button.types';
   import { useButton } from './useButton.svelte';
 
   const props: ButtonProps = $props();
 
-  const buttonProps = $derived(useButton(props).buttonProps);
+  const button = useButton(() => props);
 </script>
 
-<div {...buttonProps}>
-  <!-- TODO: Implement Button -->
-  {@render props.children?.()}
-</div>
+<button {...button.buttonProps}>
+  {#if button.isLoading}
+    <Spinner color={props.color} class="size-4" />
+  {:else}
+    {@render props.children?.()}
+  {/if}
+</button>
