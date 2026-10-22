@@ -1,13 +1,31 @@
-import type { HTMLAttributes } from 'vue';
+import { computed, type ButtonHTMLAttributes } from 'vue';
 
+import { useRipple } from '@/composables';
 import { button } from '@/theme';
+
 import type { UseButtonProps } from './button.types';
 
 export function useButton(props: UseButtonProps) {
-  // TODO: Implement composable logic
-  const buttonProps: HTMLAttributes = {
-    class: button({ variant: props.variant }),
-  };
+  const { handleRipple } = useRipple();
 
-  return { buttonProps };
+  function handleClick(event: MouseEvent) {
+    handleRipple(event);
+  }
+
+  const isLoading = computed(() => props.isLoading ?? false);
+
+  const buttonProps = computed<ButtonHTMLAttributes>(() => ({
+    type: props.type ?? 'button',
+    disabled: isLoading.value || props.disabled,
+    class: button({
+      variant: props.variant,
+      color: props.color,
+      size: props.size,
+      radius: props.radius,
+      isLoading: isLoading.value,
+    }),
+    onClick: handleClick,
+  }));
+
+  return { buttonProps, isLoading };
 }

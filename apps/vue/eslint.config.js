@@ -37,6 +37,9 @@ export default defineConfig([
       // Conflita com o Prettier: o Prettier colapsa os atributos de um
       // elemento em uma única linha e esta regra exige um atributo por linha.
       'vue/max-attributes-per-line': 'off',
+      // Também conflita com o Prettier: mantém o conteúdo em uma linha quando
+      // o texto é curto.
+      'vue/singleline-html-element-content-newline': 'off',
     },
   },
   {

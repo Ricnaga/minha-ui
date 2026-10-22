@@ -1,24 +1,47 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 
-import { Button } from '../';
-import type { ButtonProps } from '../button.types';
-import { testDefaultButton } from './Button.play';
+import { fn } from 'storybook/test';
+import { h } from 'vue';
 
-const meta: Meta<ButtonProps> = {
-  title: 'Components/Button',
+import { Button } from '../';
+import { testDefaultButton } from './Button.play';
+import ButtonStory from './ButtonStory.vue';
+
+const meta: Meta<typeof ButtonStory> = {
+  title: 'Components/Interação/Button',
   component: Button,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['contained', 'outline', 'ghost'],
+    },
+
+    color: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'success', 'info', 'warning', 'error'],
+    },
+
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+    },
+
+    radius: {
+      control: { type: 'select' },
+      options: ['none', 'small', 'medium', 'large'],
+    },
+  },
+  args: { onClick: fn(), children: 'Button' },
 };
 
 export default meta;
-type Story = StoryObj<ButtonProps>;
+type Story = StoryObj<typeof ButtonStory>;
 
 export const Default: Story = {
-  args: {},
+  render: (args) => h(ButtonStory, args),
   play: testDefaultButton,
 };
