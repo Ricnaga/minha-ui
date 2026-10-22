@@ -1,4 +1,6 @@
-import { computed, inject, provide, type InjectionKey } from 'vue';
+import { computed, provide, type InjectionKey } from 'vue';
+
+import { useContext } from '@/composables';
 
 import { useAccordion } from '../Accordion/useAccordion';
 import type {
@@ -26,13 +28,9 @@ export function useAccordionItemProvider(props: UseAccordionItemProviderProps) {
 }
 
 export function useAccordionItem() {
-  const context = inject(accordionItemContext);
-
-  if (!context) {
-    throw new Error(
-      'useAccordionItem deve ser usado dentro de <AccordionItem>',
-    );
-  }
-
-  return context;
+  return useContext({
+    context: accordionItemContext,
+    hookName: useAccordionItem.name,
+    providerName: 'AccordionItem',
+  });
 }

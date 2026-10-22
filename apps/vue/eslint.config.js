@@ -39,4 +39,11 @@ export default defineConfig([
       'vue/max-attributes-per-line': 'off',
     },
   },
+  {
+    files: ['**/__tests__/**/*.ts'],
+    rules: {
+      // Testes montam provider e consumidor no mesmo arquivo.
+      'vue/one-component-per-file': 'off',
+    },
+  },
 ]);

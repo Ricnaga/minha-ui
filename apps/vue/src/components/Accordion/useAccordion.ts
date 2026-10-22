@@ -1,4 +1,6 @@
-import { computed, inject, provide, ref, type InjectionKey } from 'vue';
+import { computed, provide, ref, type InjectionKey } from 'vue';
+
+import { useContext } from '@/composables';
 
 import type {
   AccordionContextProps,
@@ -51,11 +53,9 @@ export function useAccordionProvider(
 }
 
 export function useAccordion() {
-  const context = inject(accordionContext);
-
-  if (!context) {
-    throw new Error('useAccordion deve ser usado dentro de <Accordion>');
-  }
-
-  return context;
+  return useContext({
+    context: accordionContext,
+    hookName: useAccordion.name,
+    providerName: 'Accordion',
+  });
 }
