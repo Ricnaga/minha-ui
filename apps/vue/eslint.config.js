@@ -34,6 +34,9 @@ export default defineConfig([
       // O vue/recommended exige multi-word component names; o projeto usa
       // nomes de domínio (Button, ModalHeader) e não separa por diretório.
       'vue/multi-word-component-names': 'off',
+      // Conflita com o Prettier: o Prettier colapsa os atributos de um
+      // elemento em uma única linha e esta regra exige um atributo por linha.
+      'vue/max-attributes-per-line': 'off',
     },
   },
 ]);
