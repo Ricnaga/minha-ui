@@ -1,37 +1,5 @@
 import { tv } from 'tailwind-variants';
 
-// As variantes são a fonte única da verdade: o tipo de props do componente é
-// derivado delas para que o compilador do SFC consiga resolvê-lo.
-export const buttonVariants = {
-  variant: {
-    contained: 'text-white',
-    outline: 'bg-transparent border-2',
-    ghost: 'bg-transparent border-transparent hover:bg-neutral-200/80',
-  },
-
-  color: {
-    primary: '',
-    secondary: '',
-    success: '',
-    info: '',
-    warning: '',
-    error: '',
-  },
-
-  size: {
-    small: 'h-8 min-w-16 py-2 px-3',
-    medium: 'h-10 min-w-24 py-3 px-4',
-    large: 'h-12 min-w-32 py-4 px-6',
-  },
-
-  radius: {
-    none: 'rounded-none',
-    small: 'rounded-sm',
-    medium: 'rounded-lg',
-    large: 'rounded-xl',
-  },
-};
-
 export const button = tv({
   base: [
     'flex items-center justify-center border tracking-wide relative overflow-hidden',
@@ -39,9 +7,35 @@ export const button = tv({
   ],
 
   variants: {
-    ...buttonVariants,
     isLoading: {
       true: ['cursor-not-allowed', 'disabled:opacity-40 disabled:shadow-none'],
+    },
+    variant: {
+      contained: 'text-white',
+      outline: 'bg-transparent border-2',
+      ghost: 'bg-transparent border-transparent hover:bg-neutral-200/80',
+    },
+
+    color: {
+      primary: '',
+      secondary: '',
+      success: '',
+      info: '',
+      warning: '',
+      error: '',
+    },
+
+    size: {
+      small: 'h-8 min-w-16 py-2 px-3',
+      medium: 'h-10 min-w-24 py-3 px-4',
+      large: 'h-12 min-w-32 py-4 px-6',
+    },
+
+    radius: {
+      none: 'rounded-none',
+      small: 'rounded-sm',
+      medium: 'rounded-lg',
+      large: 'rounded-xl',
     },
   },
 
@@ -215,11 +209,6 @@ export const button = tv({
   },
 });
 
-export type ButtonVariant = keyof typeof buttonVariants.variant;
-export type ButtonColor = keyof typeof buttonVariants.color;
-export type ButtonSize = keyof typeof buttonVariants.size;
-export type ButtonRadius = keyof typeof buttonVariants.radius;
-
 /**
  * Rótulo acessível do botão: fica visualmente oculto enquanto o Spinner
  * substitui o conteúdo, preservando o nome lido por leitores de tela.
@@ -227,6 +216,13 @@ export type ButtonRadius = keyof typeof buttonVariants.radius;
 export const buttonLabel = tv({
   base: 'sr-only',
 });
+
+// O compilador do SFC não resolve `VariantProps` (tipo condicional), então os
+// tipos das variantes são derivados das chaves de cada grupo de `variants`.
+export type ButtonVariant = keyof typeof button.variants.variant;
+export type ButtonColor = keyof typeof button.variants.color;
+export type ButtonSize = keyof typeof button.variants.size;
+export type ButtonRadius = keyof typeof button.variants.radius;
 
 export type ButtonVariants = {
   variant?: ButtonVariant;

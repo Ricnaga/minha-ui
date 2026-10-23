@@ -1,8 +1,10 @@
 import type { Snippet } from 'svelte';
 
-import type { AccordionSize, AccordionVariant } from '@/theme';
+import type { AccordionVariants } from '@/theme';
 
 export type AccordionType = 'single' | 'multiple';
+export type AccordionVariant = NonNullable<AccordionVariants['variant']>;
+export type AccordionSize = NonNullable<AccordionVariants['size']>;
 
 export type UseAccordionProviderProps = {
   type?: AccordionType;

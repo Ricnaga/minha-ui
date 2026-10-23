@@ -1,6 +1,9 @@
 import type { Snippet } from 'svelte';
 
-import type { AccordionSize, AccordionVariant } from '@/theme';
+import type {
+  AccordionSize,
+  AccordionVariant,
+} from '../Accordion/accordion.types';
 
 export type UseAccordionItemProviderProps = {
   value: string;

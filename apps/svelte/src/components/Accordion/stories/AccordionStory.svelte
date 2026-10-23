@@ -1,13 +1,15 @@
 <script lang="ts">
-  import type { AccordionSize, AccordionVariant } from '@/theme';
-
   import {
     Accordion,
     AccordionContent,
     AccordionHeader,
     AccordionItem,
   } from '../../';
-  import type { AccordionType } from '../accordion.types';
+  import type {
+    AccordionSize,
+    AccordionType,
+    AccordionVariant,
+  } from '../accordion.types';
 
   type AccordionStoryProps = {
     type?: AccordionType;

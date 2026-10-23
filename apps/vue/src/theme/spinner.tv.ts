@@ -1,24 +1,5 @@
 import { tv } from 'tailwind-variants';
 
-// As variantes são a fonte única da verdade: o tipo de props do componente é
-// derivado delas para que o compilador do SFC consiga resolvê-lo.
-export const spinnerVariants = {
-  color: {
-    primary: { icon: 'stroke-sky-400' },
-    secondary: { icon: 'stroke-pink-400' },
-    success: { icon: 'stroke-emerald-400' },
-    info: { icon: 'stroke-blue-400' },
-    warning: { icon: 'stroke-amber-400' },
-    error: { icon: 'stroke-red-400' },
-  },
-
-  thickness: {
-    sm: { icon: 'stroke-[2px]' },
-    md: { icon: 'stroke-[6px]' },
-    lg: { icon: 'stroke-[10px]' },
-  },
-};
-
 export const spinner = tv({
   slots: {
     container: 'flex items-center justify-center',
@@ -28,7 +9,33 @@ export const spinner = tv({
       '[stroke-dasharray:2,200] [stroke-dashoffset:0] [stroke-linecap:round]',
     ],
   },
-  variants: spinnerVariants,
+  variants: {
+    color: {
+      primary: {
+        icon: 'stroke-sky-400',
+      },
+      secondary: {
+        icon: 'stroke-pink-400',
+      },
+      success: {
+        icon: 'stroke-emerald-400',
+      },
+      info: {
+        icon: 'stroke-blue-400',
+      },
+      warning: {
+        icon: 'stroke-amber-400',
+      },
+      error: {
+        icon: 'stroke-red-400',
+      },
+    },
+    thickness: {
+      sm: { icon: 'stroke-[2px]' },
+      md: { icon: 'stroke-[6px]' },
+      lg: { icon: 'stroke-[10px]' },
+    },
+  },
   defaultVariants: {
     color: 'primary',
     thickness: 'md',
@@ -50,8 +57,10 @@ if (spinnerSheet) {
 
 export { spinnerSheet };
 
-export type SpinnerColor = keyof typeof spinnerVariants.color;
-export type SpinnerThickness = keyof typeof spinnerVariants.thickness;
+// O compilador do SFC não resolve `VariantProps` (tipo condicional), então os
+// tipos das variantes são derivados das chaves de cada grupo de `variants`.
+export type SpinnerColor = keyof typeof spinner.variants.color;
+export type SpinnerThickness = keyof typeof spinner.variants.thickness;
 
 export type SpinnerVariants = {
   color?: SpinnerColor;
