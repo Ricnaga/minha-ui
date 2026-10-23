@@ -5,5 +5,6 @@ export * from './AccordionItem';
 export * from './Badge';
 export * from './Button';
 export * from './Divider';
+export * from './ScrollArea';
 export * from './Skeleton';
 export * from './Spinner';
