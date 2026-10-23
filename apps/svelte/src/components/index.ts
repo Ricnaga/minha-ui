@@ -8,3 +8,4 @@ export * from './Divider';
 export * from './ScrollArea';
 export * from './Skeleton';
 export * from './Spinner';
+export * from './TransitionContainer';
