@@ -49,6 +49,15 @@ describe('Divider', () => {
   });
 
   describe('Native attributes', () => {
+    it('should keep the separator semantics over consumer attributes', () => {
+      const wrapper = mount(Divider, {
+        attrs: { role: 'presentation', 'aria-orientation': 'vertical' },
+      });
+
+      expect(wrapper.attributes('role')).toBe('separator');
+      expect(wrapper.attributes('aria-orientation')).toBe('horizontal');
+    });
+
     it('should forward native attributes to the separator', () => {
       const wrapper = mount(Divider, {
         attrs: { 'data-testid': 'divider', id: 'section-divider' },
