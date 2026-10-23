@@ -17,6 +17,7 @@ export * from './Checkbox';
 export * from './Chip';
 export * from './Divider';
 export * from './EmptyState';
+export * from './ErrorState';
 export * from './IconButton';
 export * from './ScrollArea';
 export * from './Skeleton';
