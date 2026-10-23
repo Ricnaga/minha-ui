@@ -16,7 +16,9 @@ export function useButton(getProps: () => UseButtonProps) {
     return isLoading() || (getProps().disabled ?? false);
   }
 
-  function handleClick(event: MouseEvent) {
+  function handleClick(
+    event: MouseEvent & { currentTarget: HTMLButtonElement },
+  ) {
     if (isDisabled()) return;
 
     handleRipple(event);

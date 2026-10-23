@@ -27,4 +27,13 @@ describe('Spinner', () => {
     expect(icon).toHaveClass('stroke-red-400');
     expect(icon).toHaveClass('stroke-[10px]');
   });
+
+  it('should forward native attributes to the svg', () => {
+    render(Spinner, { props: { 'aria-label': 'Carregando', width: 40 } });
+
+    const icon = screen.getByRole('status').querySelector('svg');
+
+    expect(icon).toHaveAttribute('aria-label', 'Carregando');
+    expect(icon).toHaveAttribute('width', '40');
+  });
 });

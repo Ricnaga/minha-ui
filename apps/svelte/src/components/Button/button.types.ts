@@ -1,15 +1,14 @@
 import type { Snippet } from 'svelte';
+import type { HTMLButtonAttributes } from 'svelte/elements';
 
 import type { ButtonVariants } from '@/theme';
 
-export type UseButtonProps = ButtonVariants & {
-  isLoading?: boolean;
-  disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+export interface UseButtonProps
+  extends Omit<HTMLButtonAttributes, 'class' | 'color'>, ButtonVariants {
   class?: string;
-  onclick?: (event: MouseEvent) => void;
-};
+  isLoading?: boolean;
+}
 
-export type ButtonProps = UseButtonProps & {
+export interface ButtonProps extends UseButtonProps {
   children?: Snippet;
-};
+}

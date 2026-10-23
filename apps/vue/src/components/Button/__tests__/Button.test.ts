@@ -31,6 +31,27 @@ describe('Button', () => {
       expect(wrapper.classes()).toContain('border-red-600');
       expect(wrapper.classes()).toContain('text-red-600');
     });
+
+    it('should forward native attributes to the button element', () => {
+      const wrapper = mount(Button, {
+        attrs: { id: 'save', 'aria-label': 'Salvar', 'data-testid': 'primary' },
+      });
+
+      const button = wrapper.get('button');
+
+      expect(button.attributes('id')).toBe('save');
+      expect(button.attributes('aria-label')).toBe('Salvar');
+      expect(button.attributes('data-testid')).toBe('primary');
+    });
+
+    it('should merge the class prop with the variant classes', () => {
+      const wrapper = mount(Button, { attrs: { class: 'h-12 rounded-none' } });
+
+      expect(wrapper.classes()).toContain('h-12');
+      expect(wrapper.classes()).toContain('rounded-none');
+      expect(wrapper.classes()).not.toContain('h-10');
+      expect(wrapper.classes()).not.toContain('rounded-lg');
+    });
   });
 
   describe('Interactions', () => {

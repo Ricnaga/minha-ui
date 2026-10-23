@@ -31,6 +31,27 @@ describe('Button', () => {
 
       expect(button).toHaveClass('border-red-600', 'text-red-600');
     });
+
+    it('should forward native attributes to the button element', () => {
+      render(Button, {
+        props: { id: 'save', 'aria-label': 'Salvar', 'data-testid': 'primary' },
+      });
+
+      const button = screen.getByRole('button', { name: 'Salvar' });
+
+      expect(button).toHaveAttribute('id', 'save');
+      expect(button).toHaveAttribute('data-testid', 'primary');
+    });
+
+    it('should merge the class prop with the variant classes', () => {
+      render(Button, { props: { class: 'h-12 rounded-none' } });
+
+      const button = screen.getByRole('button');
+
+      expect(button).toHaveClass('h-12', 'rounded-none');
+      expect(button).not.toHaveClass('h-10');
+      expect(button).not.toHaveClass('rounded-lg');
+    });
   });
 
   describe('Interactions', () => {

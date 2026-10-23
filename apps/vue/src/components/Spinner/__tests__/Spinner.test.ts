@@ -29,4 +29,15 @@ describe('Spinner', () => {
     expect(icon.classes()).toContain('stroke-red-400');
     expect(icon.classes()).toContain('stroke-[10px]');
   });
+
+  it('should forward native attributes to the svg', () => {
+    const wrapper = mount(Spinner, {
+      attrs: { 'aria-label': 'Carregando', width: 40 },
+    });
+
+    const icon = wrapper.get('svg');
+
+    expect(icon.attributes('aria-label')).toBe('Carregando');
+    expect(icon.attributes('width')).toBe('40');
+  });
 });

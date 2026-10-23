@@ -23,6 +23,7 @@ export function useButton(props: UseButtonProps) {
       size: props.size,
       radius: props.radius,
       isLoading: isLoading.value,
+      class: props.class,
     }),
     onClick: handleClick,
   }));

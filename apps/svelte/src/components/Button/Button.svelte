@@ -3,16 +3,38 @@
   import type { ButtonProps } from './button.types';
   import { useButton } from './useButton.svelte';
 
-  const props: ButtonProps = $props();
+  const {
+    variant,
+    color,
+    size,
+    radius,
+    isLoading,
+    disabled,
+    type,
+    class: className,
+    onclick,
+    children,
+    ...attrs
+  }: ButtonProps = $props();
 
-  const button = useButton(() => props);
+  const button = useButton(() => ({
+    variant,
+    color,
+    size,
+    radius,
+    isLoading,
+    disabled,
+    type,
+    class: className,
+    onclick,
+  }));
 </script>
 
-<button {...button.buttonProps}>
+<button {...attrs} {...button.buttonProps}>
   {#if button.isLoading}
-    <Spinner color={props.color} class="size-4" />
-    <span {...button.labelProps}>{@render props.children?.()}</span>
+    <Spinner {color} class="size-4" />
+    <span {...button.labelProps}>{@render children?.()}</span>
   {:else}
-    {@render props.children?.()}
+    {@render children?.()}
   {/if}
 </button>

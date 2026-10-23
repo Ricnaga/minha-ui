@@ -1,7 +1,12 @@
+import type { SVGAttributes } from 'svelte/elements';
+
 import type { SpinnerVariants } from '@/theme';
 
-export type UseSpinnerProps = SpinnerVariants & {
+export interface UseSpinnerProps extends SpinnerVariants {
   class?: string;
-};
+}
 
-export type SpinnerProps = UseSpinnerProps;
+export interface SpinnerProps
+  extends
+    Omit<SVGAttributes<SVGSVGElement>, 'class' | 'color'>,
+    UseSpinnerProps {}
