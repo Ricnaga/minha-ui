@@ -10,6 +10,7 @@ export * from './card-image.tv';
 export * from './card-subtitle.tv';
 export * from './card-title.tv';
 export * from './card.tv';
+export * from './checkbox.tv';
 export * from './chip.tv';
 export * from './divider.tv';
 export * from './icon-button.tv';

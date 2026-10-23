@@ -13,6 +13,7 @@ export * from './CardHeader';
 export * from './CardImage';
 export * from './CardSubtitle';
 export * from './CardTitle';
+export * from './Checkbox';
 export * from './Chip';
 export * from './Divider';
 export * from './IconButton';
