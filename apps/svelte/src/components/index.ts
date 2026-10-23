@@ -15,6 +15,7 @@ export * from './CardSubtitle';
 export * from './CardTitle';
 export * from './Chip';
 export * from './Divider';
+export * from './IconButton';
 export * from './ScrollArea';
 export * from './Skeleton';
 export * from './Spinner';

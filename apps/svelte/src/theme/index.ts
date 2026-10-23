@@ -12,6 +12,7 @@ export * from './card-title.tv';
 export * from './card.tv';
 export * from './chip.tv';
 export * from './divider.tv';
+export * from './icon-button.tv';
 export * from './scroll-area.tv';
 export * from './skeleton.tv';
 export * from './spinner.tv';
