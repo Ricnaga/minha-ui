@@ -1,8 +1,13 @@
 import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
 
 import type { {{pascalCase name}}Variants } from "@/theme";
 
-export type Use{{pascalCase name}}Props = {{pascalCase name}}Variants;
-export type {{pascalCase name}}Props = Use{{pascalCase name}}Props & {
+export interface Use{{pascalCase name}}Props
+  extends Omit<HTMLAttributes<HTMLDivElement>, "color">, {{pascalCase name}}Variants {
+  class?: string;
+}
+
+export interface {{pascalCase name}}Props extends Use{{pascalCase name}}Props {
   children?: Snippet;
-};
+}

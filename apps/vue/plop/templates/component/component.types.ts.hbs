@@ -1,4 +1,16 @@
+import type { HTMLAttributes } from "vue";
+
 import type { {{pascalCase name}}Variants } from "@/theme";
 
-export type Use{{pascalCase name}}Props = {{pascalCase name}}Variants;
-export type {{pascalCase name}}Props = Use{{pascalCase name}}Props;
+export interface Use{{pascalCase name}}Props extends {{pascalCase name}}Variants {
+  class?: string;
+}
+
+/**
+ * Troque `HTMLAttributes` pelo tipo nativo do elemento raiz
+ * (`ButtonHTMLAttributes`, `InputHTMLAttributes`, `SVGAttributes`, ...).
+ * O `@vue-ignore` impede o compilador do SFC de converter os atributos nativos
+ * em props de runtime: eles continuam tipados e caem em `$attrs` (fallthrough).
+ */
+export type {{pascalCase name}}Props = Use{{pascalCase name}}Props &
+  /* @vue-ignore */ HTMLAttributes;

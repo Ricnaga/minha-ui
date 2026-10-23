@@ -3,10 +3,15 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { Use{{pascalCase name}}Props } from "./{{kebabCase name}}.types";
 import { {{camelCase name}} } from "@/theme";
 
-export function use{{pascalCase name}}(props: Use{{pascalCase name}}Props) {
+export function use{{pascalCase name}}(getProps: () => Use{{pascalCase name}}Props) {
   // TODO: Implement rune logic
   const {{camelCase name}}Props: HTMLAttributes<HTMLDivElement> = {
-    class: {{camelCase name}}({ variant: props.variant }),
+    get class() {
+      return {{camelCase name}}({
+        variant: getProps().variant,
+        class: getProps().class,
+      });
+    },
   };
 
   return { {{camelCase name}}Props };

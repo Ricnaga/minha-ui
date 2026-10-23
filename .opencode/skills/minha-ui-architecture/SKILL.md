@@ -58,17 +58,16 @@ Rules:
 The three libs share the same architecture, but each one names its logic unit
 after its ecosystem:
 
-| App | Logic unit | Folder | Plop kind | Storybook port |
-|---|---|---|---|---|
-| React | hook | `src/hooks/` | `hook` | 6006 |
-| Vue | composable | `src/composables/` | `composable` | 6007 |
-| Svelte | rune | `src/runes/` | `rune` | 6008 |
+| App    | Logic unit | Folder             | Plop kind    | Storybook port |
+| ------ | ---------- | ------------------ | ------------ | -------------- |
+| React  | hook       | `src/hooks/`       | `hook`       | 6006           |
+| Vue    | composable | `src/composables/` | `composable` | 6007           |
+| Svelte | rune       | `src/runes/`       | `rune`       | 6008           |
 
 - The function is always named `use<Name>`, in every framework
 - The name passed to the generator never includes the `use` prefix
 - Components use kebab-case folders and PascalCase files in every app
 - Vue and Svelte use `class`; React uses `className`
-
 
 ## Library structure (`apps/react/src`)
 
@@ -143,7 +142,7 @@ Button/
 - `useComponent` receives raw props, applies `tv()` variants, handles events,
   and returns processed props for the JSX
 - `Component` is thin — just wires the hook output to HTML elements
-- Types separate *input* (`UseComponentProps`) from *output* (`ComponentProps`)
+- Types separate _input_ (`UseComponentProps`) from _output_ (`ComponentProps`)
 - The theme file lives in `src/theme/` as `ComponentName.tv.ts` and is
   exported from `src/theme/index.ts`
 
@@ -155,10 +154,10 @@ componente `*Provider` separado do container visual.
 
 ### Quando usar Provider separado vs contexto inline
 
-| Padrão | Quando usar | Exemplos |
-|---|---|---|
-| **Contexto inline** no próprio componente | Estado simples (value/onChange), sub-componentes amarrados ao pai | `Tabs`, `Accordion`, `Drawer` |
-| **Provider separado** (`*Provider/`) | Estado complexo (múltiplos valores, validação, efeitos colaterais), sub-componentes independentes que podem ser usados em diferentes layouts | `DatePickerProvider`, `StepperProvider`, `SelectProvider`, `DnDProvider` |
+| Padrão                                    | Quando usar                                                                                                                                  | Exemplos                                                                 |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **Contexto inline** no próprio componente | Estado simples (value/onChange), sub-componentes amarrados ao pai                                                                            | `Tabs`, `Accordion`, `Drawer`                                            |
+| **Provider separado** (`*Provider/`)      | Estado complexo (múltiplos valores, validação, efeitos colaterais), sub-componentes independentes que podem ser usados em diferentes layouts | `DatePickerProvider`, `StepperProvider`, `SelectProvider`, `DnDProvider` |
 
 ### Estrutura de pastas — Provider separado
 
@@ -191,19 +190,24 @@ src/components/
 
 ```ts
 // dnd-provider.types.ts
-import type { useDnDProvider } from "./useDnDProvider";
-import type { RequiredChildren } from "@/types";
+import type { useDnDProvider } from './useDnDProvider';
+import type { RequiredChildren } from '@/types';
 
 export type UseDnDProviderProps = RequiredChildren<{
   onReorder?: (items: string[]) => void;
-  onMoveItem?: (itemId: string, fromList: string, toList: string, index: number) => void;
+  onMoveItem?: (
+    itemId: string,
+    fromList: string,
+    toList: string,
+    index: number,
+  ) => void;
 }>;
 
 export type DnDProviderProps = UseDnDProviderProps;
 
 export type DnDProviderContextProps = Omit<
   ReturnType<typeof useDnDProvider>,
-  "children"
+  'children'
 >;
 ```
 
@@ -215,7 +219,7 @@ manual.
 
 ```ts
 // useDnDList.ts — sub-componente lê o contexto
-import { useDnDContext } from "../DnDProvider";
+import { useDnDContext } from '../DnDProvider';
 
 export function useDnDList(props: UseDnDListProps) {
   const { activeItem, dragOverListId } = useDnDContext();
@@ -243,16 +247,16 @@ o significado do conteúdo, não apenas a aparência.
 
 ### Mapeamento de elementos
 
-| Componente | Tag | Motivo |
-|---|---|---|
-| Container de seção (listas, abas) | `<section>` | Landmark — representa uma área do documento |
-| Lista de itens (menu, dropdown, dnd list) | `<ul>` | Lista não ordenada de itens |
-| Item de lista (opção, tab, dnd item) | `<li>` | Item pertencente a uma lista |
-| Navegação (tabs, paginação) | `<nav>` | Landmark de navegação |
-| Grupo de controles (radio, checkbox) | `<fieldset>` | Agrupa campos relacionados |
-| Título descritivo | `<h1>`–`<h6>` | Hierarquia de cabeçalhos |
-| Botão | `<button>` | Ação acionável (não `<div>`) |
-| Texto genérico | `<span>` | Sem significado semântico |
+| Componente                                | Tag           | Motivo                                      |
+| ----------------------------------------- | ------------- | ------------------------------------------- |
+| Container de seção (listas, abas)         | `<section>`   | Landmark — representa uma área do documento |
+| Lista de itens (menu, dropdown, dnd list) | `<ul>`        | Lista não ordenada de itens                 |
+| Item de lista (opção, tab, dnd item)      | `<li>`        | Item pertencente a uma lista                |
+| Navegação (tabs, paginação)               | `<nav>`       | Landmark de navegação                       |
+| Grupo de controles (radio, checkbox)      | `<fieldset>`  | Agrupa campos relacionados                  |
+| Título descritivo                         | `<h1>`–`<h6>` | Hierarquia de cabeçalhos                    |
+| Botão                                     | `<button>`    | Ação acionável (não `<div>`)                |
+| Texto genérico                            | `<span>`      | Sem significado semântico                   |
 
 ### Regras
 
@@ -296,31 +300,31 @@ Components/<Categoria>/<Pai>/<Filho>
 
 Categorias existentes:
 
-| Categoria | Componentes |
-|---|---|
-| `Interação` | Tabs, Accordion, Modal, Drawer, Popover, Tooltip, Dnd |
-| `Formularios` | Input, Select, DatePicker, DateRangePicker |
-| `Estruturas` | Card, Divider, Backdrop |
-| `Feedback` | Progress, ToastContainer, TopLoadingBar |
-| `Indicadores` | Stepper |
-| `Customizados` | DataBoundary, InputPassword |
+| Categoria      | Componentes                                           |
+| -------------- | ----------------------------------------------------- |
+| `Interação`    | Tabs, Accordion, Modal, Drawer, Popover, Tooltip, Dnd |
+| `Formularios`  | Input, Select, DatePicker, DateRangePicker            |
+| `Estruturas`   | Card, Divider, Backdrop                               |
+| `Feedback`     | Progress, ToastContainer, TopLoadingBar               |
+| `Indicadores`  | Stepper                                               |
+| `Customizados` | DataBoundary, InputPassword                           |
 
 ## Plop — scaffolding
 
 The root plopfile (`plop/plopfile.cjs`) is a dispatcher: it asks for the app
 and the kind, then loads `apps/<app>/plop/plopfile.cjs`.
 
-| App | Kinds | Creates | Auto-updates |
-|---|---|---|---|
-| `react` | `component` | `Component.tsx`, `useComponent.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts`, `theme/*.tv.ts` | `apps/react/src/components/index.ts`, `apps/react/src/theme/index.ts` |
-| `react` | `provider` | `Component.tsx` (with `createContext` + safe `useContext`), `useComponent.ts`, `component.types.ts`, `index.ts` | `apps/react/src/components/index.ts` |
-| `react` | `hook` | `useHook/index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts` | `apps/react/src/hooks/index.ts` |
-| `vue` | `component` | `Component.vue`, `useComponent.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.ts`, `stories/*.play.ts`, `theme/*.tv.ts` | `apps/vue/src/components/index.ts`, `apps/vue/src/theme/index.ts` |
-| `vue` | `provider` | `Component.vue` (with `createContext` + safe `useContext`), `useComponent.ts`, `component.types.ts`, `index.ts` | `apps/vue/src/components/index.ts` |
-| `vue` | `composable` | `useComposable/index.ts`, `stories/*.stories.ts`, `stories/*.play.ts` | `apps/vue/src/composables/index.ts` |
-| `svelte` | `component` | `Component.svelte`, `useComponent.svelte.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.ts`, `stories/*.play.ts`, `theme/*.tv.ts` | `apps/svelte/src/components/index.ts`, `apps/svelte/src/theme/index.ts` |
-| `svelte` | `provider` | `Component.svelte` (with `createContext` + safe `useContext`), `useComponent.svelte.ts`, `component.types.ts`, `index.ts` | `apps/svelte/src/components/index.ts` |
-| `svelte` | `rune` | `useRune/index.ts`, `useRune.svelte.ts`, `stories/*.stories.ts`, `stories/*.play.ts` | `apps/svelte/src/runes/index.ts` |
+| App      | Kinds        | Creates                                                                                                                                      | Auto-updates                                                            |
+| -------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `react`  | `component`  | `Component.tsx`, `useComponent.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts`, `theme/*.tv.ts`          | `apps/react/src/components/index.ts`, `apps/react/src/theme/index.ts`   |
+| `react`  | `provider`   | `Component.tsx` (with `createContext` + safe `useContext`), `useComponent.ts`, `component.types.ts`, `index.ts`                              | `apps/react/src/components/index.ts`                                    |
+| `react`  | `hook`       | `useHook/index.ts`, `stories/*.stories.tsx`, `stories/*.play.ts`                                                                             | `apps/react/src/hooks/index.ts`                                         |
+| `vue`    | `component`  | `Component.vue`, `useComponent.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.ts`, `stories/*.play.ts`, `theme/*.tv.ts`           | `apps/vue/src/components/index.ts`, `apps/vue/src/theme/index.ts`       |
+| `vue`    | `provider`   | `Component.vue` (with `createContext` + safe `useContext`), `useComponent.ts`, `component.types.ts`, `index.ts`                              | `apps/vue/src/components/index.ts`                                      |
+| `vue`    | `composable` | `useComposable/index.ts`, `stories/*.stories.ts`, `stories/*.play.ts`                                                                        | `apps/vue/src/composables/index.ts`                                     |
+| `svelte` | `component`  | `Component.svelte`, `useComponent.svelte.ts`, `component.types.ts`, `index.ts`, `stories/*.stories.ts`, `stories/*.play.ts`, `theme/*.tv.ts` | `apps/svelte/src/components/index.ts`, `apps/svelte/src/theme/index.ts` |
+| `svelte` | `provider`   | `Component.svelte` (with `createContext` + safe `useContext`), `useComponent.svelte.ts`, `component.types.ts`, `index.ts`                    | `apps/svelte/src/components/index.ts`                                   |
+| `svelte` | `rune`       | `useRune/index.ts`, `useRune.svelte.ts`, `stories/*.stories.ts`, `stories/*.play.ts`                                                         | `apps/svelte/src/runes/index.ts`                                        |
 
 Non-interactive usage: `pnpm plop <app> <kind> <name>`.
 
@@ -336,13 +340,13 @@ Non-interactive usage: `pnpm plop <app> <kind> <name>`.
 - Use the pattern (React and Svelte):
 
 ```ts
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from 'tailwind-variants';
 
 export const button = tv({
-  base: "[base classes]",
-  variants: { /* variant: { option: "classes" } */ },
-  compoundVariants: [ /* { variant: "x", color: "y", class: "..." } */ ],
-  defaultVariants: { /* ... */ },
+  base: '[base classes]',
+  variants: {/* variant: { option: "classes" } */},
+  compoundVariants: [/* { variant: "x", color: "y", class: "..." } */],
+  defaultVariants: {/* ... */},
 });
 
 export type ButtonVariants = VariantProps<typeof button>;
@@ -353,45 +357,97 @@ export type ButtonVariants = VariantProps<typeof button>;
 - Utility: `tailwind-merge` for merging class strings; `tw-animate-css` for
   animations
 
-### Vue and Svelte theme pattern
+### Vue: derived variant types
 
 `@vue/compiler-sfc` cannot resolve conditional types, so `VariantProps` breaks
-`defineProps<Props>()` in the Vue app. The Vue and Svelte themes declare the
-variants as a plain object and derive the props type with `keyof typeof`:
+`defineProps<Props>()` in the Vue app. The Vue theme body is identical to the
+React one; only the type tail differs, deriving each union from the keys of
+`variants`:
 
 ```ts
 // apps/vue/src/theme/button.tv.ts
-import { tv } from "tailwind-variants";
-
-export const buttonVariants = {
-  variant: {
-    primary: "",
-    secondary: "",
-  },
-};
+import { tv } from 'tailwind-variants';
 
 export const button = tv({
-  base: "[base classes]",
-  variants: buttonVariants,
+  base: '[base classes]',
+  variants: {/* variant: { option: "classes" } */},
+  defaultVariants: {/* ... */},
 });
 
+// O compilador do SFC não resolve `VariantProps` (tipo condicional), então os
+// tipos das variantes são derivados das chaves de cada grupo de `variants`.
+export type ButtonVariant = keyof typeof button.variants.variant;
+
 export type ButtonVariants = {
-  variant?: keyof typeof buttonVariants.variant;
+  variant?: ButtonVariant;
 };
 ```
 
-The variants object stays the single source of truth: the component props type
-is derived from it, and the `use<Name>` function calls `button({ variant })`.
+The `const` extraction (`export const buttonVariants = {...}` +
+`variants: buttonVariants`) is **not** used: `variants`, `compoundVariants` and
+`defaultVariants` are declared inline in `tv()`, exactly like React, and
+`typeof <tv>.variants.<group>` preserves the literal keys. Svelte themes are
+byte-identical to React (`VariantProps` resolves fine there).
+
+### Native attributes in the props type
+
+The props type always carries the **full native element attributes plus the
+style variants**, so consumers get `id`, `aria-*`, `data-*`, `class`, event
+handlers etc. typed and forwarded to the element:
+
+```ts
+// React
+export interface UseButtonProps
+  extends
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+    ButtonVariants {
+  isLoading?: boolean;
+}
+```
+
+```ts
+// Svelte — Omit the attributes the component owns
+export interface UseButtonProps
+  extends Omit<HTMLButtonAttributes, 'class' | 'color'>, ButtonVariants {
+  class?: string;
+  isLoading?: boolean;
+}
+```
+
+```ts
+// Vue — @vue-ignore keeps the TS type and skips the runtime prop generation
+export type ButtonProps = UseButtonProps &
+  /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'class' | 'color' | 'disabled'>;
+```
+
+Rules:
+
+- Omit every attribute the component itself owns (`class`, `color`, `disabled`,
+  `type`, ...) — two inherited declarations with different types fail with
+  TS2320 ("cannot simultaneously extend")
+- React forwards the leftovers with `...rest` inside the hook
+- Svelte destructures `$props()` and spreads the rest on the element:
+  `const { class: className, children, ...attrs }: ButtonProps = $props()`,
+  then `<button {...attrs} {...buttonProps}>`
+- Vue relies on `$attrs` fallthrough. When the attribute-receiving element is
+  not the root (e.g. `Spinner` → `svg`), declare
+  `defineOptions({ inheritAttrs: false })` and bind
+  `v-bind="{ ...$attrs, ...svgProps }"` on that element
+- Vue must declare the props as an **intersection type alias**, not an
+  `interface ... extends`: `@vue/compiler-sfc` only honours `@vue-ignore` when
+  the comment is a leading comment of the type node, and Prettier hoists the
+  comment above `extends` (which brings the
+  `Failed to resolve extends base type` error back)
 
 ## Testing
 
 Three layers:
 
-| Layer | Tool | Location |
-|---|---|---|
-| Unit | Vitest + Testing Library | `apps/{react,vue,svelte}/src/**/__tests__/*.test.ts` |
-| Interaction | Storybook Play functions | `apps/{react,vue,svelte}/src/**/stories/*.play.ts` |
-| E2E | Playwright | `apps/e2e/react/tests/` |
+| Layer       | Tool                     | Location                                             |
+| ----------- | ------------------------ | ---------------------------------------------------- |
+| Unit        | Vitest + Testing Library | `apps/{react,vue,svelte}/src/**/__tests__/*.test.ts` |
+| Interaction | Storybook Play functions | `apps/{react,vue,svelte}/src/**/stories/*.play.ts`   |
+| E2E         | Playwright               | `apps/e2e/react/tests/`                              |
 
 Run with `pnpm test:unit`, `pnpm test:e2e:storybook`, or `pnpm storybook` + `pnpm test:e2e:storybook`.
 
@@ -425,22 +481,22 @@ Two built-in patterns:
 Root scripts orchestrate the workspace; package-specific ones delegate with
 `pnpm --filter`.
 
-| Script | Purpose |
-|---|---|
-| `pnpm dev` | Start Vite dev server |
-| `pnpm build` | TypeScript check + Vite build |
-| `pnpm storybook` | Start Storybook on port 6006 (React) |
-| `pnpm storybook:vue` | Start Storybook on port 6007 (Vue) |
-| `pnpm storybook:svelte` | Start Storybook on port 6008 (Svelte) |
-| `pnpm build-storybook` | Build the static Storybook (React) |
-| `pnpm build-storybook:vue` | Build the static Storybook (Vue) |
-| `pnpm build-storybook:svelte` | Build the static Storybook (Svelte) |
-| `pnpm plop` | Run scaffolding generator (app + kind) |
-| `pnpm test:unit` | Run unit tests (all packages) |
-| `pnpm test:e2e:storybook` | Run Playwright E2E tests against Storybook |
-| `pnpm test:e2e:components` | E2E — only the component specs |
-| `pnpm test:e2e:hooks` | E2E — only the hook specs |
-| `pnpm test:coverage` | Unit tests with coverage report |
-| `pnpm lint` | ESLint across the project |
-| `pnpm typecheck` | TypeScript type checking |
-| `pnpm changeset` | Create a changeset for versioning |
+| Script                        | Purpose                                    |
+| ----------------------------- | ------------------------------------------ |
+| `pnpm dev`                    | Start Vite dev server                      |
+| `pnpm build`                  | TypeScript check + Vite build              |
+| `pnpm storybook`              | Start Storybook on port 6006 (React)       |
+| `pnpm storybook:vue`          | Start Storybook on port 6007 (Vue)         |
+| `pnpm storybook:svelte`       | Start Storybook on port 6008 (Svelte)      |
+| `pnpm build-storybook`        | Build the static Storybook (React)         |
+| `pnpm build-storybook:vue`    | Build the static Storybook (Vue)           |
+| `pnpm build-storybook:svelte` | Build the static Storybook (Svelte)        |
+| `pnpm plop`                   | Run scaffolding generator (app + kind)     |
+| `pnpm test:unit`              | Run unit tests (all packages)              |
+| `pnpm test:e2e:storybook`     | Run Playwright E2E tests against Storybook |
+| `pnpm test:e2e:components`    | E2E — only the component specs             |
+| `pnpm test:e2e:hooks`         | E2E — only the hook specs                  |
+| `pnpm test:coverage`          | Unit tests with coverage report            |
+| `pnpm lint`                   | ESLint across the project                  |
+| `pnpm typecheck`              | TypeScript type checking                   |
+| `pnpm changeset`              | Create a changeset for versioning          |

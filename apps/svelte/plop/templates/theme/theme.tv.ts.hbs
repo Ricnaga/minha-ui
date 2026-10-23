@@ -1,19 +1,16 @@
-import { tv } from "tailwind-variants";
-
-// As variantes são a fonte única da verdade: o tipo de props do componente é
-// derivado delas para que o compilador do SFC consiga resolvê-lo.
-export const {{camelCase name}}Variants = {
-  variant: {
-    primary: "",
-    secondary: "",
-  },
-};
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const {{camelCase name}} = tv({
   base: "",
-  variants: {{camelCase name}}Variants,
+  variants: {
+    variant: {
+      primary: "",
+      secondary: "",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
 });
 
-export type {{pascalCase name}}Variants = {
-  variant?: keyof typeof {{camelCase name}}Variants.variant;
-};
+export type {{pascalCase name}}Variants = VariantProps<typeof {{camelCase name}}>;

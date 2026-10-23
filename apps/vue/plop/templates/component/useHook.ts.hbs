@@ -6,7 +6,10 @@ import { {{camelCase name}} } from "@/theme";
 export function use{{pascalCase name}}(props: Use{{pascalCase name}}Props) {
   // TODO: Implement composable logic
   const {{camelCase name}}Props: HTMLAttributes = {
-    class: {{camelCase name}}({ variant: props.variant }),
+    class: {{camelCase name}}({
+      variant: props.variant,
+      class: props.class,
+    }),
   };
 
   return { {{camelCase name}}Props };
