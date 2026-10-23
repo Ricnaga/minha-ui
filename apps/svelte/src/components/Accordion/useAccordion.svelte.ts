@@ -1,11 +1,13 @@
-import { getContext, setContext } from 'svelte';
+import { setContext } from 'svelte';
+
+import { useContext } from '@/runes';
 
 import type {
   AccordionContextProps,
   UseAccordionProviderProps,
 } from './accordion.types';
 
-const accordionContextKey = Symbol('accordion');
+export const accordionContext = Symbol('accordion');
 
 // O provider recebe um getter das props (e não as props diretamente) para
 // que os valores lidos dentro do contexto continuem reativos: em Svelte 5 a
@@ -59,17 +61,15 @@ export function useAccordionProvider(
     handleToggle,
   };
 
-  setContext(accordionContextKey, context);
+  setContext(accordionContext, context);
 
   return context;
 }
 
 export function useAccordion() {
-  const context = getContext<AccordionContextProps>(accordionContextKey);
-
-  if (!context) {
-    throw new Error('useAccordion deve ser usado dentro de <Accordion>');
-  }
-
-  return context;
+  return useContext<AccordionContextProps>({
+    context: accordionContext,
+    hookName: useAccordion.name,
+    providerName: 'Accordion',
+  });
 }

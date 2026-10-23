@@ -1,4 +1,6 @@
-import { getContext, setContext } from 'svelte';
+import { setContext } from 'svelte';
+
+import { useContext } from '@/runes';
 
 import { useAccordion } from '../Accordion/useAccordion.svelte';
 import type {
@@ -6,7 +8,7 @@ import type {
   UseAccordionItemProviderProps,
 } from './accordion-item.types';
 
-const accordionItemContextKey = Symbol('accordion-item');
+export const accordionItemContext = Symbol('accordion-item');
 
 export function useAccordionItemProvider(
   getProps: () => UseAccordionItemProviderProps,
@@ -28,21 +30,15 @@ export function useAccordionItemProvider(
     },
   };
 
-  setContext(accordionItemContextKey, context);
+  setContext(accordionItemContext, context);
 
   return context;
 }
 
 export function useAccordionItem() {
-  const context = getContext<AccordionItemContextProps>(
-    accordionItemContextKey,
-  );
-
-  if (!context) {
-    throw new Error(
-      'useAccordionItem deve ser usado dentro de <AccordionItem>',
-    );
-  }
-
-  return context;
+  return useContext<AccordionItemContextProps>({
+    context: accordionItemContext,
+    hookName: useAccordionItem.name,
+    providerName: 'AccordionItem',
+  });
 }
