@@ -53,6 +53,16 @@ describe('Divider', () => {
   });
 
   describe('Native attributes', () => {
+    it('should keep the separator semantics over consumer attributes', () => {
+      render(Divider, {
+        props: { role: 'presentation', 'aria-orientation': 'vertical' },
+      });
+
+      const divider = screen.getByRole('separator');
+
+      expect(divider).toHaveAttribute('aria-orientation', 'horizontal');
+    });
+
     it('should forward native attributes to the separator', () => {
       render(Divider, {
         props: { 'data-testid': 'divider', id: 'section-divider' },
