@@ -30,4 +30,9 @@ export const badge = tv({
   },
 });
 
+/** Envoltório que ancora o badge posicionado sobre o conteúdo. */
+export const badgeWrapper = tv({
+  base: 'relative inline-block',
+});
+
 export type BadgeVariants = VariantProps<typeof badge>;
