@@ -439,6 +439,37 @@ Rules:
   comment above `extends` (which brings the
   `Failed to resolve extends base type` error back)
 
+### Svelte: the `useContext` rune
+
+`setContext`/`getContext` are used through the `useContext` rune
+(`src/runes/useContext`), mirroring the React hook and the Vue composable —
+it centralizes the "must be used within a Provider" error:
+
+```ts
+// src/components/Accordion/useAccordion.svelte.ts
+export const accordionContext = Symbol('accordion');
+
+export function useAccordion() {
+  return useContext<AccordionContextProps>({
+    context: accordionContext,
+    hookName: useAccordion.name,
+    providerName: 'Accordion',
+  });
+}
+```
+
+Rules:
+
+- The context key is a `symbol` exported by the provider module next to
+  `use<Name>Provider` — same key for provider and consumer
+- Context values are objects with **getters** (`get value() { ... }`) so the
+  consumer stays reactive
+- Consumers must keep the returned object reference and read `context.value`
+  in markup — destructuring (`const { value } = useContext(...)`) freezes the
+  value at the first read
+- Run provider/consumer tests with a fixture pair in `__tests__/` to assert
+  both the happy path and the thrown error message
+
 ## Testing
 
 Three layers:
