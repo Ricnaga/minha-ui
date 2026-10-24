@@ -14,7 +14,7 @@ const { paginationWrapper } = table();
     <Pagination
       :total-pages="pagination.totalPages"
       :current-page="pagination.pageNumber"
-      :on-page-change="pagination.onPageChange"
+      @page-change="pagination.onPageChange"
     />
   </div>
 </template>

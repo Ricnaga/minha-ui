@@ -15,9 +15,6 @@ const { columns } = useTableConfig();
 const dataCtx = useTableData();
 const { stateCell } = table();
 
-const data = computed(() => dataCtx?.data ?? []);
-const isLoading = computed(() => dataCtx?.isLoading ?? false);
-const isError = computed(() => dataCtx?.isError ?? false);
 const loadingProps = computed(() => dataCtx?.loadingProps);
 const emptyProps = computed(() => dataCtx?.emptyProps);
 const errorProps = computed(() => dataCtx?.errorProps);

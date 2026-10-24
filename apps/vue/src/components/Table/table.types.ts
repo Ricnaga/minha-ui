@@ -1,4 +1,3 @@
-import type { TableVariants } from '@/theme';
 import type { UseTableProviderProps } from '../TableProvider/table-provider.types';
 
 export type TableColumnAlign = 'left' | 'center' | 'right';

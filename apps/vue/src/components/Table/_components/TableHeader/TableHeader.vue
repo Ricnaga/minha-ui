@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TableCell from '../../../TableCell/TableCell.vue';
 import TableHead from '../../../TableHead/TableHead.vue';
 import TableRow from '../../../TableRow/TableRow.vue';
 import { useTableConfig } from '../../../TableProvider/useTableProvider';
