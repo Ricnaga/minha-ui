@@ -46,3 +46,4 @@ export * from "./stepper.tv";
 export * from "./stepper-item.tv";
 export * from "./otp-input.tv";
 export * from "./calendar.tv";
+export * from "./range-calendar.tv";
