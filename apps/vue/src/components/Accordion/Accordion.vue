@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import type { AccordionEmits, AccordionProps } from './accordion.types';
 import { useAccordionProvider } from './useAccordion';
+import type { UseAccordionProviderProps } from './accordion.types';
 
-const props = defineProps<AccordionProps>();
-const emit = defineEmits<AccordionEmits>();
-
-useAccordionProvider(props, (value) => emit('update:value', value));
+const props = defineProps<UseAccordionProviderProps>();
+useAccordionProvider(props);
 </script>
 
 <template>

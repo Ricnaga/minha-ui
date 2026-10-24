@@ -9,13 +9,15 @@ export function useAccordionContent() {
   const { isOpen, variant } = useAccordionItem();
 
   const accordionContentWrapperProps = computed(() => ({
-    'data-state': isOpen.value ? 'open' : 'closed',
-    class: accordionContentWrapper({ variant: variant.value }),
-    style: { gridTemplateRows: isOpen.value ? '1fr' : '0fr' },
+    'data-state': isOpen ? 'open' : 'closed',
+    class: accordionContentWrapper({ variant }),
+    style: {
+      gridTemplateRows: isOpen ? '1fr' : '0fr',
+    },
   }));
 
   const accordionContentInnerProps = computed(() => ({
-    class: accordionContentInner({ variant: variant.value }),
+    class: accordionContentInner({ variant }),
   }));
 
   return { accordionContentWrapperProps, accordionContentInnerProps };

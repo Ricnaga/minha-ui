@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { accordion } from '@/theme';
-
+import { useAccordion } from '../Accordion/useAccordion';
+import { provideAccordionItem, useAccordionItemProvider } from './useAccordionItem';
 import type { AccordionItemProps } from './accordion-item.types';
-import { useAccordionItemProvider } from './useAccordionItem';
-
-const props = defineProps<AccordionItemProps>();
-
-const { variant, size } = useAccordionItemProvider(props);
 
 const { accordionItem } = accordion();
+const props = defineProps<AccordionItemProps>();
+const { value: itemValue } = useAccordionItemProvider(props);
+const { currentValue, variant, size } = useAccordion();
+const isOpen = currentValue?.includes(itemValue);
+provideAccordionItem({ value: itemValue, isOpen, variant, size });
 </script>
 
 <template>

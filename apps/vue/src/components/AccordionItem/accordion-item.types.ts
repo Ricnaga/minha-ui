@@ -1,16 +1,13 @@
-import type { ComputedRef } from 'vue';
-
-import type { AccordionSize, AccordionVariant } from '@/theme';
-
-export type UseAccordionItemProviderProps = {
+export interface UseAccordionItemProviderProps {
+  children?: any;
   value: string;
-};
+}
 
 export type AccordionItemProps = UseAccordionItemProviderProps;
 
-export type AccordionItemContextProps = {
+export interface AccordionItemContextProps {
   value: string;
-  isOpen: ComputedRef<boolean>;
-  variant: ComputedRef<AccordionVariant | undefined>;
-  size: ComputedRef<AccordionSize | undefined>;
-};
+  isOpen?: boolean;
+  variant?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error';
+  size?: 'sm' | 'md' | 'lg' | 'full';
+}

@@ -1,27 +1,19 @@
-import type { ComputedRef } from 'vue';
+import type { AccordionVariants } from '@/theme';
 
-import type { AccordionSize, AccordionVariant } from '@/theme';
+type AccordionType = 'single' | 'multiple';
 
-export type AccordionType = 'single' | 'multiple';
-
-export type UseAccordionProviderProps = {
-  type?: AccordionType;
+export interface UseAccordionProviderProps extends AccordionVariants {
+  children?: any;
+  type: AccordionType;
   value?: string[];
   defaultValue?: string[];
-  variant?: AccordionVariant;
-  size?: AccordionSize;
-};
+  onValueChange?: (item: string[]) => void;
+}
 
 export type AccordionProps = UseAccordionProviderProps;
 
-export type AccordionEmits = {
-  'update:value': [value: string[]];
-};
-
-export type AccordionContextProps = {
-  currentValue: ComputedRef<string[]>;
+export interface AccordionContextProps extends AccordionVariants {
   handleToggle: (item: string) => void;
-  type: ComputedRef<AccordionType>;
-  variant: ComputedRef<AccordionVariant | undefined>;
-  size: ComputedRef<AccordionSize | undefined>;
-};
+  currentValue?: string[];
+  type: AccordionType;
+}

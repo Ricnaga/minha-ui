@@ -1,22 +1,21 @@
-import { computed, type ButtonHTMLAttributes } from 'vue';
+import { computed } from 'vue';
 
 import { accordion } from '@/theme';
 
 import { useAccordion } from '../Accordion/useAccordion';
 import { useAccordionItem } from '../AccordionItem/useAccordionItem';
-import type { AccordionHeaderProps } from './accordion-header.types';
+import type { UseAccordionHeaderProps } from './accordion-header.types';
 
-export function useAccordionHeader(props: AccordionHeaderProps) {
+export function useAccordionHeader(props: UseAccordionHeaderProps) {
   const { accordionHeader } = accordion();
   const { value: itemValue, isOpen, variant } = useAccordionItem();
   const { handleToggle } = useAccordion();
 
-  const accordionHeaderProps = computed<ButtonHTMLAttributes>(() => ({
+  const accordionHeaderProps = computed(() => ({
     ...props,
-    type: props.type ?? 'button',
-    'aria-expanded': isOpen.value,
+    'aria-expanded': isOpen,
     onClick: () => handleToggle(itemValue),
-    class: accordionHeader({ variant: variant.value, class: props.class }),
+    class: accordionHeader({ variant, class: props.class } as Parameters<typeof accordionHeader>[0]),
   }));
 
   return { accordionHeaderProps };

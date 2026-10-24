@@ -1,9 +1,7 @@
-export type UseAccordionHeaderProps = {
-  class?: string;
-  disabled?: boolean;
-  id?: string;
-  type?: 'button' | 'submit' | 'reset';
-  'aria-label'?: string;
-};
+import type { ButtonHTMLAttributes } from 'vue';
+
+export interface UseAccordionHeaderProps extends /* @vue-ignore */ Omit<ButtonHTMLAttributes, 'color'> {
+  'data-state'?: 'open' | 'closed';
+}
 
 export type AccordionHeaderProps = UseAccordionHeaderProps;

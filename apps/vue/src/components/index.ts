@@ -56,3 +56,7 @@ export * from './Tabs';
 export * from './TabsList';
 export * from './TabsTrigger';
 export * from './TabsPanel';
+export * from './Accordion';
+export * from './AccordionItem';
+export * from './AccordionHeader';
+export * from './AccordionContent';

@@ -1,36 +1,21 @@
-import { computed, provide, type InjectionKey } from 'vue';
+import { inject, provide } from 'vue';
 
-import { useContext } from '@/composables';
+import type { AccordionItemContextProps, UseAccordionItemProviderProps } from './accordion-item.types';
 
-import { useAccordion } from '../Accordion/useAccordion';
-import type {
-  AccordionItemContextProps,
-  UseAccordionItemProviderProps,
-} from './accordion-item.types';
-
-export const accordionItemContext: InjectionKey<AccordionItemContextProps> =
-  Symbol('accordion-item');
+export const AccordionItemContextKey = Symbol('AccordionItemContext');
 
 export function useAccordionItemProvider(props: UseAccordionItemProviderProps) {
-  const { currentValue, variant, size } = useAccordion();
-  const isOpen = computed(() => currentValue.value.includes(props.value));
+  return { children: props.children, value: props.value };
+}
 
-  const context: AccordionItemContextProps = {
-    value: props.value,
-    isOpen,
-    variant,
-    size,
-  };
-
-  provide(accordionItemContext, context);
-
+export function useAccordionItem(): AccordionItemContextProps {
+  const context = inject<AccordionItemContextProps>(AccordionItemContextKey);
+  if (!context) {
+    throw new Error('useAccordionItem must be used within a AccordionItemProvider');
+  }
   return context;
 }
 
-export function useAccordionItem() {
-  return useContext({
-    context: accordionItemContext,
-    hookName: useAccordionItem.name,
-    providerName: 'AccordionItem',
-  });
+export function provideAccordionItem(context: AccordionItemContextProps) {
+  provide(AccordionItemContextKey, context);
 }

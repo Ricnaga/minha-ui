@@ -56,12 +56,11 @@ export const accordion = tv({
   },
 });
 
-// O compilador do SFC não resolve `VariantProps` (tipo condicional), então os
-// tipos das variantes são derivados das chaves de cada grupo de `variants`.
-export type AccordionVariant = keyof typeof accordion.variants.variant;
+
 export type AccordionSize = keyof typeof accordion.variants.size;
+export type AccordionVariant = keyof typeof accordion.variants.variant;
 
 export type AccordionVariants = {
-  variant?: AccordionVariant;
   size?: AccordionSize;
+  variant?: AccordionVariant;
 };

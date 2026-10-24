@@ -38,3 +38,4 @@ export * from "./drawer-header.tv.ts";
 export * from "./drawer-body.tv.ts";
 export * from "./drawer-footer.tv.ts";
 export * from "./tabs.tv";
+export * from "./accordion.tv";

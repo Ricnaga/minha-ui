@@ -1,61 +1,51 @@
-import { computed, provide, ref, type InjectionKey } from 'vue';
+import { inject, provide, ref } from 'vue';
 
-import { useContext } from '@/composables';
+import type { AccordionContextProps, UseAccordionProviderProps } from './accordion.types';
 
-import type {
-  AccordionContextProps,
-  UseAccordionProviderProps,
-} from './accordion.types';
+export const AccordionContextKey = Symbol('AccordionContext');
 
-export const accordionContext: InjectionKey<AccordionContextProps> =
-  Symbol('accordion');
+export function useAccordionProvider(props: UseAccordionProviderProps) {
+  const type = props.type ?? 'single';
+  const defaultValue = props.defaultValue ?? [];
+  const accordionValue = ref<string[]>(defaultValue);
 
-export function useAccordionProvider(
-  props: UseAccordionProviderProps,
-  onValueChange: (value: string[]) => void,
-) {
-  const internalValue = ref<string[]>(props.defaultValue ?? []);
-  const isControlled = computed(() => props.value !== undefined);
+  const isControlled = props.value !== undefined;
+  const currentValue = isControlled ? props.value : accordionValue.value;
 
-  const currentValue = computed<string[]>(() =>
-    isControlled.value ? (props.value ?? []) : internalValue.value,
-  );
-
-  const handleUpdateValue = (nextValue: string[]) => {
-    if (!isControlled.value) internalValue.value = nextValue;
-    onValueChange(nextValue);
-  };
+  function handleUpdateValue(nextValue: string[]) {
+    if (!isControlled) accordionValue.value = nextValue;
+    props.onValueChange?.(nextValue);
+  }
 
   function handleToggle(item: string) {
-    if (props.type !== 'multiple') {
-      handleUpdateValue(currentValue.value[0] === item ? [] : [item]);
+    if (type === 'single') {
+      handleUpdateValue(currentValue?.[0] === item ? [] : [item]);
       return;
     }
-
     handleUpdateValue(
-      currentValue.value.includes(item)
-        ? currentValue.value.filter((value) => value !== item)
-        : [...currentValue.value, item],
+      currentValue?.includes(item)
+        ? (currentValue?.filter((i) => i !== item) ?? [])
+        : [...(currentValue ?? []), item],
     );
   }
 
   const context: AccordionContextProps = {
-    currentValue,
     handleToggle,
-    type: computed(() => props.type ?? 'single'),
-    variant: computed(() => props.variant),
-    size: computed(() => props.size),
+    currentValue,
+    type,
+    variant: props.variant,
+    size: props.size,
   };
 
-  provide(accordionContext, context);
+  provide(AccordionContextKey, context);
 
-  return context;
+  return { children: props.children, ...context };
 }
 
-export function useAccordion() {
-  return useContext({
-    context: accordionContext,
-    hookName: useAccordion.name,
-    providerName: 'Accordion',
-  });
+export function useAccordion(): AccordionContextProps {
+  const context = inject<AccordionContextProps>(AccordionContextKey);
+  if (!context) {
+    throw new Error('useAccordion must be used within a AccordionProvider');
+  }
+  return context;
 }
