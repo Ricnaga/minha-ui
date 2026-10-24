@@ -41,3 +41,4 @@ export * from "./tabs.tv";
 export * from "./accordion.tv";
 export * from "./select-item.tv";
 export * from "./table.tv";
+export * from "./pagination.tv";

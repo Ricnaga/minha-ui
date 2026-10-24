@@ -72,3 +72,4 @@ export * from './TableCell';
 export * from './TableFooter';
 export * from './TableHead';
 export * from './TablePagination';
+export * from './Pagination';
