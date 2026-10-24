@@ -44,3 +44,4 @@ export * from "./table.tv";
 export * from "./pagination.tv";
 export * from "./stepper.tv";
 export * from "./stepper-item.tv";
+export * from "./otp-input.tv";
