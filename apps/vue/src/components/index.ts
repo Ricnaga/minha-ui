@@ -84,3 +84,8 @@ export * from './DatePickerProvider';
 export * from './DatePickerInput';
 export * from './DatePickerPopover';
 export * from './DatePickerCalendar';
+export * from './DateRangePicker';
+export * from './DateRangePickerProvider';
+export * from './DateRangePickerInput';
+export * from './DateRangePickerPopover';
+export * from './DateRangePickerCalendar';
