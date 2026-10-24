@@ -52,3 +52,7 @@ export * from './DrawerContainer';
 export * from './DrawerHeader';
 export * from './DrawerBody';
 export * from './DrawerFooter';
+export * from './Tabs';
+export * from './TabsList';
+export * from './TabsTrigger';
+export * from './TabsPanel';

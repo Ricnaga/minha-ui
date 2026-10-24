@@ -37,3 +37,4 @@ export * from "./drawer-container.tv.ts";
 export * from "./drawer-header.tv.ts";
 export * from "./drawer-body.tv.ts";
 export * from "./drawer-footer.tv.ts";
+export * from "./tabs.tv";
