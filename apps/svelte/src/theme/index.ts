@@ -23,3 +23,4 @@ export * from './scroll-area.tv';
 export * from './skeleton.tv';
 export * from './spinner.tv';
 export * from './transition-container.tv';
+export * from "./switch.tv";
