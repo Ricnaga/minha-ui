@@ -90,3 +90,4 @@ export * from './DateRangePickerInput';
 export * from './DateRangePickerPopover';
 export * from './DateRangePickerCalendar';
 export * from './Chart';
+export * from './ChartPie';
