@@ -42,3 +42,5 @@ export * from "./accordion.tv";
 export * from "./select-item.tv";
 export * from "./table.tv";
 export * from "./pagination.tv";
+export * from "./stepper.tv";
+export * from "./stepper-item.tv";

@@ -73,3 +73,6 @@ export * from './TableFooter';
 export * from './TableHead';
 export * from './TablePagination';
 export * from './Pagination';
+export * from './Stepper';
+export * from './StepperProvider';
+export * from './StepperItem';
