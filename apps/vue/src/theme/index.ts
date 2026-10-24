@@ -28,3 +28,8 @@ export * from "./slider.tv";
 export * from "./progress.tv";
 export * from "./tooltip.tv";
 export * from "./popover-content.tv";
+export * from "./modal-container.tv.ts";
+export * from "./modal-content.tv.ts";
+export * from "./modal-header.tv.ts";
+export * from "./modal-footer.tv.ts";
+export * from "./modal-actions.tv.ts";
