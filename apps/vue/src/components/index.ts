@@ -79,3 +79,8 @@ export * from './StepperItem';
 export * from './OtpInput';
 export * from './Calendar';
 export * from './RangeCalendar';
+export * from './DatePicker';
+export * from './DatePickerProvider';
+export * from './DatePickerInput';
+export * from './DatePickerPopover';
+export * from './DatePickerCalendar';
