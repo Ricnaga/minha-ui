@@ -60,3 +60,6 @@ export * from './Accordion';
 export * from './AccordionItem';
 export * from './AccordionHeader';
 export * from './AccordionContent';
+export * from './Select';
+export * from './SelectProvider';
+export * from './SelectDropdown';
