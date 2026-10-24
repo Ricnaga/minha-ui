@@ -26,6 +26,7 @@ export * from './Divider';
 export * from './EmptyState';
 export * from './ErrorState';
 export * from './IconButton';
+export * from './Input';
 export * from './ScrollArea';
 export * from './Skeleton';
 export * from './Spinner';

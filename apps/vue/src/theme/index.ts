@@ -18,6 +18,7 @@ export * from './divider.tv';
 export * from './empty-state.tv';
 export * from './error-state.tv';
 export * from './icon-button.tv';
+export * from './input.tv';
 export * from './scroll-area.tv';
 export * from './skeleton.tv';
 export * from './spinner.tv';
