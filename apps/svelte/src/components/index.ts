@@ -36,3 +36,4 @@ export * from './Slider';
 export * from './SliderTrack';
 export * from './SliderRange';
 export * from './SliderThumb';
+export * from './Progress';
