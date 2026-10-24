@@ -1,6 +1,7 @@
 export * from './accordion.tv';
 export * from './backdrop.tv';
 export * from './badge.tv';
+export * from './breadcrumb.tv';
 export * from './button.tv';
 export * from './card-actions.tv';
 export * from './card-body.tv';
