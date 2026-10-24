@@ -1,7 +1,8 @@
 import { inject, provide } from 'vue';
 
 import { chart } from '@/theme';
-import { createBandScale, createLinearScale, getNiceTicks } from '@minha-ui/utils';
+import { createBandScale, createLinearScale } from '@minha-ui/utils';
+import { getNiceTicks } from '@minha-ui/utils/src/chart';
 
 import type { ChartContextProps, UseChartProps } from './chart.types';
 
