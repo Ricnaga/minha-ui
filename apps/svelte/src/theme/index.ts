@@ -26,3 +26,4 @@ export * from './transition-container.tv';
 export * from "./switch.tv";
 export * from "./slider.tv";
 export * from "./progress.tv";
+export * from "./tooltip.tv";
