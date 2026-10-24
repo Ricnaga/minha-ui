@@ -27,3 +27,4 @@ export * from "./switch.tv";
 export * from "./slider.tv";
 export * from "./progress.tv";
 export * from "./tooltip.tv";
+export * from "./popover-content.tv";

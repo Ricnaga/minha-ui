@@ -38,3 +38,6 @@ export * from './SliderRange';
 export * from './SliderThumb';
 export * from './Progress';
 export * from './Tooltip';
+export * from './Popover';
+export * from './PopoverTrigger';
+export * from './PopoverContent';
