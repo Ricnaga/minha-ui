@@ -40,3 +40,4 @@ export * from "./drawer-footer.tv.ts";
 export * from "./tabs.tv";
 export * from "./accordion.tv";
 export * from "./select-item.tv";
+export * from "./table.tv";
