@@ -32,3 +32,7 @@ export * from './Skeleton';
 export * from './Spinner';
 export * from './TransitionContainer';
 export * from "./Switch";
+export * from './Slider';
+export * from './SliderTrack';
+export * from './SliderRange';
+export * from './SliderThumb';

@@ -24,3 +24,4 @@ export * from './skeleton.tv';
 export * from './spinner.tv';
 export * from './transition-container.tv';
 export * from "./switch.tv";
+export * from "./slider.tv";
