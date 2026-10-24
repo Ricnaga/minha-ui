@@ -17,3 +17,5 @@ export interface AccordionContextProps extends AccordionVariants {
   currentValue?: string[];
   type: AccordionType;
 }
+
+export type AccordionType = 'single' | 'multiple';

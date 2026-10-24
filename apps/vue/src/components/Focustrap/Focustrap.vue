@@ -3,11 +3,11 @@ import type { FocustrapProps } from './focustrap.types';
 import { useFocustrap } from './useFocustrap';
 
 const props = defineProps<FocustrapProps>();
-const { focustrapProps, containerRef } = useFocustrap(props);
+useFocustrap(props);
 </script>
 
 <template>
-  <div v-bind="focustrapProps" ref="containerRef">
+  <div>
     <slot />
   </div>
 </template>
