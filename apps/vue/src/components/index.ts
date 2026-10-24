@@ -47,3 +47,8 @@ export * from './ModalContent';
 export * from './ModalHeader';
 export * from './ModalFooter';
 export * from './ModalActions';
+export * from './Drawer';
+export * from './DrawerContainer';
+export * from './DrawerHeader';
+export * from './DrawerBody';
+export * from './DrawerFooter';

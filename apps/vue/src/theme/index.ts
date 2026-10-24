@@ -33,3 +33,7 @@ export * from "./modal-content.tv.ts";
 export * from "./modal-header.tv.ts";
 export * from "./modal-footer.tv.ts";
 export * from "./modal-actions.tv.ts";
+export * from "./drawer-container.tv.ts";
+export * from "./drawer-header.tv.ts";
+export * from "./drawer-body.tv.ts";
+export * from "./drawer-footer.tv.ts";
