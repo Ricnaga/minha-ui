@@ -1,14 +1,43 @@
 import { inject, provide } from 'vue';
 
 import { chart } from '@/theme';
-import { createBandScale, createLinearScale } from '@minha-ui/utils';
-import { getNiceTicks } from '@minha-ui/utils/src/chart';
 
 import type { ChartContextProps, UseChartProps } from './chart.types';
 
 const MARGIN = { top: 16, right: 16, bottom: 32, left: 44 };
 
 export const ChartContextKey = Symbol('ChartContext');
+
+function createLinearScale({ domain, range }: { domain: [number, number]; range: [number, number] }) {
+  const [d0, d1] = domain;
+  const [r0, r1] = range;
+  const span = d1 - d0 || 1;
+  const rSpan = r1 - r0;
+  return (value: number) => r0 + ((value - d0) / span) * rSpan;
+}
+
+function createBandScale(count: number, range: [number, number], padding = 0.2) {
+  const [r0, r1] = range;
+  const step = count > 0 ? (r1 - r0) / count : 0;
+  const bandwidth = step * (1 - padding);
+  return {
+    position: (index: number) => r0 + index * step + (step - bandwidth) / 2,
+    center: (index: number) => r0 + index * step + step / 2,
+    bandwidth,
+  };
+}
+
+function getNiceTicks(min: number, max: number) {
+  if (max <= min) return { min, max: min + 1, ticks: [min] };
+  const range = max - min;
+  const step = Math.pow(10, Math.floor(Math.log10(range)));
+  const niceStep = step;
+  const niceMin = Math.floor(min / niceStep) * niceStep;
+  const niceMax = Math.ceil(max / niceStep) * niceStep;
+  const ticks = [];
+  for (let t = niceMin; t <= niceMax + 1e-9; t += niceStep) ticks.push(Number(t.toFixed(10)));
+  return { min: niceMin, max: niceMax, ticks };
+}
 
 export function useChartProvider(props: UseChartProps) {
   const {
