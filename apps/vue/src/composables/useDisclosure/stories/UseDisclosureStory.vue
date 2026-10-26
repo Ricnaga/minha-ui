@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { useDisclosure } from '../index';
+import { useDisclosure } from '../useDisclosure';
 
-const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
+const disclosure = useDisclosure();
 </script>
 
 <template>
-  <div>
-    <button data-testid="open-button" @click="onOpen">Abrir</button>
-    <button data-testid="close-button" @click="onClose">Fechar</button>
-    <button data-testid="toggle-button" @click="onToggle">Alternar</button>
-    <p data-testid="status">{{ isOpen ? 'Aberto' : 'Fechado' }}</p>
+  <div class="p-6 flex flex-col gap-4">
+    <p class="text-sm">Aberto: {{ disclosure.isOpen.value ? 'sim' : 'não' }}</p>
+    <div class="flex gap-2">
+      <button @click="disclosure.handleToggle" class="px-4 py-2 rounded bg-blue-600 text-white">Alternar</button>
+      <button @click="disclosure.handleOpen" class="px-4 py-2 rounded bg-green-600 text-white">Abrir</button>
+      <button @click="disclosure.handleClose" class="px-4 py-2 rounded bg-red-600 text-white">Fechar</button>
+    </div>
   </div>
 </template>

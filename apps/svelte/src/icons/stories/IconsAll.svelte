@@ -9,7 +9,7 @@
 </script>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px;padding:24px">
-  {#each entries as [name, Icon]}
+  {#each entries as [name, Icon], i (name + i)}
     <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border:1px solid #e5e7eb;border-radius:8px">
       <svelte:component this={Icon} size={24} />
       <span style="font-size:10px;text-align:center;word-break:break-all">{name}</span>
