@@ -6,6 +6,8 @@ const config: StorybookConfig = {
     '../src/components/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/hooks/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/icons/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../src/utils/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../src/icons/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../src/types/**/stories/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
