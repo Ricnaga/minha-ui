@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/svelte-vite';
-
+import type { Meta, StoryObj } from '@storybook/svelte';
 import { testDefaultRipple } from './useRipple.play';
-import Component from './useRipple.stories.svelte';
+import UseRippleStory from './UseRippleStory.svelte';
 
-const meta: Meta<typeof Component> = {
+const meta: Meta<typeof UseRippleStory> = {
   title: 'Runes/useRipple',
-  component: Component,
+  component: UseRippleStory,
   parameters: {
     layout: 'centered',
   },
@@ -13,8 +12,10 @@ const meta: Meta<typeof Component> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Component>;
 
-export const Default: Story = {
+export const Default: StoryObj<typeof UseRippleStory> = {
+  render: () => ({
+    Component: UseRippleStory,
+  }),
   play: testDefaultRipple,
 };

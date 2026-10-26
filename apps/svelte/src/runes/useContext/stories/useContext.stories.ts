@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/svelte-vite';
-
+import type { Meta, StoryObj } from '@storybook/svelte';
 import { testDefaultContext } from './useContext.play';
-import Component from './useContext.stories.svelte';
+import ContextStory from './ContextStory.svelte';
 
-const meta: Meta<typeof Component> = {
+const meta: Meta<typeof ContextStory> = {
   title: 'Runes/useContext',
-  component: Component,
+  component: ContextStory,
   parameters: {
     layout: 'centered',
   },
@@ -14,6 +13,9 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Default: StoryObj<typeof Component> = {
+export const Default: StoryObj<typeof ContextStory> = {
+  render: () => ({
+    Component: ContextStory,
+  }),
   play: testDefaultContext,
 };
