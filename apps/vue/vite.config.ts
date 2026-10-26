@@ -17,6 +17,7 @@ export default defineConfig({
       '@/composables': path.resolve(__dirname, './src/composables'),
       '@/theme': path.resolve(__dirname, './src/theme'),
       '@/types': path.resolve(__dirname, './src/types'),
+      '@/infra': path.resolve(__dirname, './src/infra'),
     },
   },
 });

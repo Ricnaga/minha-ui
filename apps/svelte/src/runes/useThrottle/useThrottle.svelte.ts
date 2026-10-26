@@ -16,6 +16,10 @@ export function useThrottle<T extends unknown[]>(
 
     if (timeSinceLastCall >= delay) {
       lastCall = now;
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+      }
       callback(...args);
       return;
     }
@@ -28,17 +32,11 @@ export function useThrottle<T extends unknown[]>(
       if (lastArgs) {
         lastCall = Date.now();
         callback(...lastArgs);
+        timeoutId = null;
+        lastArgs = null;
       }
     }, delay - timeSinceLastCall);
   }) as UseThrottleCallback<T>;
-
-  $effect(() => {
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  });
 
   return throttled;
 }

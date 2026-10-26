@@ -17,6 +17,7 @@ export default defineConfig({
       '@/runes': path.resolve(__dirname, './src/runes'),
       '@/theme': path.resolve(__dirname, './src/theme'),
       '@/types': path.resolve(__dirname, './src/types'),
+      '@/infra': path.resolve(__dirname, './src/infra'),
     },
   },
 });

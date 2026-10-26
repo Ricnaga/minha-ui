@@ -1,6 +1,6 @@
 import type { FetcherBase } from '@/types';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import { fetcher } from '@/infra/fetchers';
+import { fetcher } from '../../infra/fetchers';
 
 interface UseFetchOptions extends FetcherBase {
   isRequesting?: boolean;

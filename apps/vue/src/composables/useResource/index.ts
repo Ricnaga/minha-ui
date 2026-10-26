@@ -1,7 +1,7 @@
 import type { FetcherBase } from '@/types';
 import { onUnmounted, ref } from 'vue';
-import { getCacheKey, invalidateResource } from '@/infra/fetchers/cache';
-import { createResource, type Resource } from '@/infra/fetchers/wrapper';
+import { getCacheKey, invalidateResource } from '../../infra/fetchers/cache';
+import { createResource, type Resource } from '../../infra/fetchers/wrapper';
 
 export function useResource<T>(props: FetcherBase) {
   const resource = ref<Resource>(createResource<T>(props));

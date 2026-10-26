@@ -29,7 +29,8 @@
       "@/components": ["src/components"],
       "@/composables": ["src/composables"],
       "@/theme": ["src/theme"],
-      "@/types": ["src/types"]
+      "@/types": ["src/types"],
+      "@/infra": ["src/infra"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.d.ts"]

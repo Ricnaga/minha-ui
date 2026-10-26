@@ -1,5 +1,5 @@
 import type { FetcherBase } from '@/types';
-import { fetcher } from '@/infra/fetchers';
+import { fetcher } from '../../infra/fetchers';
 
 interface UseFetchOptions extends FetcherBase {
   isRequesting?: boolean;

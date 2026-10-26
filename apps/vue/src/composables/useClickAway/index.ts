@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref, type Ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 type UseClickAwayOptions = {
   onOutsideClick: (event: Event) => void;
@@ -7,7 +7,7 @@ type UseClickAwayOptions = {
 
 export function useClickAway<T extends HTMLElement = HTMLElement>(
   options: UseClickAwayOptions
-): Ref<T | null> {
+) {
   const { onOutsideClick, enabled = true } = options;
   const nodeRef = ref<T | null>(null);
 

@@ -28,7 +28,8 @@
       "@/components": ["src/components"],
       "@/runes": ["src/runes"],
       "@/theme": ["src/theme"],
-      "@/types": ["src/types"]
+      "@/types": ["src/types"],
+      "@/infra": ["src/infra"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.svelte"]
