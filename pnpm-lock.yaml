@@ -222,6 +222,9 @@ importers:
       '@minha-ui/theme':
         specifier: workspace:*
         version: link:../../packages/theme
+      '@minha-ui/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       phosphor-svelte:
         specifier: 3.1.1
         version: 3.1.1(svelte@5.57.2(@typescript-eslint/types@8.72.0))(vite@7.3.7(@types/node@26.6.5)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.44.1)(yaml@2.9.1))
@@ -337,6 +340,9 @@ importers:
       '@minha-ui/theme':
         specifier: workspace:*
         version: link:../../packages/theme
+      '@minha-ui/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@phosphor-icons/vue':
         specifier: 2.2.1
         version: 2.2.1(vue@3.5.44(typescript@5.9.3))
