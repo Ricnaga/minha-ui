@@ -1,12 +1,11 @@
+import type { Snippet } from 'svelte';
 
-export type ParamsType = {
-  params?: object;
+export type RequiredChildren<T = unknown> = T & {
+  children?: Snippet;
 };
 
-export interface FetcherBase<
-  T extends unknown | string = string,
-> extends ParamsType {
-  baseURL?: T;
-  endpoint: string;
-  config?: RequestInit;
-}
+export type DataTestidProps<T = unknown> = T & {
+  'data-testid'?: string;
+};
+
+export * from './api';

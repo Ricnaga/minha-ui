@@ -18,7 +18,7 @@ export function setCachedResource(key: string, resource: Resource) {
 export function invalidateResource(key: string) {
   if (resourceCache.has(key)) {
     const resource = resourceCache.get(key)!;
-    resource.abort();
+    resource.abort(); // opcional
     resourceCache.delete(key);
   }
 }

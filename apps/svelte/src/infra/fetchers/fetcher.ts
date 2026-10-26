@@ -7,7 +7,7 @@ export const fetcher = async <T extends unknown | string = string>(
 
   if (data.params) {
     Object.entries(data.params).forEach(([key, value]) => {
-      FETCHER_URL.searchParams.set(key, String(value));
+      FETCHER_URL.searchParams.set(key, value);
     });
   }
 
@@ -18,16 +18,18 @@ export const fetcher = async <T extends unknown | string = string>(
       ...data.config?.headers,
     },
   })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('HTTP error! status:'.concat(res.status.toString()));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          'HTTP error! status:'.concat(response.status.toString()),
+        );
       }
 
-      return res.json();
+      return response.json();
     })
-    .catch((err) => {
+    .catch((response) => {
       console.error('ERRO: API INACESSÍVEL');
-      throw err instanceof Error ? err : new Error(String(err));
+      throw new Error(response);
     });
 
   return response;
