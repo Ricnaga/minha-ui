@@ -25,19 +25,30 @@ export default defineConfig({
     baseURL:
       process.env.E2E_TEST_TYPE === 'storybook'
         ? 'http://localhost:6006'
-        : 'http://localhost:5173',
+        : process.env.E2E_APP === 'vue'
+          ? 'http://localhost:6007'
+          : process.env.E2E_APP === 'svelte'
+            ? 'http://localhost:6008'
+            : 'http://localhost:5173',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
-  // Serve a build estática do Storybook (e não o dev server) para evitar
-  // compilação on-demand, que deixa os specs instáveis sob concorrência.
   webServer:
     process.env.E2E_TEST_TYPE === 'storybook'
       ? {
           command:
-            'pnpm --filter @minha-ui/react build-storybook && pnpm --filter @minha-ui/react exec vite preview --outDir storybook-static --port 6006',
-          url: 'http://localhost:6006/iframe.html',
+            process.env.E2E_APP === 'vue'
+              ? 'pnpm --filter @minha-ui/vue build-storybook && pnpm --filter @minha-ui/vue exec vite preview --outDir storybook-static --port 6007'
+              : process.env.E2E_APP === 'svelte'
+                ? 'pnpm --filter @minha-ui/svelte build-storybook && pnpm --filter @minha-ui/svelte exec vite preview --outDir storybook-static --port 6008'
+                : 'pnpm --filter @minha-ui/react build-storybook && pnpm --filter @minha-ui/react exec vite preview --outDir storybook-static --port 6006',
+          url:
+            process.env.E2E_APP === 'vue'
+              ? 'http://localhost:6007/iframe.html'
+              : process.env.E2E_APP === 'svelte'
+                ? 'http://localhost:6008/iframe.html'
+                : 'http://localhost:6006/iframe.html',
           reuseExistingServer: !process.env.CI,
           timeout: 180_000,
         }
@@ -46,6 +57,16 @@ export default defineConfig({
     {
       name: 'react',
       testDir: path.join(dirname, 'react', 'tests'),
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'vue',
+      testDir: path.join(dirname, 'vue', 'tests'),
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'svelte',
+      testDir: path.join(dirname, 'svelte', 'tests'),
       use: { ...devices['Desktop Chrome'] },
     },
   ],

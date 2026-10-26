@@ -12,7 +12,12 @@
     "test:e2e:storybook": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts",
     "test:e2e:storybook:ui": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts --ui",
     "test:e2e:components": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts react/tests/components",
-    "test:e2e:hooks": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts react/tests/hooks"
+    "test:e2e:hooks": "E2E_TEST_TYPE=storybook playwright test --config playwright.config.ts react/tests/hooks",
+    "test:e2e:storybook:vue": "E2E_TEST_TYPE=storybook E2E_APP=vue playwright test --config playwright.config.ts --project=vue",
+    "test:e2e:storybook:svelte": "E2E_TEST_TYPE=storybook E2E_APP=svelte playwright test --config playwright.config.ts --project=svelte",
+    "test:e2e:components:vue": "E2E_TEST_TYPE=storybook E2E_APP=vue playwright test --config playwright.config.ts --project=vue react/tests/components",
+    "test:e2e:hooks:vue": "E2E_TEST_TYPE=storybook E2E_APP=vue playwright test --config playwright.config.ts --project=vue vue/tests/hooks",
+    "test:e2e:hooks:svelte": "E2E_TEST_TYPE=storybook E2E_APP=svelte playwright test --config playwright.config.ts --project=svelte svelte/tests/hooks"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
