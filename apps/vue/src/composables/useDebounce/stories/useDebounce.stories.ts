@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { testDefaultDebounce } from './useDebounce.play';
 import UseDebounceStory from './UseDebounceStory.vue';
 

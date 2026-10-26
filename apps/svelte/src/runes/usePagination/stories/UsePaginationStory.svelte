@@ -8,8 +8,8 @@
 <div class="p-10 w-[400px] flex flex-col gap-4">
   <h3 class="text-lg font-semibold">usePagination</h3>
   <ul>
-    {#each pagination.currentPageItems as item}
-      <li>{item}</li>
+    {#each pagination.currentPageItems as item, i}
+      <li data-key={i}>{item}</li>
     {/each}
   </ul>
   <div class="flex gap-2 items-center">

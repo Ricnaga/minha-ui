@@ -6,7 +6,6 @@ const isOpen = ref(false);
 const log = ref('Nenhum clique fora ainda');
 
 const targetRef = useClickAway({
-  enabled: isOpen.value,
   onOutsideClick: () => {
     log.value = '➡️ Clique fora detectado';
     isOpen.value = false;
@@ -36,7 +35,7 @@ const open = () => {
     <div class="mt-6">
       <div
         v-if="isOpen"
-        ref="targetRef"
+        :ref="targetRef as any"
         class="p-5 border-2 border-neutral-500 w-64 bg-amber-400"
       >
         Clique dentro de mim

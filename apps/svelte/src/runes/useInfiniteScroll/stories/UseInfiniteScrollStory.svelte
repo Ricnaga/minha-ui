@@ -14,8 +14,8 @@
 </script>
 
 <div class="h-[300px] overflow-auto w-[300px] border p-4">
-  {#each items as item}
-    <div class="py-2 border-b">Item {item}</div>
+  {#each items as item, i}
+    <div class="py-2 border-b" data-key={i}>Item {item}</div>
   {/each}
   <div use:infiniteScroll.action class="py-4 text-center">
     {#if infiniteScroll.isLoading}

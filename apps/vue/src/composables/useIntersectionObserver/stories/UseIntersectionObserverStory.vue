@@ -16,7 +16,7 @@ const { ref: targetRef, isIntersecting } = useIntersectionObserver({
     </p>
 
     <div
-      ref="targetRef"
+      :ref="targetRef as any"
       :class="[
         'mt-[150vh] h-24 flex items-center justify-center font-bold text-white transition-colors duration-300',
         isIntersecting ? 'bg-green-700' : 'bg-red-600',

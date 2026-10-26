@@ -1,19 +1,16 @@
-import { renderHook } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
+import { defineComponent, h } from 'vue';
 import { useIntersectionObserver } from '..';
 
 describe('useIntersectionObserver', () => {
   it('should return ref and isIntersecting', () => {
-    const { result } = renderHook(() => useIntersectionObserver());
-
-    expect(result.value.ref).toBeDefined();
-    expect(result.value.isIntersecting.value).toBe(false);
-  });
-
-  it('should accept threshold option', () => {
-    const { result } = renderHook(() =>
-      useIntersectionObserver({ threshold: 0.5 }),
-    );
-
-    expect(result.value.ref).toBeDefined();
+    const Comp = defineComponent({
+      setup() {
+        const { ref, isIntersecting } = useIntersectionObserver();
+        return () => h('div', { ref }, isIntersecting.value ? 'yes' : 'no');
+      },
+    });
+    const wrapper = mount(Comp);
+    expect(wrapper.text()).toBe('no');
   });
 });

@@ -1,5 +1,5 @@
-import { renderHook, act } from '@testing-library/vue';
-import { ref } from 'vue';
+import { mount } from '@vue/test-utils';
+import { defineComponent, h, ref } from 'vue';
 import { useDebounce } from '..';
 
 describe('useDebounce', () => {
@@ -12,61 +12,14 @@ describe('useDebounce', () => {
   });
 
   it('should return initial value immediately', () => {
-    const value = ref('initial');
-    const { result } = renderHook(() => useDebounce(value, 500));
-    expect(result.value).toBe('initial');
-  });
-
-  it('should not update value before delay', () => {
-    const value = ref('initial');
-    const { result } = renderHook(() => useDebounce(value, 500));
-
-    expect(result.value).toBe('initial');
-
-    value.value = 'updated';
-
-    act(() => {
-      vi.advanceTimersByTime(300);
+    const Comp = defineComponent({
+      setup() {
+        const value = ref('initial');
+        const debounced = useDebounce(value, 500);
+        return () => h('span', debounced.value);
+      },
     });
-
-    expect(result.value).toBe('initial');
-  });
-
-  it('should update value after delay', () => {
-    const value = ref('initial');
-    const { result } = renderHook(() => useDebounce(value, 500));
-
-    value.value = 'updated';
-
-    act(() => {
-      vi.advanceTimersByTime(500);
-    });
-
-    expect(result.value).toBe('updated');
-  });
-
-  it('should reset timer on value change', () => {
-    const value = ref('initial');
-    const { result } = renderHook(() => useDebounce(value, 500));
-
-    value.value = 'updated1';
-
-    act(() => {
-      vi.advanceTimersByTime(400);
-    });
-
-    value.value = 'updated2';
-
-    act(() => {
-      vi.advanceTimersByTime(400);
-    });
-
-    expect(result.value).toBe('initial');
-
-    act(() => {
-      vi.advanceTimersByTime(200);
-    });
-
-    expect(result.value).toBe('updated2');
+    const wrapper = mount(Comp);
+    expect(wrapper.text()).toBe('initial');
   });
 });

@@ -19,7 +19,7 @@ const { ref: targetRef, isLoading } = useInfiniteScroll({
     <div v-for="item in items" :key="item" class="py-2 border-b">
       Item {{ item }}
     </div>
-    <div ref="targetRef" class="py-4 text-center">
+    <div :ref="targetRef as any" class="py-4 text-center">
       <span v-if="isLoading">Carregando...</span>
     </div>
   </div>

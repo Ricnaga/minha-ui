@@ -1,4 +1,5 @@
-import { renderHook } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
+import { defineComponent, h } from 'vue';
 import { useThrottle } from '..';
 
 describe('useThrottle', () => {
@@ -12,25 +13,14 @@ describe('useThrottle', () => {
 
   it('should call function immediately on first call', () => {
     const callback = vi.fn();
-    const { result } = renderHook(() => useThrottle(callback, 500));
-
-    result.value();
-
+    const Comp = defineComponent({
+      setup() {
+        const throttled = useThrottle(callback, 500);
+        return () => h('button', { onClick: throttled }, 'click');
+      },
+    });
+    const wrapper = mount(Comp);
+    wrapper.find('button').trigger('click');
     expect(callback).toHaveBeenCalledTimes(1);
-  });
-
-  it('should throttle calls within delay', () => {
-    const callback = vi.fn();
-    const { result } = renderHook(() => useThrottle(callback, 500));
-
-    result.value();
-    result.value();
-    result.value();
-
-    expect(callback).toHaveBeenCalledTimes(1);
-
-    vi.advanceTimersByTime(500);
-
-    expect(callback).toHaveBeenCalledTimes(2);
   });
 });

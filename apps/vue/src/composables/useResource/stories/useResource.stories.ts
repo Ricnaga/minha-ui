@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import UseResourceStory from './UseResourceStory.vue';
 
 const meta: Meta<typeof UseResourceStory> = {

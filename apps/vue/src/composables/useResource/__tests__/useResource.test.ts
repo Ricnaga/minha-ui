@@ -1,13 +1,16 @@
-import { renderHook } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
+import { defineComponent, h } from 'vue';
 import { useResource } from '..';
 
 describe('useResource', () => {
   it('should return refetch and invalidate', () => {
-    const { result } = renderHook(() =>
-      useResource({ endpoint: '/test' }),
-    );
-
-    expect(typeof result.value.refetch).toBe('function');
-    expect(typeof result.value.invalidate).toBe('function');
+    const Comp = defineComponent({
+      setup() {
+        const { refetch, invalidate } = useResource({ endpoint: '/test' });
+        return () => h('div', typeof refetch + typeof invalidate);
+      },
+    });
+    const wrapper = mount(Comp);
+    expect(wrapper.text()).toBe('functionfunction');
   });
 });

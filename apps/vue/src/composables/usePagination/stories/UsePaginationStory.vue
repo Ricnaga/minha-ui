@@ -2,7 +2,7 @@
 import { usePagination } from '../';
 
 const items = Array.from({ length: 50 }, (_, i) => `Item ${i + 1}`);
-const { pagination, currentPageItems, totalPages, onNextPage, onPrevPage, setPageNumber } = usePagination({ items, pageSize: 10 });
+const { pagination, currentPageItems, totalPages, onNextPage, onPrevPage } = usePagination({ items, pageSize: 10 });
 </script>
 
 <template>

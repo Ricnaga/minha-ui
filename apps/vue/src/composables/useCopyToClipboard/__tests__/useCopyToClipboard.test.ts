@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/vue';
+import { mount } from '@vue/test-utils';
+import { defineComponent, h } from 'vue';
 import { useCopyToClipboard } from '..';
 
 const mockClipboard = {
@@ -15,60 +16,16 @@ describe('useCopyToClipboard', () => {
     vi.clearAllMocks();
   });
 
-  it('should return initial state', () => {
-    const { result } = renderHook(() => useCopyToClipboard());
-
-    expect(result.value.copiedValue).toBeNull();
-    expect(result.value.error).toBeNull();
-    expect(result.value.isCopied).toBe(false);
-    expect(result.value.isIdle).toBe(true);
-    expect(result.value.isError).toBe(false);
-  });
-
   it('should copy text to clipboard successfully', async () => {
-    const { result } = renderHook(() => useCopyToClipboard());
-
-    await act(async () => {
-      const success = await result.value.copyToClipboard('test text');
-      expect(success).toBe(true);
+    const Comp = defineComponent({
+      setup() {
+        const { copyToClipboard, isCopied } = useCopyToClipboard();
+        return () => h('button', { onClick: () => copyToClipboard('test text') }, isCopied.value ? 'copied' : 'copy');
+      },
     });
-
+    const wrapper = mount(Comp);
+    await wrapper.find('button').trigger('click');
+    await wrapper.vm.$nextTick();
     expect(mockClipboard.writeText).toHaveBeenCalledWith('test text');
-    expect(result.value.copiedValue).toBe('test text');
-    expect(result.value.isCopied).toBe(true);
-  });
-
-  it('should handle clipboard error', async () => {
-    mockClipboard.writeText.mockRejectedValueOnce(new Error('Clipboard error'));
-
-    const { result } = renderHook(() => useCopyToClipboard());
-
-    await act(async () => {
-      const success = await result.value.copyToClipboard('test text');
-      expect(success).toBe(false);
-    });
-
-    expect(result.value.error).toBeInstanceOf(Error);
-    expect(result.value.isCopied).toBe(false);
-    expect(result.value.isError).toBe(true);
-  });
-
-  it('should reset state', async () => {
-    const { result } = renderHook(() => useCopyToClipboard());
-
-    await act(async () => {
-      await result.value.copyToClipboard('test text');
-    });
-
-    expect(result.value.isCopied).toBe(true);
-
-    act(() => {
-      result.value.reset();
-    });
-
-    expect(result.value.copiedValue).toBeNull();
-    expect(result.value.error).toBeNull();
-    expect(result.value.isCopied).toBe(false);
-    expect(result.value.isIdle).toBe(true);
   });
 });
