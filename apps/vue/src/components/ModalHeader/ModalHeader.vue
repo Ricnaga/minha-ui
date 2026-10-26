@@ -11,7 +11,12 @@ const cb = closeButtonProps as unknown as Record<string, unknown>;
 <template>
   <header v-bind="modalHeaderProps">
     <slot />
-    <button :type="(cb.type as 'button' | 'submit' | 'reset' | undefined)" :aria-label="cb['aria-label'] as string | undefined" :class="cb.class as string | undefined" @click="cb.onClick as any">
+    <button
+      :type="(cb.type as 'button' | 'submit' | 'reset' | undefined)"
+      :aria-label="cb['aria-label'] as string | undefined"
+      :class="cb.class as string | undefined"
+      @click="(cb.onClick as any)"
+    >
       <PhX />
     </button>
   </header>
